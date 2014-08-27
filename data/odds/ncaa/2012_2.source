@@ -1,0 +1,4227 @@
+
+
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+
+<head>
+ <title>College Football - odds - Rivals.com</title>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta name="keywords" content="" />
+  <meta name="description" content="Complete College Football news, scores, standings "/>
+
+  <link rel="stylesheet" type="text/css" media="screen" href="http://l.yimg.com/j/assets/eJx1kFGOwyAMRE-UBEghoD0MYom7RUpwZJNd5fYbiio1H_0C2c_jGUfm4djToHrXi4GAoXR3zIW7H0oz9ySnyRrzFU-OU4G_NIPP4dc_IMxA_o5YgHpSYhJONmxDKnXSWTuKZyniumIevgPDWdeT1lNDIVB8-MCcuAxryql9vRLCCauENKOtE8ZI9a508NatOL_ec780Nzt-QlLEXA1JrdwnhiMSdFwobVXOaXvxvi3hAMpn2hrNOqMvSnPiuCDv9Ax4O4H3bgyEO8NSz2mca1GqKb64ajt8u8qr8w8h9o7W.css?z&m" />
+<link rel="stylesheet" type="text/css" media="screen" href="http://l.yimg.com/j/assets/eJxVkGFuwyAMhU-0DigBoh0GUXAStAARJu1y-xGY1OyXJX_v2c-2iJ8TmLJncPqxphlvmSpKyP3LVrSkAHoF47CkfOg_5akZxSDVWxOS29cTMKIIFw3YFEKKteyxuPSK1SWrizZYh847aLQLnM7K-J2xziYTi8HjPZSOnAl58bWduIH1k7cXnVRE9FRP7yD965Rs7DfkNo3LsfWM1Uu9bvWxr6ED6wBtylAWX0MzqqTqF5mIL8ioH8bNoOmNnwuk5EOj4bieo7iU7PqHA7ePmrRV-Nkgl_5rKoZfcCyGxw,,.css?z&m" />
+  <link rel="stylesheet" type="text/css" media="screen" href="http://l.yimg.com/j/assets/css/common/wide.r143221;css/odds.r205505.css?m" />
+      <script>
+      var YUI_config = { combine:true,base:"http://l.yimg.com/d/lib/yui/3.4.1/build/",comboBase:"http://l.yimg.com/zz/combo?",root:"/d/lib/yui/3.4.1/build/",groups:{yui2:{combine:true,base:"http://l.yimg.com/d/lib/yui/2in3.4/2.9.0/build/",comboBase:"http://l.yimg.com/zz/combo?",root:"/d/lib/yui/2in3.4/2.9.0/build/",patterns:{"yui2-":{configFn:function(me){if(/-skin|reset|fonts|grids|base/.test(me.name)){me.type='css';me.path=me.path.replace(/\.js/,'.css');me.path=me.path.replace(/\/yui2-skin/,'/assets/skins/sam/yui2-skin');}}}}},gallery:{combine:true,base:"http://l.yimg.com/d/lib/yui/gallery-2011.04.20-13-04/build/",comboBase:"http://l.yimg.com/zz/combo?",root:"/d/lib/yui/gallery-2011.04.20-13-04/build/",patterns:{"gallery-":{},"gallerycss-":{type:"css"}}},sports:{combine:true,base:"http://l.yimg.com/os/mit/media/m/sports/",comboBase:"http://l.yimg.com/zz/combo?",root:"/os/mit/media/m/sports/",modules:{"ys-plugin-overlay-surround":{path:"plugin-overlay-surround-min-145300.js",requires:["plugin","base-build","node-screen","event-resize"]},"ys-plugin-overlay-close":{path:"plugin-overlay-close-min-140631.js",requires:["plugin","base-build","node-event-delegate"]},"ys-plugin-playernote-view":{path:"plugin-playernote-view-min-145300.js",requires:["plugin","base-build"]},"ys-playernote-views-notes":{path:"playernote-views-default-min-140773.js",requires:["plugin","base-build"]},"ys-playernote":{path:"playernote-min-157732.js",requires:["overlay","io-base","json-parse","ys-plugin-overlay-surround","ys-plugin-overlay-close","dd-plugin","ys-playernote-css","substitute","ys-plugin-playernote-view"]},"ys-playernotes":{path:"playernotes-min-150286.js",requires:["node-event-delegate","base-build","selector-css3"]},"ys-playernote-tabs":{path:'playernote-tabs-min-323571.js',requires:['plugin','base-build','node-event-delegate','transition','ys-playernote-tabs-css']},"ys-playernote-tabs-css":{path:'playernote-tabs-min-323571.css',type:'css'},"ys-playernote-css":{path:"playernote-min-153108.css",type:"css"},"ys-playernote-views-twitter":{path:'playernote-views-twitter-min-145300.js',requires:['ys-plugin-playernote-view','ys-playernote-views-twitter-css','node-event-delegate','node-style','selector-css3']},"ys-playernote-views-twitter-css":{path:'playernote-views-twitter-min-199290.css',/*todo*/type:'css'}}},media:{combine:true,base:"http://l.yimg.com/d/lib/media/m/",comboBase:"http://l.yimg.com/zz/combo?",root:"/d/lib/media/m/",modules:{"social_buttons":{path:"social_buttons/social-buttons-min-4519.js",requires:["node-base","widget","substitute","querystring-stringify-simple","intl","fb_all","json-parse","jsonp"]},"media:socialbuttons_en-US":{path:"social_buttons/l10n/strings_en-us-min-4540.js",requires:["intl"]}}}},modules:{"fb_all":{fullpath:"http://connect.facebook.net/en_US/all.js"},"darla":{fullpath:"http://l.yimg.com/zz/combo?d/lib/darla/fc_0.3.0.js&d/lib/darla/util_0.2.6.js&d/lib/darla/renderers/complex_renderer_0.3.0.js"},"ysp-scorestream":{fullpath:"http://l.yimg.com/j/assets/js/common/ysp-mod/ysp-scorestream.r192626.js?m",requires:['gallery-comet-stream','io-base','event-custom','json','node','ysp-darla','base','querystring-stringify']},"ysp-photo-carousel":{fullpath:"http://l.yimg.com/j/assets/js/manager.r143221;js/carousel.r143221.js?m"},"ywa":{fullpath:"http://d.yimg.com/mi/ono/ywa.js"},"disclosure":{fullpath:"http://l.yimg.com/a/lib/platforms/vitality/disc/rm/disclosure-1.4.js"},"media-web-player":{fullpath:"http://webplayer.yahooapis.com/ysports/player.js"}} };
+    </script>
+    <script>
+            YAHOO = window.YAHOO || {};
+      YAHOO.Sports = YAHOO.Sports || {};
+      YAHOO.Sports.canonical_url = 'http://rivals.yahoo.com/ncaa/football/odds';
+      YAHOO.Sports.crumb = '';
+      YAHOO.Sports.domain = 'rivals.yahoo.com';
+      YAHOO.Sports.intl = 'us';
+      YAHOO.Sports.league = 'ncaaf';
+      YAHOO.Sports.spaceid = '2023774512';
+            YAHOO.Media = YAHOO.Media || {};
+      YAHOO.Media.Facebook = YAHOO.Media.Facebook || {};
+      YAHOO.Media.Facebook.YuiIo = YAHOO.Media.Facebook.YuiIo || {};
+      YAHOO.Media.Facebook.YuiIo.transportCfg = YAHOO.Media.Facebook.YuiIo.transportCfg || {};
+      YAHOO.Media.Facebook.YuiIo.transportCfg.src = "http://l.yimg.com/j/assets/swf/io.r144990.swf";
+      YAHOO.Media.Facebook.init = {
+       appId      : '154590054552917',
+       logging    : true,
+       status     : true,
+       cookie     : false,
+       xfbml      : true,
+       oauth      : true,
+       channelUrl : 'http://rivals.yahoo.com/dynamic/fb/channel.html'
+      };
+    </script><script charset="utf-8" src="http://l.yimg.com/j/assets/eJyFUu2OgyAQfCIVURRyD2Mobuu2AgbwGt_--Lhcekm9-8VmZ2aZWbj75tixobWoSapWK2dwlUZTu3Ycecc_7q-U2epzED7BhHNYWWNABbTmnCMNavk35e7fo13d122qvkE-CNon0IN0apmk9-hDE0Es5UQJEYRT0g4dj4K-o7RNgmjUB2mCT1O6kdI8ZbMud0Q3EpI6Dq4O_PKqDPKSRYIyWibZB0JijJxlM4vVMGk77yv8YgZUD3Ap08BYHv9EM9tnTtkzkS0o6yAsJfowiizcVnmAm0rIVy9ObjjHBqNRnxrX9bB7yFreDsWe1tY0h9-qaCmfs3SrLLlPOeVKYwNUWhp5y75_FvVGkI1XPjjcakdb0bPxhHmVCi5xaZFGWM_PaAii2tBUwUn1QHP75_494JpeLi6HnFCU3U2I-y7filH-BT-DBMI,.js?z&m"></script>
+<script type="text/javascript">
+  YAHOO.Sports.oAC = { uri : 'http://l.yimg.com/j/assets/js/yui/2.9.0/element-min.r177838;js/yui/2.9.0/datasource-min.r177838;js/yui/2.9.0/datatable-min.r177838;js/yui/2.9.0/autocomplete-min.r177838;js/nav_ac.r176934.js?m' };
+</script>
+  
+  
+</head>
+
+<body id="ysports" class="ysp-body ysp-wide">
+<div id="doc" class="yui-t4 odds">
+  <div id="hd">
+          <h2 id="yahoo-image-logo"><img src="http://l.yimg.com/a/i/us/sp/ysp-mod/yahoo-print-logo.png" alt="Yahoo! Sports" /></h2>
+      <div class="mast mast-uh-2 rivals-mast rivals-mast-uh-2">
+        <div id="ysp-hd">
+          <!-- {ULT:BEGIN-SKIP} -->
+            <link type='text/css' rel='stylesheet' href='http://l.yimg.com/zz/combo?kx/ucs/uh/css/287/yunivhead-min.css&kx/ucs/uh/css/221/logo-min.css&kx/ucs/notif_v2/css/145/notifications_v2-min.css&kx/ucs/mailcount/css/37/mail_preview-min.css&kx/ucs/search/css/190/search_all-min.css&kx/ucs/search/css/190/search_buttons-min.css&kx/ucs/breakingnews/css/12/breaking_news-min.css'/><style>/* customizable */
+#yUnivHead.yucs-es-es #yuhead-bd #yuhead-search {width:53%;}
+#yUnivHead .yuhead-bullet-down{background-position:right -119px;}
+#yUnivHead {z-index:19;}
+
+/* font color */
+#yUnivHead {color:#fff;}
+#yUnivHead a{color:#fff;}
+#yUnivHead a:hover{color:#fff;}
+
+#yuhead-hd #yuhead-mepanel-cont #yuhead-mepanel li.yuhead-me{border-color:#fff;}
+#yuhead-hd #yuhead-com-links-cont #yuhead-com-links li.yuhead-com-link-item{border-color:#fff;}
+.yuhead-logo h2 a{color:#fff;}
+
+/* promo color */
+#yUnivHead #yuhead-promo .yucs-promo-label{color:#fff;}
+#yUnivHead #yuhead-promo a{color:#fff;}
+#yUnivHead #yuhead-promo a:hover{color:#fff;}
+
+/* background, border, gradients */
+#yUnivHead {
+    background:transparent;
+}
+/* trending promo background - match to header top background */
+#yUnivHead .yucs-trending-anim .yucs-trending-anim-fade {
+	background:transparent;
+}
+/*logos*/
+#yUnivHead .yuhead-logo h2 {background-position:0px -120px;}
+#yUnivHead .yuhead-logo h2.small {background-position:0px -360px;}
+/*hacks for no doctype*/
+#yuhead-bd #yuhead-search #yuhead-sform-cont {
+      *background-color: #dfdfe0;
+    }
+    #yuhead-bd #yuhead-search #yuhead-sform-cont form .yucs-sweb-btn {
+      *background-color: #f8d44c;
+    }
+
+/* right menu z-index hack */
+#yUnivHead #yuhead-hd ul li.yucs-menu ul.yucs-menu-right {z-index:5000;}</style><div id="yUnivHead" class="yucs-en-us" data-lang="en-us" data-property="sports" data-flight="1347643315">        <a href="#yuhead-search" class="yucs-skipto-search yucs-activate">Skip to search.</a>        <div id="yuhead-hd" class="yuhead-clearfix">        <div id="yuhead-mepanel-cont">            <ul id="yuhead-mepanel" class="yucs-toolbar yucs-activate"  aria-label="User Services"><li class="yuhead-me yuhead-nodivide yuhead-nopad">    <a class="yuhead-signup" href="https://edit.yahoo.com/config/eval_register?.src=spt&.intl=us&.lang=en-US&.done=http://rivals.yahoo.com/ncaa/football/odds" target="_top" rel="nofollow">    <em>New User?</em> Register</a></li><li class="yuhead-me">        <a href="https://login.yahoo.com/config/login?.src=spt&.intl=us&.lang=en-US&.done=http://rivals.yahoo.com/ncaa/football/odds"  target="_top" rel="nofollow">    <em>Sign In</em></a></li><li class="yuhead-me"><a href="http://help.yahoo.com/l/us/yahoo/sports/" rel="nofollow" target="_top">Help</a></li></ul>            <!-- empty lp cookie -->            <!-- empty lp beacon -->        </div>        <div id="yuhead-promo"><a href="http://www.yahoo.com/bin/set/?ilc=37" target="_top" rel="nofollow">Make Y! My Homepage<abbr title="Yahoo!"></abbr></a></div>        <div id="yuhead-com-links-cont">            <ul id="yuhead-com-links" class="yucs-toolbar yucs-activate" aria-label="Yahoo! Services">                <li class="yucs-notifications yucs-notif-activate yuhead-com-link-item  yucs-wait">    <a class="ynotif-control yltasis" href="#" rel="nofollow" aria-haspopup="true" title="Notifications" aria-label="notifications" role="button"><span class="sp ynotif-ico-bell"></span><span class="ynotif-notif-count-con hide"><span class="ynotif-notif-count"></span></span>&nbsp;</a>    <div class="yucs-notif-panel hide"         data-ylt-bell="/"        data-ylt-profile="/"        data-ylt-app="/"        data-ylt-cta="/"        data-ylt-pageurl="/"          data-ylt-signin-cta="/"        data-guid=""        data-crumb=""        data-mode="2"        data-pagesize="10"                        data-view-more-txt="View More"        data-notif-user="A Yahoo! user"        data-intl="en-us"        data-yql-env=""        data-settings-tooltip="Settings"        data-app-aria-txt="App Icon"        data-view-all-txt="See All Notifications"        data-view-url="http://pulse.yahoo.com/y/notifications"        data-no-items-txt="There are currently no items."        data-no-notif-txt="You have no notifications."        data-notif-error-txt="Notifications with errors:"        data-get-notif-txt="Receive notifications when you comment or discuss content with friends on Yahoo!"        data-try-notif-txt="Learn more"        data-try-notif-link="http://help.yahoo.com//l/us/yahoo/comments/notifications/pnotification-03.html"        data-ylt-try-notif="/"         data-loading-txt="Loading..."        data-error-unavail-txt="Notifications are temporarily unavailable. Please try again later."        data-middleauth-nonotif-text="You have no new notifications."        data-password-verify-text="Please verify your password to view notifications."        data-authState="signedout"        data-signedout-cta-text="Sign In"        data-popup-login-url="https://login.yahoo.com/config/login_verify2?.pd=c%3DOIVaOGq62e5hAP8Tv..nr5E3&.src=sc"        data-signedout-message="Sign in to view notifications."        data-middleauth-text="You have new notifications.">        <div class="yucs-notif-title-bar yuhead-clearfix">            <span class="yucs-notif-panel-title">Notifications</span>             <a target="_blank" href="http://help.yahoo.com/l/us/yahoo/comments/notifications" class="yucs-notif-tools">Help</a>        </div>        <ul class="yucs-notif-items-panel" role="menu">        </ul>    </div></li>                <li class="yuhead-com-link-item yucs-mailpreview-ancestor">    <a class="sp yltasis yuhead-ico-mail" href="http://mail.yahoo.com/?.intl=us&.lang=en-US" rel="nofollow" target="_top">Mail</a><ul class="yucs-mail-preview-panel hide"    data-mail-txt="Mail"    data-mail-view="View all Yahoo! Mail"    data-mail-help-txt="Help"    data-mail-help-url="http://help.yahoo.com/l/us/yahoo/mail/ymail/"    data-mail-loading-txt="Loading..."    data-languagetag="en-us"    data-authstate="signedout"    data-middleauth-signin-text="Click here to view your mail"    data-popup-login-url="https://login.yahoo.com/config/login_verify2?.pd=c%3DOIVaOGq62e5hAP8Tv..nr5E3&.src=sc"    data-middleauthtext="You have {count} new mail."    data-yltmessage-link="http://mrd.mail.yahoo.com/msg?mid={msgID}&fid=Inbox"    data-yltviewall-link="http://mail.yahoo.com/"    data-yltpanelshown="/"></ul></li><li class="yuhead-com-link-item">    <a href="http://my.yahoo.com"     rel="nofollow"     target="_top">   My Y!    </a></li><li id="yuhead-com-home"><a class="sp yuhead-ico-home" href="http://www.yahoo.com/" rel="nofollow" target="_top">Yahoo!</a></li>            </ul>        </div>    </div>    <div id="yuhead-bd" class="yuhead-clearfix">        <div class="yuhead-logo">   <style>      .yuhead-logo h2{        width:200px;        height:50px;        background-image:url(http://l.yimg.com/a/i/brand/purplelogo/uh/us/20/rivals/rivals.png);        _background-image:url(http://l.yimg.com/a/i/brand/purplelogo/uh/us/20/rivals/rivals-2b63ae.gif);      }      .yuhead-logo a{        width:200px;        height:50px;      }      .yuhead-logo div.yuhead-comarketing {       width:200px;      }         </style>   <h2>      <a href="http://www.rivals.com/"       target="_top" tabindex="-1">         Yahoo! rivals.com      </a>   </h2>   </div>        <div id="yuhead-search">        <div id="yuhead-sform-cont" class="yuhead-s-web yuhead-search-form">        <form role="search" class="yucs-search yucs-activate" target="_top"    action="http://search.yahoo.com/search" method="get"><table role="presentation">   <tbody role="presentation"><tr role="presentation"><td class="yucs-form-input" role="presentation"> <label for="yuhead-sform-searchfield">     <span>Search</span>             </label>                 <input autocomplete="off" type="text" class="sp yuhead-ico-mglass yuhead-search-hint yucs-search-field" name="p"                  data-sh="Search"                  data-satype="rich"                  data-gosurl=""                  id="yuhead-sform-searchfield"                 data-pubid="" /></td><td NOWRAP class="yucs-form-btn" role="presentation"><div class="yucs-btn-wrap">    <button class="yucs-sweb-btn" type="submit">Search Web</button></div>            </td>         </tr>        </tbody></table><input type="hidden" id="fr" name="fr" value="ush-sports" /><!-- desktop device --></form>            </div>    </div>        <div     id="yucs-bnews"     class="yucs-activate slide hide"     data-linktarget="_top"    data-authstate="signedout"     data-lang="en-us"     data-property="sports">        <h3>        <span class="title">Breaking News</span>        <a class="genericlink hide" href="http://news.yahoo.com">Visit Yahoo! News for the latest.</a>     </h3>    <span class="close">&times;<span class="offscreen">Close this window</span></span>     <p class="container">    </p>    </div>    </div>                    <!-- s2s -->    <!-- desktop device -->    </div>      <script type="text/javascript">
+        YUI({
+         modules: {
+           uh2_js: {
+             fullpath: "http://l.yimg.com/zz/combo?kx/ucs/sts/js/290/skip-min.js&kx/ucs/uh/js/279/timestamp_library-min.js&kx/ucs/menu_utils/js/164/menu_utils_v2-min.js&kx/ucs/uh/js/267/aria_toolbar-min.js&kx/ucs/username/js/42/user_menu-min.js&kx/ucs/help/js/41/help_menu-min.js&kx/ucs/utility_link/js/20/utility_menu-min.js&kx/ucs/uh/js/262/logo_debug-min.js&kx/ucs/common/js/131/jsonp-cached-min.js&kx/ucs/notif_v2/js/160/notifications_bootstrap-min.js&kx/ucs/common/js/1/setup-min.js&kx/ucs/search/js/224/search-min.js&kx/ucs/search/js/210/search_text_dir-min.js&kx/ucs/common/js/133/jsonp-cached-min.js&kx/ucs/breakingnews/js/21/breaking_news-min.js&kx/ucs/uh/js/286/activate_library-min.js"
+           }   
+         }
+        }).use('event',function(Y) {
+          Y.on('contentready', function(){
+            Y.use('uh2_js');
+          }, '#yUnivHead');
+        });
+      </script>
+          <!-- {ULT:END-SKIP} -->
+        </div>
+        <!-- {ULT:BEGIN-SKIP} -->
+          <div id="mh">
+            <!-- SpaceID=0 robot -->
+
+          </div>
+        <!-- {ULT:END-SKIP} -->
+            <div id="sports-nav">
+      <!-- {ULT:BEGIN-SECTION;sec=pn} -->
+      <div id="ysp-league-nav"><ul id="league_top_primary-test"><li id="top" class="first"><a href="http://sports.yahoo.com/">Home</a></li><li id="nfl" ><a href="http://sports.yahoo.com/nfl">NFL</a></li><li id="mlb" ><a href="http://sports.yahoo.com/mlb">MLB</a></li><li id="nba" ><a href="http://sports.yahoo.com/nba">NBA</a></li><li id="nhl" ><a href="http://sports.yahoo.com/nhl">NHL</a></li><li id="ncaaf" class="ncaaf more selected"><a href="http://rivals.yahoo.com/ncaa/football">NCAAF</a> <!-- {ULT:END-SECTION;} -->
+<!-- {ULT:BEGIN-SECTION;sec=pn-college} -->
+<div id="ysp-ncaaf" class="flyout">
+  <div class="top">
+    <div class="hd"><span></span></div>
+    <div class="bd">
+      <ul>
+        <li><a href="http://rivals.yahoo.com/ncaa/football">NCAA Football</a></li>
+        <li><a href="http://footballrecruiting.rivals.com/" class="rivals">NCAA Football Recruiting</a></li>
+        <li><a href="http://rivals.yahoo.com/video/categories/college-football" class="rivals">NCAA Football Video</a></li>
+        <li><a href="http://www.rivals.com" class="rivals">Rivals.com Home</a></li>
+      </ul>
+    </div>
+    <div class="ft"></div>
+  </div>
+</div>
+<!-- {ULT:END-SECTION;} -->
+<!-- {ULT:BEGIN-SECTION;sec=pn} --></li><li id="ncaab" class="ncaab more"><a href="http://rivals.yahoo.com/ncaa/basketball">NCAAB</a> <!-- {ULT:END-SECTION;} -->
+<!-- {ULT:BEGIN-SECTION;sec=pn-college} -->
+<div id="ysp-ncaab" class="flyout">
+  <div class="top">
+    <div class="hd"><span></span></div>
+    <div class="bd">
+      <ul>
+        <li><a href="http://rivals.yahoo.com/ncaa/basketball">NCAA Men's Basketball</a></li>
+        <li><a href="http://rivals.yahoo.com/ncaa/womens-basketball">NCAA Women's Basketball</a></li>
+        <li><a href="http://basketballrecruiting.rivals.com" class="rivals">NCAA Basketball Recruiting</a></li>
+        <li><a href="http://rivals.yahoo.com/video/categories/college-basketball" class="rivals">NCAA Basketball Video</a></li>
+          <li><a href="http://www.rivals.com" class="rivals">Rivals.com Home</a></li>
+      </ul>
+    </div>
+    <div class="ft"></div>
+  </div>
+</div>
+<!-- {ULT:END-SECTION;} -->
+<!-- {ULT:BEGIN-SECTION;sec=pn} --></li><li id="nascar" ><a href="http://sports.yahoo.com/nascar">NASCAR</a></li><li id="golf" ><a href="http://sports.yahoo.com/golf">Golf</a></li><li id="mma" ><a href="http://sports.yahoo.com/ufc">UFC</a></li><li id="box" ><a href="http://sports.yahoo.com/boxing">Boxing</a></li><li id="sow" ><a href="http://sports.yahoo.com/sow">Soccer</a></li><li id="ten" ><a href="http://sports.yahoo.com/ten">Tennis</a></li><li id="actionsports" class="more grind-tv"><a href="http://www.grindtv.com">Action Sports</a> <!-- {ULT:END-SECTION;} -->
+<!-- {ULT:BEGIN-SECTION;sec=pn-actionsports} -->
+<div id="ysp-action-sports" class="flyout">
+  <div class="top">
+    <div class="hd"><span></span></div>
+    <div class="bd">
+      <ul>
+        <li><a class="grind-tv" href="http://www.grindtv.com/">GrindTV Home</a></li>
+        <li><a class="grind-tv" href="http://www.grindtv.com/skate/">Skate</a></li>
+        <li><a class="grind-tv" href="http://www.grindtv.com/surf/">Surf</a></li>
+        <li><a class="grind-tv" href="http://www.grindtv.com/snow/">Snow</a></li>
+        <li><a class="grind-tv" href="http://www.grindtv.com/outdoor/">Outdoor</a></li>
+        <li><a class="grind-tv" href="http://www.grindtv.com/bike/">Bike</a></li>
+        <li><a class="grind-tv" href="http://www.grindtv.com/moto/">Motocross</a></li>
+      </ul>
+    </div>
+    <div class="ft"></div>
+  </div>
+</div>
+<!-- {ULT:END-SECTION;} -->
+<!-- {ULT:BEGIN-SECTION;sec=pn} --></li><li id="more" class="more"><a href="http://sports.yahoo.com/top/gen/moresports">More</a> <!-- {ULT:END-SECTION;} -->
+<!-- {ULT:BEGIN-SECTION;sec=pn-more} -->
+<div id="ysp-more" class="flyout">
+    <div class="top">
+      <div class="hd"><span></span></div>
+      <div class="bd">
+        <ul class="sports">
+          <li class="odd"><a href="http://sports.yahoo.com/olympics">Olympics</a></li>
+          <li class="even"><a href="http://sports.yahoo.com/tennis">Tennis</a></li>
+          <li class="odd"><a href="http://sports.yahoo.com/irl">IndyCar</a></li>
+          <li class="even"><a href="http://sports.yahoo.com/investigations">Investigations</a></li>
+          <li class="odd"><a href="http://sports.yahoo.com/arena">Arena Football</a></li>
+          <li class="even"><a href="http://sports.yahoo.com/juniorhockey">Junior Hockey</a></li>
+          <li class="odd"><a href="http://us.rd.yahoo.com/sports/*http://au.sports.yahoo.com/afl/">Aussie Football</a> (AU)</li>
+          <li class="even"><a href="http://sports.yahoo.com/mls">MLS</a></li>
+          <li class="odd"><a href="http://ca.sports.yahoo.com/cfl">CFL (CA)</a></li>
+          <li class="even"><a href="http://rivals.yahoo.com/ncaa/baseball">NCAA Baseball</a></li>
+          <li class="odd"><a href="http://us.rd.yahoo.com/sports/*http://cricket.yahoo.com/">Cricket</a> (IN)</li>
+          <li class="even"><a href="http://us.rd.yahoo.com/sports/*http://uk.eurosport.yahoo.com/rugby/">Rugby</a>(UK)</li>
+          <li class="odd"><a href="http://sports.yahoo.com/sc">Cycling</a></li>
+          <li class="even"><a href="http://sports.yahoo.com/ski">Winter Sports</a></li>
+          <li class="odd"><a href="http://us.rd.yahoo.com/sports/*http://uk.eurosport.yahoo.com/formula-1/">Formula One</a>(UK)</li>
+          <li class="even"><a href="http://sports.yahoo.com/wnba">WNBA</a></li>
+          <li class="odd"><a href="http://sports.yahoo.com/rah">Horse Racing</a></li>
+          <li class="even"><a href="http://sports.yahoo.com/top/gen/moresports">All Sports</a></li>
+          </ul>
+        <ul class="links">
+          <li><a href="http://www.facebook.com/yahoosports">Facebook</a><a href="http://twitter.com/yahoosports">Twitter</a></li>
+          <li><a href="http://rivals.com/">Rivals.com</a><a href="http://highschool.rivals.com/">Rivals High</a></li>
+          <li><a href="http://sports.yahoo.com/radio">Yahoo! Sports Radio</a></li>
+          <li><a href="http://sports.yahoo.com/ycn">Yahoo! Contributor Network</a></li>
+          <li><a href="http://sports.yahoo.com/video">Video</a><a href="http://sports.yahoo.com/blogs">Blogs</a></li>
+          <li><a href="http://sports.yahoo.com/mysportsnews">My Sports News</a></li>
+          <li><a href="http://sports.yahoo.com/top/expertscorner">Expert Analysis</a><a href="http://sports.yahoo.com/top/morenews">News</a></li>
+          <li><a href="http://sports.yahoo.com/top/gallery">Photos</a><a href="http://sports.yahoo.com/top/trans">Transactions</a></li>
+        </ul>
+      </div>
+      <div class="ft"></div>
+    </div>
+  </div>
+<!-- {ULT:END-SECTION;} -->
+<!-- {ULT:BEGIN-SECTION;sec=pn} --></li></ul></div><div id="ysp-quicklinks-nav"><ul id="league_top_quicklinks-test"><li id="thepostgame" class="first postGame"><a href="http://thepostgame.com">ThePostGame</a></li><li id="leagueshop" class="shop"><a href="http://yahoosports.teamfanshop.com">Shop</a></li><li id="leaguefantasy" class="fantasy"><a href="/fantasy">Fantasy</a></li></ul></div>
+      <!-- {ULT:END-SECTION;} -->
+    </div>
+    <!-- {ULT:BEGIN-SECTION;sec=sn} -->
+    <div id="ysp-league-sub-nav"><ul id="league_ncaaf_subnav"><li id="leaguehome" class="first"><a href="/ncaaf">NCAAF Home</a></li><li id="leaguescoreboard" ><a href="/ncaaf/scoreboard">Scores &amp; Schedule</a></li><li id="leagueteam_rankings" ><a href="/ncaaf/polls">Rankings</a></li><li id="leaguestandings" ><a href="/ncaaf/standings">Standings</a></li><li id="leaguestats" ><a href="/ncaaf/stats">Stats</a></li><li id="leagueteams" ><a href="/ncaaf/teams">Teams</a></li><li id="messageboard" class="rivals"><a href="http://collegefootball.rivals.com/forum.asp?sid=1144&fid=2150"">Message Board</a></li><li id="leagueodds" class="selected"><a href="/ncaaf/odds">Odds</a></li><li id="leaguevideo" ><a href="http://rivals.yahoo.com/video/categories/college-football">Video</a></li><li id="leagueexpertsblog" ><a href="http://sports.yahoo.com/blogs/ncaaf-dr-saturday/">Blog</a></li><li id="leaguepicks" ><a href="http://rivals.yahoo.com/ncaa/football/picks">Picks</a></li><li id="twitter" class="external"><a href="http://bit.ly/rr3zkE">Twitter</a></li><li id="leaguerivalsteams" class="rivals"><a href="http://collegefootball.rivals.com/sitelanding.asp"">Team Sites</a></li><li id="Tickets" class="external"><a href="http://seatgeek.com/ncaa-football-tickets/">Tickets</a></li></ul></div>
+    <!-- {ULT:END-SECTION;} -->
+      </div>
+      
+            <script type="text/javascript">
+        YAHOO.Sports.Window.set("ysp-quicklinks-nav");        YAHOO.Sports.Window.set("leaguemockdrafts");
+        YAHOO.Sports.Window.set("ysp-hd", "rivals-logo", "rivals");
+        YAHOO.Sports.Window.set("league-nav", "rivals");
+        YAHOO.Sports.Window.set("yse-sub-nav", "rivals");
+      </script>
+    <script type="text/javascript">  YAHOO.Sports.oFlyout.oFantasy = {
+             my_teams : {  h5 : 'My Teams and Leagues', ul : []},
+              other_games : { h5  : 'Fantasy Games',
+                              text : '<ul class="other-games"><li class="odd"><a href="http://football.fantasysports.yahoo.com/">Football</a></li><li class="even"><a href="http://baseball.fantasysports.yahoo.com/b1">Baseball</a></li><li class="odd"><a href="http://basketball.fantasysports.yahoo.com/nba">Basketball</a></li><li class="even"><a href="http://hockey.fantasysports.yahoo.com/hockey">Hockey</a></li><li class="odd"><a href="http://golf.fantasysports.yahoo.com/golf">Golf</a></li><li class="even"><a href="http://racing.fantasysports.yahoo.com/auto">Auto Racing</a></li><li class="odd"><a href="http://sports.yahoo.com/fantasy/sports-iq">Sports IQ</a></li></ul>' }, more_link : false    };</script>
+    <div class="ysp-full-bar">
+<div id="ysp-search-assist">
+  <div class="hd"></div>
+  <div class="bd">
+   <form id="sf" method="GET" action="http://sports.search.yahoo.com/search" target="_top">
+     <div role="application">
+       <span class="magnifier"></span>
+       <label for="ysp-sbx">Sports Search</label>
+       <input type="text" name="p" id="ysp-sbx">
+       <span class="sbtn">
+        <span>
+          <input type="submit" value="Sports Search">
+        </span>
+       </span>
+       <div id="ysp-sat"></div>
+     </div>
+     <input type="hidden" name="fr" value="sports-us-ss">
+   </form>
+  </div>
+  <div class="ft">
+    <h4>Trending Now:</h4>
+          <ol>
+        <li><a href="http://sports.search.yahoo.com/search?cs=bz&p=Delvin+Johnson&fr=sports-us-tts" target="_top">Delvin Johnson</a></li>
+<li><a href="http://sports.search.yahoo.com/search?cs=bz&p=Tracy+Porter&fr=sports-us-tts" target="_top">Tracy Porter</a></li>
+<li><a href="http://sports.search.yahoo.com/search?cs=bz&p=J.J.+Hardy&fr=sports-us-tts" target="_top">J.J. Hardy</a></li>
+<li><a href="http://sports.search.yahoo.com/search?cs=bz&p=Deron+Williams&fr=sports-us-tts" target="_top">Deron Williams</a></li>
+<li><a href="http://sports.search.yahoo.com/search?cs=bz&p=Troy+Brouwer&fr=sports-us-tts" target="_top">Troy Brouwer</a></li>
+      </ol>
+  </div>
+</div>
+</div>
+  </div>
+  <div id="bd">
+    <div id="nt1">
+<!-- SpaceID=0 robot -->
+</div>
+
+
+    <!-- primary column -->
+    <div id="yui-main">
+      <div class="yui-b">
+        <div class="yui-g">
+            <div class="mod" id="odds">
+
+      <div class="hd">
+             <h2>Live Odds: NCAAF Pointspread &amp; Totals </h2>
+      <div>
+        <ul class="types">
+                     <li><span>Pointspread</span></li>
+          <li><a href='/ncaaf/odds/moneyline'>Moneyline</a></li>
+          <li><a href='/ncaaf/odds/futures'>Futures</a></li>
+        </ul>
+      </div>
+      <div class="form">
+        <form action="#" method="get" id="odds-league">
+          <fieldset>
+            <p>Powered By: <em>OddsShark.com</em></p>
+            <select name="sport" id="odds-league_select">
+              <option value="0">Select a League</option>
+       <option value="/nfl/odds">NFL</option><option value="/mlb/odds">MLB</option><option value="/nba/odds">NBA</option><option value="/nhl/odds">NHL</option><option value="/ncaaf/odds" selected="selected">NCAAF</option><option value="/ncaab/odds">NCAAB</option>            </select>
+            <input type="submit" class="ysp-submit" value="Go" />
+          </fieldset>
+        </form>
+      </div>
+    </div>
+                
+      <div class="bd">
+             <h4>Friday September 14, 2012</h4>
+      <table class="pointspread">
+      <caption>ncaaf Odds</caption>
+        <thead>
+          <tr>
+            <th class="teams">Teams</th>
+                  <th>JustBet.cx</th>
+                    <th>SBGGLOBAL.com</th>
+                    <th>BETONLINE.ag</th>
+                    <th>5dimes.eu</th>
+                    <th>BOVADA.net</th>
+                  </tr>
+        </thead>
+        <tbody>
+                <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/wwc">Washington State Cougars</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/nne">UNLV Rebels</a></span>
+              <div>
+                    <span>9:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="top-line">-8</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-8</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-8</span>                <div>
+                  <span>-115</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-8</span>                <div>
+                  <span>-107</span>
+                  <span>-103</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-8</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55                </span>
+                <div>
+                  <span>o-115</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+           </tr> 
+                      </tbody>
+      </table>
+            <h4>Saturday September 15, 2012</h4>
+      <table class="pointspread">
+      <caption>ncaaf Odds</caption>
+        <thead>
+          <tr>
+            <th class="teams">Teams</th>
+                  <th>JustBet.cx</th>
+                    <th>SBGGLOBAL.com</th>
+                    <th>BETONLINE.ag</th>
+                    <th>5dimes.eu</th>
+                    <th>BOVADA.net</th>
+                  </tr>
+        </thead>
+        <tbody>
+                <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/wwa">Wake Forest Demon Deacons</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ffc">Florida State Seminoles</a></span>
+              <div>
+                    <span>12:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-27&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  54&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-27&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  54&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-27&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  54&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-27&frac12;</span>                <div>
+                  <span>-102</span>
+                  <span>-108</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  54                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-28</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/vvd">Virginia Tech Hokies</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ppd">Pittsburgh Panthers</a></span>
+              <div>
+                    <span>12:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="top-line">-10</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  45                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-10</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  45                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-10&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-115</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  45                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-10</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  45                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-10&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/aap">Arkansas State Red Wolves</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/nnd">Nebraska Cornhuskers</a></span>
+              <div>
+                    <span>12:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-23</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  68&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-23</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  68&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-23</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  68&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-23</span>                <div>
+                  <span>-109</span>
+                  <span>-101</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  68&frac12;                </span>
+                <div>
+                  <span>o-102</span>
+                  <span>u-108</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="blank">N/A</span>              </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/nns">Northern Illinois Huskies</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/aaq">Army Black Knights</a></span>
+              <div>
+                    <span>12:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="top-line">-3</span>                <div>
+                  <span>-115</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  49                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-3</span>                <div>
+                  <span>-115</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  48&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-3</span>                <div>
+                  <span>-115</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  49                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-3</span>                <div>
+                  <span>-110</span>
+                  <span>Even</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  48&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-3</span>                <div>
+                  <span>-115</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ssq">Louisiana-Lafayette Ragin' Cajuns</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ood">Oklahoma State Cowboys</a></span>
+              <div>
+                    <span>12:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-23&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  73                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-23&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  73                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-23&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  73                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-23&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  73                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="blank">N/A</span>              </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/eef">Eastern Michigan Eagles</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ppj">Purdue Boilermakers</a></span>
+              <div>
+                    <span>12:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-24</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  50&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-24</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  50&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-24</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  50&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-24</span>                <div>
+                  <span>-109</span>
+                  <span>-101</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  50&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-24</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/wwl">Western Michigan Broncos</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/mmn">Minnesota Golden Gophers</a></span>
+              <div>
+                    <span>12:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-2&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-2&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-2&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-2&frac12;</span>                <div>
+                  <span>Even</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-3</span>                <div>
+                  <span>-120</span>
+                  <span>Even</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ccd">California Golden Bears</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/oob">Ohio State Buckeyes</a></span>
+              <div>
+                    <span>12:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-17</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  54                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-16&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  54&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-16&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  54&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-16&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  54&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-17</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/tta">TCU Horned Frogs</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/kka">Kansas Jayhawks</a></span>
+              <div>
+                    <span>12:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="top-line">-21</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  59&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-21</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  59&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-21</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  59&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-21</span>                <div>
+                  <span>-101</span>
+                  <span>-109</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  59&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-21</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/nnb">Louisiana-Monroe Warhawks</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/aar">Auburn Tigers</a></span>
+              <div>
+                    <span>12:21 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-16&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  53&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-16&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  53&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-16&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  53&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-16&frac12;</span>                <div>
+                  <span>-108</span>
+                  <span>-102</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  53&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="blank">N/A</span>              </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ccq">Connecticut Huskies</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/mmd">Maryland Terrapins</a></span>
+              <div>
+                    <span>12:30 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="top-line">-3</span>                <div>
+                  <span>-105</span>
+                  <span>-115</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  40&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-3</span>                <div>
+                  <span>Even</span>
+                  <span>-120</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  40&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-3</span>                <div>
+                  <span>-105</span>
+                  <span>-115</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  40&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-2&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>Even</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  40&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-3</span>                <div>
+                  <span>-105</span>
+                  <span>-115</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/nnl">North Carolina Tar Heels</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/llh">Louisville Cardinals</a></span>
+              <div>
+                    <span>3:30 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-3</span>                <div>
+                  <span>-105</span>
+                  <span>-115</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  56                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-3</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  56                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-3</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  56                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-3</span>                <div>
+                  <span>Even</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  56                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-3</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/vvb">Virginia Cavaliers</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ggc">Georgia Tech Yellow Jackets</a></span>
+              <div>
+                    <span>3:30 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-10</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  52&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-10</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  52&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-10</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  52&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-10</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  52&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-10</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/bbf">Boston College Eagles</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/nnv">Northwestern Wildcats</a></span>
+              <div>
+                    <span>3:30 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-3&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  54                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-3&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  54                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-3&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  54&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-3&frac12;</span>                <div>
+                  <span>-109</span>
+                  <span>-101</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  54&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-3&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/aad">Alabama Crimson Tide</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/aan">Arkansas Razorbacks</a></span>
+              <div>
+                    <span>3:30 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="top-line">-20</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  54                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-20</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  54                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-20</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  53&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-20</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  53&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-20</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ttj">Texas A&M Aggies</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ssh">Southern Methodist Mustangs</a></span>
+              <div>
+                    <span>3:30 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="top-line">-12&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  60&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-12&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  60&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-12&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  60&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-12&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  60&frac12;                </span>
+                <div>
+                  <span>o-102</span>
+                  <span>u-108</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-13</span>                <div>
+                  <span>-105</span>
+                  <span>-115</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/eea">East Carolina Pirates</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/sso">Southern Miss Golden Eagles</a></span>
+              <div>
+                    <span>3:30 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-7&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-7&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-7&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-7&frac12;</span>                <div>
+                  <span>-107</span>
+                  <span>-103</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-7&frac12;</span>                <div>
+                  <span>-115</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/nna">Navy Midshipmen</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ppb">Penn State Nittany Lions</a></span>
+              <div>
+                    <span>3:30 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-7</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  47                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-7</span>                <div>
+                  <span>-120</span>
+                  <span>Even</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  46&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-7</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  46&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-7</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  46&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-7</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/mme">Massachusetts Minutemen</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/mmk">Michigan Wolverines</a></span>
+              <div>
+                    <span>3:30 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-45&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-45&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  53&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-45&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  53&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-45&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  53&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-45&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/mmj">Miami (OH) RedHawks</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/bbe">Boise State Broncos</a></span>
+              <div>
+                    <span>4:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-21</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  53&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-21</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  53&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-21</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  53&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-21</span>                <div>
+                  <span>-101</span>
+                  <span>-109</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  53&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-21</span>                <div>
+                  <span>-105</span>
+                  <span>-115</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/fli">FIU Golden Panthers</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ccf">UCF Knights</a></span>
+              <div>
+                    <span>4:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-16&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  50&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-16&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  50                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-16&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-115</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  50                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-17</span>                <div>
+                  <span>-108</span>
+                  <span>-102</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  50                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="blank">N/A</span>              </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ffa">Florida Gators</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ttd">Tennessee Volunteers</a></span>
+              <div>
+                    <span>6:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-3</span>                <div>
+                  <span>-105</span>
+                  <span>-115</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  48                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-3</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  47&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-3</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  47&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-3</span>                <div>
+                  <span>-107</span>
+                  <span>-103</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  47&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-3</span>                <div>
+                  <span>-105</span>
+                  <span>-115</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/sal">South Alabama Jaguars</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/nnn">North Carolina State Wolfpack</a></span>
+              <div>
+                    <span>6:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-30&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-30&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  51                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-30&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  51                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-30&frac12;</span>                <div>
+                  <span>-108</span>
+                  <span>-102</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  51                </span>
+                <div>
+                  <span>o-109</span>
+                  <span>u-101</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="blank">N/A</span>              </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ooa">Ohio Bobcats</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/mmc">Marshall Thundering Herd</a></span>
+              <div>
+                    <span>6:30 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="top-line">-6</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  69&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-6</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  69                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-6</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  69&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-6&frac12;</span>                <div>
+                  <span>-101</span>
+                  <span>-109</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  69                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-6</span>                <div>
+                  <span>-115</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/bbh">Bowling Green Falcons</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ttp">Toledo Rockets</a></span>
+              <div>
+                    <span>7:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-3&frac12;</span>                <div>
+                  <span>-115</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  58&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-3&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  58&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-3&frac12;</span>                <div>
+                  <span>-115</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  58&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-3</span>                <div>
+                  <span>+105</span>
+                  <span>-115</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  58&frac12;                </span>
+                <div>
+                  <span>o-102</span>
+                  <span>u-108</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-3&frac12;</span>                <div>
+                  <span>-115</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/aam">Arizona State Sun Devils</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/mms">Missouri Tigers</a></span>
+              <div>
+                    <span>7:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-6</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  63                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-6</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  63                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-6</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  63                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-6</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  63                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-6</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/mmq">Mississippi State Bulldogs</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ttv">Troy Trojans</a></span>
+              <div>
+                    <span>7:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="top-line">-16&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  58                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-16</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  58                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-16&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-115</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  58                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-16</span>                <div>
+                  <span>-102</span>
+                  <span>-108</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  58                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="blank">N/A</span>              </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/rrb">Rice Owls</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/llg">Louisiana Tech Bulldogs</a></span>
+              <div>
+                    <span>7:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-21</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  66&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-21</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  66                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-21</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  66&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-21</span>                <div>
+                  <span>-104</span>
+                  <span>-106</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  66                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-21</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/nnh">New Mexico Lobos</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/tto">Texas Tech Red Raiders</a></span>
+              <div>
+                    <span>7:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-32&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  62                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-33</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  62                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-32&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  62                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-32&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  62&frac12;                </span>
+                <div>
+                  <span>o-102</span>
+                  <span>u-108</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-33</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/mmm">Middle Tennessee Blue Raiders</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/mmg">Memphis Tigers</a></span>
+              <div>
+                    <span>7:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="top-line">-3&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-3&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  54&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-4</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-3&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  54&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="blank">N/A</span>              </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/nnp">North Texas Mean Green</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/kkb">Kansas State Wildcats</a></span>
+              <div>
+                    <span>7:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-28</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-28</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-28</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-28</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  54&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="blank">N/A</span>              </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/aaz">UAB Blazers</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ssi">South Carolina Gamecocks</a></span>
+              <div>
+                    <span>7:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-33&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-33&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-33&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-33&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  55                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="blank">N/A</span>              </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/wwk">Western Kentucky Hilltoppers</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/kkd">Kentucky Wildcats</a></span>
+              <div>
+                    <span>7:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-7</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  49                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-7</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  49                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-7</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  49                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-7</span>                <div>
+                  <span>-106</span>
+                  <span>-104</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  49                </span>
+                <div>
+                  <span>o-103</span>
+                  <span>u-107</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="blank">N/A</span>              </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/uub">USC Trojans</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/sss">Stanford Cardinal</a></span>
+              <div>
+                    <span>7:30 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="top-line">-9</span>                <div>
+                  <span>-105</span>
+                  <span>-115</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  57                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-8&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  56&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-9</span>                <div>
+                  <span>+105</span>
+                  <span>-125</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  57                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-8</span>                <div>
+                  <span>-106</span>
+                  <span>-104</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  56&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-9</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ffr">Florida Atlantic Owls</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ggb">Georgia Bulldogs</a></span>
+              <div>
+                    <span>7:30 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-42</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-41&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  52&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-41&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  52&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-41&frac12;</span>                <div>
+                  <span>-103</span>
+                  <span>-107</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  52&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="blank">N/A</span>              </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ccn">Colorado Buffaloes</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ffe">Fresno State Bulldogs</a></span>
+              <div>
+                    <span>8:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-15&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  57                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-15&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  57                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-15&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  57                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-15&frac12;</span>                <div>
+                  <span>-104</span>
+                  <span>-106</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  57                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-15&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/nni">New Mexico State Aggies</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ttl">UTEP Miners</a></span>
+              <div>
+                    <span>8:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-12</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  59                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-12</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  59                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-12</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  59                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-12</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  59                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-12</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/uud">Utah State Aggies</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/wwo">Wisconsin Badgers</a></span>
+              <div>
+                    <span>8:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-13&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  51                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-13&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  51                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-13&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  51                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-13&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  51                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-14</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/bba">Ball State Cardinals</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/iie">Indiana Hoosiers</a></span>
+              <div>
+                    <span>8:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-3</span>                <div>
+                  <span>-115</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  63&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-2&frac12;</span>                <div>
+                  <span>Even</span>
+                  <span>-120</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  63&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-2&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-115</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  64                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-3</span>                <div>
+                  <span>-110</span>
+                  <span>Even</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  64                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-3</span>                <div>
+                  <span>-115</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/cco">Colorado State Rams</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/ssc">San Jose State Spartans</a></span>
+              <div>
+                    <span>8:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-11</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  48&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-11</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  48                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-11</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  48                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-11</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  48                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-11</span>                <div>
+                  <span>-115</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/nnx">Notre Dame Fighting Irish</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/mml">Michigan State Spartans</a></span>
+              <div>
+                    <span>8:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-6</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  44                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-5&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  44                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-6</span>                <div>
+                  <span>-115</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  44                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-5&frac12;</span>                <div>
+                  <span>-106</span>
+                  <span>-104</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  44                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-6</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/iia">Idaho Vandals</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/lli">LSU Tigers</a></span>
+              <div>
+                    <span>8:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-42&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-42&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  54&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-42&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  54&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-42&frac12;</span>                <div>
+                  <span>-107</span>
+                  <span>-103</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  54&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-42&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/tth">Texas Longhorns</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/mmo">Mississippi Rebels</a></span>
+              <div>
+                    <span>9:15 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="top-line">-10</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  50&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-10</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  51                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-10</span>                <div>
+                  <span>-105</span>
+                  <span>-115</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  51                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-9&frac12;</span>                <div>
+                  <span>-108</span>
+                  <span>-102</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  51                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-10</span>                <div>
+                  <span>-115</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr >
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/bbi">Brigham Young Cougars</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/uuc">Utah Utes</a></span>
+              <div>
+                    <span>10:00 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="top-line">-3&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  46&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-3&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  46                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-3&frac12;</span>                <div>
+                  <span>-105</span>
+                  <span>-115</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  46                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-3&frac12;</span>                <div>
+                  <span>Even</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  46                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="top-line">-3&frac12;</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                        <tr class="odd">
+            <td class="teams ncaaf">
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/hhe">Houston Cougars</a> <span>at</span></span> 
+              <span class="team"><a href="http://sports.yahoo.com/ncaaf/teams/uua">UCLA Bruins</a></span>
+              <div>
+                    <span>10:30 pm EDT</span>
+              </div> 
+            </td>
+                <td>
+              <div>
+  <span class="bottom-line">-17</span>                <div>
+                  <span>-105</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  75&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-17</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  75&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-17</span>                <div>
+                  <span>-110</span>
+                  <span>-110</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  75&frac12;                </span>
+                <div>
+                  <span>o-110</span>
+                  <span>u-110</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-17</span>                <div>
+                  <span>-104</span>
+                  <span>-106</span>
+                </div>
+                </div>
+              <div class="over-under">
+                  <span>
+                  75&frac12;                </span>
+                <div>
+                  <span>o-105</span>
+                  <span>u-105</span>
+                </div>
+                </div>
+            </td>
+             <td>
+              <div>
+  <span class="bottom-line">-17&frac12;</span>                <div>
+                  <span>-115</span>
+                  <span>-105</span>
+                </div>
+                </div>
+              <div class="over-under">
+  <span class="blank">N/A</span>              </div>
+            </td>
+           </tr> 
+                      </tbody>
+      </table>
+            <p>
+        Last Odds Update: 09/14 12:19 pm EDT      </p>
+              </div>
+    
+      <script type="text/javascript">
+       YAHOO.util.Event.onContentReady('odds-league', function() {
+         var submitButtons = YAHOO.util.Dom.getElementsByClassName('ysp-submit', 'INPUT', this);
+         YAHOO.util.Dom.setStyle(submitButtons, 'display', 'none');
+         var select = this.elements['odds-league_select'];
+         YAHOO.util.Event.addListener(select, 'change', function(e) {
+           if (this.options[this.selectedIndex].value != 0) {
+            document.location = this.options[this.selectedIndex].value;
+           }
+         });
+       });
+    </script>
+    
+  </div>
+    
+                <div class="mod" id="odds-legend">
+        <div class="hd">
+          <h3>NCAAF Odds Legend</h3>
+          <span>For odds-related stories from SBNation, blogs, picks and previews, <a target="_blank" href="http://www.sbnation.com/odds">click here</a>.</span>
+        </div>
+        <div class="bd"><ul class="terms"><li><strong>Point spread</strong><p>There is a saying in Las Vegas: you win it on Saturday and give it back on Sunday. That expression promotes the old myth that beating the college football points spread is easy but winning in the NFL is much harder. Also known as the line or spread, it is not the predicted margin of victory for one team but rather a number chosen by Las Vegas and overseas oddsmakers that will encourage an equal number of people to wager on the underdog as on the favorite. The negative value (-13.5) indicates that team is favored by 13.5 points. The positive value (+13.5) indicates that team is the underdog by 13.5 points. Betting on the favorite means the team must win by at least 14 points to cover the point spread. The underdog team can lose by 13 points and still cover the spread.</p><p>You will also notice a moneyline value associated with the point spread (such as -13.5, -115). This indicates how much you must risk in order to place the bet (also known as the <em>vig</em> or <em>juice</em>). It means you have to risk $115 to win $100. The underdog may see a value such as +13.5, +105. This means you risk $1,000 to win $105 if your team covers the spread. The spread is not a static number, so you will notice <em>line moves</em> during the week. Team A may be favored by 3 points on Tuesday and by 4.5 points on Friday. This indicates more people are betting on them, so Las Vegas increases the underdog value hoping to encourage more wagers on the underdog.</p></li><li><strong>Moneyline</strong><p>There are times when moneyline wagering is smarter than point-spread wagering and this is why moneylines are growing in popularity. Typically used in baseball and hockey, pro football moneylines are popular in Las Vegas for picking underdogs. The team you choose only has to win the game, not win by a certain number of runs or goals. The negative value still indicates the favorite (-150) and the positive value indicates the underdog (+130). It's easiest to picture the number 100 sitting in the middle of these two values.</p><p>For example, if you want to pick a -150 favorite, you would risk $150 in order to win $100. On the underdog, you would risk $100 and win $130 if the underdog wins. It's a simple way to have the risk-reward scenario. In the right circumstance, where you have a small underdog, you can get a very similar bet by risking less and also get a bigger payout by going the moneyline route.</p></li><li><strong>Total</strong><p>It is also widely known as the over/under and, just like the point-spread myth, it is not the Las Vegas guess at how many points will be scored in the game by both teams combined. It’s a number it feels will encourage just as many bets on the <em>over</em> as the <em>under.</em> If you picked the under 47.5, you want tough defense and teams running the ball to eat the clock. If you pick the over, you want offensive fireworks and long bombs for TDs. In totals betting, you are predicting whether the combined total score will be more than or less than the total.</p></li><li><strong>Futures</strong><p>Right after the BCS champion has been crowned, new odds on next year’s title game will go up in Las Vegas. Wagers on a future event (like who will win next year's college football championship) are known as college football futures. Oddsmakers adjust lines during the year, depending on the strength or weakness of teams, then offer wagers on each team to win. For example, a league's top team may be +150 to win the championship. That means a $100 wager would pay $150 profit. However, a poor team might be +3000, indicating it is not expected to win and a $100 wager would pay $3,000 as a huge longshot. They can be profitable but also take a long time to settle the bet.</p></li></ul></div>
+        <div class="ft">Odds aggregated and delivered by OddsShark.com</div>
+      </div>
+        </div>
+      </div>
+    </div>
+    <!-- secondary column -->
+    <div id="yui-sub">
+      <div class="yui-b">
+        <div class="mod" id="sky">
+  <!-- SpaceID=0 robot -->
+</div>
+
+      </div>
+    </div>
+  </div>
+    
+  <div id="ft">
+    <div id="dtk-footernav">
+  <div class="hd">
+<!-- {ULT:BEGIN-SECTION;sec=bn} --><div id="ysp-bread-nav"><ul id="bread"><li id="bread_sportshome" class="first"><a href="/">Sports  Home</a></li><li id="bread-league-ncaaf" ><a href="/ncaaf">NCAAF</a></li></ul></div><!-- {ULT:END-SECTION;} --></div>
+  <div class="bd">
+        <div class="prop">
+    <!-- {ULT:BEGIN-SECTION;sec=foot-prop} -->
+          <h3>YAHOO! SPORTS</h3>
+      <ul class="first list">
+      <li><a  href="/nfl">NFL</a></li>
+      <li><a  href="/mlb">MLB</a></li>
+      <li><a  href="/nba">NBA</a></li>
+      <li><a  href="/nhl">NHL</a></li>
+      <li><a  href="/golf">Golf</a></li>
+      <li><a  href="/nascar">NASCAR</a></li>
+      <li><a  href="/ten">Tennis</a></li>
+      <li class="standalone"><nobr><a  href="/top/gen/moresports">More Yahoo! Sports &#xBB;</a></nobr></li>
+      </ul>
+      <ul class="list">
+      <li><a  href="/ncaaf">NCAA Football</a></li>
+      <li><a  href="/ncaab">NCAA Basketball</a></li>
+      <li><a  href="/ncaaw">NCAA Women's Basketball</a></li>
+      <li><a  href="/sow">World Soccer</a></li>
+      <li><a  href="/wnba">WNBA</a></li>
+      <li><a  href="/mls">MLS</a></li>
+      </ul>
+        <!-- {ULT:END-SECTION;} -->
+    </div>
+        <div class="ymg">
+    <!-- {ULT:BEGIN-SECTION;sec=foot-ymg} -->
+          <h3>ALSO ON YAHOO!</h3>
+      <ul class="first list">
+      <li><a  href="http://autos.yahoo.com">Autos</a></li>
+      <li><a  href="http://finance.yahoo.com">Finance</a></li>
+      <li><a  href="http://games.yahoo.com">Games</a></li>
+      <li><a  href="http://groups.yahoo.com">Groups</a></li>
+      <li><a  href="http://health.yahoo.com">Health</a></li>
+      <li class="standalone"><a  href="http://everything.yahoo.com">All Yahoo! &#xBB;</a></li>
+      </ul>
+      <ul class="list">
+      <li><a  href="http://maps.yahoo.com">Maps</a></li>
+      <li><a  href="http://mail.yahoo.com">Mail</a></li>
+      <li><a  href="http://music.yahoo.com">Music</a></li>
+      <li><a  href="http://omg.yahoo.com">omg!</a></li>
+      <li><a  href="http://shine.yahoo.com">Shine</a></li>
+      </ul>
+      <ul class="list">
+      <li><a  href="http://news.yahoo.com">News</a></li>
+      <li><a  href="http://shopping.yahoo.com">Shopping</a></li>
+      <li><a  href="/">Sports</a></li>
+      <li><a  href="http://travel.yahoo.com">Travel</a></li>
+      <li><a  href="http://tv.yahoo.com">TV</a></li>
+      </ul>
+        <!-- {ULT:END-SECTION;} -->
+    </div>
+        <div class="todo">
+    <!-- {ULT:BEGIN-SECTION;sec=foot-todo} -->
+          <h3>THINGS YOU CAN DO</h3>
+      <ul class="first list">
+        <li><a  href="http://feedback.yahoo.com/forums/169858-us-sports">Give Feedback</a></li>
+        <li><a  href="http://sports.yahoo.com/top/gen/getscores">Get Scores on My Yahoo!</a></li>
+        <li><a  href="http://sports.yahoo.com/fantasy">Play Fantasy Sports</a></li>
+        <li><a  href="/top/rss">Subscribe to RSS News Feeds</a></li>
+        <li><a  href="http://www.citizensports.com/" target="sports">Citizen Sports</a></li>
+        <li><a class="shop"  href="http://yahoosports.teamfanshop.com/">Buy Sports Merchandise</a></li>
+      </ul>
+        <!-- {ULT:END-SECTION;} -->
+    </div>
+      </div>
+  <h5>Yahoo! - ABC News Network </h5>  <div class="ft">
+        <!-- {ULT:BEGIN-SKIP} -->
+    <div class="copyright">
+      <p>
+               <!-- SpaceID=0 robot -->
+<!-- SpaceID=0 robot -->
+        <!-- {ULT:END-SKIP} --><!-- {ULT:BEGIN-SECTION;sec=foot} --> - <a  href="/top/gen/sitemap">Site Map</a>
+        -  <a  href="/s/collegebroadcast-atos">Additional Terms</a>      </p>
+          </div>
+    <!-- {ULT:END-SECTION;} -->
+  </div>
+</div>
+
+
+
+
+
+  </div>
+</div>
+
+
+<!-- SpaceID=0 robot -->
+    <script>
+      YSP.use('node-base','event','event-custom', function(Y) {
+        Y.publish("ysp:takeover", { broadcast: 2 });
+        Y.on("domready", function(e) {
+          Y.one("body").addClass("takeover");
+          Y.fire("ysp:takeover");
+        });
+      });
+    </script>
+</body>
+</html>
+
+<!-- sports:myservice-us:0:Success -->
+<!-- fe202.sports.ac4.yahoo.com compressed/chunked Fri Sep 14 10:21:55 PDT 2012 -->

@@ -1,0 +1,139 @@
+body {
+    margin: auto;
+    font-family: 'trebuchet MS', 'Lucida sans', Arial;
+    font-size: 14px;
+    color: #444;
+}
+
+.hide { display: none; }
+
+.icons { cursor: pointer; }
+
+.panel-heading h3 {
+	width: 40%;
+}
+
+.panel-body h1 {
+	margin-top: 0px;
+}
+
+.home {
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.set-spread-favor {
+	margin-left: 3px;
+}
+
+/* FORM OVERRIDE */
+.control-sm {
+	width: 50px;
+}
+
+.control-md {
+	width: 100px;
+}
+
+.control-lg {
+	width: 200px;
+}
+.help ol, .help h5 {
+	text-align: left;
+}
+
+.container ins {
+	margin: 0 auto;
+}
+
+.make-changes {
+	margin-bottom: 2px;
+}
+
+.left { 
+	float: left;
+}
+
+.highlight {
+	background-color: #FFFF99;
+	font-weight: 400;
+}
+
+#emailList {
+	height: 300px;
+	overflow: scroll;
+}
+
+/*
+* Style the menu trigger and position it so it will be
+* visible even when the menu is open
+*/
+
+#menu-trigger {
+	background-color: #454545;
+	border-radius: 0.25em;
+	color: #fff;
+	font-size: 0.75em;
+	font-weight: bold;
+	line-height: 1em;
+	margin-top: -1em;
+	position: absolute;
+	/*right: 1em;*/
+	text-transform: uppercase;
+	top: 2em;
+}
+/* Before enhancement, #menu-trigger behaves as a jump link to
+footer nav. Style link text. */
+#menu-trigger a {
+	color: #fff;
+	display: block;
+	padding: 0.5em;
+	text-decoration: none;
+}
+
+/*
+* Menu styles
+*/
+
+#menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/** hide the menu trigger on larger screens **/
+@media screen and (min-width: 40em) {
+	#menu-trigger {
+		display : none;
+	}
+}
+
+/** smaller devices **/
+@media only screen and (max-width: 600px) {
+
+	/* move main brand */
+	.navbar-brand {
+		margin-left: 25px;
+	}
+	#menu {
+		background-color: #444;
+		color: #fff;
+	}
+	/* change the colors ofthe menu when on smaller screens */
+	#menu .active a {
+		color: #2F4F4F;
+	}
+
+	/* remove the border from default nav styles */
+	.navbar {
+		border: none;
+	}
+
+	#menu a {
+		border-bottom: 3px solid #333;
+		color: inherit;
+		display: block;
+		text-decoration: none;
+	}
+
+}

@@ -1,0 +1,1362 @@
+
+<html>
+<head>
+<style type="text/css">
+  .snf-video img {
+    margin-top: 4px;
+  }
+</style>
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<title>NFL - Scores & Schedule  - Yahoo! Sports</title>
+<meta name="description" content="National Football League schedule, live scores and results" />
+<style type="text/css">
+ .yspsctbg { background-color: #6A1112; }
+ .yspscbrdbg { background-color: #BD1818; }
+</style>
+<style type="text/css">
+/*main page-toggle tabs*/
+#yspMainContent tr.yspsctbg {background-color:#999999;}
+.yspTabActive {background-image:url(http://l.yimg.com/a/i/us/sp/gr/triangle_1.gif);background-position:top right; background-repeat: no-repeat;color:#fff;}
+.yspTabGroup td {padding:4px 10px;font:bold 10px Verdana; white-space:nowrap;}
+.yspTabGroup td.yspTabPadded {padding:0 0 0 10px;}
+.yspTabGroup td.yspTabMore {text-align:right;padding-right:5px;}
+/*basic table style library*/
+.ysptblhead {background-color:#999;color:#fff;}
+.ysptblhead th, .ysptblhead td {padding:2px 5px 3px 5px;font:bold 10px Verdana;text-align:left;}
+.ysptblhead2 {background-color:#ccc}
+.ysptblhead2 th, .ysptblhead2 td {padding:2px 5px 3px 5px;font:bold 10px Verdana;text-align:left;border-top:1px solid #000;}
+.ysptblhead3 {background-color:#eee}
+.ysptblhead3 th, .ysptblhead3 td {padding:2px 5px 3px 5px;font:bold 10px Verdana;text-align:center;}
+.ysptblcontent1 td {padding:2px 5px;}
+tr.ysptblspacer10 {height:10px;overflow:hidden;}
+</style><link type="text/css" rel="stylesheet" media="screen" href="http://l.yimg.com/j/assets/eJx1j9sOgjAMhp9I2QaMLT7MMkuVRVjJOjW8vQMx0Quv2nz_IS0wVw_lRrx6WI5JWtkqe4JCeaaU2fFAc-FGWL3zkPEZenTRP9yAvsfkLkQZ0zEp0QkrN9s8-qUojD7B8Fu8IeeZA-dqCjG8V6eEsMIoIXVtSqLVWqotATRNFKs-MIzE94Sr2kiz9xEEP7rzPWeKvB5RF_E7uPB8mKj_zGKRujH1PwsMCLcQ16_bru5ejwBkFg,,.css?z&m" />
+    <script>
+      var YUI_config = { combine:true,base:"http://l.yimg.com/d/lib/yui/3.4.1/build/",comboBase:"http://l.yimg.com/zz/combo?",root:"/d/lib/yui/3.4.1/build/",groups:{yui2:{combine:true,base:"http://l.yimg.com/d/lib/yui/2in3.4/2.9.0/build/",comboBase:"http://l.yimg.com/zz/combo?",root:"/d/lib/yui/2in3.4/2.9.0/build/",patterns:{"yui2-":{configFn:function(me){if(/-skin|reset|fonts|grids|base/.test(me.name)){me.type='css';me.path=me.path.replace(/\.js/,'.css');me.path=me.path.replace(/\/yui2-skin/,'/assets/skins/sam/yui2-skin');}}}}},gallery:{combine:true,base:"http://l.yimg.com/d/lib/yui/gallery-2011.04.20-13-04/build/",comboBase:"http://l.yimg.com/zz/combo?",root:"/d/lib/yui/gallery-2011.04.20-13-04/build/",patterns:{"gallery-":{},"gallerycss-":{type:"css"}}},sports:{combine:true,base:"http://l.yimg.com/os/mit/media/m/sports/",comboBase:"http://l.yimg.com/zz/combo?",root:"/os/mit/media/m/sports/",modules:{"ys-plugin-overlay-surround":{path:"plugin-overlay-surround-min-145300.js",requires:["plugin","base-build","node-screen","event-resize"]},"ys-plugin-overlay-close":{path:"plugin-overlay-close-min-140631.js",requires:["plugin","base-build","node-event-delegate"]},"ys-plugin-playernote-view":{path:"plugin-playernote-view-min-145300.js",requires:["plugin","base-build"]},"ys-playernote-views-notes":{path:"playernote-views-default-min-140773.js",requires:["plugin","base-build"]},"ys-playernote":{path:"playernote-min-157732.js",requires:["overlay","io-base","json-parse","ys-plugin-overlay-surround","ys-plugin-overlay-close","dd-plugin","ys-playernote-css","substitute","ys-plugin-playernote-view"]},"ys-playernotes":{path:"playernotes-min-150286.js",requires:["node-event-delegate","base-build","selector-css3"]},"ys-playernote-tabs":{path:'playernote-tabs-min-323571.js',requires:['plugin','base-build','node-event-delegate','transition','ys-playernote-tabs-css']},"ys-playernote-tabs-css":{path:'playernote-tabs-min-323571.css',type:'css'},"ys-playernote-css":{path:"playernote-min-153108.css",type:"css"},"ys-playernote-views-twitter":{path:'playernote-views-twitter-min-145300.js',requires:['ys-plugin-playernote-view','ys-playernote-views-twitter-css','node-event-delegate','node-style','selector-css3']},"ys-playernote-views-twitter-css":{path:'playernote-views-twitter-min-199290.css',/*todo*/type:'css'}}},media:{combine:true,base:"http://l.yimg.com/d/lib/media/m/",comboBase:"http://l.yimg.com/zz/combo?",root:"/d/lib/media/m/",modules:{"social_buttons":{path:"social_buttons/social-buttons-min-4519.js",requires:["node-base","widget","substitute","querystring-stringify-simple","intl","fb_all","json-parse","jsonp"]},"media:socialbuttons_en-US":{path:"social_buttons/l10n/strings_en-us-min-4540.js",requires:["intl"]}}}},modules:{"fb_all":{fullpath:"http://connect.facebook.net/en_US/all.js"},"darla":{fullpath:"http://l.yimg.com/zz/combo?d/lib/darla/fc_0.3.0.js&d/lib/darla/util_0.2.6.js&d/lib/darla/renderers/complex_renderer_0.3.0.js"},"ysp-scorestream":{fullpath:"http://l.yimg.com/j/assets/js/common/ysp-mod/ysp-scorestream.r192626.js?m",requires:['gallery-comet-stream','io-base','event-custom','json','node','ysp-darla','base','querystring-stringify']},"ysp-photo-carousel":{fullpath:"http://l.yimg.com/j/assets/js/manager.r143221;js/carousel.r143221.js?m"},"ywa":{fullpath:"http://d.yimg.com/mi/ono/ywa.js"},"disclosure":{fullpath:"http://l.yimg.com/a/lib/platforms/vitality/disc/rm/disclosure-1.4.js"},"media-web-player":{fullpath:"http://webplayer.yahooapis.com/ysports/player.js"}} };
+    </script>
+    <script>
+            YAHOO = window.YAHOO || {};
+      YAHOO.Sports = YAHOO.Sports || {};
+      YAHOO.Sports.canonical_url = 'http://sports.yahoo.com/nfl/scoreboard?w=3c%3Dally%3D2012';
+      YAHOO.Sports.crumb = '';
+      YAHOO.Sports.domain = 'sports.yahoo.com';
+      YAHOO.Sports.intl = 'us';
+      YAHOO.Sports.league = 'nfl';
+      YAHOO.Sports.spaceid = '95860932';
+            YAHOO.Media = YAHOO.Media || {};
+      YAHOO.Media.Facebook = YAHOO.Media.Facebook || {};
+      YAHOO.Media.Facebook.YuiIo = YAHOO.Media.Facebook.YuiIo || {};
+      YAHOO.Media.Facebook.YuiIo.transportCfg = YAHOO.Media.Facebook.YuiIo.transportCfg || {};
+      YAHOO.Media.Facebook.YuiIo.transportCfg.src = "http://l.yimg.com/j/assets/swf/io.r144990.swf";
+      YAHOO.Media.Facebook.init = {
+       appId      : '111580892213144',
+       logging    : true,
+       status     : true,
+       cookie     : false,
+       xfbml      : true,
+       oauth      : true,
+       channelUrl : 'http://sports.yahoo.com/dynamic/fb/channel.html'
+      };
+    </script><script type="text/javascript" charset="utf-8" src="http://l.yimg.com/j/assets/eJx9kutuwyAMhZ8oN3ID7WEiF2hDBzgCsipvPy6rlGrdfsU6_o5z7OTum2NXDalZ3aZKIwjpKoGmkl_Shtp180x7-nE_gxytlTwotJVR9j0DVhn4H7n7992-HuouVT9NOjEypKaX4Pi6gPfKhyY2VSkX0raspaTtpp5Gw9AT0iVDDOoD2ODTlH4mJE_Z0GWF9XPbJiXAJROMjKTY8FPJNGimY37zikYuBsWu5Qv5UFbgIy8wjCxP5-hkWMtW08wyZsDCTbqXaOBw91KfNaE81-h3J3NeSudslkLBpuFIA0hcs0TiaAza5vBbFYPl5xW4vMTsCRuH4n6DCXAaykW66Q-Gr5J_lusP7HmVX5SSrNqUrYKDRN_OZ3awKRGFkcTTJGHXYblgCGjOO1_1gXv-zyZa0pRVl_Kxn-g3-LPepA,,.js?z&m"></script>
+<script type="text/javascript">
+      YAHOO.Sports.oAC = { uri : 'http://l.yimg.com/j/assets/js/yui/2.9.0/element-min.r177838;js/yui/2.9.0/datasource-min.r177838;js/yui/2.9.0/datatable-min.r177838;js/yui/2.9.0/autocomplete-min.r177838;js/nav_ac.r176934.js?m' }
+      YAHOO.Sports.renderMediaShareButtons = function() {
+        YUI({
+          modules: {
+            "media-social-buttons": {
+              fullpath:"http://l.yimg.com/a/lib/media/m/social_buttons/social-buttons-min-3655.js",
+              requires: ["event-key","widget","substitute"]
+            }
+          }
+        }).use("media-social-buttons", function(c) {
+          c.SocialButtons.getStaticConfig = function() {
+            return(YAHOO && YAHOO.Media && YAHOO.Media.SocialButtons && YAHOO.Media.SocialButtons.conf) || {};
+          };
+
+          var b = [], a = c.SocialButtons.getStaticConfig();
+          c.all(".ymsb").each(function(d) {
+            b.push(new c.SocialButtons({
+              srcNode: d,
+              config: a.config,
+              contentMetadata: a.content
+            }).render());
+          });
+          YUI.namespace("Media.SocialButtons");
+          YUI.Media.SocialButtons.instances = b;
+        });
+      };
+    </script><script type="text/javascript" charset="utf-8" src="http://l.yimg.com/j/assets/js/refresh.r143221.js?m"></script>
+<script type="text/javascript">var refreshTime = 30; YAHOO.Sports.Refresh.init('/nfl/scoreboard?w=3c=ally=2012', 30);</script>
+<noscript><meta http-equiv="refresh" content="30"></noscript>
+</head>
+
+<body marginheight="0" marginwidth="10" topmargin="0" leftmargin="10" bgcolor="#ffffff">
+
+<div align="center">
+<!-- {ULT:BEGIN-SECTION;sec=beta} --><!-- {ULT:END-SECTION} -->
+<div class="mast mast-uh-2"> 
+  <div id="ysp-hd">
+<!-- {ULT:BEGIN-SKIP} --><link type='text/css' rel='stylesheet' href='http://l.yimg.com/zz/combo?kx/ucs/uh/css/287/yunivhead-min.css&kx/ucs/uh/css/221/logo-min.css&kx/ucs/notif_v2/css/145/notifications_v2-min.css&kx/ucs/mailcount/css/37/mail_preview-min.css&kx/ucs/search/css/190/search_all-min.css&kx/ucs/search/css/190/search_buttons-min.css&kx/ucs/breakingnews/css/12/breaking_news-min.css'/><style>/* customizable */
+#yUnivHead.yucs-es-es #yuhead-bd #yuhead-search {width:53%;}
+#yUnivHead .yuhead-bullet-down{background-position:right -119px;}
+#yUnivHead {z-index:19;}
+
+/* font color */
+#yUnivHead {color:#fff;}
+#yUnivHead a{color:#fff;}
+#yUnivHead a:hover{color:#fff;}
+
+#yuhead-hd #yuhead-mepanel-cont #yuhead-mepanel li.yuhead-me{border-color:#fff;}
+#yuhead-hd #yuhead-com-links-cont #yuhead-com-links li.yuhead-com-link-item{border-color:#fff;}
+.yuhead-logo h2 a{color:#fff;}
+
+/* promo color */
+#yUnivHead #yuhead-promo .yucs-promo-label{color:#fff;}
+#yUnivHead #yuhead-promo a{color:#fff;}
+#yUnivHead #yuhead-promo a:hover{color:#fff;}
+
+/* background, border, gradients */
+#yUnivHead {
+    background:transparent;
+}
+/* trending promo background - match to header top background */
+#yUnivHead .yucs-trending-anim .yucs-trending-anim-fade {
+	background:transparent;
+}
+/*logos*/
+#yUnivHead .yuhead-logo h2 {background-position:0px -120px;}
+#yUnivHead .yuhead-logo h2.small {background-position:0px -360px;}
+/*hacks for no doctype*/
+#yuhead-bd #yuhead-search #yuhead-sform-cont {
+      *background-color: #dfdfe0;
+    }
+    #yuhead-bd #yuhead-search #yuhead-sform-cont form .yucs-sweb-btn {
+      *background-color: #f8d44c;
+    }
+
+/* right menu z-index hack */
+#yUnivHead #yuhead-hd ul li.yucs-menu ul.yucs-menu-right {z-index:5000;}</style><div id="yUnivHead" class="yucs-en-us" data-lang="en-us" data-property="sports" data-flight="1347506338">        <a href="#yuhead-search" class="yucs-skipto-search yucs-activate">Skip to search.</a>        <div id="yuhead-hd" class="yuhead-clearfix">        <div id="yuhead-mepanel-cont">            <ul id="yuhead-mepanel" class="yucs-toolbar yucs-activate"  aria-label="User Services"><li class="yuhead-me yuhead-nodivide yuhead-nopad">    <a class="yuhead-signup" href="https://edit.yahoo.com/config/eval_register?.src=spt&.intl=us&.lang=en-US&.done=http://sports.yahoo.com/nfl/scoreboard%3fw=3c=ally=2012" target="_top" rel="nofollow">    <em>New User?</em> Register</a></li><li class="yuhead-me">        <a href="https://login.yahoo.com/config/login?.src=spt&.intl=us&.lang=en-US&.done=http://sports.yahoo.com/nfl/scoreboard%3fw=3c=ally=2012"  target="_top" rel="nofollow">    <em>Sign In</em></a></li><li class="yuhead-me"><a href="http://help.yahoo.com/l/us/yahoo/sports/" rel="nofollow" target="_top">Help</a></li></ul>            <!-- empty lp cookie -->            <!-- empty lp beacon -->        </div>        <div id="yuhead-promo"><a href="http://www.yahoo.com/bin/set/?ilc=37" target="_top" rel="nofollow">Make Y! My Homepage<abbr title="Yahoo!"></abbr></a></div>        <div id="yuhead-com-links-cont">            <ul id="yuhead-com-links" class="yucs-toolbar yucs-activate" aria-label="Yahoo! Services">                <li class="yucs-notifications yucs-notif-activate yuhead-com-link-item  yucs-wait">    <a class="ynotif-control yltasis" href="#" rel="nofollow" aria-haspopup="true" title="Notifications" aria-label="notifications" role="button"><span class="sp ynotif-ico-bell"></span><span class="ynotif-notif-count-con hide"><span class="ynotif-notif-count"></span></span>&nbsp;</a>    <div class="yucs-notif-panel hide"         data-ylt-bell="/"        data-ylt-profile="/"        data-ylt-app="/"        data-ylt-cta="/"        data-ylt-pageurl="/"          data-ylt-signin-cta="/"        data-guid=""        data-crumb=""        data-mode="2"        data-pagesize="10"                        data-view-more-txt="View More"        data-notif-user="A Yahoo! user"        data-intl="en-us"        data-yql-env=""        data-settings-tooltip="Settings"        data-app-aria-txt="App Icon"        data-view-all-txt="See All Notifications"        data-view-url="http://pulse.yahoo.com/y/notifications"        data-no-items-txt="There are currently no items."        data-no-notif-txt="You have no notifications."        data-notif-error-txt="Notifications with errors:"        data-get-notif-txt="Receive notifications when you comment or discuss content with friends on Yahoo!"        data-try-notif-txt="Learn more"        data-try-notif-link="http://help.yahoo.com//l/us/yahoo/comments/notifications/pnotification-03.html"        data-ylt-try-notif="/"         data-loading-txt="Loading..."        data-error-unavail-txt="Notifications are temporarily unavailable. Please try again later."        data-middleauth-nonotif-text="You have no new notifications."        data-password-verify-text="Please verify your password to view notifications."        data-authState="signedout"        data-signedout-cta-text="Sign In"        data-popup-login-url="https://login.yahoo.com/config/login_verify2?.pd=c%3DOIVaOGq62e5hAP8Tv..nr5E3&.src=sc"        data-signedout-message="Sign in to view notifications."        data-middleauth-text="You have new notifications.">        <div class="yucs-notif-title-bar yuhead-clearfix">            <span class="yucs-notif-panel-title">Notifications</span>             <a target="_blank" href="http://help.yahoo.com/l/us/yahoo/comments/notifications" class="yucs-notif-tools">Help</a>        </div>        <ul class="yucs-notif-items-panel" role="menu">        </ul>    </div></li>                <li class="yuhead-com-link-item yucs-mailpreview-ancestor">    <a class="sp yltasis yuhead-ico-mail" href="http://mail.yahoo.com/?.intl=us&.lang=en-US" rel="nofollow" target="_top">Mail</a><ul class="yucs-mail-preview-panel hide"    data-mail-txt="Mail"    data-mail-view="View all Yahoo! Mail"    data-mail-help-txt="Help"    data-mail-help-url="http://help.yahoo.com/l/us/yahoo/mail/ymail/"    data-mail-loading-txt="Loading..."    data-languagetag="en-us"    data-authstate="signedout"    data-middleauth-signin-text="Click here to view your mail"    data-popup-login-url="https://login.yahoo.com/config/login_verify2?.pd=c%3DOIVaOGq62e5hAP8Tv..nr5E3&.src=sc"    data-middleauthtext="You have {count} new mail."    data-yltmessage-link="http://mrd.mail.yahoo.com/msg?mid={msgID}&fid=Inbox"    data-yltviewall-link="http://mail.yahoo.com/"    data-yltpanelshown="/"></ul></li><li class="yuhead-com-link-item">    <a href="http://my.yahoo.com"     rel="nofollow"     target="_top">   My Y!    </a></li><li id="yuhead-com-home"><a class="sp yuhead-ico-home" href="http://www.yahoo.com/" rel="nofollow" target="_top">Yahoo!</a></li>            </ul>        </div>    </div>    <div id="yuhead-bd" class="yuhead-clearfix">        <div class="yuhead-logo">   <style>      .yuhead-logo h2{        width:240px;        height:37px;        background-image:url(http://l.yimg.com/a/i/brand/purplelogo/uh/us/20/sports/sports.png);        _background-image:url(http://l.yimg.com/a/i/brand/purplelogo/uh/us/20/sports/sports-222121.gif);      }      .yuhead-logo a{        width:240px;        height:37px;      }      .yuhead-logo div.yuhead-comarketing {       width:240px;      }         </style>   <h2>      <a href="http://sports.yahoo.com/"       target="_top" tabindex="-1">         Yahoo! Sports      </a>   </h2>   <!-- comarketing component --></div>        <div id="yuhead-search">        <div id="yuhead-sform-cont" class="yuhead-s-web yuhead-search-form">        <form role="search" class="yucs-search yucs-activate" target="_top"    action="http://search.yahoo.com/search" method="get"><table role="presentation">   <tbody role="presentation"><tr role="presentation"><td class="yucs-form-input" role="presentation"> <label for="yuhead-sform-searchfield">     <span>Search</span>             </label>                 <input autocomplete="off" type="text" class="sp yuhead-ico-mglass yuhead-search-hint yucs-search-field" name="p"                  data-sh="Search"                  data-satype="rich"                  data-gosurl=""                  id="yuhead-sform-searchfield"                 data-pubid="" /></td><td NOWRAP class="yucs-form-btn" role="presentation"><div class="yucs-btn-wrap">    <button class="yucs-sweb-btn" type="submit">Search Web</button></div>            </td>         </tr>        </tbody></table><input type="hidden" id="fr" name="fr" value="ush-sports" /><!-- desktop device --></form>            </div>    </div>        <div     id="yucs-bnews"     class="yucs-activate slide hide"     data-linktarget="_top"    data-authstate="signedout"     data-lang="en-us"     data-property="sports">        <h3>        <span class="title">Breaking News</span>        <a class="genericlink hide" href="http://news.yahoo.com">Visit Yahoo! News for the latest.</a>     </h3>    <span class="close">&times;<span class="offscreen">Close this window</span></span>     <p class="container">    </p>    </div>    </div>                    <!-- s2s -->    <!-- desktop device -->    </div>  <script type="text/javascript">
+    YUI({
+     modules: {
+       uh2_js: {
+         fullpath: "http://l.yimg.com/zz/combo?kx/ucs/sts/js/290/skip-min.js&kx/ucs/uh/js/279/timestamp_library-min.js&kx/ucs/menu_utils/js/164/menu_utils_v2-min.js&kx/ucs/uh/js/267/aria_toolbar-min.js&kx/ucs/username/js/42/user_menu-min.js&kx/ucs/help/js/41/help_menu-min.js&kx/ucs/utility_link/js/20/utility_menu-min.js&kx/ucs/uh/js/262/logo_debug-min.js&kx/ucs/common/js/131/jsonp-cached-min.js&kx/ucs/notif_v2/js/160/notifications_bootstrap-min.js&kx/ucs/common/js/1/setup-min.js&kx/ucs/search/js/224/search-min.js&kx/ucs/search/js/210/search_text_dir-min.js&kx/ucs/common/js/133/jsonp-cached-min.js&kx/ucs/breakingnews/js/21/breaking_news-min.js&kx/ucs/uh/js/286/activate_library-min.js"
+       }   
+     }
+    }).use('event',function(Y) {
+      Y.on('contentready', function(){
+        Y.use('uh2_js');
+      }, '#yUnivHead');
+    });
+  </script><!-- {ULT:END-SKIP} -->  <style type="text/css">
+    #ygma #ygma-search input {width:324px;}
+  </style>
+  </div>
+<!-- {ULT:BEGIN-SKIP} -->
+  <div id="mh"><!-- SpaceID=0 robot -->
+</div>
+<!-- {ULT:END-SKIP} -->
+
+
+  <!-- {ULT:BEGIN-SECTION;sec=pn} -->
+  <div id="sports-nav">
+
+  <div id="ysp-league-nav"><ul id="league_top_primary-test"><li id="top" class="first"><a href="http://sports.yahoo.com/">Home</a></li><li id="nfl" class="selected"><a href="http://sports.yahoo.com/nfl">NFL</a></li><li id="mlb" ><a href="http://sports.yahoo.com/mlb">MLB</a></li><li id="nba" ><a href="http://sports.yahoo.com/nba">NBA</a></li><li id="nhl" ><a href="http://sports.yahoo.com/nhl">NHL</a></li><li id="ncaaf" class="ncaaf more"><a href="http://rivals.yahoo.com/ncaa/football">NCAAF</a> <!-- {ULT:END-SECTION;} -->
+<!-- {ULT:BEGIN-SECTION;sec=pn-college} -->
+<div id="ysp-ncaaf" class="flyout">
+  <div class="top">
+    <div class="hd"><span></span></div>
+    <div class="bd">
+      <ul>
+        <li><a href="http://rivals.yahoo.com/ncaa/football">NCAA Football</a></li>
+        <li><a href="http://footballrecruiting.rivals.com/" class="rivals">NCAA Football Recruiting</a></li>
+        <li><a href="http://rivals.yahoo.com/video/categories/college-football" class="rivals">NCAA Football Video</a></li>
+        <li><a href="http://www.rivals.com" class="rivals">Rivals.com Home</a></li>
+      </ul>
+    </div>
+    <div class="ft"></div>
+  </div>
+</div>
+<!-- {ULT:END-SECTION;} -->
+<!-- {ULT:BEGIN-SECTION;sec=pn} --></li><li id="ncaab" class="ncaab more"><a href="http://rivals.yahoo.com/ncaa/basketball">NCAAB</a> <!-- {ULT:END-SECTION;} -->
+<!-- {ULT:BEGIN-SECTION;sec=pn-college} -->
+<div id="ysp-ncaab" class="flyout">
+  <div class="top">
+    <div class="hd"><span></span></div>
+    <div class="bd">
+      <ul>
+        <li><a href="http://rivals.yahoo.com/ncaa/basketball">NCAA Men's Basketball</a></li>
+        <li><a href="http://rivals.yahoo.com/ncaa/womens-basketball">NCAA Women's Basketball</a></li>
+        <li><a href="http://basketballrecruiting.rivals.com" class="rivals">NCAA Basketball Recruiting</a></li>
+        <li><a href="http://rivals.yahoo.com/video/categories/college-basketball" class="rivals">NCAA Basketball Video</a></li>
+          <li><a href="http://www.rivals.com" class="rivals">Rivals.com Home</a></li>
+      </ul>
+    </div>
+    <div class="ft"></div>
+  </div>
+</div>
+<!-- {ULT:END-SECTION;} -->
+<!-- {ULT:BEGIN-SECTION;sec=pn} --></li><li id="nascar" ><a href="http://sports.yahoo.com/nascar">NASCAR</a></li><li id="golf" ><a href="http://sports.yahoo.com/golf">Golf</a></li><li id="mma" ><a href="http://sports.yahoo.com/ufc">UFC</a></li><li id="box" ><a href="http://sports.yahoo.com/boxing">Boxing</a></li><li id="sow" ><a href="http://sports.yahoo.com/sow">Soccer</a></li><li id="ten" ><a href="http://sports.yahoo.com/ten">Tennis</a></li><li id="actionsports" class="more grind-tv"><a href="http://www.grindtv.com">Action Sports</a> <!-- {ULT:END-SECTION;} -->
+<!-- {ULT:BEGIN-SECTION;sec=pn-actionsports} -->
+<div id="ysp-action-sports" class="flyout">
+  <div class="top">
+    <div class="hd"><span></span></div>
+    <div class="bd">
+      <ul>
+        <li><a class="grind-tv" href="http://www.grindtv.com/">GrindTV Home</a></li>
+        <li><a class="grind-tv" href="http://www.grindtv.com/skate/">Skate</a></li>
+        <li><a class="grind-tv" href="http://www.grindtv.com/surf/">Surf</a></li>
+        <li><a class="grind-tv" href="http://www.grindtv.com/snow/">Snow</a></li>
+        <li><a class="grind-tv" href="http://www.grindtv.com/outdoor/">Outdoor</a></li>
+        <li><a class="grind-tv" href="http://www.grindtv.com/bike/">Bike</a></li>
+        <li><a class="grind-tv" href="http://www.grindtv.com/moto/">Motocross</a></li>
+      </ul>
+    </div>
+    <div class="ft"></div>
+  </div>
+</div>
+<!-- {ULT:END-SECTION;} -->
+<!-- {ULT:BEGIN-SECTION;sec=pn} --></li><li id="more" class="more"><a href="http://sports.yahoo.com/top/gen/moresports">More</a> <!-- {ULT:END-SECTION;} -->
+<!-- {ULT:BEGIN-SECTION;sec=pn-more} -->
+<div id="ysp-more" class="flyout">
+    <div class="top">
+      <div class="hd"><span></span></div>
+      <div class="bd">
+        <ul class="sports">
+          <li class="odd"><a href="http://sports.yahoo.com/olympics">Olympics</a></li>
+          <li class="even"><a href="http://sports.yahoo.com/tennis">Tennis</a></li>
+          <li class="odd"><a href="http://sports.yahoo.com/irl">IndyCar</a></li>
+          <li class="even"><a href="http://sports.yahoo.com/investigations">Investigations</a></li>
+          <li class="odd"><a href="http://sports.yahoo.com/arena">Arena Football</a></li>
+          <li class="even"><a href="http://sports.yahoo.com/juniorhockey">Junior Hockey</a></li>
+          <li class="odd"><a href="http://us.rd.yahoo.com/sports/*http://au.sports.yahoo.com/afl/">Aussie Football</a> (AU)</li>
+          <li class="even"><a href="http://sports.yahoo.com/mls">MLS</a></li>
+          <li class="odd"><a href="http://ca.sports.yahoo.com/cfl">CFL (CA)</a></li>
+          <li class="even"><a href="http://rivals.yahoo.com/ncaa/baseball">NCAA Baseball</a></li>
+          <li class="odd"><a href="http://us.rd.yahoo.com/sports/*http://cricket.yahoo.com/">Cricket</a> (IN)</li>
+          <li class="even"><a href="http://us.rd.yahoo.com/sports/*http://uk.eurosport.yahoo.com/rugby/">Rugby</a>(UK)</li>
+          <li class="odd"><a href="http://sports.yahoo.com/sc">Cycling</a></li>
+          <li class="even"><a href="http://sports.yahoo.com/ski">Winter Sports</a></li>
+          <li class="odd"><a href="http://us.rd.yahoo.com/sports/*http://uk.eurosport.yahoo.com/formula-1/">Formula One</a>(UK)</li>
+          <li class="even"><a href="http://sports.yahoo.com/wnba">WNBA</a></li>
+          <li class="odd"><a href="http://sports.yahoo.com/rah">Horse Racing</a></li>
+          <li class="even"><a href="http://sports.yahoo.com/top/gen/moresports">All Sports</a></li>
+          </ul>
+        <ul class="links">
+          <li><a href="http://www.facebook.com/yahoosports">Facebook</a><a href="http://twitter.com/yahoosports">Twitter</a></li>
+          <li><a href="http://rivals.com/">Rivals.com</a><a href="http://highschool.rivals.com/">Rivals High</a></li>
+          <li><a href="http://sports.yahoo.com/radio">Yahoo! Sports Radio</a></li>
+          <li><a href="http://sports.yahoo.com/ycn">Yahoo! Contributor Network</a></li>
+          <li><a href="http://sports.yahoo.com/video">Video</a><a href="http://sports.yahoo.com/blogs">Blogs</a></li>
+          <li><a href="http://sports.yahoo.com/mysportsnews">My Sports News</a></li>
+          <li><a href="http://sports.yahoo.com/top/expertscorner">Expert Analysis</a><a href="http://sports.yahoo.com/top/morenews">News</a></li>
+          <li><a href="http://sports.yahoo.com/top/gallery">Photos</a><a href="http://sports.yahoo.com/top/trans">Transactions</a></li>
+        </ul>
+      </div>
+      <div class="ft"></div>
+    </div>
+  </div>
+<!-- {ULT:END-SECTION;} -->
+<!-- {ULT:BEGIN-SECTION;sec=pn} --></li></ul></div><div id="ysp-quicklinks-nav"><ul id="league_top_quicklinks-test"><li id="thepostgame" class="first postGame"><a href="http://thepostgame.com">ThePostGame</a></li><li id="leagueshop" class="shop"><a href="http://yahoosports.teamfanshop.com">Shop</a></li><li id="leaguefantasy" class="fantasy"><a href="/fantasy">Fantasy</a></li></ul></div></div>
+  <!-- {ULT:END-SECTION;} -->
+<script type="text/javascript">
+YAHOO.namespace("Sports.oFlyout");
+YAHOO.Sports.oFlyout.oTeams = {
+  aConferences : [{"sConference":"AFC","aDivisions":[{"sDivision":"East","aTeams":[{"sTxt":"Buffalo Bills","sHref":"\/nfl\/teams\/buf","sClass":"first"},{"sTxt":"Miami Dolphins","sHref":"\/nfl\/teams\/mia"},{"sTxt":"New England Patriots","sHref":"\/nfl\/teams\/nwe"},{"sTxt":"New York Jets","sHref":"\/nfl\/teams\/nyj"}]},{"sDivision":"North","aTeams":[{"sTxt":"Baltimore Ravens","sHref":"\/nfl\/teams\/bal","sClass":"first"},{"sTxt":"Cincinnati Bengals","sHref":"\/nfl\/teams\/cin"},{"sTxt":"Cleveland Browns","sHref":"\/nfl\/teams\/cle"},{"sTxt":"Pittsburgh Steelers","sHref":"\/nfl\/teams\/pit"}]},{"sDivision":"South","aTeams":[{"sTxt":"Houston Texans","sHref":"\/nfl\/teams\/hou","sClass":"first"},{"sTxt":"Indianapolis Colts","sHref":"\/nfl\/teams\/ind"},{"sTxt":"Jacksonville Jaguars","sHref":"\/nfl\/teams\/jac"},{"sTxt":"Tennessee Titans","sHref":"\/nfl\/teams\/ten"}]},{"sDivision":"West","aTeams":[{"sTxt":"Denver Broncos","sHref":"\/nfl\/teams\/den","sClass":"first"},{"sTxt":"Kansas City Chiefs","sHref":"\/nfl\/teams\/kan"},{"sTxt":"Oakland Raiders","sHref":"\/nfl\/teams\/oak"},{"sTxt":"San Diego Chargers","sHref":"\/nfl\/teams\/sdg"}]}]},{"sConference":"NFC","aDivisions":[{"sDivision":"East","aTeams":[{"sTxt":"Dallas Cowboys","sHref":"\/nfl\/teams\/dal","sClass":"first"},{"sTxt":"New York Giants","sHref":"\/nfl\/teams\/nyg"},{"sTxt":"Philadelphia Eagles","sHref":"\/nfl\/teams\/phi"},{"sTxt":"Washington Redskins","sHref":"\/nfl\/teams\/was"}]},{"sDivision":"North","aTeams":[{"sTxt":"Chicago Bears","sHref":"\/nfl\/teams\/chi","sClass":"first"},{"sTxt":"Detroit Lions","sHref":"\/nfl\/teams\/det"},{"sTxt":"Green Bay Packers","sHref":"\/nfl\/teams\/gnb"},{"sTxt":"Minnesota Vikings","sHref":"\/nfl\/teams\/min"}]},{"sDivision":"South","aTeams":[{"sTxt":"Atlanta Falcons","sHref":"\/nfl\/teams\/atl","sClass":"first"},{"sTxt":"Carolina Panthers","sHref":"\/nfl\/teams\/car"},{"sTxt":"New Orleans Saints","sHref":"\/nfl\/teams\/nor"},{"sTxt":"Tampa Bay Buccaneers","sHref":"\/nfl\/teams\/tam"}]},{"sDivision":"West","aTeams":[{"sTxt":"Arizona Cardinals","sHref":"\/nfl\/teams\/ari","sClass":"first"},{"sTxt":"San Francisco 49ers","sHref":"\/nfl\/teams\/sfo"},{"sTxt":"Seattle Seahawks","sHref":"\/nfl\/teams\/sea"},{"sTxt":"St. Louis Rams","sHref":"\/nfl\/teams\/stl"}]}]}]}
+</script>
+  <!-- {ULT:BEGIN-SECTION;sec=sn} -->
+      <div id="ysp-league-sub-nav"><ul id="league_nfl_subnav"><li id="leaguehome" class="first"><a href="/nfl">NFL Home</a></li><li id="leaguescoreboard" class="selected"><a href="/nfl/scoreboard">Scores &amp; Schedule</a></li><li id="leaguestandings" ><a href="/nfl/standings">Standings</a></li><li id="leaguestats" ><a href="/nfl/stats">Stats</a></li><li id="leagueteams" class="more"><a href="/nfl/teams">Teams</a> <div id="ysp-league-teams" class="flyout">
+                <div class="nfl">
+                 <div class="hd"><span></span></div>
+                 <div class="bd">
+                 <ul><li><h4>AFC</h4>
+                 <ul><li><h5>East</h5>
+                   <ul><li><a href="/nfl/teams/buf">Buffalo Bills</a></li><li><a href="/nfl/teams/mia">Miami Dolphins</a></li><li><a href="/nfl/teams/nwe">New England Patriots</a></li><li><a href="/nfl/teams/nyj">New York Jets</a></li></ul></li><li><h5>North</h5>
+                   <ul><li><a href="/nfl/teams/bal">Baltimore Ravens</a></li><li><a href="/nfl/teams/cin">Cincinnati Bengals</a></li><li><a href="/nfl/teams/cle">Cleveland Browns</a></li><li><a href="/nfl/teams/pit">Pittsburgh Steelers</a></li></ul></li><li><h5>South</h5>
+                   <ul><li><a href="/nfl/teams/hou">Houston Texans</a></li><li><a href="/nfl/teams/ind">Indianapolis Colts</a></li><li><a href="/nfl/teams/jac">Jacksonville Jaguars</a></li><li><a href="/nfl/teams/ten">Tennessee Titans</a></li></ul></li><li><h5>West</h5>
+                   <ul><li><a href="/nfl/teams/den">Denver Broncos</a></li><li><a href="/nfl/teams/kan">Kansas City Chiefs</a></li><li><a href="/nfl/teams/oak">Oakland Raiders</a></li><li><a href="/nfl/teams/sdg">San Diego Chargers</a></li></ul></li></ul></li><li><h4>NFC</h4>
+                 <ul><li><h5>East</h5>
+                   <ul><li><a href="/nfl/teams/dal">Dallas Cowboys</a></li><li><a href="/nfl/teams/nyg">New York Giants</a></li><li><a href="/nfl/teams/phi">Philadelphia Eagles</a></li><li><a href="/nfl/teams/was">Washington Redskins</a></li></ul></li><li><h5>North</h5>
+                   <ul><li><a href="/nfl/teams/chi">Chicago Bears</a></li><li><a href="/nfl/teams/det">Detroit Lions</a></li><li><a href="/nfl/teams/gnb">Green Bay Packers</a></li><li><a href="/nfl/teams/min">Minnesota Vikings</a></li></ul></li><li><h5>South</h5>
+                   <ul><li><a href="/nfl/teams/atl">Atlanta Falcons</a></li><li><a href="/nfl/teams/car">Carolina Panthers</a></li><li><a href="/nfl/teams/nor">New Orleans Saints</a></li><li><a href="/nfl/teams/tam">Tampa Bay Buccaneers</a></li></ul></li><li><h5>West</h5>
+                   <ul><li><a href="/nfl/teams/ari">Arizona Cardinals</a></li><li><a href="/nfl/teams/sfo">San Francisco 49ers</a></li><li><a href="/nfl/teams/sea">Seattle Seahawks</a></li><li><a href="/nfl/teams/stl">St. Louis Rams</a></li></ul></li></ul></li></ul>
+          </div>
+          <div class="ft"></div>
+        </div>
+       </div></li><li id="leagueplayers" class="more"><a href="/nfl/players">Players</a> <div id="ysp-sub-nav-ac" class="flyout player-search">
+         <div>
+           <div class="hd"><span></span></div>
+             <div class="bd">
+               <a href="#" class="close"></a>
+               <form action="/nfl/players" method="get" id="ysp-sub-nav-ac-form" name="player-search">
+               <fieldset>
+                 <legend>Player Search</legend>
+                 <label for="ysp-sub-nav-ac-field">Player Search</label>
+                 <input type="text" accesskey="p" class="plong inputtext" name="query" id="ysp-sub-nav-ac-field" placeholder="Player Search">
+                 <button id="ysp-sub-nav-ac-submit" type="submit">Submit</button>
+                 <input type="hidden" value="lastname" name="type"/>
+                 <input type="hidden" value="1" name="first"/>
+               </fieldset>
+               </form>
+               <div id="ysp-sub-nav-ac-hidden-results"></div>
+               <div id="ysp-sub-nav-ac-results" class="yui-dt"></div>
+             </div>
+           <div class="ft"></div>
+         </div>
+       </div></li><li id="leaguetrans" ><a href="/nfl/trans">Transactions</a></li><li id="leagueodds" ><a href="/nfl/odds">Odds</a></li><li id="leaguevideo" ><a href="/video/player/nfl">Video</a></li><li id="leagueexpertsblog" ><a href="/nfl/blog/nfl_experts">Blog</a></li><li id="leaguepickem" ><a href="http://sports.yahoo.com/nfl/picks">Picks</a></li><li id="twitter" class="external"><a href="http://bit.ly/pEvsiv">Twitter</a></li><li id="leagueseasonpreview" ><a href="http://sports.yahoo.com/l/nfl/seasonpreview">Preseason</a></li><li id="Tickets" class="external"><a href="http://seatgeek.com/nfl-tickets/?aid=14">Tickets</a></li></ul></div>  <!-- {ULT:END-SECTION;} -->
+
+
+<script type="text/javascript">
+	YAHOO.namespace("Sports");
+	YAHOO.Sports.ysp_league = 'nfl';
+	YAHOO.Sports.nav_flyouts = { 'aNav' : [ [{id : 'nfl', txt : 'NFL', url : '/nfl'},{id : 'ncaaf', txt : 'NCAA Football', url : '/ncaaf'},{id : 'mlb', txt : 'MLB', url : '/mlb'},{id : 'ncaab', txt : 'NCAA Men\'s Basketball', url : '/ncaab'},{id : 'nba', txt : 'NBA', url : '/nba'},{id : 'ncaaw', txt : 'NCAA Women\'s Basketball', url : '/ncaaw'},{id : 'nhl', txt : 'NHL', url : '/nhl'},{id : 'ncaabb', txt : 'NCAA Baseball', url : '/ncaabb'},{id : 'nascar', txt : 'NASCAR', url : '/nascar'},{id : 'mma', txt : 'Mixed Martial Arts', url : '/mma'},{id : 'golf', txt : 'Golf', url : '/golf'},{id : 'box', txt : 'Boxing', url : '/box'},{id : 'tennis', txt : 'Tennis', url : '/ten'},{id : 'ski', txt : 'World Cup Skiing', url : '/ski'},{id : 'soccer', txt : 'World Soccer', url : '/sow'},{id : 'mls', txt : 'MLS', url : '/mls'},{id : 'olympics', txt : 'Olympics', url : '/olympics'},{id : 'rivals', txt : 'Rivals.com', url : 'http://www.rivals.com'},{id : 'shop', txt : 'Shop', url : 'http://yahoosports.teamfanshop.com'},{id : 'allsports', txt : 'All Sports &raquo;', url : '/top/gen/moresports'}] ]};
+
+</script>
+
+
+
+
+<div id="nt1"><!-- SpaceID=0 robot -->
+</div>
+<div id="ysp-search-assist">
+  <div class="hd"></div>
+  <div class="bd">
+   <form id="sf" method="GET" action="http://sports.search.yahoo.com/search" target="_top">
+     <div role="application">
+       <span class="magnifier"></span>
+       <input type="text" name="p" id="ysp-sbx">
+       <span class="sbtn">
+        <span>
+          <input type="submit" value="Sports Search">
+        </span>
+       </span>
+       <div id="ysp-sat"></div>
+     </div>
+     <input type="hidden" name="fr" value="sports-us-ss"></input>
+   </form>
+  </div>
+  <div class="ft">
+    <h4>Trending Now:</h4>
+    <ol>
+      <li><a href="http://sports.search.yahoo.com/search?cs=bz&p=Peyton+Manning&fr=sports-us-tts" target="_top">Peyton Manning</a></li>
+<li><a href="http://sports.search.yahoo.com/search?cs=bz&p=Delvin+Johnson&fr=sports-us-tts" target="_top">Delvin Johnson</a></li>
+<li><a href="http://sports.search.yahoo.com/search?cs=bz&p=Dwight+Howard&fr=sports-us-tts" target="_top">Dwight Howard</a></li>
+<li><a href="http://sports.search.yahoo.com/search?cs=bz&p=Tracy+Porter&fr=sports-us-tts" target="_top">Tracy Porter</a></li>
+<li><a href="http://sports.search.yahoo.com/search?cs=bz&p=Andrew+Ference&fr=sports-us-tts" target="_top">Andrew Ference</a></li>
+    </ol>
+  </div>
+</div>  
+</div>
+<script type="text/javascript">
+YAHOO.Sports.Window.set("leaguemockdrafts");
+YAHOO.Sports.Window.set("ysp-quicklinks-nav");
+</script>
+
+<script type="text/javascript">
+  YAHOO.util.Event.onContentReady('scoreboard', function () {
+    YAHOO.Sports.Window.set(this, 'snf-video')
+  });
+</script>
+<table width="974" class="yspcontent" border="0" cellspacing="0" cellpadding="0" id="scoreboard">
+ <tr>
+  <td height="7"><spacer type="block" width="1" height="1"></td>
+ </tr>
+ <tr>
+  <td width="800" valign="top">
+   <h1 class="yspseohdln">Week 3c=ally=2012 Scoreboard</h1>
+<table width="800" border="0" cellspacing="0" cellpadding="0">
+ <tr>
+  <td colspan="3" height="5"><spacer type="block" width="1" height="1"></td>
+ </tr>
+ <tr>
+  <td colspan="3" valign="top">
+   <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr>
+     <td class="yspgens" valign="top"><span class="yspsctnhdln">Week 3c=ally=2012 Scoreboard</span></td>
+    </tr>
+    <tr>
+     <td height="7"><spacer type="block" width="1" height="1"></td>
+    </tr>
+   </table>
+  </td>
+ </tr>
+ <tr>
+  <td width="49%" valign="top">
+
+   <table width="100%" border="0" cellspacing="0" cellpadding="0">
+ <tr>
+  <td>
+Preseason:&nbsp;<a href=/nfl/scoreboard?w=p1>Hall of Fame Weekend</a>   <a href=/nfl/scoreboard?w=p2>1</a>   <a href=/nfl/scoreboard?w=p3>2</a>   <a href=/nfl/scoreboard?w=p4>3</a>   <a href=/nfl/scoreboard?w=p5>4</a>   <br>Week: &nbsp;<a href=/nfl/scoreboard?w=1>1</a> &nbsp;<a href=/nfl/scoreboard?w=2>2</a> &nbsp;<b>3</b> &nbsp;<a href=/nfl/scoreboard?w=4>4</a> &nbsp;<a href=/nfl/scoreboard?w=5>5</a> &nbsp;<a href=/nfl/scoreboard?w=6>6</a> &nbsp;<a href=/nfl/scoreboard?w=7>7</a> &nbsp;<a href=/nfl/scoreboard?w=8>8</a> &nbsp;<a href=/nfl/scoreboard?w=9>9</a> &nbsp;<a href=/nfl/scoreboard?w=10>10</a> &nbsp;<a href=/nfl/scoreboard?w=11>11</a> &nbsp;<a href=/nfl/scoreboard?w=12>12</a> &nbsp;<a href=/nfl/scoreboard?w=13>13</a> &nbsp;<a href=/nfl/scoreboard?w=14>14</a> &nbsp;<a href=/nfl/scoreboard?w=15>15</a> &nbsp;<a href=/nfl/scoreboard?w=16>16</a> &nbsp;<a href=/nfl/scoreboard?w=17>17</a>  </td>
+ </tr>
+</table>
+   <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr><td height="5"><spacer type="block" width="1" height="1"></td></tr>
+   </table>
+
+   <span class="yspscores"><span id="byeWeek">Bye Week Teams: </span>None<br>   <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr><td height="10"><spacer type="block" width="1" height="1"></td></tr>
+   </table>
+
+   <table width="100%" border="0" cellspacing="0" cellpadding="1">
+    <tr>
+     <td class="ysptblbdr2">
+      <table width="100%" border="0" cellspacing="0" cellpadding="3" class="yspwhitebg">
+       <tr>
+        <td><span class="yspscores"><b>Get scores</b> any way you want them. Follow
+         your favorite teams with <a href="/top/gen/getscores">personalized team scores</a>.</span>
+        </td>
+       </tr>
+      </table>
+     </td>
+    </tr>
+   </table>
+   <table width="100%" border="0" cellspacing="0" cellpadding="0">
+    <tr><td height="10"><spacer type="block" width="1" height="1"></td></tr>
+   </table>
+
+   <div id="ysp-refresh-bar">&nbsp;</div>
+  </td>
+  <td width="1%">&nbsp;</td>
+  <td width="49%" align="right" valign="top">
+  
+
+
+
+
+
+  
+ 
+          
+ <div id="layerPassing" style="display: block">
+  <table width="100%" border="0" cellspacing="0" cellpadding="1">
+   <tr>
+    <td class="yspsctbg">
+     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+       <tr>
+         <td height="18" class="ysptblhdr">&nbsp;Week 1 Leaders</td>
+       </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="ysptblbdr1">
+     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="yspwhitebg">
+      <tr class="yspscbrdbg">
+	  
+       	   
+        		 
+        	 <td width="60" height="18" class="ysprow1">&nbsp;&nbsp;<span class="yspdetailttl">Passing</span></td>
+         <td class="yspwhitebg" width="3" valign="top"><img src="http://l.yimg.com/a/i/us/sp/gr/999_corner_3x3.gif" width="3" height="3"/></td>
+         		 
+       	   
+        		 
+          	  <td width="60">&nbsp;&nbsp;<a href="javascript:switchLayers('layerRushing');" class="ysptblhdrlinks">Rushing</a></td>
+         		 
+       	   
+        		 
+          	  <td width="70">&nbsp;&nbsp;<a href="javascript:switchLayers('layerReceiving');" class="ysptblhdrlinks">Receiving</a></td>
+         		 
+       	   
+        		 
+          	  <td width="60">&nbsp;&nbsp;<a href="javascript:switchLayers('layerTDS');" class="ysptblhdrlinks">TDS</a></td>
+         		 
+       	   	   
+       <td>&nbsp;</td>
+      </tr>
+      <tr class="ysptblbdr1">
+	   
+	   	   
+	     		 
+		 		   <td colspan="2" height="1" class="ysprow1"></td>
+		 		 
+	   	   
+	     		 
+		                    <td colspan="1" height="1"></td>
+		 		 
+	   	   
+	     		 
+		                    <td colspan="1" height="1"></td>
+		 		 
+	   	   
+	     		 
+		                    <td colspan="1" height="1"></td>
+		 		 
+	          <td colspan="1" height="1"></td> 	   
+      </tr>
+     </table>
+     <table width="100%" height="73" border="0" cellspacing="0" cellpadding="0" class="yspwhitebg">
+      <tr>
+       <td height="4"></td>
+       <td></td>
+      </tr>
+	  
+	  	  
+      <tr valign="top">
+       <td align="center" height="60" width="58">
+	                
+<a href="/nfl/players/9265"><img src="http://l.yimg.com/iu/api/res/1.2/dif23RS0sFeKSo5zK_sSGQ--/YXBwaWQ9eXZpZGVvO2NoPTIxNTtjcj0xO2N3PTE2NDtkeD0xO2R5PTE7Zmk9dWxjcm9wO2g9NjA7cT0xMDA7dz00Ng--/http://l.yimg.com/a/i/us/sp/v/nfl/players_l/20111108/9265.jpg" alt="M. Stafford" width="46" height="60" border="0"/></a>
+
+	   </td>
+       <td class="yspscores">
+  	     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="yspwhitebg weekleader">
+		 
+		 		 
+		   		   
+		       		     
+  
+          
+  
+  
+		 		 		 
+		   <tr>
+		    <td width="150" class="yspscores player">1.   <a href="/nfl/players/9265">M. Stafford</a>
+ DET</td>
+                    <td width="4"></td>
+		    <td width="50" class="yspscores value">355 yds</td>
+                    <td width="4"></td>
+						  <td class="yspscores final" align="right">Final&nbsp;</td>	
+					   </tr>
+		   
+		   		   
+		                <tr><td height="4"></td></tr>
+		   		 
+		 		 
+		   		   
+		       		     
+  
+          
+  
+  
+		 		 		 
+		   <tr>
+		    <td width="150" class="yspscores player">2.   <a href="/nfl/players/5479">D. Brees</a>
+ NO</td>
+                    <td width="4"></td>
+		    <td width="50" class="yspscores value">339 yds</td>
+                    <td width="4"></td>
+						  <td class="yspscores final" align="right">Final&nbsp;</td>	
+					   </tr>
+		   
+		   		   
+		                <tr><td height="4"></td></tr>
+		   		 
+		 		 
+		   		   
+		       		     
+  
+          
+  
+  
+		 		 		 
+		   <tr>
+		    <td width="150" class="yspscores player">3.   <a href="/nfl/players/7760">J. Cutler</a>
+ CHI</td>
+                    <td width="4"></td>
+		    <td width="50" class="yspscores value">333 yds</td>
+                    <td width="4"></td>
+						  <td class="yspscores final" align="right">Final&nbsp;</td>	
+					   </tr>
+		   
+		   		   
+		                <tr><td height="4"></td></tr>
+		   		 
+		 		 
+		   		   
+		       		     
+  
+          
+  
+  
+		 		 		 
+		   <tr>
+		    <td width="150" class="yspscores player">4.   <a href="/nfl/players/25712">R. Griffin III</a>
+ WAS</td>
+                    <td width="4"></td>
+		    <td width="50" class="yspscores value">320 yds</td>
+                    <td width="4"></td>
+						  <td class="yspscores final" align="right">Final&nbsp;</td>	
+					   </tr>
+		   
+		   		   
+		                <tr><td height="4"></td></tr>
+		   		 
+		 		 
+		   		   
+		       		     
+  
+          
+  
+  
+		 		 		 
+		   <tr>
+		    <td width="150" class="yspscores player">5.   <a href="/nfl/players/5448">M. Vick</a>
+ PHI</td>
+                    <td width="4"></td>
+		    <td width="50" class="yspscores value">317 yds</td>
+                    <td width="4"></td>
+						  <td class="yspscores final" align="right">Final&nbsp;</td>	
+					   </tr>
+		   
+		   		   
+		                <tr><td height="4"></td></tr>
+		   		 
+		 		 
+	   	 </table>
+		 </td>
+	  </tr>
+	  
+	  	  	  
+      <tr><td height="5" colspan="2"></td></tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+ </div>
+ 
+  
+ 
+          
+ <div id="layerRushing" style="display: none">
+  <table width="100%" border="0" cellspacing="0" cellpadding="1">
+   <tr>
+    <td class="yspsctbg">
+     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+       <tr>
+         <td height="18" class="ysptblhdr">&nbsp;Week 1 Leaders</td>
+       </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="ysptblbdr1">
+     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="yspwhitebg">
+      <tr class="yspscbrdbg">
+	  
+       	   
+        		 
+          	  <td width="60">&nbsp;&nbsp;<a href="javascript:switchLayers('layerPassing');" class="ysptblhdrlinks">Passing</a></td>
+         		 
+       	   
+        		 
+        	 <td width="60" height="18" class="ysprow1">&nbsp;&nbsp;<span class="yspdetailttl">Rushing</span></td>
+         <td class="yspwhitebg" width="3" valign="top"><img src="http://l.yimg.com/a/i/us/sp/gr/999_corner_3x3.gif" width="3" height="3"/></td>
+         		 
+       	   
+        		 
+          	  <td width="70">&nbsp;&nbsp;<a href="javascript:switchLayers('layerReceiving');" class="ysptblhdrlinks">Receiving</a></td>
+         		 
+       	   
+        		 
+          	  <td width="60">&nbsp;&nbsp;<a href="javascript:switchLayers('layerTDS');" class="ysptblhdrlinks">TDS</a></td>
+         		 
+       	   	   
+       <td>&nbsp;</td>
+      </tr>
+      <tr class="ysptblbdr1">
+	   
+	   	   
+	     		 
+		                    <td colspan="1" height="1"></td>
+		 		 
+	   	   
+	     		 
+		 		   <td colspan="2" height="1" class="ysprow1"></td>
+		 		 
+	   	   
+	     		 
+		                    <td colspan="1" height="1"></td>
+		 		 
+	   	   
+	     		 
+		                    <td colspan="1" height="1"></td>
+		 		 
+	          <td colspan="1" height="1"></td> 	   
+      </tr>
+     </table>
+     <table width="100%" height="73" border="0" cellspacing="0" cellpadding="0" class="yspwhitebg">
+      <tr>
+       <td height="4"></td>
+       <td></td>
+      </tr>
+	  
+	  	  
+      <tr valign="top">
+       <td align="center" height="60" width="58">
+	                
+<a href="/nfl/players/23984"><img src="http://l.yimg.com/iu/api/res/1.2/IZ6SjcYPjBzgjpSFD8bhOg--/YXBwaWQ9eXZpZGVvO2NoPTIxNTtjcj0xO2N3PTE2NDtkeD0xO2R5PTE7Zmk9dWxjcm9wO2g9NjA7cT0xMDA7dz00Ng--/http://l.yimg.com/a/i/us/sp/v/nfl/players_l/headshots/20100903/23984.jpg" alt="C.J. Spiller" width="46" height="60" border="0"/></a>
+
+	   </td>
+       <td class="yspscores">
+  	     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="yspwhitebg weekleader">
+		 
+		 		 
+		   		   
+		       		     
+  
+          
+  
+  
+		 		 		 
+		   <tr>
+		    <td width="150" class="yspscores player">1.   <a href="/nfl/players/23984">C.J. Spiller</a>
+ BUF</td>
+                    <td width="4"></td>
+		    <td width="50" class="yspscores value">169 yds</td>
+                    <td width="4"></td>
+						  <td class="yspscores final" align="right">Final&nbsp;</td>	
+					   </tr>
+		   
+		   		   
+		                <tr><td height="4"></td></tr>
+		   		 
+		 		 
+		   		   
+		       		     
+  
+          
+  
+  
+		 		 		 
+		   <tr>
+		    <td width="150" class="yspscores player">2.   <a href="/nfl/players/24858">D. Murray</a>
+ DAL</td>
+                    <td width="4"></td>
+		    <td width="50" class="yspscores value">131 yds</td>
+                    <td width="4"></td>
+						  <td class="yspscores final" align="right">Final&nbsp;</td>	
+					   </tr>
+		   
+		   		   
+		                <tr><td height="4"></td></tr>
+		   		 
+		 		 
+		   		   
+		       		     
+  
+          
+  
+  
+		 		 		 
+		   <tr>
+		    <td width="150" class="yspscores player">3.   <a href="/nfl/players/24860">S. Ridley</a>
+ NE</td>
+                    <td width="4"></td>
+		    <td width="50" class="yspscores value">125 yds</td>
+                    <td width="4"></td>
+						  <td class="yspscores final" align="right">Final&nbsp;</td>	
+					   </tr>
+		   
+		   		   
+		                <tr><td height="4"></td></tr>
+		   		 
+		 		 
+		   		   
+		       		     
+  
+          
+  
+  
+		 		 		 
+		   <tr>
+		    <td width="150" class="yspscores player">4.   <a href="/nfl/players/7241">F. Gore</a>
+ SF</td>
+                    <td width="4"></td>
+		    <td width="50" class="yspscores value">112 yds</td>
+                    <td width="4"></td>
+						  <td class="yspscores final" align="right">Final&nbsp;</td>	
+					   </tr>
+		   
+		   		   
+		                <tr><td height="4"></td></tr>
+		   		 
+		 		 
+		   		   
+		       		     
+  
+          
+  
+  
+		 		 		 
+		   <tr>
+		    <td width="150" class="yspscores player">5.   <a href="/nfl/players/9317">L. McCoy</a>
+ PHI</td>
+                    <td width="4"></td>
+		    <td width="50" class="yspscores value">110 yds</td>
+                    <td width="4"></td>
+						  <td class="yspscores final" align="right">Final&nbsp;</td>	
+					   </tr>
+		   
+		   		   
+		                <tr><td height="4"></td></tr>
+		   		 
+		 		 
+	   	 </table>
+		 </td>
+	  </tr>
+	  
+	  	  	  
+      <tr><td height="5" colspan="2"></td></tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+ </div>
+ 
+  
+ 
+          
+ <div id="layerReceiving" style="display: none">
+  <table width="100%" border="0" cellspacing="0" cellpadding="1">
+   <tr>
+    <td class="yspsctbg">
+     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+       <tr>
+         <td height="18" class="ysptblhdr">&nbsp;Week 1 Leaders</td>
+       </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="ysptblbdr1">
+     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="yspwhitebg">
+      <tr class="yspscbrdbg">
+	  
+       	   
+        		 
+          	  <td width="60">&nbsp;&nbsp;<a href="javascript:switchLayers('layerPassing');" class="ysptblhdrlinks">Passing</a></td>
+         		 
+       	   
+        		 
+          	  <td width="60">&nbsp;&nbsp;<a href="javascript:switchLayers('layerRushing');" class="ysptblhdrlinks">Rushing</a></td>
+         		 
+       	   
+        		 
+        	 <td width="70" height="18" class="ysprow1">&nbsp;&nbsp;<span class="yspdetailttl">Receiving</span></td>
+         <td class="yspwhitebg" width="3" valign="top"><img src="http://l.yimg.com/a/i/us/sp/gr/999_corner_3x3.gif" width="3" height="3"/></td>
+         		 
+       	   
+        		 
+          	  <td width="60">&nbsp;&nbsp;<a href="javascript:switchLayers('layerTDS');" class="ysptblhdrlinks">TDS</a></td>
+         		 
+       	   	   
+       <td>&nbsp;</td>
+      </tr>
+      <tr class="ysptblbdr1">
+	   
+	   	   
+	     		 
+		                    <td colspan="1" height="1"></td>
+		 		 
+	   	   
+	     		 
+		                    <td colspan="1" height="1"></td>
+		 		 
+	   	   
+	     		 
+		 		   <td colspan="2" height="1" class="ysprow1"></td>
+		 		 
+	   	   
+	     		 
+		                    <td colspan="1" height="1"></td>
+		 		 
+	          <td colspan="1" height="1"></td> 	   
+      </tr>
+     </table>
+     <table width="100%" height="73" border="0" cellspacing="0" cellpadding="0" class="yspwhitebg">
+      <tr>
+       <td height="4"></td>
+       <td></td>
+      </tr>
+	  
+	  	  
+      <tr valign="top">
+       <td align="center" height="60" width="58">
+	                
+<a href="/nfl/players/5477"><img src="http://l.yimg.com/iu/api/res/1.2/h0Q9nKBceab_r1JsV6XOWQ--/YXBwaWQ9eXZpZGVvO2NoPTIxNTtjcj0xO2N3PTE2NDtkeD0xO2R5PTE7Zmk9dWxjcm9wO2g9NjA7cT0xMDA7dz00Ng--/http://l.yimg.com/a/i/us/sp/v/nfl/players_l/headshots/20100903/5477.jpg" alt="R. Wayne" width="46" height="60" border="0"/></a>
+
+	   </td>
+       <td class="yspscores">
+  	     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="yspwhitebg weekleader">
+		 
+		 		 
+		   		   
+		       		     
+  
+          
+  
+  
+		 		 		 
+		   <tr>
+		    <td width="150" class="yspscores player">1.   <a href="/nfl/players/5477">R. Wayne</a>
+ IND</td>
+                    <td width="4"></td>
+		    <td width="50" class="yspscores value">135 yds</td>
+                    <td width="4"></td>
+						  <td class="yspscores final" align="right">Final&nbsp;</td>	
+					   </tr>
+		   
+		   		   
+		                <tr><td height="4"></td></tr>
+		   		 
+		 		 
+		   		   
+		       		     
+  
+          
+  
+  
+		 		 		 
+		   <tr>
+		    <td width="150" class="yspscores player">2.   <a href="/nfl/players/7544">L. Moore</a>
+ NO</td>
+                    <td width="4"></td>
+		    <td width="50" class="yspscores value">120 yds</td>
+                    <td width="4"></td>
+						  <td class="yspscores final" align="right">Final&nbsp;</td>	
+					   </tr>
+		   
+		   		   
+		                <tr><td height="4"></td></tr>
+		   		 
+		 		 
+		   		   
+		       		     
+  
+          
+  
+  
+		 		 		 
+		   <tr>
+		    <td width="150" class="yspscores player">3.   <a href="/nfl/players/6339">A. Johnson</a>
+ HOU</td>
+                    <td width="4"></td>
+		    <td width="50" class="yspscores value">119 yds</td>
+                    <td width="4"></td>
+						  <td class="yspscores final" align="right">Final&nbsp;</td>	
+					   </tr>
+		   
+		   		   
+		                <tr><td height="4"></td></tr>
+		   		 
+		 		 
+		   		   
+		       		     
+  
+          
+  
+  
+		 		 		 
+		   <tr>
+		    <td width="150" class="yspscores player">3.   <a href="/nfl/players/7868">B. Marshall</a>
+ CHI</td>
+                    <td width="4"></td>
+		    <td width="50" class="yspscores value">119 yds</td>
+                    <td width="4"></td>
+						  <td class="yspscores final" align="right">Final&nbsp;</td>	
+					   </tr>
+		   
+		   		   
+		                <tr><td height="4"></td></tr>
+		   		 
+		 		 
+		   		   
+		       		     
+  
+          
+  
+  
+		 		 		 
+		   <tr>
+		    <td width="150" class="yspscores player">5.   <a href="/nfl/players/9534">K. Ogletree</a>
+ DAL</td>
+                    <td width="4"></td>
+		    <td width="50" class="yspscores value">114 yds</td>
+                    <td width="4"></td>
+						  <td class="yspscores final" align="right">Final&nbsp;</td>	
+					   </tr>
+		   
+		   		   
+		                <tr><td height="4"></td></tr>
+		   		 
+		 		 
+	   	 </table>
+		 </td>
+	  </tr>
+	  
+	  	  	  
+      <tr><td height="5" colspan="2"></td></tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+ </div>
+ 
+  
+ 
+          
+ <div id="layerTDS" style="display: none">
+  <table width="100%" border="0" cellspacing="0" cellpadding="1">
+   <tr>
+    <td class="yspsctbg">
+     <table width="100%" border="0" cellspacing="0" cellpadding="0">
+       <tr>
+         <td height="18" class="ysptblhdr">&nbsp;Week 1 Leaders</td>
+       </tr>
+     </table>
+    </td>
+   </tr>
+   <tr>
+    <td class="ysptblbdr1">
+     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="yspwhitebg">
+      <tr class="yspscbrdbg">
+	  
+       	   
+        		 
+          	  <td width="60">&nbsp;&nbsp;<a href="javascript:switchLayers('layerPassing');" class="ysptblhdrlinks">Passing</a></td>
+         		 
+       	   
+        		 
+          	  <td width="60">&nbsp;&nbsp;<a href="javascript:switchLayers('layerRushing');" class="ysptblhdrlinks">Rushing</a></td>
+         		 
+       	   
+        		 
+          	  <td width="70">&nbsp;&nbsp;<a href="javascript:switchLayers('layerReceiving');" class="ysptblhdrlinks">Receiving</a></td>
+         		 
+       	   
+        		 
+        	 <td width="60" height="18" class="ysprow1">&nbsp;&nbsp;<span class="yspdetailttl">TDS</span></td>
+         <td class="yspwhitebg" width="3" valign="top"><img src="http://l.yimg.com/a/i/us/sp/gr/999_corner_3x3.gif" width="3" height="3"/></td>
+         		 
+       	   	   
+       <td>&nbsp;</td>
+      </tr>
+      <tr class="ysptblbdr1">
+	   
+	   	   
+	     		 
+		                    <td colspan="1" height="1"></td>
+		 		 
+	   	   
+	     		 
+		                    <td colspan="1" height="1"></td>
+		 		 
+	   	   
+	     		 
+		                    <td colspan="1" height="1"></td>
+		 		 
+	   	   
+	     		 
+		 		   <td colspan="2" height="1" class="ysprow1"></td>
+		 		 
+	          <td colspan="1" height="1"></td> 	   
+      </tr>
+     </table>
+     <table width="100%" height="73" border="0" cellspacing="0" cellpadding="0" class="yspwhitebg">
+      <tr>
+       <td height="4"></td>
+       <td></td>
+      </tr>
+	  
+	  	  
+      <tr valign="top">
+       <td align="center" height="60" width="58">
+	                
+<a href="/nfl/players/8780"><img src="http://l.yimg.com/iu/api/res/1.2/o.l5ucExuojPCBd3nbUcEg--/YXBwaWQ9eXZpZGVvO2NoPTIxNTtjcj0xO2N3PTE2NDtkeD0xO2R5PTE7Zmk9dWxjcm9wO2g9NjA7cT0xMDA7dz00Ng--/http://l.yimg.com/a/i/us/sp/v/nfl/players_l/20111108/8780.jpg" alt="M. Ryan" width="46" height="60" border="0"/></a>
+
+	   </td>
+       <td class="yspscores">
+  	     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="yspwhitebg weekleader">
+		 
+		 		 
+		   		   
+		       		     
+  
+          
+  
+  
+		 		 		 
+		   <tr>
+		    <td width="150" class="yspscores player">1.   <a href="/nfl/players/8780">M. Ryan</a>
+ ATL</td>
+                    <td width="4"></td>
+		    <td width="50" class="yspscores value">4 TDs</td>
+                    <td width="4"></td>
+						  <td class="yspscores final" align="right">Final&nbsp;</td>	
+					   </tr>
+		   
+		   		   
+		                <tr><td height="4"></td></tr>
+		   		 
+		 		 
+		   		   
+		       		     
+  
+          
+  
+  
+		 		 		 
+		   <tr>
+		    <td width="150" class="yspscores player">2.   <a href="/nfl/players/7426">R. Fitzpatrick</a>
+ BUF</td>
+                    <td width="4"></td>
+		    <td width="50" class="yspscores value">3 TDs</td>
+                    <td width="4"></td>
+						  <td class="yspscores final" align="right">Final&nbsp;</td>	
+					   </tr>
+		   
+		   		   
+		                <tr><td height="4"></td></tr>
+		   		 
+		 		 
+		   		   
+		       		     
+  
+          
+  
+  
+		 		 		 
+		   <tr>
+		    <td width="150" class="yspscores player">2.   <a href="/nfl/players/5479">D. Brees</a>
+ NO</td>
+                    <td width="4"></td>
+		    <td width="50" class="yspscores value">3 TDs</td>
+                    <td width="4"></td>
+						  <td class="yspscores final" align="right">Final&nbsp;</td>	
+					   </tr>
+		   
+		   		   
+		                <tr><td height="4"></td></tr>
+		   		 
+		 		 
+		   		   
+		       		     
+  
+          
+  
+  
+		 		 		 
+		   <tr>
+		    <td width="150" class="yspscores player">2.   <a href="/nfl/players/6624">T. Romo</a>
+ DAL</td>
+                    <td width="4"></td>
+		    <td width="50" class="yspscores value">3 TDs</td>
+                    <td width="4"></td>
+						  <td class="yspscores final" align="right">Final&nbsp;</td>	
+					   </tr>
+		   
+		   		   
+		                <tr><td height="4"></td></tr>
+		   		 
+		 		 
+		   		   
+		       		     
+  
+          
+  
+  
+		 		 		 
+		   <tr>
+		    <td width="150" class="yspscores player">2.   <a href="/nfl/players/9269">M. Sanchez</a>
+ NYJ</td>
+                    <td width="4"></td>
+		    <td width="50" class="yspscores value">3 TDs</td>
+                    <td width="4"></td>
+						  <td class="yspscores final" align="right">Final&nbsp;</td>	
+					   </tr>
+		   
+		   		   
+		                <tr><td height="4"></td></tr>
+		   		 
+		 		 
+	   	 </table>
+		 </td>
+	  </tr>
+	  
+	  	  	  
+      <tr><td height="5" colspan="2"></td></tr>
+     </table>
+    </td>
+   </tr>
+  </table>
+ </div>
+ 
+
+<script language="JavaScript1.2" type="text/javascript">
+<!--
+function switchLayers( layerName ) {
+  if ( document.getElementById ) {
+  
+  	      var layerPassing = document.getElementById( 'layerPassing' );
+      layerPassing.style.display = 'none';
+	      var layerRushing = document.getElementById( 'layerRushing' );
+      layerRushing.style.display = 'none';
+	      var layerReceiving = document.getElementById( 'layerReceiving' );
+      layerReceiving.style.display = 'none';
+	      var layerTDS = document.getElementById( 'layerTDS' );
+      layerTDS.style.display = 'none';
+		
+    switch(layerName) {
+	          case "layerPassing":
+          layerPassing.style.display = 'block';
+          break;
+              case "layerRushing":
+          layerRushing.style.display = 'block';
+          break;
+              case "layerReceiving":
+          layerReceiving.style.display = 'block';
+          break;
+              case "layerTDS":
+          layerTDS.style.display = 'block';
+          break;
+            default:
+        break;
+    }
+  }
+}
+
+switchLayers('layerPassing');
+-->
+</script>
+
+  </td>
+ </tr>
+ <tr>
+  <td colspan="3">
+   
+
+<h1 class="yspseohdln">NFL Scores</h1>
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+ <tr>
+  <td width="50%" height="10"><spacer type="block" width="1" height="1"></td>
+  <td width="10" height="10" nowrap><spacer type="block" width="1" height="1"></td>
+  <td width="50%" height="10"><spacer type="block" width="1" height="1"></td>
+ </tr>
+ <tr class="yspsctbg">
+  <td colspan="2" height="18" class="ysptblhdr">&nbsp;NFL Scores</td>
+  <td align="right" class="ysptblsbhdr"><a href="/top/gen/getscores" class="ysptblhdrlinks">Get Scores</a> any way you want them&nbsp;</td>
+ </tr>
+
+</table><script type="text/javascript">
+YAHOO.util.Event.onContentReady('scoreboard', function() {
+  YAHOO.Sports.Window.set(this, 'tickets');
+});
+</script>
+  </td>
+ </tr>
+</table>
+
+  </td>
+  <td width="14">&nbsp;</td>  
+  <td width="160" align="center" valign="top" class="ysprtcol1">
+    <div id="ysp-sky">
+      <!-- SpaceID=0 robot -->
+    </div>
+  </td>
+ </tr>
+</table>
+<div class="footer">
+<div id="dtk-footernav">
+  <div class="hd">
+<div id="ysp-bread-nav"><ul id="bread"><li id="bread_sportshome" class="first"><a href="/">Sports  Home</a></li><li id="bread-league-nfl" ><a href="/nfl">NFL</a></li><li id="leaguescoreboard" ><a href="/nfl/scoreboard">Scores &amp; Schedule</a></li></ul></div></div>
+  <div class="bd">
+        <div class="prop">
+    <!-- {ULT:BEGIN-SECTION;sec=foot-prop} -->
+          <h3>YAHOO! SPORTS</h3>
+      <ul class="first list">
+      <li><a  href="/nfl">NFL</a></li>
+      <li><a  href="/mlb">MLB</a></li>
+      <li><a  href="/nba">NBA</a></li>
+      <li><a  href="/nhl">NHL</a></li>
+      <li><a  href="/golf">Golf</a></li>
+      <li><a  href="/nascar">NASCAR</a></li>
+      <li><a  href="/ten">Tennis</a></li>
+      <li class="standalone"><nobr><a  href="/top/gen/moresports">More Yahoo! Sports &#xBB;</a></nobr></li>
+      </ul>
+      <ul class="list">
+      <li><a  href="/ncaaf">NCAA Football</a></li>
+      <li><a  href="/ncaab">NCAA Basketball</a></li>
+      <li><a  href="/ncaaw">NCAA Women's Basketball</a></li>
+      <li><a  href="/sow">World Soccer</a></li>
+      <li><a  href="/wnba">WNBA</a></li>
+      <li><a  href="/mls">MLS</a></li>
+      </ul>
+        <!-- {ULT:END-SECTION;} -->
+    </div>
+        <div class="ymg">
+    <!-- {ULT:BEGIN-SECTION;sec=foot-ymg} -->
+          <h3>ALSO ON YAHOO!</h3>
+      <ul class="first list">
+      <li><a  href="http://autos.yahoo.com">Autos</a></li>
+      <li><a  href="http://finance.yahoo.com">Finance</a></li>
+      <li><a  href="http://games.yahoo.com">Games</a></li>
+      <li><a  href="http://groups.yahoo.com">Groups</a></li>
+      <li><a  href="http://health.yahoo.com">Health</a></li>
+      <li class="standalone"><a  href="http://everything.yahoo.com">All Yahoo! &#xBB;</a></li>
+      </ul>
+      <ul class="list">
+      <li><a  href="http://maps.yahoo.com">Maps</a></li>
+      <li><a  href="http://mail.yahoo.com">Mail</a></li>
+      <li><a  href="http://music.yahoo.com">Music</a></li>
+      <li><a  href="http://omg.yahoo.com">omg!</a></li>
+      <li><a  href="http://shine.yahoo.com">Shine</a></li>
+      </ul>
+      <ul class="list">
+      <li><a  href="http://news.yahoo.com">News</a></li>
+      <li><a  href="http://shopping.yahoo.com">Shopping</a></li>
+      <li><a  href="/">Sports</a></li>
+      <li><a  href="http://travel.yahoo.com">Travel</a></li>
+      <li><a  href="http://tv.yahoo.com">TV</a></li>
+      </ul>
+        <!-- {ULT:END-SECTION;} -->
+    </div>
+        <div class="todo">
+    <!-- {ULT:BEGIN-SECTION;sec=foot-todo} -->
+          <h3>THINGS YOU CAN DO</h3>
+      <ul class="first list">
+        <li><a  href="http://feedback.yahoo.com/forums/169858-us-sports">Give Feedback</a></li>
+        <li><a  href="http://sports.yahoo.com/top/gen/getscores">Get Scores on My Yahoo!</a></li>
+        <li><a  href="http://sports.yahoo.com/fantasy">Play Fantasy Sports</a></li>
+        <li><a  href="/top/rss">Subscribe to RSS News Feeds</a></li>
+        <li><a  href="http://www.citizensports.com/" target="sports">Citizen Sports</a></li>
+        <li><a class="shop"  href="http://yahoosports.teamfanshop.com/">Buy Sports Merchandise</a></li>
+      </ul>
+        <!-- {ULT:END-SECTION;} -->
+    </div>
+      </div>
+  <h5>Yahoo! - ABC News Network </h5>  <div class="ft">
+        <!-- {ULT:BEGIN-SKIP} -->
+    <div class="copyright">
+      <p>
+               <!-- SpaceID=0 robot -->
+        <!-- {ULT:END-SKIP} --><!-- {ULT:BEGIN-SECTION;sec=foot} --> - <a  href="/top/gen/sitemap">Site Map</a>
+              </p>
+      <p>Copyright &copy; 2012 <a href="http://www.stats.com">STATS LLC</a>. All Rights Reserved.</p>    </div>
+    <!-- {ULT:END-SECTION;} -->
+  </div>
+</div>
+
+
+
+
+</div>
+
+<script type="text/javascript">  YAHOO.Sports.oFlyout.oFantasy = {
+             my_teams : {  h5 : 'My Teams and Leagues', ul : []},
+              other_games : { h5  : 'Fantasy Games',
+                              text : '<ul class="other-games"><li class="odd"><a href="http://football.fantasysports.yahoo.com/">Football</a></li><li class="even"><a href="http://baseball.fantasysports.yahoo.com/b1">Baseball</a></li><li class="odd"><a href="http://basketball.fantasysports.yahoo.com/nba">Basketball</a></li><li class="even"><a href="http://hockey.fantasysports.yahoo.com/hockey">Hockey</a></li><li class="odd"><a href="http://golf.fantasysports.yahoo.com/golf">Golf</a></li><li class="even"><a href="http://racing.fantasysports.yahoo.com/auto">Auto Racing</a></li><li class="odd"><a href="http://sports.yahoo.com/fantasy/sports-iq">Sports IQ</a></li></ul>' }, more_link : false    };</script>    <iframe id="ysp-darla-scoreframe"></iframe>
+    <script type="text/javascript">
+    YUI({
+      modules: {
+        "scorestream": {
+          fullpath: "http://l.yimg.com/j/assets/js/scorestream.r176994.js?m",
+          "requires": "ysp-darla"
+        }
+      }
+    }).use("ysp-darla","scorestream", function(Y) {
+      Y.one(Y.config.doc).one('body').addClass("scorestream");
+      Y.on("domready", function(e){
+        Y.Sports.ScoreStream.init('scoreboard', 'nfl', '2012-09-19', 1347506338,  '95860932', { gameId : '', log : 0, handler : function() { } });
+      });
+    });
+    </script></div>
+</body>
+</html>
+<!-- fe226.sports.ac4.yahoo.com compressed/chunked Wed Sep 12 20:18:58 PDT 2012 -->
