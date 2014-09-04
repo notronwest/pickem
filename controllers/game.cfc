@@ -57,7 +57,9 @@ public Void function saveWeek(rc){
 			// get the game object (will return a new object if the gameID doesn't exist)
 			oGame = variables.gameGateway.getByGameID((isNumeric(rc.arGames[itm].nGameID)) ? rc.arGames[itm].nGameID : 0);
 			// if this game exists then remove it from the list of games to delete
-			lstGamesToDelete = listDeleteAt(lstGamesToDelete, listFind(lstGamesToDelete, rc.arGames[itm].nGameID));
+			if( listFind(lstGamesToDelete, rc.arGames[itm].nGameID) gt 0 ){
+				lstGamesToDelete = listDeleteAt(lstGamesToDelete, listFind(lstGamesToDelete, rc.arGames[itm].nGameID));
+			}
 			// save the home team
 			oHomeTeam = variables.teamService.saveTeam(rc.arGames[itm].sHomeTeam, rc.arGames[itm].sHomeTeamURL);
 			// add in the id

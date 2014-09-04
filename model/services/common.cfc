@@ -47,9 +47,9 @@ History:
 public String function dateTimeFormat( String dtToFormat = now() ){
 	var dtFormatted = dateFormat(arguments.dtToFormat, 'mm/dd/yyyy');
 	if( listFirst(timeFormat(arguments.dtToFormat, 'HH:mm'), ":") gte 12 ){
-		dtFormatted = dtFormatted & " " & timeFormat(arguments.dtToFormat, 'h:mm') & " PM";
+		dtFormatted = dtFormatted & " " & timeFormat(arguments.dtToFormat, 'h:mm') & " PM EDT";
 	} else {
-		dtFormatted = dtFormatted & " " & timeFormat(arguments.dtToFormat, 'h:mm') & " AM";
+		dtFormatted = dtFormatted & " " & timeFormat(arguments.dtToFormat, 'h:mm') & " AM EDT";
 	}
 	return dtFormatted;
 }

@@ -59,7 +59,7 @@
 						<th class="change hidden">Favorite</th>
 						<th class="change hidden">Underdog</th>
 						<th>Game Date</th>
-						<cfif rc.bShowScores><th>Score (You're picks score first)</th></cfif>
+						<cfif rc.bShowScores><th title="Your picks score is first">Score</th></cfif>
 					</thead>
 					<tbody>
 						<cfloop from="1" to="#arrayLen(rc.arWeekGames)#" index="local.itm">

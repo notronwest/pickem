@@ -80,10 +80,23 @@ $(function(){
 		makeActive();
 	});
 	// bind for swapping home and away teams
-	$(".swap").on("click", function(){
+	$(".swap-home").on("click", function(){
 		$(this).closest("tr").find(".home").addClass("next-away").removeClass("home");
 		$(this).closest("tr").find(".away").addClass("home").removeClass("away");
 		$(this).closest("tr").find(".next-away").addClass("away").removeClass("next-away");
+		oSpreadFavor = $(this).closest("tr").find(".spread-favor")
+		$(oSpreadFavor).val(($(oSpreadFavor).val() == "away") ? "home" : "away");
+		makeActive();
+	});
+	// bind for swapping the favorites
+	$(".swap-spread").on("click", function(){
+		// get two objects
+		oFavorite = $(this).closest("tr").find("[name='favorite']");
+		oUnderdog = $(this).closest("tr").find("[name='underdog']");
+		sFavoriteTeam = $(oFavorite).val();
+		nFavoriteTeam = $(oFavorite).data("id");
+		oFavorite.val(oUnderdog.val()).data("id", oUnderdog.data("id"));
+		oUnderdog.val(sFavoriteTeam).data("id", nFavoriteTeam);
 		makeActive();
 	});
 	// binding to make save games not disabled when someone changes the spread
