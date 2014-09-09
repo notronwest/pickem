@@ -4,14 +4,20 @@ property name="userGateway";
 property name="userService";
 
 public void function before(rc){
+	param name="rc.sActionAfterLogin" default="standing.home";
 	rc.bIsDialog = false;
+
 }
 
 public void function checkAuthorization(rc){
 	// set the session scope into rc
 	rc.stUser = session;
 	// force all users to login
-	if( session.nUserID eq 0 and variables.framework.getFullyQualifiedAction() neq "security.login" and variables.framework.getFullyQualifiedAction() neq "security.authenticate" ){
+	if( session.nUserID eq 0
+		and variables.framework.getFullyQualifiedAction() neq "security.login"
+		and variables.framework.getFullyQualifiedAction() neq "security.authenticate" ){
+		// set the action for after logging in
+		rc.sActionAfterLogin = request.action;
 		variables.framework.redirect("security.login");
 	}
 	// set the current user
@@ -24,7 +30,10 @@ public void function checkAuthorization(rc){
 
 public void function authenticate(rc){
 	var arUser = [];
+	var bLoggedIn = false;
+	rc.sMessageType = "warning";
 	try{
+
 		rc.sMessage = "Login failed - please provide a valid username/password combination";
 		if( structKeyExists(rc, "sUsername") and len(rc.sUsername) gt 0 and structKeyExists(rc, "sPassword") and len(rc.sPassword) > 0 ){
 			arUser = variables.userGateway.getByUsernamePassword(rc.sUsername, rc.sPassword);
@@ -32,13 +41,18 @@ public void function authenticate(rc){
 				setupSession(arUser);
 				rc.sMessage = "Login successful";
 				variables.userService.updateLastLogin(session.nUserID);
+				bLoggedIn = true;
 			}
 		}
 	} catch (any e){
 		registerError("Error authenticating", e);
 	}
-	variables.framework.setView("main.message");
-	rc.bIsDialog = true;
+	if( !bLoggedIn ){
+		variables.framework.setView("security.login");
+	} else {
+		variables.framework.redirect(rc.sActionAfterLogin);
+	}
+
 }
 
 public void function setupSession(arUser){
@@ -57,6 +71,8 @@ public void function setupSession(arUser){
 
 public void function logout(){
 	session.nUserID = 0;
-	variables.framework.redirect('standing.home');
+	// set message for login window
+	rc.sMessage = "Logged out";
+	variables.framework.redirect('standing.home', 'sMessage');
 }
 }

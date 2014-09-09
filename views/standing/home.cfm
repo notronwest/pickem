@@ -1,6 +1,8 @@
 <section id="content">
-<cfset local.sPlace = 1>
-<cfset local.sCurrentWins = 0>
+<cfscript>
+	local.sPlace = 1;
+	local.sCurrentWins = 0;
+</cfscript>
 <cfoutput>
 	<table id="standings" class="table table-striped">
 		<thead>
@@ -42,8 +44,8 @@
 						<cfset local.nWeekID = local.arWeeks[local.x]>
 						<td<cfif structKeyExists(rc.stWeekWinners[local.nWeekID], local.nUserID)> class="highlight"</cfif>>#local.stUserWins[local.nWeekID]#</td>
 					</cfloop>
-					<cfif arrayLen(local.arWeeks) lt arrayLen(rc.arWeeks)>
-						<td>0</td>
+					<cfif arrayLen(local.arWeeks) lte arrayLen(rc.arWeeks)>
+						<cfloop from="1" to="#(arrayLen(rc.arWeeks) - arrayLen(local.arWeeks))#" index="itm"><td>0</td></cfloop>
 					</cfif>
 					<cfset local.sCurrentWins = rc.stSeasonWins[local.nUserID]>
 				</tr>

@@ -12,13 +12,10 @@ $(function(){
 	});
 	// prevent ajax caching
 	$.ajaxSetup( { cache: false } );
-	// bind login form
-	$(".container").on("click", "#loginUser", function(){
-		login();
-	});
+
 	$(".container").on("keypress", "#sPassword", function(e){
 		if( e.which == 13 ){
-			login();
+			$(this).closest("form").submit();
 		} 
 	});
 	// bind change week
@@ -158,24 +155,6 @@ function showError(sError){
 		$(".error").removeClass("hide");
 		$(".error").css( { display: "block" } );
 	}
-}
-
-function login(){
-	// clear the password
-	$(".error").html("").hide();
-	$.post("/index.cfm?action=security.authenticate",
-		{
-			"sUsername": $("#sUsername").val(),
-			"sPassword": $("#sPassword").val()
-		}, function(sResults){
-			if( sResults.indexOf("fail") > 0 ){
-				showError(sResults);
-			} else {
-				setMessage(sResults);
-				setTimeout( function(){ window.location.href = "/index.cfm?action=standing.home";}, 1000 );
-			}
-		}
-	);
 }
 
 String.prototype.replaceAt=function(index, character) {

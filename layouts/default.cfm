@@ -26,10 +26,12 @@
                     <link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">
                                    <link rel="shortcut icon" href="/assets/ico/favicon.png">
   	<link href="/assets/css/jquery.jgrowl.css" rel="stylesheet"/>
-  	<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/themes/sunny/jquery-ui.css" rel="stylesheet"/>
+  	<link href="/assets/css/jquery-ui-1.10.3.custom.min.css" rel="stylesheet"/>
   	<link href="/assets/css/default.css" rel="stylesheet"/>
-	  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
+	  <script src="/assets/js/jquery.js"></script>
+    <!--- // <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script> --->
     <script src="/assets/js/modernizr.custom.js"></script>
+    
 </head>
 <body>
 <cfoutput>
@@ -64,13 +66,15 @@
 		</div>
 	</div>
 </cfoutput>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+<!--- // <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script> --->
+<script src="/assets/js/jquery-ui-1.10.3.js"></script>
 <script src="/assets/js/jquery.offcanvasmenu.js"></script>
 <script src="/assets/js/fastclick.js"></script>
 <script src="/assets/js/jquery.csswatch.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
 <script src="/assets/js/jquery.dataTables.min.js"></script>
 <script src="/assets/js/jquery.jgrowl.min.js"></script>
+<script src="/assets/js/jquery.json-2.3.min.js"></script>
 <script src="/assets/js/global.js"></script>
 <!--- // only do this if we are in production --->
 <cfif not request.bIsDevelopment>

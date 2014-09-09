@@ -288,7 +288,7 @@ Licensed under the freeBSD license
 
   if (!window.cssWatchRequestAnimationFrame) {
     window.cssWatchRequestAnimationFrame = (function() {
-      return window.webkitAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || window.requestAnimationFrame || function(callback, element) {
+      return window.webkitAnimationFrame || window.requestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || window.requestAnimationFrame || function(callback, element) {
         return window.setTimeout(callback, 1000 / 60);
       };
     })();
