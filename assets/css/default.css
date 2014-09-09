@@ -55,8 +55,8 @@ body {
 }
 
 .highlight {
-	background-color: #FFFF99;
-	font-weight: 400;
+	background-color: #FFFF99 !important;
+	font-weight: 400 !important;
 }
 
 #emailList {
