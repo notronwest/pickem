@@ -133,7 +133,7 @@
 								<td>#dateFormat(rc.arWeekGames[local.itm].sGameDateTime, "mm/dd/yyyy")#</td>
 								<cfif rc.bShowScores><td>
 									<!--- // show the picks score first --->
-									<cfif rc.stUserWeek.stPicks[rc.arWeekGames[local.itm].nGameID] eq rc.arWeekGames[local.itm].nHomeTeamID>
+									<cfif structKeyExists(rc.stUserWeek.stPicks, rc.arWeekGames[local.itm].nGameID) and rc.stUserWeek.stPicks[rc.arWeekGames[local.itm].nGameID] eq rc.arWeekGames[local.itm].nHomeTeamID>
 										#rc.arWeekGames[local.itm].nHomeScore# - #rc.arWeekGames[local.itm].nAwayScore#
 									<cfelse>
 										#rc.arWeekGames[local.itm].nAwayScore# - #rc.arWeekGames[local.itm].nHomeScore#

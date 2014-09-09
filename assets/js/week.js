@@ -113,7 +113,6 @@ $(function(){
 	$(".container").on("click", ".save-games:not(.disabled)", function(event){
 		event.stopPropagation();
 		var bDoSave = true;
-		$("#games").block( { message: "Saving games" } );
 		// clear the arGames to build the now active games
 		arGames = [];
 		// loop through all of the active games
@@ -148,13 +147,10 @@ $(function(){
 					nWeekID: $("#setWeek").data("id"),
 					arGames: $.toJSON(arGames)
 				}, function(sResult){
-					$("#games").unblock();
 					$.jGrowl(sResult);
 					//softReload();
 				}
 			);
-		} else {
-			$("#games").unblock();
 		}
 	});
 });

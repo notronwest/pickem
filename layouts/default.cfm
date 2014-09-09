@@ -13,6 +13,7 @@
     <meta name="author" content="">
     <meta name="keywords" content="Football">
     <link href="/assets/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="/assets/css/jquery.dataTables.min.css" rel="stylesheet"/>
     <link href="/assets/css/font-awesome.min.css" rel="stylesheet"/>
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -68,8 +69,7 @@
 <script src="/assets/js/fastclick.js"></script>
 <script src="/assets/js/jquery.csswatch.js"></script>
 <script src="/assets/js/bootstrap.min.js"></script>
-<script src="/assets/js/jquery.json-2.3.min.js"></script>
-<script src="/assets/js/jquery.blockUI.2.65.0.js"></script>
+<script src="/assets/js/jquery.dataTables.min.js"></script>
 <script src="/assets/js/jquery.jgrowl.min.js"></script>
 <script src="/assets/js/global.js"></script>
 <!--- // only do this if we are in production --->
