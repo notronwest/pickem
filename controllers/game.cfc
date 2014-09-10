@@ -4,6 +4,7 @@ property name="gameGateway";
 property name="gameService";
 property name="teamService";
 property name="weekGateway";
+property name="standingService";
 
 public void function before (rc){
 	param name="rc.nWeekID" default="0";
@@ -101,6 +102,8 @@ public void function saveScores(rc){
 		// save the scores
 		bSaved = variables.gameGateway.saveScores(rc.arGames);
 		if( bSaved){
+			// calculate winners for this week
+			variables.standingService.calculateWinners(rc.nWeekID, rc.sSeason);
 			rc.sMessage = "Scores saved";
 		} else {
 			rc.sMessage = "Error saving scores.  Please try again";

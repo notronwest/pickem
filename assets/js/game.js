@@ -4,6 +4,8 @@ $(function(){
 		var arGames = [];
 		var stGame = {};
 		event.stopPropagation();
+		// change the label on the buttons
+		$(".save-scores").prop("disabled", true).html("Saving...");
 		// loop through the games and retrieve their scores
  		$(".game").each(function(){
 			stGame = {
@@ -16,9 +18,11 @@ $(function(){
 		// send results
 		$.post("/index.cfm?action=game.saveScores",
 			{
-				arGames: $.toJSON(arGames)
+				arGames: $.toJSON(arGames),
+				nWeekID: $("#setWeek").data("id")
 			}, function(sResult){
 				setMessage(sResult);
+				$(".save-scores").prop("disabled", false).html("Save Scores");
 				softReload();
 			}
 		);

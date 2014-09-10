@@ -53,10 +53,8 @@ public void function home(rc){
 }
 
 public void function calculate(rc){
-	//if( structKeyExists(rc, "doCalculate") ){
-		variables.standingService.calculateWinners(rc.nWeekID, rc.sSeason);
-		rc.sMessage = "Winners calculated";
-		variables.framework.setView("main.message");
-	//}
+	variables.standingService.calculateWinners(rc.nWeekID, rc.sSeason);
+	rc.sMessage = "Winners calculated";
+	variables.framework.setView("main.message");
 }
 }
