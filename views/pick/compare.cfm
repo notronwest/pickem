@@ -49,7 +49,7 @@
 									bHasPick = structKeyExists(rc.stViewUserWeek.stPicks, rc.arWeekGames[itm].nGameID);
 									sClass = "none";
 									bWasHomeTeam = 0;
-									bHomeSpread = "-" & rc.arWeekGames[itm].sSpread;
+									bHomeSpread = "-" & rc.arWeekGames[itm].nSpread;
 									if( bHasPick ){
 										sPick = rc.arWeekGames[itm].sHomeTeam;	
 									} else {
@@ -62,7 +62,7 @@
 									}
 									// determine the spread
 									if( compareNoCase(rc.arWeekGames[itm].sSpreadFavor, "home") ){
-										bHomeSpread = "+" & rc.arWeekGames[itm].sSpread;
+										bHomeSpread = "+" & rc.arWeekGames[itm].nSpread;
 									}
 									// determine whether or not they won
 									if( structKeyExists(rc.stViewUSerWeek, "lstWins") and listFind(rc.stViewUserWeek.lstWins, rc.arWeekGames[itm].nGameID) ){
@@ -92,7 +92,7 @@
 									sHasWinner = structKeyExists(rc.arWeekGames[itm], "nWinner");
 									sClass = "none";
 									bWasHomeTeam = 0;
-									bHomeSpread = "-" & rc.arWeekGames[itm].sSpread;
+									bHomeSpread = "-" & rc.arWeekGames[itm].nSpread;
 									sPick = rc.arWeekGames[itm].sHomeTeam;
 									// determine the users pick
 									if( rc.stUserWeek.stPicks[rc.arWeekGames[itm].nGameID] eq rc.arWeekGames[itm].nAwayTeamID ){
@@ -100,7 +100,7 @@
 									}
 									// determine the spread
 									if( compareNoCase(rc.arWeekGames[itm].sSpreadFavor, "home") ){
-										bHomeSpread = "+" & rc.arWeekGames[itm].sSpread;
+										bHomeSpread = "+" & rc.arWeekGames[itm].nSpread;
 									}
 									// determine whether or not they won
 									if( listFind(rc.stUserWeek.lstWins, rc.arWeekGames[itm].nGameID) ){

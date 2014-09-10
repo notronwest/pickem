@@ -48,7 +48,7 @@ public model.beans.game function update( Required model.beans.game oGame, Requir
 		arguments.oGame.setNWeekID(arguments.stGame.nWeekID);
 		arguments.oGame.setNHomeTeamID(arguments.stGame.nHomeTeamID);
 		arguments.oGame.setNAwayTeamID(arguments.stGame.nAwayTeamID);
-		arguments.oGame.setSSpread(arguments.stGame.sSpread);
+		arguments.oGame.setNSpread(arguments.stGame.nSpread);
 		arguments.oGame.setSSpreadFavor(arguments.stGame.sSpreadFavor);
 		arguments.oGame.setSSpreadOriginal(arguments.stGame.sSpreadOrignal);
 		arguments.oGame.setSGameDateTime(arguments.stGame.sGameDateTime);
@@ -260,7 +260,7 @@ public Boolean function saveScores( Required Array arGames ){
 				oGame.getNHomeScore(),
 				oGame.getNAwayTeamID(),
 				oGame.getNAwayScore(),
-				oGame.getSSpread(),
+				oGame.getNSpread(),
 				oGame.getSSpreadFavor()
 			));
 			save(oGame);

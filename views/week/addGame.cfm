@@ -27,8 +27,8 @@
 			<div class="controls"><input type="text" id="dGameDate" value=""/></div>
 		</div>
 		<div class="control-group">
-			<label for="sSpread" class="control-label">Spread: </label>
-			<div class="controls"><input type="text" id="sSpread" value=""/></div>
+			<label for="nSpread" class="control-label">Spread: </label>
+			<div class="controls"><input type="text" id="nSpread" value=""/></div>
 		</div>
 		<div class="control-group">
 			<label for="sSpreadFavor" class="control-label">Spread Favor: </label>

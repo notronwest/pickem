@@ -45,12 +45,12 @@
 							<cfloop from="1" to="#arrayLen(rc.arWeekGames)#" index="local.itm">
 								<tr class="game" data-id="#rc.arWeekGames[local.itm].nGameID#">
 									<cfif rc.arWeekGames[local.itm].sSpreadFavor eq "home">
-										<td><label class="home">#rc.arWeekGames[local.itm].sHomeTeam# <span class="badge">+#rc.arWeekGames[local.itm].sSpread#</span></label></td>
+										<td><label class="home">#rc.arWeekGames[local.itm].sHomeTeam# <span class="badge">+#rc.arWeekGames[local.itm].nSpread#</span></label></td>
 										<td><input type="number" class="score control-sm home" data-id="#rc.arWeekGames[local.itm].nHomeTeamID#" value="#rc.arWeekGames[local.itm].nHomeScore#"></td>
 										<td><label>#rc.arWeekGames[local.itm].sAwayTeam#</label></td>
 										<td><input type="number" class="score control-sm away" data-id="#rc.arWeekGames[local.itm].nAwayTeamID#" value="#rc.arWeekGames[local.itm].nAwayScore#"></td>
 									<cfelse>
-										<td><label>#rc.arWeekGames[local.itm].sAwayTeam# <span class="badge">+#rc.arWeekGames[local.itm].sSpread#</span></label></td>
+										<td><label>#rc.arWeekGames[local.itm].sAwayTeam# <span class="badge">+#rc.arWeekGames[local.itm].nSpread#</span></label></td>
 										<td><input type="number" class="score control-sm away" data-id="#rc.arWeekGames[local.itm].nAwayTeamID#" value="#rc.arWeekGames[local.itm].nAwayScore#"></td>
 										<td><label class="home">#rc.arWeekGames[local.itm].sHomeTeam#</label></td>
 										<td><input type="number" class="score control-sm home" data-id="#rc.arWeekGames[local.itm].nHomeTeamID#" value="#rc.arWeekGames[local.itm].nHomeScore#"></td>

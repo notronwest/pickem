@@ -98,17 +98,17 @@
 											<!--- // if they picked the home team then add the "+" --->
 											<cfif compareNoCase(sPick, "home") eq 0>
 												<button class="home disabled<cfif bIsWinner> btn-success<cfelseif bWinnerCrowned> btn-danger</cfif>">
-													#rc.arWeekGames[local.itm].sHomeTeam# <span class="badge">-#rc.arWeekGames[local.itm].sSpread#</span>
+													#rc.arWeekGames[local.itm].sHomeTeam# <span class="badge">-#rc.arWeekGames[local.itm].nSpread#</span>
 												</button>
 											<cfelse>
 												<button class="disabled<cfif bIsWinner> btn-success<cfelseif bWinnerCrowned> btn-danger</cfif>">
-													#rc.arWeekGames[local.itm].sAwayTeam# <span class="badge">+#rc.arWeekGames[local.itm].sSpread#</span>
+													#rc.arWeekGames[local.itm].sAwayTeam# <span class="badge">+#rc.arWeekGames[local.itm].nSpread#</span>
 												</button>
 											</cfif>
 										<cfelse>No Pick</cfif>
 									</td>
 									<!--- // handle writing the controls to make changes --->
-									<td class="change hidden"><button type="button" class="btn btn-sm home #sHomeClass#" data-id="#rc.arWeekGames[local.itm].nHomeTeamID#">#rc.arWeekGames[local.itm].sHomeTeam# <span class="badge">-#rc.arWeekGames[local.itm].sSpread#</span></button></td>
+									<td class="change hidden"><button type="button" class="btn btn-sm home #sHomeClass#" data-id="#rc.arWeekGames[local.itm].nHomeTeamID#">#rc.arWeekGames[local.itm].sHomeTeam# <span class="badge">-#rc.arWeekGames[local.itm].nSpread#</span></button></td>
 									<td class="change hidden" class="change"><button type="button" class="btn btn-sm #sAwayClass#" data-id="#rc.arWeekGames[local.itm].nAwayTeamID#">#rc.arWeekGames[local.itm].sAwayTeam#</button></td>
 								<cfelse>
 									<!--- // display the current pick --->
@@ -117,17 +117,17 @@
 											<!--- // if they picked the home team then add the "+" --->
 											<cfif compareNoCase(sPick, "home") eq 0>
 												<button class="home disabled<cfif bIsWinner> btn-success<cfelseif bWinnerCrowned> btn-danger</cfif>">
-													#rc.arWeekGames[local.itm].sHomeTeam# <span class="badge">+#rc.arWeekGames[local.itm].sSpread#</span>
+													#rc.arWeekGames[local.itm].sHomeTeam# <span class="badge">+#rc.arWeekGames[local.itm].nSpread#</span>
 												</button>
 											<cfelse>
 												<button class="disabled<cfif bIsWinner> btn-success<cfelseif bWinnerCrowned> btn-danger</cfif>">
-													#rc.arWeekGames[local.itm].sAwayTeam# <span class="badge">-#rc.arWeekGames[local.itm].sSpread#</span>
+													#rc.arWeekGames[local.itm].sAwayTeam# <span class="badge">-#rc.arWeekGames[local.itm].nSpread#</span>
 												</button>
 											</cfif>
 										<cfelse>No Pick</cfif>
 									</td>
 									<!--- // handle writing the controls to make changes --->
-									<td class="change hidden"><button type="button" class="btn btn-sm #sAwayClass#" data-id="#rc.arWeekGames[local.itm].nAwayTeamID#">#rc.arWeekGames[local.itm].sAwayTeam# <span class="badge">-#rc.arWeekGames[local.itm].sSpread#</span></button></td>
+									<td class="change hidden"><button type="button" class="btn btn-sm #sAwayClass#" data-id="#rc.arWeekGames[local.itm].nAwayTeamID#">#rc.arWeekGames[local.itm].sAwayTeam# <span class="badge">-#rc.arWeekGames[local.itm].nSpread#</span></button></td>
 									<td class="change hidden"><button class="btn btn-sm home #sHomeClass#" data-id="#rc.arWeekGames[local.itm].nHomeTeamID#">#rc.arWeekGames[local.itm].sHomeTeam#</button></td>
 								</cfif>
 								<td>#dateFormat(rc.arWeekGames[local.itm].sGameDateTime, "mm/dd/yyyy")#</td>

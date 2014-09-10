@@ -5,7 +5,7 @@ component entityname="game" persistent="true" table="game" output="false" {
 	property name="nHomeTeamID" fieldtype="column" ormtype="int";
 	property name="nAwayTeamID" fieldtype="column" ormtype="int";
 	property name="sSpreadOriginal" fieldtype="column" ormtype="string" length="5";
-	property name="sSpread" fieldtype="column" ormtype="string" length="5";
+	property name="nSpread" fieldtype="column" ormtype="int";
 	property name="sSpreadFavor" fieldtype="column" ormtype="string" length="10";
 	property name="nHomeScore" fieldtype="column" ormtype="int";
 	property name="nAwayScore" fieldtype="column" ormtype="int";

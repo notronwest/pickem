@@ -93,7 +93,7 @@ public Array function adminWeek( Required Numeric nWeekID, Boolean bSortByTiebre
 				"nAwayTeamID" = arGames[itm].getNAwayTeamID(),
 				"sAwayTeam" = oAwayTeam.getSName(),
 				"sAwayTeamURL" = oAwayTeam.getSURL(),
-				"sSpread" = arGames[itm].getSSpread(),
+				"nSpread" = arGames[itm].getNSpread(),
 				"sSpreadFavor" = arGames[itm].getSSpreadFavor(),
 				"nHomeScore" = (isNull(arGames[itm].getNHomeScore())) ? "" : arGames[itm].getNHomeScore(),
 				"nAwayScore" = (isNull(arGames[itm].getNAwayScore())) ? "" : arGames[itm].getNAwayScore(),
@@ -170,7 +170,7 @@ public Struct function getGameStructForWeek( Required Numeric nWeekID ){
 			"nHomeTeamID" = arGames[itm].getNHomeTeamID(),
 			"nAwayTeamID" = arGames[itm].getNAwayTeamID(),
 			"sSpreadFavor" = arGames[itm].getSSpreadFavor(),
-			"sSpread" = arGames[itm].getSSpread()
+			"nSpread" = arGames[itm].getNSpread()
 		});
 	}
 	return stGames;
@@ -190,14 +190,14 @@ Arguments:
 History:
 	2014-08-27 - RLW - Created
 */
-public Numeric function determineWinner( Required Numeric nHomeTeamID, Required Numeric nHomeScore, Required Numeric nAwayTeamID, Required Numeric nAwayScore, Required String sSpread, Required String sSpreadFavor ){
+public Numeric function determineWinner( Required Numeric nHomeTeamID, Required Numeric nHomeScore, Required Numeric nAwayTeamID, Required Numeric nAwayScore, Required String nSpread, Required String sSpreadFavor ){
 	var nWinner = 0;
 	try {
 		// determine the underdog and nFavorite
 		if( compareNoCase(arguments.sSpreadFavor, "home") eq 0 ){
 			nFavoriteScore = arguments.nHomeScore;
 			nUnderdogScore = arguments.nAwayScore;
-			if( nFavoriteScore > (nUnderdogScore + arguments.sSpread) ){
+			if( nFavoriteScore > (nUnderdogScore + arguments.nSpread) ){
 				nWinner = arguments.nHomeTeamID;
 			} else {
 				nWinner = arguments.nAwayTeamID;
@@ -205,7 +205,7 @@ public Numeric function determineWinner( Required Numeric nHomeTeamID, Required 
 		} else {
 			nFavoriteScore = arguments.nAwayScore;
 			nUnderdogScore = arguments.nHomeScore;
-			if( nFavoriteScore > (nUnderdogScore + arguments.sSpread) ){
+			if( nFavoriteScore > (nUnderdogScore + arguments.nSpread) ){
 				nWinner = arguments.nAwayTeamID;
 			} else {
 				nWinner = arguments.nHomeTeamID;

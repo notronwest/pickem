@@ -42,7 +42,7 @@ $(function(){
 			"sHomeTeamURL": "",
 			"sAwayTeam": "",
 			"sAwayTeamURL": "",
-			"sSpread": "",
+			"nSpread": "",
 			"sSpreadOriginal": "",
 			"sSpreadFavor": "",
 			"sTiebreak": "",
@@ -133,7 +133,7 @@ $(function(){
 				"nAwayTeamID": $(this).find(".away").data("id"),
 				"sAwayTeamURL": $(this).find(".away").data("url"),
 				"sSpreadOrignal": toDecimal($(this).find(".spread-orig").val()),
-				"sSpread": toDecimal($(this).find(".spread").val()),
+				"nSpread": toDecimal($(this).find(".spread").val()),
 				"sSpreadFavor": $(this).find(".spread-favor").val(),
 				"sGameDateTime": $(this).find(".date").val(),
 				"sTiebreak": $(this).find(".tiebreak").val()
@@ -187,8 +187,8 @@ function parseTeams(){
 				stGame.sSpreadFavor = "away";
 			}
 			// add spread
-			stGame.sSpread = $(sSpreadNode).text().replace("-", "");
-			stGame.sSpreadOriginal = stGame.sSpread;
+			stGame.nSpread = $(sSpreadNode).text().replace("-", "");
+			stGame.sSpreadOriginal = stGame.nSpread;
 			stGame.bShow = true;
 			stGame.sTiebreak = "";
 			arGames.push(stGame);
@@ -240,7 +240,7 @@ function addGame(stGame, oNode){
 		}
 		
 		$(oDupe).find(".date").val(stGame.sGameDateTime);
-		$(oDupe).find(".spread").val(stGame.sSpread);
+		$(oDupe).find(".spread").val(stGame.nSpread);
 		$(oDupe).find(".spread-orig").val(stGame.sSpreadOriginal);
 		$(oDupe).find(".spread-favor").val(stGame.sSpreadFavor);
 		$(oDupe).find(".tiebreak").val(stGame.sTiebreak);
