@@ -81,4 +81,28 @@ public void function sendInPicks( Required Struct stPicks, Required model.beans.
 	variables.commonService.sendEmail(request.sAdminEmail, "My picks for #arguments.oWeek.getSName()#", sMessage, arguments.stUser.sEmail);
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$deleteUserPicks
+Summary:
+	Deletes all of the picks for a user
+Returns:
+	Void
+Arguments:
+	Numeric nUserID
+History:
+	2014-09-10 - RLW - Created
+*/
+public void function deleteUserPicks( Required Numeric nUserID ){
+	// get all of the picks
+	var arPicks = variables.pickGateway.getByUser(arguments.nUserID);
+	var itm = 1;
+	for( itm; itm lte arrayLen(arPicks); itm++ ){
+		variables.pickGateway.delete(arPicks[itm]);
+	}
 }
+
+}
+

@@ -326,5 +326,23 @@ public model.beans.pick function getUserGame( Required Numeric nGameID, Required
 	return oGame;
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$getByUser
+Summary:
+	Retrieves all the pick for this user
+Returns:
+	Array arPicks
+Arguments:
+	Numeric nUserID
+History:
+	2014-09-10 - RLW - Created
+*/
+public Array function getByUser( Required Numeric nUserID){
+	var arPicks = ormExecuteQuery("from pick where nUserID = :nUserID", { "nUserID" = arguments.nUserID});
+	return arPicks;
+}
 
 }

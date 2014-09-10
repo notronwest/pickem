@@ -45,32 +45,12 @@ public void function calculateWinners( Required Numeric nWeekID, Required String
 		for( itm; itm lte arrayLen(arGames); itm++ ){
 			// make sure there are scores for this game
 			if( isNumeric(arGames[itm].nHomeScore) and isNumeric(arGames[itm].nAwayScore) ){
-				// determine the underdog and nFavorite
-				if( compareNoCase(arGames[itm].sSpreadFavor, "home") eq 0 ){
-					nFavoriteScore = arGames[itm].nHomeScore;
-					nUnderdogScore = arGames[itm].nAwayScore;
-					if( nFavoriteScore > (nUnderdogScore + arGames[itm].sSpread) ){
-						nWinner = arGames[itm].nHomeTeamID;
-					} else {
-						nWinner = arGames[itm].nAwayTeamID;
-					}
-				} else {
-					nFavoriteScore = arGames[itm].nAwayScore;
-					nUnderdogScore = arGames[itm].nHomeScore;
-					if( nFavoriteScore > (nUnderdogScore + arGames[itm].sSpread) ){
-						nWinner = arGames[itm].nAwayTeamID;
-					} else {
-						nWinner = arGames[itm].nHomeTeamID;
-					}
-				}
 				// build list of tiebreaks
 				if( arGames[itm].sTiebreak > 0 ){
 					lstTiebreakGameID = listAppend(lstTiebreakGameID, arGames[itm].nGameID);
 				}
 				// store the winning games for use later
-				structInsert(stGames, arGames[itm].nGameID, nWinner);
-				// store the wins by game
-				variables.gameGateway.saveWinner(arGames[itm].nGameID, nWinner);
+				structInsert(stGames, arGames[itm].nGameID, arGames[itm].nWinner);
 			}
 		}
 		//writeOutput(lstTiebreakGameID);
@@ -163,6 +143,29 @@ public void function setPlaceWeek( Required Numeric nWeekID ){
 		variables.standingGateway.savePlace(arStandings[itm].getNStandingID(), curPlace);
 		curWins = arStandings[itm].getNWins();
 		curTiebreak = arStandings[itm].getNTiebreaks();
+	}
+}
+
+/*
+Author: 	
+	Ron West
+Name:
+	$deleteUserStandings
+Summary:
+	Deletes the standings for a user
+Returns:
+	Void
+Arguments:
+	Numeric nUserID
+History:
+	2014-09-10 - RLW - Created
+*/
+public void function deleteUserStandings( Required Numeric nUserID ){
+	// get the standings
+	var arStandings = variables.standingGateway.getByUser(arguments.nUserID);
+	var itm = 1;
+	for(itm; itm lte arrayLen(arStandings); itm++ ){
+		variables.standingGateway.delete(arStandings[itm]);
 	}
 }
 	

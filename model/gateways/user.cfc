@@ -1,5 +1,8 @@
 component accessors="true" extends="model.base" {
 
+property name="pickService";
+property name="standingService";
+
 /*
 Author: 	
 	Ron West
@@ -155,7 +158,12 @@ History:
 public Boolean function delete( Required model.beans.user oUser){
 	var bDeleted = true;
 	try{
+		// delete picks
+		variables.pickService.deleteUserPicks(arguments.oUser.getNUserID());
+		// delete standings
+		variables.standingService.deleteUserStandings(arguments.oUser.getNUserID());
 		entityDelete(arguments.oUser);
+
 		ormFlush();
 	} catch (any e){
 		registerError("Error deleting user bean", e);

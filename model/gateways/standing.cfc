@@ -201,4 +201,23 @@ public Array function getWeek( Required Numeric nWeekID ){
 	return arStandings;
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$getByUser
+Summary:
+	Gets standing for the given user
+Returns:
+	Array arStandings
+Arguments:
+	Numeric nUserID
+History:
+	2014-09-10 - RLW - Created
+*/
+public Array function getByUser( Required Numeric nUserID ){
+	var arStandings = ormExecuteQuery( "from standing where nUserID = :nUserID", { "nUserID" = arguments.nUserID} );
+	return arStandings;
+}
+
 }

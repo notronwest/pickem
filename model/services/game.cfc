@@ -176,4 +176,45 @@ public Struct function getGameStructForWeek( Required Numeric nWeekID ){
 	return stGames;
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$getGameStructByWeek
+Summary:
+	Creates a structure of games indexed by game ID
+Returns:
+	Struct stGames
+Arguments:
+	Numeric nWeekID
+History:
+	2014-08-27 - RLW - Created
+*/
+public Numeric function determineWinner( Required Numeric nHomeTeamID, Required Numeric nHomeScore, Required Numeric nAwayTeamID, Required Numeric nAwayScore, Required String sSpread, Required String sSpreadFavor ){
+	var nWinner = 0;
+	try {
+		// determine the underdog and nFavorite
+		if( compareNoCase(arguments.sSpreadFavor, "home") eq 0 ){
+			nFavoriteScore = arguments.nHomeScore;
+			nUnderdogScore = arguments.nAwayScore;
+			if( nFavoriteScore > (nUnderdogScore + arguments.sSpread) ){
+				nWinner = arguments.nHomeTeamID;
+			} else {
+				nWinner = arguments.nAwayTeamID;
+			}
+		} else {
+			nFavoriteScore = arguments.nAwayScore;
+			nUnderdogScore = arguments.nHomeScore;
+			if( nFavoriteScore > (nUnderdogScore + arguments.sSpread) ){
+				nWinner = arguments.nAwayTeamID;
+			} else {
+				nWinner = arguments.nHomeTeamID;
+			}
+		}
+	} catch( any e ){
+		registerError("Error determinig winner", e);
+	}
+	return nWinner;
+}
+
 }

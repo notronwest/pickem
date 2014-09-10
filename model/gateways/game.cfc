@@ -1,5 +1,7 @@
 component accessors="true" extends="model.base" {
 
+property name="gameService";
+
 /*
 Author: 	
 	Ron West
@@ -252,6 +254,15 @@ public Boolean function saveScores( Required Array arGames ){
 			oGame = get(arguments.arGames[itm].nGameID);
 			oGame.setNHomeScore(arguments.arGames[itm].nHomeScore);
 			oGame.setNAwayScore(arguments.arGames[itm].nAwayScore);
+			// cacluate the winner
+			oGame.setNWinner(variables.gameService.determineWinner(
+				oGame.getNHomeTeamID(),
+				oGame.getNHomeScore(),
+				oGame.getNAwayTeamID(),
+				oGame.getNAwayScore(),
+				oGame.getSSpread(),
+				oGame.getSSpreadFavor()
+			));
 			save(oGame);
 		}
 	} catch (any e){
