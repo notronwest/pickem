@@ -130,11 +130,15 @@ History:
 */
 public void function getGameScores(rc){
 	param name="rc.bProcess" default="false";
-	// send week games to service to get games scores
-	if( rc.bProcess ){
-		rc.arGameScores = variables.gameService.getGameScores(rc.arWeekGames);
+	try{
+		// send week games to service to get games scores
+		if( rc.bProcess ){
+			rc.arGameScores = variables.gameService.getGameScores(rc.arWeekGames);
+		}
+		// update the standings
+		variables.standingGateway.updateStandings(rc.nWeekID, rc.sSeason);
+	} catch (any e){
+		registerError("Error trying to get the game scores", e);
 	}
-	// update the standings
-	variables.standingGateway.updateStandings(rc.nWeekID, rc.sSeason);
 }
 }

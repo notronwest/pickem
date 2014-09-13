@@ -106,4 +106,29 @@ public Query function runQuery( Required String sSQL ){
 	return qryResults;
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$runStoredProc
+Summary:
+	Runs a stored procedure
+Returns:
+	Query qryResults
+Arguments:
+	String sStoredProc
+	Array arParams
+History:
+	2014-09-13 - RLW - Created
+*/
+public void function runStoredProc( Required String sStoredProc, Array arParams = [] ){
+	request.sStoredProc = arguments.sStoredProc;
+	request.arParams = arguments.arParams;
+	try{
+		include "storedProc.cfm";
+	} catch(any e){
+		registerError("Error running stored procedure: #arguments.sStoredProc#", e);
+	}
+}
+
 }

@@ -236,7 +236,7 @@ History:
 	2014-09-11 - RLW - Created
 */
 public void function updateStandings( Required Numeric nWeekID, Required String sSeason){
-	variables.dbService.runQuery("CALL updateStandings(#arguments.nWeekID#, '#arguments.sSeason#')");
+	variables.dbService.runStoredProc("updateStandings", [arguments.nWeekID, arguments.sSeason]);
 }
 
 }

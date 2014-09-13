@@ -27,8 +27,6 @@
 <cfdump var="#getMail#"> --->
 <cfscript>
 	//stPicks = { 159 = 83, 160 = 81, 161 = 106 };
-	o = getBeanFactory().getBean("gameService");
-	//o.sendInPicks(stPicks, 12, rc.stUser);
-	arGames = [ { "nAwayTeamID" = 118, "nAwayScore" = "", "nHomeScore" = "" }];
-	writeDump(o.getGameScores(arGames));
+	o = getBeanFactory().getBean("dbService");
+	writeDump(o.runStoredProc("updateStandings", {"nInWeekID" = 23, "sInSeason" = "2014-2015"}));
 </cfscript>
