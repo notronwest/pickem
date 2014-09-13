@@ -40,7 +40,7 @@
 					<!--- // <td></td> --->
 					<td>#local.sPlace#</td>
 					<!--- // loop through the week wins for this user --->
-					<cfloop from="#arrayLen(local.arWeeks)#" to="1" step="-1" index="local.x">
+					<cfloop from="1" to="#arrayLen(local.arWeeks)#" index="local.x">
 						<cfset local.nWeekID = local.arWeeks[local.x]>
 						<td<cfif structKeyExists(rc.stWeekWinners[local.nWeekID], local.nUserID)> class="highlight"</cfif>>#local.stUserWins[local.nWeekID]#</td>
 					</cfloop>
