@@ -129,9 +129,13 @@ History:
 	2014-09-12 - RLW - Created
 */
 public void function getGameScores(rc){
+	param name="rc.bProcess" default="false";
 	// send week games to service to get games scores
-	rc.arGameScores = variables.gameService.getGameScores(rc.arWeekGames);
+	if( rc.bProcess ){
+		rc.arGameScores = variables.gameService.getGameScores(rc.arWeekGames);
+	}
 	// update the standings
-	variables.standingGateway.updateStandings(rc.nWeekID, rc.sSeason);	
+	variables.standingGateway.updateStandings(rc.nWeekID, rc.sSeason);
+	rc.todaysDate = variables.dbService.dbDateTimeFormat();	
 }
 }

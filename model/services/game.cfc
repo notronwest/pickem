@@ -102,7 +102,7 @@ public Array function adminWeek( Required Numeric nWeekID, Boolean bSortByTiebre
 				"sGameDateTime" = arGames[itm].getSGameDateTime(),
 				"nWinner" = (isNull(arGames[itm].getNWinner())) ? 0 : arGames[itm].getNWinner(),
 				"nOrder" = arGames[itm].getNOrder(),
-				"sGameStatus" = arGames[itm].getSGameStatus(),
+				"sGameStatus" = (isNull(arGames[itm].getSGameStatus()))? "" : arGames[itm].getSGameStatus(),
 				"bGameIsFinal" = (isNull(arGames[itm].getBGameIsFinal())) ? 0 : arGames[itm].getBGameIsFinal()
 			};
 			// reset the array with the new structure
@@ -212,8 +212,8 @@ public Array function getGameScores( Required Array arGames){
 	// loop through the games and get the score
 	try{
 		for( itm; itm lte arrayLen(arGames); itm++ ){
-			// if we don't have a winner yet
-			if( !isNumeric(arguments.arGames[itm].bGameIsFinal) or arguments.arGames[itm].bGameIsFinal eq 0 ){
+			// if this game is today and we don't have a winner yet
+			if( (!isNumeric(arguments.arGames[itm].bGameIsFinal) or arguments.arGames[itm].bGameIsFinal eq 0) and arguments.arGames[itm].sGameDateTime lte variables.dbService.dbDateTimeFormat() ){
 				// get the away team name
 				oTeam = variables.teamGateway.get(arGames[itm].nAwayTeamID);
 				// if we have a valid team name

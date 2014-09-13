@@ -80,7 +80,7 @@
 									sPick = "away";
 								}
 								// determine if this pick was a winner
-								if ( structKeyExists(rc.stUserWeek.stPicks, rc.arWeekGames[local.itm].nGameID) and structKeyExists(rc.arWeekGames[local.itm], "nWinner")){
+								if ( rc.arWeekGames[local.itm].bGameIsFinal ){
 									// we have a winner
 									bWinnerCrowned = true;
 									if( not isNull(rc.arWeekGames[local.itm].nWinner) and rc.arWeekGames[local.itm].nWinner eq rc.stUserWeek.stPicks[rc.arWeekGames[local.itm].nGameID]){
