@@ -54,4 +54,84 @@ public String function dateTimeFormat( String dtToFormat = now() ){
 	return dtFormatted;
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$getURL
+Summary:
+	Acts a wrapper for cfhttp so you can call from within a script tag
+Returns:
+	Struct stResult
+Arguments:
+	String sURL
+	String sUsername
+	String sPassword
+History:
+	2014-09-12 - RLW - Created
+*/
+public Struct function getURL( Required String sURL, Numeric nTimeout=5, Struct stParams={}, String sUsername = "api", String sPassword = "api" ){
+	var sResults = "";
+	var stResult = { "statusCode" = 404, "fileContent" = "" };
+	var httpService = new http();
+	var sKey = "";
+	try{
+		// check to see if the URL has protocol
+		if( !findNoCase("http://", arguments.sURL) or !findNoCase("https://", arguments.sURL) ){
+			if( compareNoCase(left(arguments.sURL, 1), "/") eq 0 ){
+				arguments.sURL = request.sSiteURL & right(arguments.sURL, len(arguments.sURL - 1));
+			}
+			
+		}
+		httpService.setUrl(arguments.sURL);
+	    httpService.setTimeOut(arguments.nTimeout);
+		// set username and password
+	    httpService.setAttributes(username = arguments.sUsername);
+	    httpService.setAttributes(password = arguments.sPassword);
+	   	/* add additional params */
+	   	for(sKey in arguments.stParams){
+	   		httpService.addParam(type = "url",name = sKey,value = arguments.stParams[sKey]);
+	   	}
+	   	// add user agent
+	   	httpService.addParam(type="header", name="user-agent", value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.44 Safari/537.36");
+	    /* make the http call to the URL using send() */
+	    stResult = httpService.send().getPrefix();
+	} catch ( any e ){
+		// TODO Error logging
+		writeDump(e);
+	}
+	return stResult;
+}
+
+/*
+Author: 	
+	Ron West
+Name:
+	$parseToFindString
+Summary:
+	Parses a set string to extract content
+Returns:
+	String sResult
+Arguments:
+	String sContent
+	String sBegin
+	String sEnd
+History:
+	2014-09-12 - RLW - Created
+*/
+public String function parseToFindString( Required String sContent, Required String sBegin, Required String sEnd){
+	var nStart = 0;
+	var nEnd = 0;
+	var sResult = "";
+	nStart = findNoCase(arguments.sBegin, arguments.sContent);
+	if( nStart gt 0 ){
+		nStart = nStart + len(arguments.sBegin);
+		nEnd = findNoCase(arguments.sEnd, arguments.sContent, nStart);
+		if( nEnd gt 0){
+			sResult = mid(arguments.sContent, nStart, nEnd - nStart);
+		}
+	}
+	return sResult;
+}
+
 }

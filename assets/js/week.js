@@ -45,7 +45,7 @@ $(function(){
 			"nSpread": "",
 			"sSpreadOriginal": "",
 			"sSpreadFavor": "",
-			"sTiebreak": "",
+			"nTiebreak": "",
 			"sGameDateTime": "",
 			"bIsNew": true
 		};
@@ -136,7 +136,7 @@ $(function(){
 				"nSpread": toDecimal($(this).find(".spread").val()),
 				"sSpreadFavor": $(this).find(".spread-favor").val(),
 				"sGameDateTime": $(this).find(".date").val(),
-				"sTiebreak": $(this).find(".tiebreak").val()
+				"nTiebreak": $(this).find(".tiebreak").val()
 			};
 			arGames.push(stGame);
 		});
@@ -190,7 +190,7 @@ function parseTeams(){
 			stGame.nSpread = $(sSpreadNode).text().replace("-", "");
 			stGame.sSpreadOriginal = stGame.nSpread;
 			stGame.bShow = true;
-			stGame.sTiebreak = "";
+			stGame.nTiebreak = "";
 			arGames.push(stGame);
 		});
 	});
@@ -243,7 +243,7 @@ function addGame(stGame, oNode){
 		$(oDupe).find(".spread").val(stGame.nSpread);
 		$(oDupe).find(".spread-orig").val(stGame.sSpreadOriginal);
 		$(oDupe).find(".spread-favor").val(stGame.sSpreadFavor);
-		$(oDupe).find(".tiebreak").val(stGame.sTiebreak);
+		$(oDupe).find(".tiebreak").val(stGame.nTiebreak);
 	}
 }
 // retrieve available games for this week

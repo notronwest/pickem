@@ -46,7 +46,7 @@ public model.beans.standing function update( Required model.beans.standing oStan
 	arguments.oStanding.setNWins(arguments.stStanding.nWins);
 	arguments.oStanding.setNLosses(arguments.stStanding.nLosses);
 	arguments.oStanding.setNUserID(arguments.stStanding.nUserID);
-	arguments.oStanding.setNTiebreaks(arguments.stStanding.nTiebreaks);
+	//arguments.oStanding.setNTiebreaks(arguments.stStanding.nTiebreaks);
 	arguments.oStanding.setSSeason(arguments.stStanding.sSeason);
 	arguments.oStanding = save(oStanding);
 	return arguments.oStanding;
@@ -197,7 +197,7 @@ History:
 	2012-09-12 - RLW - Created
 */
 public Array function getWeek( Required Numeric nWeekID ){
-	var arStandings = ormExecuteQuery( "from standing where nWeekID = :nWeekID order by nWins desc, nTiebreaks desc", { nWeekID = "#arguments.nWeekID#" } );
+	var arStandings = ormExecuteQuery( "from standing where nWeekID = :nWeekID order by nWins desc, nHighestTiebreak desc", { nWeekID = "#arguments.nWeekID#" } );
 	return arStandings;
 }
 
@@ -218,6 +218,25 @@ History:
 public Array function getByUser( Required Numeric nUserID ){
 	var arStandings = ormExecuteQuery( "from standing where nUserID = :nUserID", { "nUserID" = arguments.nUserID} );
 	return arStandings;
+}
+
+/*
+Author: 	
+	Ron West
+Name:
+	$updateStandings
+Summary:
+	Updates the standings for the week
+Returns:
+	void
+Arguments:
+	Numeric nWeekID
+	String sSeason
+History:
+	2014-09-11 - RLW - Created
+*/
+public void function updateStandings( Required Numeric nWeekID, Required String sSeason){
+	variables.dbService.runQuery("CALL updateStandings(#arguments.nWeekID#, '#arguments.sSeason#')");
 }
 
 }

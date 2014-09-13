@@ -8,6 +8,7 @@
 			request.sAdminEmail = "ron@inquisibee.com";
 			request.bIsDevelopment = true;
 			request.sSiteURL = 'http://pickem.local/';
+			request.dsn = "pickem";
 			break;
 		// production
 		case "pickem.inquisibee.com":
@@ -18,6 +19,7 @@
 			request.sAdminEmail = "pickem@inquisibee.com";
 			request.bIsDevelopment = false;
 			request.sSiteURL = 'http://pickem.inquisibee.com/';
+			request.dsn = "pickem";
 			break;
 			
 	}

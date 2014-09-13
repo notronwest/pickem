@@ -53,8 +53,15 @@ public void function home(rc){
 }
 
 public void function calculate(rc){
-	variables.standingService.calculateWinners(rc.nWeekID, rc.sSeason);
-	rc.sMessage = "Winners calculated";
+	param name="rc.nWeekID" default="0";
+	if( rc.nWeekID neq 0 ){
+		// calculate winners for this week
+		variables.standingGateway.updateStandings(rc.nWeekID, rc.sSeason);
+		rc.sMessage = "Winners calculated";
+	} else {
+		rc.sMessage = "Error: Please provide a valid week parameter";
+	}
+	
 	variables.framework.setView("main.message");
 }
 }

@@ -52,7 +52,7 @@ public model.beans.game function update( Required model.beans.game oGame, Requir
 		arguments.oGame.setSSpreadFavor(arguments.stGame.sSpreadFavor);
 		arguments.oGame.setSSpreadOriginal(arguments.stGame.sSpreadOrignal);
 		arguments.oGame.setSGameDateTime(arguments.stGame.sGameDateTime);
-		arguments.oGame.setSTiebreak(arguments.stGame.sTiebreak);
+		arguments.oGame.setNTiebreak(arguments.stGame.nTiebreak);
 		arguments.oGame.setNOrder(arguments.stGame.nOrder);
 		save(arguments.oGame);
 	} catch (any e){
@@ -220,7 +220,7 @@ Arguments:
 History:
 	2012-09-12 - RLW - Created
 */
-public array function getByWeekSort( Required Numeric nWeekID, String sSort = "sTiebreak" ){
+public array function getByWeekSort( Required Numeric nWeekID, String sSort = "nTiebreak" ){
 	var arGames = [];
 	try{
 		arGames = ormExecuteQuery( "from game where nWeekID = :nWeekID order by #arguments.sSort#", { nWeekID = "#arguments.nWeekID#" });
@@ -254,15 +254,12 @@ public Boolean function saveScores( Required Array arGames ){
 			oGame = get(arguments.arGames[itm].nGameID);
 			oGame.setNHomeScore(arguments.arGames[itm].nHomeScore);
 			oGame.setNAwayScore(arguments.arGames[itm].nAwayScore);
-			// cacluate the winner
-			oGame.setNWinner(variables.gameService.determineWinner(
-				oGame.getNHomeTeamID(),
-				oGame.getNHomeScore(),
-				oGame.getNAwayTeamID(),
-				oGame.getNAwayScore(),
-				oGame.getNSpread(),
-				oGame.getSSpreadFavor()
-			));
+			if( structKeyExists(arguments.arGames[itm], "sGameStatus") ){
+				oGame.setSGameStatus(arguments.arGames[itm].sGameStatus);
+			}
+			if( structKeyExists(arguments.arGames[itm], "bGameIsFinal") ){
+				oGame.setBGameIsFinal(arguments.arGames[itm].bGameIsFinal);
+			}
 			save(oGame);
 		}
 	} catch (any e){
@@ -298,5 +295,24 @@ public model.beans.game function getByGameID( Required Numeric nGameID ){
 		registerError("Error in getting game by gameid", e);
 	}
 	return oGame;
+}
+
+/*
+Author: 	
+	Ron West
+Name:
+	$updateWinners
+Summary:
+	Updates games setting the winning team
+Returns:
+	void
+Arguments:
+	Numeric nWeekID
+History:
+	2014-09-10 - RLW - Created
+*/
+public void function updateWinners( Required Numeric nWeekID ){
+	variables.dbService.runQuery("update game g1 join game g2 ON g1.nGameID = g2.nGameID
+set g1.nWinner = calculateWinner(g2.nHomeTeamID,g2.nHomeScore,g2.nAwayTeamID,g2.nAwayScore,g2.nSpread,g2.sSpreadFavor)");
 }
 }

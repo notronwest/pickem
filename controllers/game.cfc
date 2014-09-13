@@ -4,7 +4,7 @@ property name="gameGateway";
 property name="gameService";
 property name="teamService";
 property name="weekGateway";
-property name="standingService";
+property name="standingGateway";
 
 public void function before (rc){
 	param name="rc.nWeekID" default="0";
@@ -103,7 +103,7 @@ public void function saveScores(rc){
 		bSaved = variables.gameGateway.saveScores(rc.arGames);
 		if( bSaved){
 			// calculate winners for this week
-			variables.standingService.calculateWinners(rc.nWeekID, rc.sSeason);
+			variables.standingGateway.updateStandings(rc.nWeekID, rc.sSeason);
 			rc.sMessage = "Scores saved";
 		} else {
 			rc.sMessage = "Error saving scores.  Please try again";
@@ -112,5 +112,26 @@ public void function saveScores(rc){
 	} catch (any e){
 		registerError("Error saving scores", e);
 	}
+}
+
+/*
+Author: 	
+	Ron West
+Name:
+	$getGameScores
+Summary:
+	Gets the scores for this weeks games
+Returns:
+	Void
+Arguments:
+	Void
+History:
+	2014-09-12 - RLW - Created
+*/
+public void function getGameScores(rc){
+	// send week games to service to get games scores
+	rc.arGameScores = variables.gameService.getGameScores(rc.arWeekGames);
+	// update the standings
+	variables.standingGateway.updateStandings(rc.nWeekID, rc.sSeason);	
 }
 }

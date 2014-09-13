@@ -73,4 +73,37 @@ public String function dbDayEnd( String dtDate = now() ){
 	return dbDateFormat(createDateTime(year(arguments.dtDate), month(arguments.dtDate), day(arguments.dtDate), "23", "59", "59" ));
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$runQuery
+Summary:
+	Runs the specified query
+Returns:
+	Query qryResults
+Arguments:
+	String sSQL
+History:
+	2014-09-10 - RLW - Created
+*/
+public Query function runQuery( Required String sSQL ){
+	var oQueryService = new query();
+	var oQueryResults = "";
+	var qryResults = queryNew("");
+	try{
+		oQueryService.setDatasource(request.dsn);
+		oQueryService.setName("qryResult");
+		oQueryResults = oQueryService.execute(sql=arguments.sSQL);
+		qryResults = oQueryResults.getResult();
+		// if there are no results
+		if( isNull(qryResults) ){
+			qryResults = queryNew("");
+		}
+	} catch (any e){
+		registerError("Error running query: #arguments.sSQL#", e);
+	}
+	return qryResults;
+}
+
 }

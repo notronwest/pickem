@@ -9,10 +9,12 @@ component entityname="game" persistent="true" table="game" output="false" {
 	property name="sSpreadFavor" fieldtype="column" ormtype="string" length="10";
 	property name="nHomeScore" fieldtype="column" ormtype="int";
 	property name="nAwayScore" fieldtype="column" ormtype="int";
-	property name="sTiebreak" fieldtype="column" ormtype="string" length="2" dbDefault="0";
+	property name="nTiebreak" fieldtype="column" ormtype="string" length="2" dbDefault="0";
 	property name="sGameDateTime" fieldtype="column" ormtype="String" length="19";
 	property name="nWinner" fieldtype="column" ormtype="int" length="1";
 	property name="nOrder" fieldtype="column" ormtype="int" length="1";
+	property name="bGameIsFinal" fieldtype="column" ormtype="int" length="1" dbDefault="0";
+	property name="sGameStatus" fieldtype="column" ormtype="String" length="100";
 	/**
 	* @output false
 	*/

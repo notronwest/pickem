@@ -77,7 +77,7 @@ public Array function adminWeek( Required Numeric nWeekID, Boolean bSortByTiebre
 		var oAwayTeam = "";
 		var stGame = {};
 		if( arguments.bSortByTiebreak ){
-			arGames = variables.gameGateway.getByWeekSort(arguments.nWeekID, "abs(nOrder),abs(sTiebreak)");
+			arGames = variables.gameGateway.getByWeekSort(arguments.nWeekID, "abs(nOrder),abs(nTiebreak)");
 		} else {
 			arGames = variables.gameGateway.getByWeek(arguments.nWeekID);
 		}
@@ -97,11 +97,13 @@ public Array function adminWeek( Required Numeric nWeekID, Boolean bSortByTiebre
 				"sSpreadFavor" = arGames[itm].getSSpreadFavor(),
 				"nHomeScore" = (isNull(arGames[itm].getNHomeScore())) ? "" : arGames[itm].getNHomeScore(),
 				"nAwayScore" = (isNull(arGames[itm].getNAwayScore())) ? "" : arGames[itm].getNAwayScore(),
-				"sTiebreak" = arGames[itm].getSTiebreak(),
+				"nTiebreak" = arGames[itm].getNTiebreak(),
 				"sSpreadOriginal" = arGames[itm].getSSpreadOriginal(),
 				"sGameDateTime" = arGames[itm].getSGameDateTime(),
-				"nWinner" = arGames[itm].getNWinner(),
-				"nOrder" = arGames[itm].getNOrder()
+				"nWinner" = (isNull(arGames[itm].getNWinner())) ? 0 : arGames[itm].getNWinner(),
+				"nOrder" = arGames[itm].getNOrder(),
+				"sGameStatus" = arGames[itm].getSGameStatus(),
+				"bGameIsFinal" = (isNull(arGames[itm].getBGameIsFinal())) ? 0 : arGames[itm].getBGameIsFinal()
 			};
 			// reset the array with the new structure
 			arGames[itm] = stGame;
@@ -180,41 +182,92 @@ public Struct function getGameStructForWeek( Required Numeric nWeekID ){
 Author: 	
 	Ron West
 Name:
-	$getGameStructByWeek
+	$getGameScores
 Summary:
-	Creates a structure of games indexed by game ID
+	Based on the games sent it - goes and gets the scores
 Returns:
-	Struct stGames
+	Array arScores
 Arguments:
-	Numeric nWeekID
+	Array arGames
 History:
-	2014-08-27 - RLW - Created
+	2014-09-12 - RLW - Created
 */
-public Numeric function determineWinner( Required Numeric nHomeTeamID, Required Numeric nHomeScore, Required Numeric nAwayTeamID, Required Numeric nAwayScore, Required String nSpread, Required String sSpreadFavor ){
-	var nWinner = 0;
-	try {
-		// determine the underdog and nFavorite
-		if( compareNoCase(arguments.sSpreadFavor, "home") eq 0 ){
-			nFavoriteScore = arguments.nHomeScore;
-			nUnderdogScore = arguments.nAwayScore;
-			if( nFavoriteScore > (nUnderdogScore + arguments.nSpread) ){
-				nWinner = arguments.nHomeTeamID;
-			} else {
-				nWinner = arguments.nAwayTeamID;
-			}
-		} else {
-			nFavoriteScore = arguments.nAwayScore;
-			nUnderdogScore = arguments.nHomeScore;
-			if( nFavoriteScore > (nUnderdogScore + arguments.nSpread) ){
-				nWinner = arguments.nAwayTeamID;
-			} else {
-				nWinner = arguments.nHomeTeamID;
+public Array function getGameScores( Required Array arGames){
+	var itm = 1;
+	var oTeam = "";
+	var stURLResults = {};
+	var sPageContent = "";
+	var arScores = [];
+	var sScoreBoxBegin = "akp_target";
+	var sScoreBoxEnd = "_Xg vk_gy";
+	var sGameStatusBegin = '<span class="vk_gy">';
+	var sGameStatusEnd = '</span>';
+	var sGameStatus = "";
+	var sScoreBegin = '<div class="_UMb"><div class="vk_txt">&nbsp;</div><div>';
+	var sScoreEnd = "</div>";
+	var sScore = "";
+	var nStart = 0;
+	var nEnd = 0;
+	var sScoreBox = "";
+	// loop through the games and get the score
+	try{
+		for( itm; itm lte arrayLen(arGames); itm++ ){
+			// if we don't have a winner yet
+			if( !isNumeric(arguments.arGames[itm].bGameIsFinal) or arguments.arGames[itm].bGameIsFinal eq 0 ){
+				// get the away team name
+				oTeam = variables.teamGateway.get(arGames[itm].nAwayTeamID);
+				// if we have a valid team name
+				if( len(oTeam.getSName()) gt 0 ){
+					// get the page from Google
+					stURLResults = variables.commonService.getURL("https://www.google.com/search?q=#oTeam.getSName()#&oq=pitts&aqs=chrome.0.69i59j69i57j0l4.1622j0j9&sourceid=chrome&es_sm=119&ie=UTF-8");
+					// if we have a valid document
+					if( findNoCase("200",stURLResults.statusCode) ){
+						// get the score box
+						sScoreBox = variables.commonService.parseToFindString(stURLResults.fileContent.toString(), sScoreBoxBegin, sScoreBoxEnd);
+						// if we have a score box to work with
+						if( len(sScoreBox) gt 0 ){
+							// get the status of the game
+							sGameStatus = variables.commonService.parseToFindString(sScoreBox, sGameStatusBegin, sGameStatusEnd);
+							// if there was a status for the game
+							if( len(sGameStatus) gt 0 ){
+								arGames[itm].sGameStatus = sGameStatus;
+								// if the game is final then set it to final
+								if( compareNoCase(sGameStatus, "Final") eq 0 ){
+									arGames[itm].bGameIsFinal = 1;
+								}
+								// get the score
+								sScore = variables.commonService.parseToFindString(sScoreBox, sScoreBegin, sScoreEnd);
+								// if there was a score here
+								if( len(sScore) gt 0 ){
+									// set away score
+									arGames[itm].nAwayScore = trim(listFirst(sScore, "-"));
+									// set home score
+									arGames[itm].nHomeScore = trim(listLast(sScore, "-"));
+									// save the game
+									variables.gameGateway.saveScores([arGames[itm]]);
+								} else {
+									// there was no score even though the game was final
+									structInsert(arGames[itm], "sMessage", "No Score Found - even though we should have");
+								}
+							} else {
+								// could not find the game status
+								structInsert(arGames[itm], "sMessage", "No Game Status");
+							}
+						} else {
+							// could not find the game data
+							structInsert(arGames[itm], "sMessage", "No Game Data");
+						}
+					} else {
+						throw( message="google did not like your query");
+					}
+				}
 			}
 		}
-	} catch( any e ){
-		registerError("Error determinig winner", e);
+	} catch (any e){
+		registerError("Error retrieving game data for team: ", e);
+		// need to do e-mail or something
 	}
-	return nWinner;
+	return arGames;
 }
 
 }
