@@ -28,7 +28,7 @@
 					}
 					local.stUserWins = rc.stWeekWins[local.nUserID];
 					if( listLen(structKeyList(local.stUserWins)) gt 0 ){
-						local.arWeeks = listToArray(structKeyList(local.stUserWins));	
+						local.arWeeks = listToArray(listSort(structKeyList(local.stUserWins), "numeric", "asc"));
 					} else {
 						local.arWeeks = [];
 					}
@@ -40,7 +40,7 @@
 					<!--- // <td></td> --->
 					<td>#local.sPlace#</td>
 					<cfif arrayLen(local.arWeeks) lte arrayLen(rc.arWeeks)>
-						<cfloop from="1" to="#(arrayLen(rc.arWeeks) - arrayLen(local.arWeeks))#" index="itm"><td>0</td></cfloop>
+						<cfloop from="1" to="#(arrayLen(rc.arWeeks) - arrayLen(local.arWeeks))#" index="local.z"><td>0</td></cfloop>
 					</cfif>
 					<!--- // loop through the week wins for this user --->
 					<cfloop from="#arrayLen(local.arWeeks)#" to="1" step="-1" index="local.y">
