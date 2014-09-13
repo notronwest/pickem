@@ -136,6 +136,5 @@ public void function getGameScores(rc){
 	}
 	// update the standings
 	variables.standingGateway.updateStandings(rc.nWeekID, rc.sSeason);
-	rc.todaysDate = variables.dbService.dbDateTimeFormat();	
 }
 }

@@ -1,4 +1,4 @@
-<cfoutput>#rc.todaysDate#
+<cfoutput>
 <div class="panel panel-default" data-id="#rc.oWeek.getNWeekID()#">
 	<div class="panel-heading">
 		<h2>Current Scores</h2>
