@@ -134,9 +134,9 @@
 								<cfif rc.bShowScores><td>
 									<!--- // show the picks score first --->
 									<cfif structKeyExists(rc.stUserWeek.stPicks, rc.arWeekGames[local.itm].nGameID) and rc.stUserWeek.stPicks[rc.arWeekGames[local.itm].nGameID] eq rc.arWeekGames[local.itm].nHomeTeamID>
-										#rc.arWeekGames[local.itm].nHomeScore# - #rc.arWeekGames[local.itm].nAwayScore#
+										#rc.arWeekGames[local.itm].nHomeScore# - #rc.arWeekGames[local.itm].nAwayScore# (#rc.arWeekGames[local.itm].sGameStatus#)
 									<cfelse>
-										#rc.arWeekGames[local.itm].nAwayScore# - #rc.arWeekGames[local.itm].nHomeScore#
+										#rc.arWeekGames[local.itm].nAwayScore# - #rc.arWeekGames[local.itm].nHomeScore# (#rc.arWeekGames[local.itm].sGameStatus#)
 									</cfif>
 								</td></cfif>
 							</tr>
