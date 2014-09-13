@@ -12,7 +12,7 @@
 			<!--- // <th>Losses</th> --->
 			<th>Rank</th>
 			<!--- // loop through the weeks --->
-			<cfloop from="1" to="#arrayLen(rc.arWeeks)#" index="itm">
+			<cfloop from="#arrayLen(rc.arWeeks)#" to="1" step="-1" index="itm">
 				<th data-week-id="#rc.arWeeks[itm].getNWeekID()#">Week ###itm#</th>
 			</cfloop>
 		</thead>
@@ -43,8 +43,8 @@
 						<cfloop from="1" to="#(arrayLen(rc.arWeeks) - arrayLen(local.arWeeks))#" index="itm"><td>0</td></cfloop>
 					</cfif>
 					<!--- // loop through the week wins for this user --->
-					<cfloop from="#arrayLen(local.arWeeks)#" to="1" step="-1" index="local.x">
-						<cfset local.nWeekID = local.arWeeks[local.x]>
+					<cfloop from="#arrayLen(local.arWeeks)#" to="1" step="-1" index="local.y">
+						<cfset local.nWeekID = local.arWeeks[local.y]>
 						<td<cfif structKeyExists(rc.stWeekWinners[local.nWeekID], local.nUserID)> class="highlight"</cfif>>#local.stUserWins[local.nWeekID]#</td>
 					</cfloop>
 					<cfset local.sCurrentWins = rc.stSeasonWins[local.nUserID]>
