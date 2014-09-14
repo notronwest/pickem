@@ -3,6 +3,6 @@ $(document).ready(function() {
     	paging: false,
     	searching: false,
     	order: [ 3, "desc"],
-    	scrollX: true
+    	/*scrollX: true*/
     });
 } );
