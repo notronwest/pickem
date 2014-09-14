@@ -64,6 +64,12 @@ body {
 	overflow: scroll;
 }
 
+.table-container{
+  overflow: hidden;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
 /*
 * Style the menu trigger and position it so it will be
 * visible even when the menu is open
