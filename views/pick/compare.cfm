@@ -67,9 +67,9 @@
 									// determine whether or not they won
 									if( structKeyExists(rc.stViewUSerWeek, "lstWins") and listFind(rc.stViewUserWeek.lstWins, rc.arWeekGames[itm].nGameID) ){
 										sClass = "success";
-									} else if( bHasWinner and bHasPick ){
+									} else if( rc.arWeekGames[itm].bGameIsFinal ){
 										sClass = "danger";
-									} else if( !rc.arWeekGames[itm].bGameIsFinal ){
+									} else {
 										sClass = "default";
 									}
 								</cfscript>
@@ -107,9 +107,9 @@
 									// determine whether or not they won
 									if( listFind(rc.stUserWeek.lstWins, rc.arWeekGames[itm].nGameID) ){
 										sClass = "success";
-									} else if( sHasWinner ){
+									} else if( rc.arWeekGames[itm].bGameIsFinal ){
 										sClass = "danger";
-									} else if( !rc.arWeekGames[itm].bGameIsFinal ){
+									} else {
 										sClass = "default";
 									}
 								</cfscript>
