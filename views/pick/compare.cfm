@@ -69,7 +69,9 @@
 										sClass = "success";
 									} else if( bHasWinner and bHasPick ){
 										sClass = "danger";
-									} 
+									} else if( !rc.arWeekGames[itm].bGameIsFinal ){
+										sClass = "default";
+									}
 								</cfscript>
 								
 								<li class="list-group-item list-group-item-#sClass#">
@@ -107,7 +109,9 @@
 										sClass = "success";
 									} else if( sHasWinner ){
 										sClass = "danger";
-									} 
+									} else if( !rc.arWeekGames[itm].bGameIsFinal ){
+										sClass = "default";
+									}
 								</cfscript>
 								
 								<li class="list-group-item list-group-item-#sClass#">
