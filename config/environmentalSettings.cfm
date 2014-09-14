@@ -14,6 +14,7 @@
 			break;
 		// production
 		case "pickem.inquisibee.com":
+		case "pickem.inquisibee.com:80":
 		case "www.pickem.inquisibee.com":
 			request.sLogURL = "/data/logs/";
 			request.bReloadOnEveryRequest = false;
