@@ -9,6 +9,8 @@
 			request.bIsDevelopment = true;
 			request.sSiteURL = 'http://pickem.local/';
 			request.dsn = "pickem";
+			request.sLocalIP = "127.0.0.1";
+			request.sAPIKey="AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U";
 			break;
 		// production
 		case "pickem.inquisibee.com":
@@ -20,6 +22,8 @@
 			request.bIsDevelopment = false;
 			request.sSiteURL = 'http://pickem.inquisibee.com/';
 			request.dsn = "pickem";
+			request.sLocalIP = "54.68.81.199";
+			request.sAPIKey="AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U";
 			break;
 			
 	}

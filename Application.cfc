@@ -34,6 +34,7 @@ component extends="framework" {
 	* runs before anything in any of the controllers
 	*/
 	public void function before(rc){
+		param name="rc.sAPIKey" default="";
 		rc.dDateNow = dateFormat(now(), 'yyyy-mm-dd');
 		rc.tTimeNow = timeFormat(now(), 'HH:mm');
 		rc.dNow = rc.dDateNow & " " & rc.tTimeNow;

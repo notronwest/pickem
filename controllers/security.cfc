@@ -13,7 +13,8 @@ public void function checkAuthorization(rc){
 	// set the session scope into rc
 	rc.stUser = session;
 	// force all users to login
-	if( session.nUserID eq 0
+	if( compareNoCase(rc.sAPIKey, request.sAPIKey) neq 0
+		and session.nUserID eq 0
 		and variables.framework.getFullyQualifiedAction() neq "security.login"
 		and variables.framework.getFullyQualifiedAction() neq "security.authenticate" ){
 		// set the action for after logging in
