@@ -42,11 +42,14 @@ public void function home(rc){
 			rc.stWeekWinners[nWeekID] = {};
 			rc.stWeekSecondPlace[nWeekID] = {};
 		}
-		// if this user was the winner for this week
+		// if there is no current f
 		if( arStandings[itm].getNPlace() eq 1 and not arrayFind(arWeekFirstPlace, nWeekID) ){
 			rc.stWeekWinners[nWeekID][nUserID] = 1;
 			arrayAppend(arWeekFirstPlace, nWeekID);
-		} else if ( arStandings[itm].getNPlace() eq 2 and not arrayFind(arWeekSecondPlace, nWeekID) ){
+		} else if( arStandings[itm].getNPlace() eq 1 and not arrayFind(arWeekSecondPlace, nWeekID) ){
+			rc.stWeekSecondPlace[nWeekID][nUserID] = 1;
+			arrayAppend(arWeekSecondPlace, nWeekID);
+		} else if ( arStandings[itm].getNPlace() eq 2 and not arrayFind(arWeekSecondPlace, nWeekID)){
 			rc.stWeekSecondPlace[nWeekID][nUserID] = 1;
 			arrayAppend(arWeekSecondPlace, nWeekID);
 		}
