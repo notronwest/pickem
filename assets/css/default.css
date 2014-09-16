@@ -54,9 +54,27 @@ body {
 	float: left;
 }
 
-.highlight {
+.highlight-first {
+	background-color: #FFD633 !important;
+	font-weight: 400 !important;
+}
+
+.highlight-second {
 	background-color: #FFFF99 !important;
 	font-weight: 400 !important;
+}
+
+.highlight-user td {
+	border-top: 2px solid #FFFF99 !important;
+	border-bottom: 2px solid #FFFF99 !important;	
+}
+
+.highlight-user td:first-child {
+	border-left: 2px solid #FFFF99 !important;
+}
+
+.highlight-user td:last-child {
+	border-right: 2px solid #FFFF99 !important;
 }
 
 #emailList {

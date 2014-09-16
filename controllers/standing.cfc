@@ -11,8 +11,12 @@ public void function home(rc){
 	var itm = 1;
 	var nWeekID = 0;
 	var nUserID = 0;
+	// tracks which weeks have already had a winner determined
+	var arWeekFirstPlace = [];
+	var arWeekSecondPlace = [];
 	rc.stWeekWins = {};
 	rc.stWeekWinners = {};
+	rc.stWeekSecondPlace = {};
 	rc.stUsers = {};
 	rc.stSeasonWins = {};
 	rc.arStandings = [];
@@ -36,10 +40,15 @@ public void function home(rc){
 		// store the winners
 		if( not structKeyExists(rc.stWeekWinners, nWeekID) ){
 			rc.stWeekWinners[nWeekID] = {};
+			rc.stWeekSecondPlace[nWeekID] = {};
 		}
 		// if this user was the winner for this week
-		if( arStandings[itm].getNPlace() eq 1 ){
+		if( arStandings[itm].getNPlace() eq 1 and not arrayFind(arWeekFirstPlace, nWeekID) ){
 			rc.stWeekWinners[nWeekID][nUserID] = 1;
+			arrayAppend(arWeekFirstPlace, nWeekID);
+		} else if ( arStandings[itm].getNPlace() eq 2 and not arrayFind(arWeekSecondPlace, nWeekID) ){
+			rc.stWeekSecondPlace[nWeekID][nUserID] = 1;
+			arrayAppend(arWeekSecondPlace, nWeekID);
 		}
 		// increase this users season wins
 		if( not structKeyExists(rc.stSeasonWins, nUserID) ){
