@@ -46,7 +46,7 @@
 						<!--- // loop through the week wins for this user --->
 						<cfloop from="#arrayLen(local.arWeeks)#" to="1" step="-1" index="local.y">
 							<cfset local.nWeekID = local.arWeeks[local.y]>
-							<td<cfif structKeyExists(rc.stWeekWinners[local.nWeekID], local.nUserID)> class="highlight-first"<cfelseif structKeyExists(rc.stWeekSecondPlace[local.nWeekID], local.nUserID)> class="highlight-second"</cfif>>#local.stUserWins[local.nWeekID]#
+							<td<cfif structKeyExists(rc.stWeekWinners[local.nWeekID], local.nUserID)> class="highlight-first" data-order="1"<cfelseif structKeyExists(rc.stWeekSecondPlace[local.nWeekID], local.nUserID)> class="highlight-second" data-order="2"<cfelse> data-order="#local.stUserWins[local.nWeekID]#"</cfif>>#local.stUserWins[local.nWeekID]#
 							<cfif structKeyExists(rc.stWeekWinners[local.nWeekID], local.nUserID)><span class="fa fa-trophy"></span></cfif>
 						</td>
 						</cfloop>
