@@ -1,18 +1,16 @@
 <cfoutput>
 <div id="setWeek" class="panel panel-default" data-id="#rc.oWeek.getNWeekID()#">
 	<div class="panel-heading text-right">
-		<form class="form-inline">
-			<div class="input-group">
-				<select id="sWeekURL" class="form-control input-sm" size="1">
+		<form class="form-inline" role="form">
+			<div class="form-group">
+				<select id="sWeekURL" class="input-sm" size="1">
 					<cfloop from="1" to="#arrayLen(rc.arWeeks)#" index="local.itm">
 						<option value="#buildURL('game.scoring')#&nWeekID=#rc.arWeeks[local.itm].getNWeekID()#"<cfif rc.oWeek.getNWeekID() eq rc.arWeeks[local.itm].getNWeekID()> selected="selected"</cfif>>
 							#rc.arWeeks[local.itm].getSName()# (#dateFormat(rc.arWeeks[local.itm].getDStartDate(), "mm/dd")# - #dateFormat(rc.arWeeks[local.itm].getDEndDate(), "mm/dd")#)
 						</option>
 					</cfloop>
 				</select>
-				<span class="input-group-btn">
-    				<button class="btn btn-default change-week btn-sm" type="button">Go</button>
-  				</span>
+				<button class="btn btn-default change-week btn-sm" type="button">Go</button>
 			</div>
 		</form>
 	</div>
@@ -22,7 +20,7 @@
 			<div class="alert alert-warning">
 				<h3>This week is currently locked.  Would you like to override this lock to add/delete games?</h3>
 				<blockquote>Note: deleting games that existed in the past could disrupt picks made by users</blockquote>
-				<div class="input-group">
+				<div class="form-group">
 					<button id="overrideLock" class="btn btn-default btn-sm" data-url="#buildURL('game.scoring')#&nWeekID=#rc.oWeek.getNWeekID()#&bOverrideLock=true">Override Lock</button>
 				</div>
 			</div>

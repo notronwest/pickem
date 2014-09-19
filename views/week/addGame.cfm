@@ -1,5 +1,5 @@
 <section id="content">
-	<form id="addEditForm" class="form-horizontal">
+	<form id="addEditForm" class="form">
 		<div class="control-group">
 			<label for="sHomeTeam" class="control-label">Home Team: </label>
 			<div class="controls">

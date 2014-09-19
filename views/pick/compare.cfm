@@ -2,7 +2,7 @@
 	<div id="admin" class="panel panel-default">
 		<div class="panel-heading text-right">
 			<form class="form-inline">
-				<div class="input-group">
+				<div class="form-group">
 					<select id="sWeekURL" class="form-control input-sm" size="1">
 					<cfloop from="1" to="#arrayLen(rc.arWeeks)#" index="local.itm">
 						<option value="#buildURL('pick.set')#&nWeekID=#rc.arWeeks[local.itm].getNWeekID()#"<cfif rc.oWeek.getNWeekID() eq rc.arWeeks[local.itm].getNWeekID()> selected="selected"</cfif>>
@@ -10,7 +10,7 @@
 						</option>
 					</cfloop>
 					</select>
-					<span class="input-group-btn">
+					<span class="form-group-btn">
 						<button type="button" class="change-week btn btn-default btn-sm">Go</button>
 					</span>
 				</div>
@@ -22,14 +22,14 @@
 				<!--- // their picks --->
 				<div class="col-md-6">
 					<label for="nUserID">Pick a different user:</label>
-					<div class="input-group">
+					<div class="form-group">
 					    <select class="form-control input-sm" id="nUserID">
 					      <option value="" data-id="0">Select</option>
 					      <cfloop from="1" to="#arrayLen(rc.arUsers)#" index="local.itm">
 					        <option value="#rc.arUsers[local.itm].getNUserID()#" data-id="#rc.arUsers[local.itm].getNUserID()#"<cfif rc.nViewUserID eq rc.arUsers[local.itm].getNUserID()> selected="selected"</cfif>>#rc.arUsers[local.itm].getSFirstName()# #rc.arUsers[local.itm].getSLastName()# (#rc.arUsers[local.itm].getSEmail()#)</option>
 					      </cfloop>
 					    </select>
-					    <span class="input-group-btn">
+					    <span class="form-group-btn">
 					    	<button id="compare" type="button" class="btn btn-default btn-sm">Compare</button>
 					    </span>
 					</div>

@@ -14,6 +14,8 @@
 						<p>Once the games are completed, you can use this to add the scores into each game</p></a>
 					<a class="list-group-item" href="#buildURL('user.listing')#"><h4>Users</h4>
 						<p>Add, Edit and Delete users</p></a>
+					<a class="list-group-item" href="#buildURL('notify.listing')#"><h4>Notifications</h4>
+						<p>Manage the messaging for the notifications that go out to users.</p></a>
 					<a class="list-group-item" href="#buildURL('pick.bulk')#"><h4>Bulk Picks</h4>
 						<p>For those users that don't use the web interface, you can copy and paste their pick email content to set their picks</p></a>
 					<a class="list-group-item" href="#buildURL('user.emailUserForm')#"><h4>Email Users</h4>

@@ -42,6 +42,7 @@ component extends="framework" {
 		rc.sSeason = "2014-2015";
 		rc.bIsDialog = false;
 		rc.bIsMobile = getBeanFactory().getBean("commonService").isMobileView();
+		rc.bIsAdminAction = false;
 	}
 
 	public void function after(rc){

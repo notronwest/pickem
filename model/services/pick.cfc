@@ -75,8 +75,6 @@ public void function sendInPicks( Required Struct stPicks, Required model.beans.
 	
 	// construct e-mail message
 	sMessage = listChangeDelims(arrayToList(arPicks), chr(13));
-	//sMessage = arrayToList(arPicks);
-	//sMessage = "Well here are the picks that I am going to make. Ok?";
 	// send e-mail
 	variables.commonService.sendEmail(request.sAdminEmail, "My picks for #arguments.oWeek.getSName()#", sMessage, arguments.stUser.sEmail);
 }
@@ -102,6 +100,30 @@ public void function deleteUserPicks( Required Numeric nUserID ){
 	for( itm; itm lte arrayLen(arPicks); itm++ ){
 		variables.pickGateway.delete(arPicks[itm]);
 	}
+}
+
+/*
+Author: 	
+	Ron West
+Name:
+	$userHasPicks
+Summary:
+	Determines if the user has picks or not
+Returns:
+	Boolean bHasPicks
+Arguments:
+	Numeric nWeekID
+	Numeric nUserID
+History:
+	2014-09-19 - RLW - Created
+*/
+public Boolean function userHasPicks( Required Numeric nWeekID, Required Numeric nUserID ){
+	var stUserPicks = getUserWeek(arguments.nWeekID, arguments.nUserID);
+	var bHasPicks = false;
+	if( listLen(structKeyList(stUserPicks.stPicks)) gt 0 ){
+		bHasPicks = true;
+	}
+	return bHasPicks;
 }
 
 }

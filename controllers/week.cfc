@@ -100,7 +100,7 @@ public void function addEdit(rc){
 public void function save(rc){
 	param name="rc.nBonus" default="0";
 	rc.bIsDialog = false;
-	oWeek = weekGateway.update((rc.oWeek.getNWeekID() eq 0) ? entityNew("week") : rc.oWeek, { sName = rc.sName, dStartDate = rc.dStartDate, dEndDate = rc.dEndDate, lstSports = rc.lstSports, sSeason = rc.sSeason, nBonus = rc.nBonus, dPicksDue = rc.dPicksDue, tPicksDue = timeFormat(rc.tPicksDue, "HH:mm") });
+	oWeek = variables.weekGateway.update((rc.oWeek.getNWeekID() eq 0) ? entityNew("week") : rc.oWeek, { sName = rc.sName, dStartDate = rc.dStartDate, dEndDate = rc.dEndDate, lstSports = rc.lstSports, sSeason = rc.sSeason, nBonus = rc.nBonus, dPicksDue = rc.dPicksDue, tPicksDue = timeFormat(rc.tPicksDue, "HH:mm") });
 	rc.sMessage = "Week saved";
 	variables.framework.redirect("week.manage", "all");
 }
@@ -135,6 +135,7 @@ public void function setWeek(rc){
 	if( rc.bOverrideLock ){
 		rc.bIsLocked = false;
 	}
+	rc.bIsAdminAction = true;
 }
 
 public void function addGame(rc){

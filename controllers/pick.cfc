@@ -30,7 +30,7 @@ public void function before(rc){
 	// determine if picks are still open
 	rc.dtPicksDue = rc.oWeek.getDPicksDue() & " " & rc.oWeek.getTPicksDue();
 	rc.bIsLocked = false;
-	if( compare(rc.dtPicksDue, variables.dbService.dbDateTimeFormat() ) lte 0){
+	if( compare(variables.dbService.dbDateTimeFormat(rc.dtPicksDue), variables.dbService.dbDateTimeFormat() ) lte 0){
 		rc.bIsLocked = true;
 	}
 	// for now show scores when the week is locked

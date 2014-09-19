@@ -1,5 +1,5 @@
 <cfoutput><form role="form" id="bulk">
-  <div class="input-group">
+  <div class="form-group">
     <label for="nWeekID">Week:</label>
     <select class="form-control" id="nWeekID">
       <option value="">Select</option>
@@ -8,7 +8,7 @@
       </cfloop>
     </select>
   </div>
-  <div class="input-group">
+  <div class="form-group">
     <label for="nUserID">User:</label>
     <select class="form-control" id="nUserID">
       <option value="" data-id="0">Select</option>
@@ -17,11 +17,11 @@
       </cfloop>
     </select>
   </div>
-  <div class="input-group">
+  <div class="form-group">
   	<label for="sPicks">Picks:</label>
   	<textarea name="sPicks" id="sPicks" rows="10" cols="40"></textarea>
   </div>
-  <div class="input-group">
+  <div class="form-group">
   	<button id="save" type="button">Save</button>
   </div>
  </form></cfoutput>

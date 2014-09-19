@@ -14,9 +14,12 @@
           <li<cfif compareNoCase(listFirst(request.action, "."), "user") eq 0> class="active"</cfif>>
             <a href="#buildURL('user.addEdit')#"><span class="fa fa-user fa-fw"></span>Account</a>
           </li>
+          <li<cfif compareNoCase(listFirst(request.action, "."), "setting") eq 0> class="active"</cfif>>
+            <a href="#buildURL('setting.set')#"><span class="fa fa-gear fa-fw"></span>Settings</a>
+          </li>
     			<cfif rc.stUser.bIsAdmin>
-            <li<cfif compareNoCase(listLast(request.action, "."), "admin") eq 0> class="active"</cfif>>
-              <a href="#buildURL('main.admin')#"><span class="fa fa-cogs fa-fw"></span> Admin</a>
+            <li<cfif compareNoCase(listLast(request.action, "."), "admin") eq 0 or rc.bIsAdminAction> class="active"</cfif>>
+              <a href="#buildURL('main.admin')#"><span class="fa fa-cubes fa-fw"></span> Admin</a>
             </li>
           </cfif>
           <li>

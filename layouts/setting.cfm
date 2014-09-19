@@ -1,0 +1,1 @@
+<cfif not rc.bIsDialog><script src="/assets/js/setting.js"></script></cfif><cfoutput>#body#</cfoutput>

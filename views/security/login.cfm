@@ -12,13 +12,21 @@
 					#rc.sMessage#
 				</div>
 			</cfif>
-			<div class="input-group">
-				<span class="input-group-addon"><span class="fa fa-envelope-o fa-fw fa-lg"></span></span>
-				<div class="controls"><input type="email" name="sUsername" id="sUsername" class="form-control input-sm" placeholder="username"/></div>
+			<div class="form-group">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<span class="fa fa-envelope-o fa-fw fa-lg"></span>
+					</div>
+					<input type="email" name="sUsername" id="sUsername" class="form-control input-sm" placeholder="username"/>
+				</div>
 			</div>
-			<div class="input-group">
-				<span class="input-group-addon"><span class="fa fa-lock fa-fw fa-lg"></span></span>
-				<div class="controls"><input type="password" name="sPassword" id="sPassword" class="form-control input-sm" placeholder="password"/></div>
+			<div class="form-group">
+				<div class="input-group">
+					<div class="input-group-addon">
+						<span class="fa fa-lock fa-fw fa-lg"></span>
+					</div>
+					<input type="password" name="sPassword" id="sPassword" class="form-control input-sm" placeholder="password"/>
+				</div>
 			</div>
 		</div>
 		<div class="panel-footer text-right"><button class="save btn btn-primary btn-xs" id="loginUser">Login</button></div>

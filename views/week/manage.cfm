@@ -1,7 +1,7 @@
 <div id="weeks" class="panel panel-default">
 	<div class="panel-heading text-right">
 		<h2 class="left">Manage Weeks<h2>
-		<div class="input-group">
+		<div class="form-group">
 			<button type="button" class="add-week btn btn-default btn-sm">Add Week</button>
 		</div>
 	</div>
