@@ -44,8 +44,8 @@ public Array function notificationsBySchedule( Required model.beans.week oWeek )
 				case "weekly":
 					dtPicksDue = arguments.oWeek.getDPicksDue() & " " & arguments.oWeek.getTPicksDue();
 					// make sure we are a few hours from the start of the weeks games
-					if( dtPicksDue lte variables.dbService.dbDateTimeFormat(dateAdd("h", 2, now()))
-						and dtPicksDue gte variables.dbService.dbDateTimeFormat(dateAdd("h", 1, now())) ){
+					if( dtPicksDue lte variables.dbService.dbDateTimeFormat(dateAdd("h", 12, now()))
+						and dtPicksDue gte variables.dbService.dbDateTimeFormat(dateAdd("h", 11, now())) ){
 						// handle processing for this notification type
 						arrayAppend(arCompletedNotifications, processNotification(arNotifyOptions[itm], arguments.oWeek));
 					}
