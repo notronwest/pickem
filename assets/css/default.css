@@ -5,6 +5,8 @@ body {
     color: #444;
 }
 
+.print { color: #c4c4c4; }
+
 .hide { display: none; }
 
 .icons { cursor: pointer; }
@@ -154,4 +156,8 @@ footer nav. Style link text. */
 		text-decoration: none;
 	}
 
+}
+@media print{
+  body{ background-color:#FFFFFF; background-image:none; color:#000000 }
+  .navBar, footer, .panel-heading, .alert, .print { display: none; }
 }

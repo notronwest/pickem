@@ -21,7 +21,7 @@
 					<h3>This week is locked and no changes to your picks can be made at this time.</h3>
 				</div>
 			</cfif>
-			<h1>#rc.oWeek.getSName()#</h1>
+			<h1>#rc.oWeek.getSName()# <a href="javascript:window.print()"><span class="print fa fa-print"></span></a></h1>
 			<p>
 				<cfif !rc.bIsLocked>Picks can be made up until #getBeanFactory().getBean("commonService").dateTimeFormat(rc.dtPicksDue)#</cfif>
 			</p>

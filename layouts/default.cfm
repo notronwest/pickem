@@ -46,23 +46,25 @@
             <a class="close" data-dismiss="alert" href="##" aria-hidden="true">&times;</a>
           </div>
         </cfif>#body#</div>
-        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-        <!-- Pickem - Mobile -->
-        <cfif rc.bIsMobile>
-          <ins class="adsbygoogle"
-               style="display:inline-block;width:320px;height:50px"
-               data-ad-client="ca-pub-1027916687663589"
-               data-ad-slot="9762063481"></ins>
-        <cfelse>
-          <!-- Pickem -->
-          <ins class="adsbygoogle"
-               style="display:inline-block;width:728px;height:90px"
-               data-ad-client="ca-pub-1027916687663589"
-               data-ad-slot="4134332285"></ins>
-        </cfif>
-        <script>
-          (adsbygoogle = window.adsbygoogle || []).push({});
-        </script>
+        <footer>
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <!-- Pickem - Mobile -->
+          <cfif rc.bIsMobile>
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:320px;height:50px"
+                 data-ad-client="ca-pub-1027916687663589"
+                 data-ad-slot="9762063481"></ins>
+          <cfelse>
+            <!-- Pickem -->
+            <ins class="adsbygoogle"
+                 style="display:inline-block;width:728px;height:90px"
+                 data-ad-client="ca-pub-1027916687663589"
+                 data-ad-slot="4134332285"></ins>
+          </cfif>
+          <script>
+            (adsbygoogle = window.adsbygoogle || []).push({});
+          </script>
+        </footer>
 		</div>
 	</div>
 </cfoutput>
