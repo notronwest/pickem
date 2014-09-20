@@ -26,19 +26,19 @@
 			};
 			// determine favored team
 			nFavoredTeam = ( compareNoCase(stGame.sSpreadFavor, "home") eq 0 ) ? stHome.nID : stAway.nID;
-			// determine who is winning
-			if( len(stGame.sGameStatus) gt 0 ){
-				if( nFavoredTeam eq stHome.nID and (stGame.nHomeScore - stGame.nSpread) > stGame.nAwayScore ){
-					stHome.bIsWinning = true;
-				} else if ( (stGame.nAwayScore - stGame.nSpread) > stGame.nHomeScore )  {
-					stAway.bIsWinning = true;
-				}
-			}
 			// determine the rendering for the teams
 			stFavorite = ( compareNoCase(stGame.sSpreadFavor, "home") eq 0 ) ? stHome : stAway;
 			stUnderdog = ( compareNoCase(stGame.sSpreadFavor, "home") eq 0 ) ? stAway : stHome;
 			stPick = ( bPick eq stHome.nID ) ? stHome : stAway;
 			stNotPick = ( bPick eq stHome.nID ) ? stAway : stHome;
+			// determine who is winning
+			if( len(stGame.sGameStatus) gt 0 ){
+				if( nFavoredTeam eq stPick.nID and (stPick.nScore - stGame.nSpread) > stNotPick.nScore ){
+					stPick.bIsWinning = true;
+				} else if ( nFavoredTeam eq stNotPick.nID and (stNotPick.nScore - stGame.nSpread) < stPick.nScore ){
+					stPick.bIsWinning = true;
+				}
+			}
 		</cfscript>
 		<tr class="game" data-id="#rc.arWeekGames[local.itm].nGameId#">
 			<td>#local.itm#</td>
