@@ -13,7 +13,7 @@ public void function before (rc){
 	// default the user to the current user
 	param name="rc.nUserID" default="#rc.nCurrentUser#";
 	// if the user isn't an admin and the user id suplied is different than the current user kick them
-	if( !rc.stUser.bIsAdmin and (rc.nCurrentUser neq rc.stUser.nUserID or rc.bAddNew) ){
+	if( !rc.stUser.bIsAdmin and (rc.nCurrentUser neq rc.stUser.nUserID) ){
 		variables.framework.redirect("security.restricted");
 	}
 	// get the user info
