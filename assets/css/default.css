@@ -84,6 +84,13 @@ body {
 	overflow: scroll;
 }
 
+/* style the picks */
+.game button:disabled {
+	color: #000000 !important;
+	border-color: #000000 !important;
+	opacity: 1;
+}
+
 /*
 * Style the menu trigger and position it so it will be
 * visible even when the menu is open

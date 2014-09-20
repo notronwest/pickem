@@ -24,7 +24,7 @@ $(function(){
 			// enable the save button
 			$(".page-controls .save").removeClass("disabled");
 			// remove any alerts
-			$(this).closest("tr").removeClass("alert alert-danger");
+			//$(this).closest("tr").removeClass("btn-danger");
 			// remove the pick and primary from anyone in this row
 			$(this).closest("tr").find(".pick").removeClass("pick btn-success").addClass("btn-default");
 			// add the success pick class

@@ -33,11 +33,6 @@ public void function before(rc){
 	if( compare(variables.dbService.dbDateTimeFormat(rc.dtPicksDue), variables.dbService.dbDateTimeFormat() ) lte 0){
 		rc.bIsLocked = true;
 	}
-	// for now show scores when the week is locked
-	rc.bShowScores = false;
-	if( rc.bIsLocked ){
-		rc.bShowScores = true;
-	}
 }
 
 public void function set(rc){
