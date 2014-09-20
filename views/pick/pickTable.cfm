@@ -1,3 +1,4 @@
+<cfparam name="local.bShowGameStatus" default="true">
 <cfoutput>
 	<cfloop from="1" to="#arrayLen(local.arWeekGames)#" index="local.itm">
 		<!--- // determine who gets pick class --->
@@ -82,13 +83,15 @@
 					</button>
 				</td>
 			</cfif>
-			<td>
-				<cfif len(stGame.sGameStatus) gt 0>
-					#stPick.nScore# - #stNotPick.nScore# (#stGame.sGameStatus#)
-				<cfelse>
-					#dateFormat(stGame.sGameDateTime, "mm/dd/yyyy")#
-				</cfif>
-			</td>
+			<cfif local.bShowGameStatus>
+				<td>
+					<cfif len(stGame.sGameStatus) gt 0>
+						#stPick.nScore# - #stNotPick.nScore# (#stGame.sGameStatus#)
+					<cfelse>
+						#dateFormat(stGame.sGameDateTime, "mm/dd/yyyy")#
+					</cfif>
+				</td>
+			</cfif>
 		</tr>
 	</cfloop>
 </cfoutput>

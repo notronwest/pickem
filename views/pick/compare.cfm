@@ -54,6 +54,8 @@
 											<cfscript>
 												local.arWeekGames = rc.arWeekGames;
 												local.stPicks = rc.stViewUserWeek.stPicks;
+												// hide game status
+												local.bShowGameStatus = false;
 												include "pickTable.cfm";
 											</cfscript>
 										</table>
@@ -63,6 +65,8 @@
 											<cfscript>
 												local.arWeekGames = rc.arWeekGames;
 												local.stPicks = rc.stUserWeek.stPicks;
+												// show game status
+												local.bShowGameStatus = true;
 												include "pickTable.cfm";
 											</cfscript>
 										</table>
