@@ -18,10 +18,10 @@
 			<!--- // if the week is locked --->
 			<cfif rc.bIsLocked>
 				<div class="alert alert-warning">
-					<h3>This week is locked and no changes to your picks can be made at this time.</h3>
+					<h6>This week is locked and no changes to your picks can be made at this time.</h6>
 				</div>
 			</cfif>
-			<h1>#rc.oWeek.getSName()# <a href="javascript:window.print()"><span class="print fa fa-print"></span></a></h1>
+			<h3>#rc.oWeek.getSName()# <a href="javascript:window.print()"><span class="print fa fa-print"></span></a></h3>
 			<p>
 				<cfif !rc.bIsLocked>Picks can be made up until #getBeanFactory().getBean("commonService").dateTimeFormat(rc.dtPicksDue)#</cfif>
 			</p>
@@ -60,7 +60,13 @@
 						<th>Game Status</th>
 					</thead>
 					<tbody>
-						<cfinclude template="pickTable.cfm">
+						<cfscript>
+							// set the games from the week
+							local.arWeekGames = rc.arWeekGames;
+							// set the picks for the user
+							local.stPicks = rc.stUserWeek.stPicks;
+							include "pickTable.cfm";
+						</cfscript>
 					</tbody>	
 				</table>
 			</div>

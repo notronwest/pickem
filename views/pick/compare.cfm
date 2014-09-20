@@ -5,7 +5,7 @@
 				<div class="form-group">
 					<select id="sWeekURL" class="form-control input-sm" size="1">
 					<cfloop from="1" to="#arrayLen(rc.arWeeks)#" index="local.itm">
-						<option value="#buildURL('pick.set')#&nWeekID=#rc.arWeeks[local.itm].getNWeekID()#"<cfif rc.oWeek.getNWeekID() eq rc.arWeeks[local.itm].getNWeekID()> selected="selected"</cfif>>
+						<option value="#buildURL('pick.compare')#&nWeekID=#rc.arWeeks[local.itm].getNWeekID()#&nViewUserID=#rc.nViewUserID#"<cfif rc.oWeek.getNWeekID() eq rc.arWeeks[local.itm].getNWeekID()> selected="selected"</cfif>>
 							#rc.arWeeks[local.itm].getSName()# (#dateFormat(rc.arWeeks[local.itm].getDStartDate(), "mm/dd/yyyy")# - #dateFormat(rc.arWeeks[local.itm].getDEndDate(), "mm/dd/yyyy")#)
 						</option>
 					</cfloop>
@@ -17,7 +17,7 @@
 			</form>
 		</div>
 		<div class="panel-body">
-			<h1 data-id="#rc.oWeek.getNWeekID()#">#rc.oWeek.getSName()#</h1>
+			<h3 data-id="#rc.oWeek.getNWeekID()#">#rc.oWeek.getSName()#</h3>
 			<div class="row">
 				<!--- // their picks --->
 				<div class="col-md-6">
@@ -39,9 +39,39 @@
   			<cfif rc.bIsLocked>
 				<!--- // loop through the games and determine which ones this user won --->
 				<div class="row">
-					<!--- // their picks --->
-					<div class="col-md-6">
-						<h3>#rc.oViewUser.getSFirstName()#'s Picks</h3>
+					<div class="table-responsive">
+						<table class="table">
+							<thead>
+								<tr>
+									<th><h4>#rc.oViewUser.getSFirstName()#'s Picks</h4></th>
+									<th><h4>Your Picks</h4></th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>											
+										<table class="table">
+											<cfscript>
+												local.arWeekGames = rc.arWeekGames;
+												local.stPicks = rc.stViewUserWeek.stPicks;
+												include "pickTable.cfm";
+											</cfscript>
+										</table>
+									</td>
+									<td>
+										<table class="table">
+											<cfscript>
+												local.arWeekGames = rc.arWeekGames;
+												local.stPicks = rc.stUserWeek.stPicks;
+												include "pickTable.cfm";
+											</cfscript>
+										</table>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+
+<!--- // 
 						<ul class="list-group">
 							<cfloop from="1" to="#arrayLen(rc.arWeekGames)#" index="itm">
 								<cfscript>
@@ -126,6 +156,7 @@
 						</ul>
 					</div>
 				</div>
+				--->
 			<cfelse>
 				<p>&nbsp;</p>
 				<div class="alert alert-warning" role="alert">
