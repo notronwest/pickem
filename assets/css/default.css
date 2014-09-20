@@ -159,11 +159,12 @@ footer nav. Style link text. */
 }
 @media print{
   body{ background-color:#FFFFFF; background-image:none; color:#000000; font-size: 0.9em; line-height: 0.8; }
-  .navBar, footer, .panel-heading, .alert, .print, .help, .alert-info { display: none; }
+  .navBar, footer, .panel-heading, .alert, .print, .help, .alert-info, .make-changes { display: none; }
   td { padding: 0px; margin: 0px; border: none; }
   tr { border: none; padding: 0px; margin: 0px; border-spacing: 0px; }
   .badge { font-size: 0.9em !important }
   table { border-spacing: 0px; padding: 0px; margin: 0px; display: inline;}
   h1 { font-size: 1.5em; margin: 0px; padding: 0px; }
   button { margin: 0px; border: none; }
+
 }
