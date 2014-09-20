@@ -30,7 +30,7 @@ public void function addEdit(rc){
 	rc.sAction = "";
 	rc.bShowProfile = "true";
 	rc.bShowCredentials = "true";
-	if( rc.bIsAdmin ){
+	if( rc.stUser.bIsAdmin ){
 		rc.bIsAdminAction = true;
 	}
 }
