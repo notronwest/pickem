@@ -66,7 +66,7 @@
 			</td>
 			<!--- // render controls --->
 			<td class="change hidden">
-				<button type="button" class="btn btn-xs #((stFavorite.bIsHome) ? 'home' : '')##((stFavorite.nID eq bPick) ? ' pick btn-success' : ' btn-default')#">
+				<button data-id="#stFavorite.nID#" type="button" class="btn btn-xs #((stFavorite.bIsHome) ? 'home' : '')##((stFavorite.nID eq bPick) ? ' pick btn-success' : ' btn-default')#">
 					#stFavorite.sName#
 					<span class="badge">
 						#(stFavorite.nID eq nFavoredTeam) ? '-' : '+'# #stGame.nSpread#
@@ -74,7 +74,7 @@
 				</button>
 			</td>
 			<td class="change hidden">
-				<button type="button" class="btn btn-xs #((stUnderdog.bIsHome) ? 'home' : '')##((stUnderdog.nID eq bPick) ? ' pick  btn-success' : ' btn-default')#">
+				<button data-id="#stUnderdog.nID#" type="button" class="btn btn-xs #((stUnderdog.bIsHome) ? 'home' : '')##((stUnderdog.nID eq bPick) ? ' pick  btn-success' : ' btn-default')#">
 					#stUnderdog.sName#
 				</button>
 			</td>
