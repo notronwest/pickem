@@ -114,6 +114,7 @@ public void function hasPicks(rc){
 public void function bulk(){
 	param name="rc.bDoSave" default="false";
 	param name="rc.nWeekID" default="0";
+	rc.bIsAdminAction = true;
 	var itm = 1;
 	var arSelections = [];
 	rc.sMessage = "Error saving picks";

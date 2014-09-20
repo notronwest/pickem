@@ -146,6 +146,7 @@ public void function addGame(rc){
 public void function manage(rc){
 	rc.bIsDialog = false;
 	rc.arWeeks = variables.weekGateway.getSeason(rc.sSeason);
+	rc.bIsAdminAction = true;
 }
 
 }

@@ -36,6 +36,7 @@ public void function scoring(rc){
 	if( rc.bOverrideLock ){
 		rc.bIsLocked = false;
 	}
+	rc.bIsAdminAction = true;
 }
 
 public Void function saveWeek(rc){

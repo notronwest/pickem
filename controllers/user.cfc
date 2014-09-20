@@ -23,12 +23,16 @@ public void function before (rc){
 
 public void function listing(rc){
 	rc.arUsers = userGateway.getAll();
+	rc.bIsAdminAction = true;
 }
 
 public void function addEdit(rc){
 	rc.sAction = "";
 	rc.bShowProfile = "true";
 	rc.bShowCredentials = "true";
+	if( rc.bIsAdmin ){
+		rc.bIsAdminAction = true;
+	}
 }
 
 public void function save(rc){
@@ -62,6 +66,7 @@ public void function save(rc){
 		// if the user is an admin redirect the user to the listing
 		if( rc.stUser.bIsAdmin ){
 			variables.framework.redirect('user.listing');
+			rc.bIsAdminAction = true;
 		} else {
 			rc.oUser = oUser;
 			rc.bProfileSaved = true;
@@ -109,6 +114,7 @@ public void function impersonate(rc){
 public void function emailUserForm(rc){
 	// get all of the users
 	rc.arUsers = variables.userGateway.getAllSortByFirst();
+	rc.bIsAdminAction = true;
 }
 
 public void function sendEmail(rc){

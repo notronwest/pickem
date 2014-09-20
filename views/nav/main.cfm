@@ -5,16 +5,16 @@
 
       <ul class="nav navbar-nav" id="menu">
         <cfoutput>
-          <li<cfif compareNoCase(listFirst(request.action, "."), "standing") eq 0> class="active"</cfif>>
+          <li<cfif compareNoCase(listFirst(request.action, "."), "standing") eq 0 and not rc.bIsAdminAction> class="active"</cfif>>
             <a href="#buildURL('standing.home')#"><span class="fa fa-list-ol fa-fw"></span> Standings</a>
           </li>
-    			<li<cfif compareNoCase(listFirst(request.action, "."), "pick") eq 0> class="active"</cfif>>
+    			<li<cfif compareNoCase(listFirst(request.action, "."), "pick") eq 0 and not rc.bIsAdminAction> class="active"</cfif>>
             <a href="#buildURL('pick.set')#"><span class="fa fa-crosshairs fa-fw"></span> Picks</a>
           </li>
-          <li<cfif compareNoCase(listFirst(request.action, "."), "user") eq 0> class="active"</cfif>>
+          <li<cfif compareNoCase(listFirst(request.action, "."), "user") eq 0 and not rc.bIsAdminAction> class="active"</cfif>>
             <a href="#buildURL('user.addEdit')#"><span class="fa fa-user fa-fw"></span>Account</a>
           </li>
-          <li<cfif compareNoCase(listFirst(request.action, "."), "setting") eq 0> class="active"</cfif>>
+          <li<cfif compareNoCase(listFirst(request.action, "."), "setting") eq 0 and not rc.bIsAdminAction> class="active"</cfif>>
             <a href="#buildURL('setting.set')#"><span class="fa fa-gear fa-fw"></span>Settings</a>
           </li>
     			<cfif rc.stUser.bIsAdmin>
