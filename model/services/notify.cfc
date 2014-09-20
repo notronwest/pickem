@@ -132,7 +132,6 @@ History:
 	2014-09-19 - RLW - Created
 */
 public void function doNotification( Required model.beans.notify oNotify, Required model.beans.user oUser){
-	writeDump(arguments.oNotify);
 	try{
 		// determine what type of notification we are doing
 		switch(variables.settingService.getUsersNotificationSetting(arguments.oUser.getNUserID())){
