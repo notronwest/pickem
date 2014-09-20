@@ -19,10 +19,11 @@ Returns:
 	Array arNotifications
 Arguments:
 	Week oWeek
+	Boolean bForceNotification
 History:
 	2014-09-19 - RLW - Created
 */
-public Array function notificationsBySchedule( Required model.beans.week oWeek ){
+public Array function notificationsBySchedule( Required model.beans.week oWeek, Boolean bForceNotification = false ){
 	// get all options that have notificaiton ability
 	var arNotifyOptions = variables.optionGateway.getAllForNotification();
 	var itm = 1;
@@ -44,8 +45,7 @@ public Array function notificationsBySchedule( Required model.beans.week oWeek )
 				case "weekly":
 					dtPicksDue = arguments.oWeek.getDPicksDue() & " " & arguments.oWeek.getTPicksDue();
 					// make sure we are a few hours from the start of the weeks games
-					if( dtPicksDue lte variables.dbService.dbDateTimeFormat(dateAdd("h", 12, now()))
-						and dtPicksDue gte variables.dbService.dbDateTimeFormat(dateAdd("h", 11, now())) ){
+					if( ( dtPicksDue lte variables.dbService.dbDateTimeFormat(dateAdd("h", 12, now())) and dtPicksDue gte variables.dbService.dbDateTimeFormat(dateAdd("h", 11, now())) ) or arguments.bForceNotification ){
 						// handle processing for this notification type
 						arrayAppend(arCompletedNotifications, processNotification(arNotifyOptions[itm], arguments.oWeek));
 					}

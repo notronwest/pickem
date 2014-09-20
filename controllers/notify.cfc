@@ -51,7 +51,8 @@ public void function delete (rc){
 }
 
 public void function notificationsBySchedule(rc){
-	rc.arNotificationsRun = variables.notifyService.notificationsBySchedule(rc.oWeek);
+ 	param name="rc.bForceNotification" default="false";
+	rc.arNotificationsRun = variables.notifyService.notificationsBySchedule(rc.oWeek, rc.bForceNotification);
 }
 
 }
