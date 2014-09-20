@@ -81,14 +81,14 @@
 						#stUnderdog.sName#
 					</button>
 				</td>
-				<td>
-					<cfif len(stGame.sGameStatus) gt 0>
-						#stPick.nScore# - #stNotPick.nScore#
-					<cfelse>
-						#dateFormat(stGame.sGameDateTime, "mm/dd/yyyy")#
-					</cfif>
-				</td>
 			</cfif>
+			<td>
+				<cfif len(stGame.sGameStatus) gt 0>
+					#stPick.nScore# - #stNotPick.nScore# (#stGame.sGameStatus#)
+				<cfelse>
+					#dateFormat(stGame.sGameDateTime, "mm/dd/yyyy")#
+				</cfif>
+			</td>
 		</tr>
 	</cfloop>
 </cfoutput>
