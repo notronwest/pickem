@@ -91,7 +91,7 @@ $(function(){
 	});
 	// bind action for comparing picks
 	$("#compare").on("click", function(){
-		window.location.href = "/?action=pick.compare&nWeekID=" + $("h1").data("id") + "&nViewUserID=" + $("#nUserID").val();
+		window.location.href = "/?action=pick.compare&nWeekID=" + $("h3").data("id") + "&nViewUserID=" + $("#nUserID").val();
 	});
 });
 // checks to see if the users have picks
