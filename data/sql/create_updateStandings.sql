@@ -16,23 +16,24 @@ UPDATE pick set nWin = isPickWin(nGameID, nTeamID)
 WHERE nWeekID = nInWeekID;
 
 -- Determine if we are doing an insert or update
-SELECT count(nUserID) into nStandingRecordCount
-FROM standing
-WHERE nWeekID = nInWeekID;
+--SELECT count(nUserID) into nStandingRecordCount
+--FROM standing
+--WHERE nWeekID = nInWeekID;
 
 -- Should make sure that there is a record here for every user
-IF nStandingRecordCount = 0 THEN BEGIN
+--IF nStandingRecordCount = 0 THEN BEGIN
 
         -- Insert all of the wins per user
         INSERT INTO standing  (nUserID, nWeekID, sSeason, nWins, nLosses)
         SELECT DISTINCT nUserID, nInWeekID, sInSeason, SUM(nWin), 20 - SUM(nWin)
         FROM pick
         WHERE nWeekID = nInWeekID
+        AND nUserID not in (select nUserID from standing where nWeekID = nInWeekID)
         GROUP BY nUserID;
 
-    END;
+  --  END;
 
-ELSE BEGIN
+--ELSE BEGIN
     
         -- Update the records that already exist for this week
         UPDATE standing
@@ -40,9 +41,9 @@ ELSE BEGIN
         nLosses = (20 - nWins)
         WHERE nWeekID = nInWeekID;
 
-    END;
+--    END;
 
-END IF;
+--END IF;
 
 -- Update number of nTiebreaks
 UPDATE standing s
