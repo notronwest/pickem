@@ -7,6 +7,7 @@ component entityname="standing" persistent="true" table="standing" output="false
 	property name="nHighestTiebreak" fieldtype="column" ormtype="int";
 	property name="nUserID" fieldtype="column" ormtype="int";
 	property name="nPlace" fieldtype="column" ormtype="int";
+	property name="bHasPicks" fieldtype="column" ormtype="int";
 	property name="sSeason" fieldtype="column" ormtype="string" length="20";
 	/**
 	* @output false

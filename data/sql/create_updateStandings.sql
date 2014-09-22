@@ -24,8 +24,8 @@ WHERE nWeekID = nInWeekID;
 --IF nStandingRecordCount = 0 THEN BEGIN
 
         -- Insert all of the wins per user
-        INSERT INTO standing  (nUserID, nWeekID, sSeason, nWins, nLosses)
-        SELECT DISTINCT nUserID, nInWeekID, sInSeason, SUM(nWin), 20 - SUM(nWin)
+        INSERT INTO standing  (nUserID, nWeekID, sSeason, nWins, nLosses, bHasPicks)
+        SELECT DISTINCT nUserID, nInWeekID, sInSeason, SUM(nWin), 20 - SUM(nWin), 1 as bHasPicks
         FROM pick
         WHERE nWeekID = nInWeekID
         AND nUserID not in (select nUserID from standing where nWeekID = nInWeekID)
@@ -39,7 +39,14 @@ WHERE nWeekID = nInWeekID;
         UPDATE standing
         SET nWins = (SELECT SUM(nWin) FROM pick WHERE nWeekID = nInWeekID AND pick.nUserID = standing.nUserID),
         nLosses = (20 - nWins)
-        WHERE nWeekID = nInWeekID;
+        WHERE nWeekID = nInWeekID
+        AND bHasPicks = 1;
+
+        -- Insert a record for users that don't have picks
+        INSERT INTO standing (nUserID, nWeekID, sSeason, nWins, nLosses, nHighestTiebreak, bHasPicks)
+        SELECT nUserID, nInWeekID, sInSeason, 0 as nWins, 20 as nLosses, 0 as nHighestTiebreak, 0 as bHasPicks
+        FROM user
+        WHERE nUserID not in (select nUserID from standing where nWeekID = nInWeekID);
 
 --    END;
 
@@ -53,7 +60,8 @@ SET nHighestTiebreak = ( SELECT MIN(nTiebreak)
     ON g.nGameID = p.nGameID
     WHERE nWin = 0 
     AND p.nUserID = s.nUserID
-    AND p.nWeekID = nInWeekID );
+    AND p.nWeekID = nInWeekID )
+WHERE bHasPicks = 1;
 
 -- Update the standings place for this week
 UPDATE standing  
