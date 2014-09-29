@@ -41,8 +41,10 @@
 						<table class="table">
 							<thead>
 								<tr>
-									<th><h4>#rc.oViewUser.getSFirstName()#'s Picks</h4></th>
-									<th><h4>Your Picks</h4></th>
+									<th><h4>#rc.oViewUser.getSFirstName()#'s Picks</h4>
+										<span class="alert-info">#listLen(rc.stViewUserWeek.lstWins)# wins</span></th>
+									<th><h4>Your Picks</h4>
+										<span class="alert-info">#listLen(rc.stUserWeek.lstWins)# wins</span></th>
 								</tr>
 							</thead>
 							<tbody>
