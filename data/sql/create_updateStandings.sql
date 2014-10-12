@@ -1,9 +1,29 @@
 CREATE PROCEDURE updateStandings(nInWeekID int(4), sInSeason varchar(9))
 DETERMINISTIC
 CONTAINS SQL
-BEGIN
+doUpdate:BEGIN
 
+DECLARE dtPicksDue int;
 DECLARE nStandingRecordCount int(4);
+
+-- if we have a 0 week id exit
+IF nInWeekID = 0 THEN
+    LEAVE doUpdate;
+END IF;
+
+-- Get the difference between now and the time when picks are due
+SET dtPicksDue = (SELECT TIMESTAMPDIFF(
+    SECOND,
+    STR_TO_DATE(CONCAT(dPicksDue, ' ', tPicksDue, ':00'), '%Y-%m-%d %H:%i:%s'),
+    NOW())
+FROM week
+WHERE nWeekID = nInWeekID);
+
+-- determine if the picks are locked for this week
+IF dtPicksDue <= 0 THEN
+    -- exit the procedure if picks aren't locked
+    LEAVE doUpdate;
+END IF;
 
 -- Determine which team won the game
 UPDATE game
