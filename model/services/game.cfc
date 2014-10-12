@@ -205,6 +205,12 @@ public Array function getGameScores( Required Array arGames){
 	var sGameStatus = "";
 	var sScoreBegin = '<div class="_UMb"><div class="vk_txt">&nbsp;</div><div>';
 	var sScoreEnd = "</div>";
+	var sHomeScoreBegin = '<div class="_wZc _fZc">';
+	var sHomeScoreEnd = '</div>';
+	var sAwayScoreBegin = '<div class="_wZc _fZc">';
+	var sAwayScoreEnd = '</div>';
+	var sHomeScore = '';
+	var sAwayScore = '';
 	var sScore = "";
 	var nStart = 0;
 	var nEnd = 0;
@@ -235,7 +241,7 @@ public Array function getGameScores( Required Array arGames){
 								if( compareNoCase(sGameStatus, "Final") eq 0 ){
 									arGames[itm].bGameIsFinal = 1;
 								}
-								// get the score
+								// get the score (old way)
 								sScore = variables.commonService.parseToFindString(sScoreBox, sScoreBegin, sScoreEnd);
 								// if there was a score here
 								if( len(sScore) gt 0 ){
@@ -246,8 +252,24 @@ public Array function getGameScores( Required Array arGames){
 									// save the game
 									variables.gameGateway.saveScores([arGames[itm]]);
 								} else {
-									// there was no score even though the game was final
-									structInsert(arGames[itm], "sMessage", "No Score Found - even though we should have");
+									// try the new scoring mechanism
+									sAwayScore = variables.commonService.parseToFindString(sScoreBox, sAwayScoreBegin, sAwayScoreEnd);
+									if( len(sAwayScore) ){
+										// delete that section so the home score can be retrieved
+										sScoreBox = replaceNoCase(sScoreBox, sAwayScoreBegin, "");
+										// get the home score
+										sHomeScore = variables.commonService.parseToFindString(sScoreBox, sHomeScoreBegin, sHomeScoreEnd);
+										if( len(sHomeScore) ){
+											arGames[itm].nAwayScore = trim(sAwayScore);
+											arGames[itm].nHomeScore = trim(sHomeScore);
+										}
+										else {
+											structInsert(arGames[itm], "sMessage", "The new way produced no scores either");
+										}
+									} else {
+										// there was no score even though the game was final
+										structInsert(arGames[itm], "sMessage", "No Score Found - even though we should have");
+									}
 								}
 							} else {
 								// could not find the game status
