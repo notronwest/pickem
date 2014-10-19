@@ -83,35 +83,53 @@ public Array function adminWeek( Required Numeric nWeekID, Boolean bSortByTiebre
 		}
 		// build the array that contains the proper structure
 		for( itm; itm lte arrayLen(arGames); itm++ ){
-			oHomeTeam = variables.teamGateway.get(arGames[itm].getNHomeTeamID());
-			oAwayTeam = variables.teamGateway.get(arGames[itm].getNAwayTeamID());
-			stGame = {
-				"nGameID" = arGames[itm].getNGameID(),
-				"nHomeTeamID" = arGames[itm].getNHomeTeamID(),
-				"sHomeTeam" = oHomeTeam.getSName(),
-				"sHomeTeamURL" = oHomeTeam.getSURL(),
-				"nAwayTeamID" = arGames[itm].getNAwayTeamID(),
-				"sAwayTeam" = oAwayTeam.getSName(),
-				"sAwayTeamURL" = oAwayTeam.getSURL(),
-				"nSpread" = arGames[itm].getNSpread(),
-				"sSpreadFavor" = arGames[itm].getSSpreadFavor(),
-				"nHomeScore" = (isNull(arGames[itm].getNHomeScore())) ? "" : arGames[itm].getNHomeScore(),
-				"nAwayScore" = (isNull(arGames[itm].getNAwayScore())) ? "" : arGames[itm].getNAwayScore(),
-				"nTiebreak" = arGames[itm].getNTiebreak(),
-				"sSpreadOriginal" = arGames[itm].getSSpreadOriginal(),
-				"sGameDateTime" = arGames[itm].getSGameDateTime(),
-				"nWinner" = (isNull(arGames[itm].getNWinner())) ? 0 : arGames[itm].getNWinner(),
-				"nOrder" = arGames[itm].getNOrder(),
-				"sGameStatus" = (isNull(arGames[itm].getSGameStatus()))? "" : arGames[itm].getSGameStatus(),
-				"bGameIsFinal" = (isNull(arGames[itm].getBGameIsFinal())) ? 0 : arGames[itm].getBGameIsFinal()
-			};
 			// reset the array with the new structure
-			arGames[itm] = stGame;
+			arGames[itm] = buildGameStruct(arGames[itm]);
 		}
 	} catch (any e){
 		registerError("Error setting up games for a week", e);
 	}
 	return arGames;
+}
+
+/*
+Author: 	
+	Ron West
+Name:
+	$buildGameStruct
+Summary:
+	Builds a simple structure with all of the data from the game
+Returns:
+	Struct stGame
+Arguments:
+	Game oGame
+History:
+	2014-10-14 - RLW - Created
+*/
+public Struct function buildGameStruct( Required model.beans.game oGame ){
+	var oHomeTeam = variables.teamGateway.get(arguments.oGame.getNHomeTeamID());
+	var oAwayTeam = variables.teamGateway.get(arguments.oGame.getNAwayTeamID());
+	var stGame = {
+		"nGameID" = arguments.oGame.getNGameID(),
+		"nHomeTeamID" = arguments.oGame.getNHomeTeamID(),
+		"sHomeTeam" = oHomeTeam.getSName(),
+		"sHomeTeamURL" = oHomeTeam.getSURL(),
+		"nAwayTeamID" = arguments.oGame.getNAwayTeamID(),
+		"sAwayTeam" = oAwayTeam.getSName(),
+		"sAwayTeamURL" = oAwayTeam.getSURL(),
+		"nSpread" = arguments.oGame.getNSpread(),
+		"sSpreadFavor" = arguments.oGame.getSSpreadFavor(),
+		"nHomeScore" = (isNull(arguments.oGame.getNHomeScore())) ? "" : arguments.oGame.getNHomeScore(),
+		"nAwayScore" = (isNull(arguments.oGame.getNAwayScore())) ? "" : arguments.oGame.getNAwayScore(),
+		"nTiebreak" = arguments.oGame.getNTiebreak(),
+		"sSpreadOriginal" = arguments.oGame.getSSpreadOriginal(),
+		"sGameDateTime" = arguments.oGame.getSGameDateTime(),
+		"nWinner" = (isNull(arguments.oGame.getNWinner())) ? 0 : arguments.oGame.getNWinner(),
+		"nOrder" = arguments.oGame.getNOrder(),
+		"sGameStatus" = (isNull(arguments.oGame.getSGameStatus()))? "" : arguments.oGame.getSGameStatus(),
+		"bGameIsFinal" = (isNull(arguments.oGame.getBGameIsFinal())) ? 0 : arguments.oGame.getBGameIsFinal()
+	};
+	return stGame;
 }
 
 /*
@@ -290,6 +308,28 @@ public Array function getGameScores( Required Array arGames){
 		// need to do e-mail or something
 	}
 	return arGames;
+}
+
+/*
+Author: 	
+	Ron West
+Name:
+	$getGameStats
+Summary:
+	Get the game stats for the game
+Returns:
+	Struct stGameStats
+Arguments:
+	Game oGame
+History:
+	2014-10-19 - RLW - Created
+*/
+public Struct function getGameStats( Required model.beans.game oGame ){
+	var stGameStats = {
+		arHomeTeam = variables.pickGateway.getPicksByGameAndTeam(arguments.oGame.getNGameID(), arguments.oGame.getNHomeTeamID()),
+		arAwayTeam = variables.pickGateway.getPicksByGameAndTeam(arguments.oGame.getNGameID(), arguments.oGame.getNAwayTeamID())
+	};
+	return stGameStats;
 }
 
 }

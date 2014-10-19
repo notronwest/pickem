@@ -345,4 +345,25 @@ public Array function getByUser( Required Numeric nUserID){
 	return arPicks;
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$getPicksByGameAndTeam
+Summary:
+	Determines how many picks were made for that team
+Returns:
+	Array arPicks
+Arguments:
+	Numeric nGameID
+	Numeric nTeamID
+History:
+	2014-10-19 - RLW - Created
+*/
+public Array function getPicksByGameAndTeam( Required numeric nGameID, Required numeric nTeamID ){
+	var arPicks = ormExecuteQuery("from pick where nGameID = :nGameID and nTeamID = :nTeamID", {
+	nGameID = arguments.nGameID, nTeamID = arguments.nTeamID } );
+	return arPicks;
+}
+
 }

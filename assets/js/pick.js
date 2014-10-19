@@ -93,6 +93,10 @@ $(function(){
 	$("#compare").on("click", function(){
 		window.location.href = "/?action=pick.compare&nWeekID=" + $("h3").data("id") + "&nViewUserID=" + $("#nUserID").val();
 	});
+	// bind click for gameinfo
+	$(".game-info").on("click", function(){
+		window.location.href = "/?action=pick.gameInfo&nWeekID=" + $("#picks").data("id") + "&nGameID=" + $(this).closest("tr").data("id");
+	});
 });
 // checks to see if the users have picks
 function checkPicks(){

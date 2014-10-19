@@ -5,6 +5,7 @@ property name="pickService";
 property name="gameService";
 property name="weekGateway";
 property name="userGateway";
+property name="gameGateway";
 
 public void function before(rc){
 	// default all to a dialog
@@ -155,6 +156,23 @@ public void function compare(){
 	rc.stUserWeek = variables.pickService.getUserWeek(rc.nWeekID, rc.nCurrentUser);
 	// get the view user data
 	rc.oViewUser = variables.userGateway.get(rc.nViewUserID);
+}
+
+public void function gameInfo(){
+	param name="rc.nGameID" default="0";
+	param name="rc.stGame" default="#{}#";
+	param name="rc.stGameStats" default="#{}#";
+	rc.bIsDialog = false;
+	rc.oGame = variables.gameGateway.get(rc.nGameID);
+	// if someone tries to access this view when the week isn't locked forward them back
+	if( !rc.bIsLocked){
+		variables.framework.redirect("pick.set");
+	}
+	if( !isNull(rc.oGame.getNGameID()) ){
+		// get the details for this game
+		rc.stGame = variables.gameService.buildGameStruct(rc.oGame);
+		rc.stGameStats = variables.gameService.getGameStats(rc.oGame);
+	}
 }
 
 }
