@@ -47,7 +47,7 @@
 			</cfif>
 			<!--- // render picks --->
 			<td class="picks">
-				<cfif rc.bIsLocked><span class="fa fa-info-circle game-info icons"></span></cfif>
+				<cfif rc.bIsLocked><span class="fa fa-info-circle fa-lg game-info icons"></span></cfif>
 				<button type="button" disabled="disabled" class="btn btn-xs
 					#((stPick.bIsHome) ? 'home' : '')#
 					<cfif stGame.bGameIsFinal>
