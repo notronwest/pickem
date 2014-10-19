@@ -95,7 +95,7 @@ $(function(){
 	});
 	// bind click for gameinfo
 	$(".game-info").on("click", function(){
-		window.location.href = "/?action=pick.gameInfo&nWeekID=" + $("#picks").data("id") + "&nGameID=" + $(this).closest("tr").data("id");
+		window.location.href = "/?action=pick.gameInfo&nWeekID=" + $(this).closest("tr").data("nweekid") + "&nGameID=" + $(this).closest("tr").data("id");
 	});
 });
 // checks to see if the users have picks

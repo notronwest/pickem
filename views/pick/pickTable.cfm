@@ -41,7 +41,7 @@
 				}
 			}
 		</cfscript>
-		<tr class="game" data-id="#rc.arWeekGames[local.itm].nGameId#">
+		<tr class="game" data-id="#rc.arWeekGames[local.itm].nGameId#" data-nWeekID="#rc.nWeekID#">
 			<cfif compareNoCase(getFullyQualifiedAction(), "pick.set") eq 0>
 				<td>#local.itm#</td>
 			</cfif>
