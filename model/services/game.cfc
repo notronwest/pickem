@@ -327,7 +327,9 @@ History:
 public Struct function getGameStats( Required model.beans.game oGame ){
 	var stGameStats = {
 		arHomeTeam = variables.pickGateway.getPicksByGameAndTeam(arguments.oGame.getNGameID(), arguments.oGame.getNHomeTeamID()),
-		arAwayTeam = variables.pickGateway.getPicksByGameAndTeam(arguments.oGame.getNGameID(), arguments.oGame.getNAwayTeamID())
+		arAwayTeam = variables.pickGateway.getPicksByGameAndTeam(arguments.oGame.getNGameID(), arguments.oGame.getNAwayTeamID())//,
+		//nHomeATS = variables.pickGateway.getTeamATS(arguments.oGame.getNHomeTeamID()),
+		//nAwayATS = variables.pickGateway.getTeamATS(arguments.oGame.getNAwayTeamID())
 	};
 	return stGameStats;
 }

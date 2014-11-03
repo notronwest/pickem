@@ -76,4 +76,11 @@ public void function calculate(rc){
 	
 	variables.framework.setView("main.message");
 }
+
+public void function updateStandingsForSeason(rc){
+	variables.standingService.updateStandingsForSeason(rc.sSeason);
+	rc.sMessage = "All standings updated for #rc.sSeason#";
+	variables.framework.setView("main.message");
+}
+
 }

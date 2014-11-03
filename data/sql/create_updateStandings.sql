@@ -4,7 +4,8 @@ CONTAINS SQL
 doUpdate:BEGIN
 
 DECLARE dtPicksDue int;
-DECLARE nStandingRecordCount int(4);
+DECLARE nStandingRecordCount int;
+DECLARE nLeastWins int;
 
 -- if we have a 0 week id exit
 IF nInWeekID = 0 THEN
@@ -35,71 +36,61 @@ AND bGameIsFinal = 1;
 UPDATE pick set nWin = isPickWin(nGameID, nTeamID)
 WHERE nWeekID = nInWeekID;
 
--- Determine if we are doing an insert or update
---SELECT count(nUserID) into nStandingRecordCount
---FROM standing
---WHERE nWeekID = nInWeekID;
-
--- Should make sure that there is a record here for every user
---IF nStandingRecordCount = 0 THEN BEGIN
-
-        -- Insert all of the wins per user
-        INSERT INTO standing  (nUserID, nWeekID, sSeason, nWins, nLosses, bHasPicks)
-        SELECT DISTINCT nUserID, nInWeekID, sInSeason, SUM(nWin), 20 - SUM(nWin), 1 as bHasPicks
-        FROM pick
-        WHERE nWeekID = nInWeekID
-        AND nUserID not in (select nUserID from standing where nWeekID = nInWeekID)
-        GROUP BY nUserID;
-
-  --  END;
-
---ELSE BEGIN
+-- Insert all of the wins per user
+INSERT INTO standing  (nUserID, nWeekID, sSeason, nWins, nLosses, bHasPicks)
+SELECT DISTINCT nUserID, nInWeekID, sInSeason, SUM(nWin), 20 - SUM(nWin), 1 as bHasPicks
+FROM pick
+WHERE nWeekID = nInWeekID
+AND nUserID not in (select nUserID from standing where nWeekID = nInWeekID)
+GROUP BY nUserID;
     
-        -- Update the records that already exist for this week
-        UPDATE standing
-        SET nWins = (SELECT SUM(nWin) FROM pick WHERE nWeekID = nInWeekID AND pick.nUserID = standing.nUserID),
-        nLosses = (20 - nWins)
-        WHERE nWeekID = nInWeekID
-        AND bHasPicks = 1;
+-- Update the records that already exist for this week
+UPDATE standing
+SET nWins = (SELECT SUM(nWin) FROM pick WHERE nWeekID = nInWeekID AND pick.nUserID = standing.nUserID),
+nLosses = (20 - nWins)
+WHERE nWeekID = nInWeekID
+AND bHasPicks = 1;
 
-        -- Insert a record for users that don't have picks
-        INSERT INTO standing (nUserID, nWeekID, sSeason, nWins, nLosses, nHighestTiebreak, bHasPicks)
-        SELECT nUserID, nInWeekID, sInSeason, 0 as nWins, 20 as nLosses, 0 as nHighestTiebreak, 0 as bHasPicks
-        FROM user
-        WHERE nUserID not in (select nUserID from standing where nWeekID = nInWeekID);
-
---    END;
-
---END IF;
+-- Insert a record for users that don't have picks
+INSERT INTO standing (nUserID, nWeekID, sSeason, nWins, nLosses, nHighestTiebreak, bHasPicks)
+SELECT nUserID, nInWeekID, sInSeason, 0 as nWins, 20 as nLosses, 0 as nHighestTiebreak, 0 as bHasPicks
+FROM user
+WHERE nUserID not in (select nUserID from standing where nWeekID = nInWeekID);
 
 -- Update number of nTiebreaks
-UPDATE standing s
-SET nHighestTiebreak = ( SELECT MIN(nTiebreak)
-    FROM game g
-    LEFT JOIN pick p
-    ON g.nGameID = p.nGameID
-    WHERE nWin = 0 
-    AND p.nUserID = s.nUserID
-    AND p.nWeekID = nInWeekID )
-WHERE bHasPicks = 1;
+UPDATE standing
+SET nHighestTiebreak = getHighestTiebreak(nWeekID, nUserID)
+WHERE nWeekID = nInWeekID;
 
 -- Update the standings place for this week
-UPDATE standing  
-    JOIN (SELECT s.nUserID,  
-                 IF(@lastPoint <> s.nWins,  
-                    @curRank := @curRank + @nextrank,  
-                    @curRank)  AS rank,  
-                 IF(@lastPoint = s.nWins,  
-                    @nextrank := @nextrank + 1,  
-                    @nextrank := 1),  
-                 @lastPoint := s.nWins  
-            FROM standing s 
-            JOIN (SELECT @curRank := 0, @lastPoint := 0, @nextrank := 1) r
-            WHERE s.nWeekID = nInWeekID
-            ORDER BY  s.nWins DESC  
-          ) ranks ON (ranks.nUserID = standing.nUserID)
-SET standing.nPlace = ranks.rank
-WHERE standing.nWeekID = nInWeekID;
+UPDATE standing
+         JOIN
+         ( SELECT nStandingID
+                , @rownum:=@rownum+1 AS rank_calculated
+           FROM standing
+              , (SELECT @rownum:=0) AS st
+           WHERE nWeekID = nInWeekID
+           ORDER BY nWins DESC, nHighestTiebreak DESC
+         ) AS r
+         ON r.nStandingID = standing.nStandingID
+SET standing.nPlace = r.rank_calculated
+WHERE nWeekID = nInWeekID;
+
+-- get the least wins
+SET nLeastWins = (SELECT nWins
+FROM standing
+WHERE nWeekID = nInWeekID
+AND bHasPicks = 1
+ORDER BY nWins
+LIMIT 1);
+
+-- update users who did not make picks
+UPDATE standing
+SET nWins = nLeastWins,
+nLosses = (select (count(*) - nLeastWins) as nLoses from game where nWeekID = nInWeekID)
+WHERE nWeekID = nInWeekID
+AND bHasPicks <> 1;
+
 
 END;
 

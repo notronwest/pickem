@@ -1,6 +1,7 @@
 component accessors="true" extends="model.services.baseService" {
 
 property name="standingGateway";
+property name="weekGateway";
 
 /*
 Author: 	
@@ -24,5 +25,27 @@ public void function deleteUserStandings( Required Numeric nUserID ){
 		variables.standingGateway.delete(arStandings[itm]);
 	}
 }
-	
+
+/*
+Author: 	
+	Ron West
+Name:
+	$updateStandingsForSeason	
+Summary:
+	Updates the standings for the entire season
+Returns:
+	Void
+Arguments:
+	String sSeason
+History:
+	2014-11-03 - RLW - Created
+*/
+public void function updateStandingsForSeason( Required String sSeason ){
+	var arWeeks = variables.weekGateway.getSeason(arguments.sSeason);
+	var itm = 1;
+	for(itm; itm lte arrayLen(arWeeks); itm++ ){
+		variables.standingGateway.updateStandings(arWeeks[itm].getNWeekID(), arguments.sSeason);
+	}
+}
+
 }

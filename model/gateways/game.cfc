@@ -315,4 +315,27 @@ public void function updateWinners( Required Numeric nWeekID ){
 	variables.dbService.runQuery("update game g1 join game g2 ON g1.nGameID = g2.nGameID
 set g1.nWinner = calculateWinner(g2.nHomeTeamID,g2.nHomeScore,g2.nAwayTeamID,g2.nAwayScore,g2.nSpread,g2.sSpreadFavor)");
 }
+
+/*
+Author: 	
+	Ron West
+Name:
+	$getTeamGames
+Summary:
+	Returns a query for the teams games
+Returns:
+	Query qryGames
+Arguments:
+	Numeric nTeamID
+History:
+	2014-10-24 - RLW - Created
+*/
+public Numeric function getTeamGames( Required Numeric nTeamID ){
+	var arTeams = ormExecuteQuery("from game where nHomeTeamID = :nTeamID or nAwayTeamID = :nTeamID", { nTeamID = arguments.nTeamID} );
+	var qryTeams = queryNew("");
+	if( arrayLen(arTeams) gt 0 ){
+		qryTeams = entityToQuery(arTeams);
+	}
+	return qryTeams;
+}
 }
