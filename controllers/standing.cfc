@@ -17,6 +17,7 @@ public void function home(rc){
 	rc.stWeekWins = {};
 	rc.stWeekWinners = {};
 	rc.stWeekSecondPlace = {};
+	rc.stWeekNoPicks = {};
 	rc.stUsers = {};
 	rc.stSeasonWins = {};
 	rc.arStandings = [];
@@ -35,6 +36,13 @@ public void function home(rc){
 		if( not structKeyExists(rc.stWeekWins, nUserID) ){
 			rc.stWeekWins[nUserID] = {};
 		}
+		// if this user doesn't have picks for this week
+		if( arStandings[itm].getBHasPicks() neq 1 ){
+			if( not structKeyExists(rc.stWeekNoPicks, nWeekID) ){
+				rc.stWeekNoPicks[nWeekID] = [];
+			}
+			arrayAppend(rc.stWeekNoPicks[nWeekID], nUserID);
+		}
 		// store this users wins
 		rc.stWeekWins[nUserID][nWeekID] = arStandings[itm].getNWins();
 		// store the winners
@@ -42,14 +50,14 @@ public void function home(rc){
 			rc.stWeekWinners[nWeekID] = {};
 			rc.stWeekSecondPlace[nWeekID] = {};
 		}
-		// if there is no current f
+		// if there is no current first place
 		if( arStandings[itm].getNPlace() eq 1 and not arrayFind(arWeekFirstPlace, nWeekID) ){
 			rc.stWeekWinners[nWeekID][nUserID] = 1;
 			arrayAppend(arWeekFirstPlace, nWeekID);
-		} else if( arStandings[itm].getNPlace() eq 1 and not arrayFind(arWeekSecondPlace, nWeekID) ){
+		} else if( arStandings[itm].getNPlace() eq 1 and not arrayFind(arWeekSecondPlace, nWeekID) ){ // if this user is second and there are no second place people outlined yet
 			rc.stWeekSecondPlace[nWeekID][nUserID] = 1;
 			arrayAppend(arWeekSecondPlace, nWeekID);
-		} else if ( arStandings[itm].getNPlace() eq 2 and not arrayFind(arWeekSecondPlace, nWeekID)){
+		} else if ( arStandings[itm].getNPlace() eq 2 and not arrayFind(arWeekSecondPlace, nWeekID)){ // second place
 			rc.stWeekSecondPlace[nWeekID][nUserID] = 1;
 			arrayAppend(arWeekSecondPlace, nWeekID);
 		}

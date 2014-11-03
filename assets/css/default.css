@@ -68,7 +68,8 @@ body {
 
 .highlight-user td {
 	border-top: 2px solid #FFFF99 !important;
-	border-bottom: 2px solid #FFFF99 !important;	
+	border-bottom: 2px solid #FFFF99 !important;
+	background-color: #e4e4e4 !important;
 }
 
 .highlight-user td:first-child {
@@ -90,6 +91,8 @@ body {
 	border-color: #000000 !important;
 	opacity: 1;
 }
+
+.dataTables_info { display: none; }
 
 /*
 * Style the menu trigger and position it so it will be

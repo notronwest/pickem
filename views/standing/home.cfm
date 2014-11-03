@@ -5,7 +5,7 @@
 </cfscript>
 <cfoutput>
 	<div class="table-responsive">
-		<table id="standings" class="table table-striped">
+		<table id="standings" class="table hover order-column">
 			<thead>
 				<th>Player</th>
 				<!--- // <th>Money</th> --->
@@ -48,11 +48,23 @@
 							<cfset local.nWeekID = local.arWeeks[local.y]>
 							<td<cfif structKeyExists(rc.stWeekWinners[local.nWeekID], local.nUserID)> class="highlight-first" data-order="1000001"<cfelseif structKeyExists(rc.stWeekSecondPlace[local.nWeekID], local.nUserID)> class="highlight-second" data-order="1000000"<cfelse> data-order="#local.stUserWins[local.nWeekID]#"</cfif>>#local.stUserWins[local.nWeekID]#
 							<cfif structKeyExists(rc.stWeekWinners[local.nWeekID], local.nUserID)><span class="fa fa-trophy"></span></cfif>
+							<cfif structKeyExists(rc.stWeekNoPicks, local.nWeekID) and isArray(rc.stWeekNoPicks[local.nWeekID]) and arrayFind(rc.stWeekNoPicks[local.nWeekID], local.nUserID)><span class="fa fa-frown-o"></span></cfif>
 						</td>
 						</cfloop>
 						<cfset local.sCurrentWins = rc.stSeasonWins[local.nUserID]>
 					</tr>
 				</cfloop>
+			</tbody>
+		</table>
+	</div>
+	<div class="right">
+		<table class="table-bordered dataTable">
+			<tbody>
+				<tr>
+					<td><span class="fa fa-trophy highlight-first"> 1st</span></td>
+					<td><span class="highlight-second"> 2nd</span></td>
+					<td><span class="fa fa-frown-o"> No picks</span></td>
+				</tr>
 			</tbody>
 		</table>
 	</div>
