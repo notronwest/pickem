@@ -44,9 +44,11 @@
 							<th></th>
 							<th>Favorite</th>
 							<th>Underdog</th>
-							<th>Date</th>
-							<th>Orig. Spread</th>
-							<th>New Spread</th>
+							<th>Game Date</th>
+							<th>Game Time</th>
+							<th>Lock Date</th>
+							<th>Lock Time</th>
+							<th>Spread</th>
 							<th>Tiebreak</th>
 							<th></th>
 						</thead>
@@ -64,8 +66,10 @@
 							<th>Favorite</th>
 							<th>Underdog</th>
 							<th>Date</th>
-							<th>Orig. Spread</th>
-							<th>New Spread</th>
+							<th></th>
+							<th></th>
+							<th></th>
+							<th>Spread</th>
 							<th>Tiebreak</th>
 							<th></th>
 						</thead>
@@ -103,8 +107,10 @@
 		<td><span class="fa fa-sort move icons fa-fw fa-lg" title="Move into active games"><input type="hidden" class="spread-favor"/></span></td>
 		<td><input type="text" name="favorite" class="form-control input-sm favorite" data-id="" data-url=""/></td>
 		<td><input type="text" name="underdog"class="form-control input-sm underdog" data-id="" data-url=""/></td>
-		<td><input type="text" name="date" class="form-control input-sm date control-md"/></td>
-		<td><input type="number" name="spreadOrig" class="form-control input-sm spread-orig control-sm"/></td>
+		<td><input type="text" name="date" class="form-control input-sm game-date date control-md"/></td>
+		<td><input type="text" name="gameTime" class="form-control input-sm time game-time control-md"/></td>
+		<td><input type="text" name="lock" class="form-control input-sm lock-date date control-md"/></td>
+		<td><input type="text" name="lockTime" class="form-control input-sm time lock-time control-md"/></td>
 		<td><input type="number" name="spread" class="form-control input-sm spread control-sm"/></td>
 		<td><input type="number" name="tiebreak" class="form-control input-sm tiebreak control-sm"/></td>
 		<td><span title="Delete Game" class="fa fa-trash-o delete icons fa-fw fa-lg"></span> <span title="Swap HOME/Away Teams" class="fa fa-home swap-home icons fa-lg"></span> <span title="Swap Spread" class="fa fa-exchange swap-spread icons fa-lg"></span></td>

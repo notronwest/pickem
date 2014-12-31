@@ -62,20 +62,29 @@ public Void function saveWeek(rc){
 			if( listFind(lstGamesToDelete, rc.arGames[itm].nGameID) gt 0 ){
 				lstGamesToDelete = listDeleteAt(lstGamesToDelete, listFind(lstGamesToDelete, rc.arGames[itm].nGameID));
 			}
-			// save the home team
-			oHomeTeam = variables.teamService.saveTeam(rc.arGames[itm].sHomeTeam, rc.arGames[itm].sHomeTeamURL);
-			// add in the id
-			rc.arGames[itm].nHomeTeamID = oHomeTeam.getNTeamID();
-			// save the away team
-			oAwayTeam = variables.teamService.saveTeam(rc.arGames[itm].sAwayTeam, rc.arGames[itm].sAwayTeamURL);
-			// add in the id
-			rc.arGames[itm].nAwayTeamID = oAwayTeam.getNTeamID();
-			// add in the week
-			rc.arGames[itm].nWeekID = rc.nWeekID;
-			// update the order
-			rc.arGames[itm].nOrder = itm;
-			// save the game
-			arrayAppend(rc.arSavedGames, variables.gameGateway.update(oGame, rc.arGames[itm]));
+			// if this game is completed - don't make any changes
+			if( !oGame.getBGameIsFinal() eq 1 ){
+				// save the home team
+				oHomeTeam = variables.teamService.saveTeam(rc.arGames[itm].sHomeTeam, rc.arGames[itm].sHomeTeamURL);
+				if( oHomeTeam.getNTeamID() gt 0 ){
+					// add in the id
+					rc.arGames[itm].nHomeTeamID = oHomeTeam.getNTeamID();
+					// save the away team
+					oAwayTeam = variables.teamService.saveTeam(rc.arGames[itm].sAwayTeam, rc.arGames[itm].sAwayTeamURL);
+					if( oAwayTeam.getNTeamID() > 0 ){
+						// add in the id
+						rc.arGames[itm].nAwayTeamID = oAwayTeam.getNTeamID();
+						// add in the week
+						rc.arGames[itm].nWeekID = rc.nWeekID;
+						// update the order
+						rc.arGames[itm].nOrder = itm;
+						// save the game
+						arrayAppend(rc.arSavedGames, variables.gameGateway.update(oGame, rc.arGames[itm]));
+					}
+				}
+			} else { // save the game so we can track it
+				arrayAppend(rc.arSavedGames, oGame);
+			}
 		}
 		// once we are done the only games remaining will be those deleted
 		arGamesToDelete = listToArray(lstGamesToDelete);
@@ -141,5 +150,25 @@ public void function getGameScores(rc){
 	} catch (any e){
 		registerError("Error trying to get the game scores", e);
 	}
+}
+
+/*
+Author: 	
+	Ron West
+Name:
+	$isDateValid
+Summary:
+	Determines if the passed in date/time is valid
+Returns:
+	Void
+Arguments:
+	Void
+History:
+	2014-12-21 - RLW - Created
+*/
+public void function isDateValid(rc){
+	param name="rc.dtToCheck" default="";
+	rc.aResult = variables.commonService.isValidDateTime(rc.dtToCheck);
+	variables.framework.setView("main.serialize");
 }
 }

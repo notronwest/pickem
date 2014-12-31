@@ -51,7 +51,7 @@ $(function(){
 		};
 		makeActive();
 		// append this new game
-		addGame(stGame, "#activeGames");
+		addGame(stGame, "#activeGames", true);
 	});
 	// bind for setting favor on new games
 	$(".container").on("change", ".spread-favor", function(){
@@ -104,6 +104,10 @@ $(function(){
 		makeActive();
 		$(".container").off("keyup", ".spread,.tiebreak");
 	});
+	// bind to make games active if the time/date is changed
+	$(".container").on("focus", ".date,.time", function(){
+		makeActive();
+	})
 	// bind to make save games not disabled when someone clicks x to remove a game
 	$(".container").on("click", ".move", function(){
 		makeActive();
@@ -113,6 +117,8 @@ $(function(){
 	$(".container").on("click", ".save-games:not(.disabled)", function(event){
 		event.stopPropagation();
 		var bDoSave = true;
+		var dtGame = "";
+		var dtLock = "";
 		// clear the arGames to build the now active games
 		arGames = [];
 		// loop through all of the active games
@@ -123,6 +129,37 @@ $(function(){
 				$(this).find(".spread-favor").focus();
 				bDoSave = false;
 			}
+			// store the game dates/times
+			dtGame = $(this).find(".game-date").val().trim() + " " + fixTime($(this).find(".game-time").val().trim());
+			dtLock = $(this).find(".lock-date").val().trim() + " " + fixTime($(this).find(".lock-time").val().trim());
+			// check the game date/time
+			if( dtGame.length == 19 ){
+				$.get("/?action=game.isDateValid&dtToCheck=" + dtGame,
+					function(sValidDate){
+						if( sValidDate.length > 0 ){
+							dtGame = sValidDate;
+						} else {
+							alert("Please check your game date and time. Doesn't appear to be valid");
+							$(this).focus();
+							bDoSave = false;
+						}
+					}, "json"
+				);
+			}
+			// check the lock date/time
+			if( dtLock.length == 19 ){
+				$.get("/?action=game.isDateValid&dtToCheck=" + dtLock,
+					function(sValidDate){
+						if( sValidDate.length > 0 ){
+							dtLock = sValidDate;
+						} else {
+							alert("Please check your game lock date and time. Doesn't appear to be valid");
+							$(this).focus();
+							bDoSave = false;
+						}
+					}, "json"
+				);
+			}
 			// reset the array of games
 			stGame = {
 				"nGameID": $(this).closest("tr").data("game-id"),
@@ -132,10 +169,10 @@ $(function(){
 				"sAwayTeam": $(this).find(".away").val(),
 				"nAwayTeamID": $(this).find(".away").data("id"),
 				"sAwayTeamURL": $(this).find(".away").data("url"),
-				"sSpreadOrignal": toDecimal($(this).find(".spread-orig").val()),
 				"nSpread": toDecimal($(this).find(".spread").val()),
 				"sSpreadFavor": $(this).find(".spread-favor").val(),
-				"sGameDateTime": $(this).find(".date").val(),
+				"sGameDateTime": ( dtGame.length > 0 ) ? dtGame : "",
+				"dtLock": ( dtLock.length > 0 ) ? dtLock : "",
 				"nTiebreak": $(this).find(".tiebreak").val()
 			};
 			arGames.push(stGame);
@@ -176,8 +213,6 @@ function parseTeams(){
 					stGame.sAwayTeamURL = $(this).children("a").prop("href");
 				}
 			});
-			// get the time from the first td
-			//stGame.sGameDateTime = sGameDate + ' ' + convertTimeToPD($(this).children("td:nth-child(1)").children("div").children("span").text());
 			stGame.sGameDateTime = sGameDate;
 			// get the spread from the second td
 			sSpreadNode = $(this).children("td:nth-child(2)").children("div:nth-child(1)").children("span");
@@ -213,17 +248,27 @@ function buildForm(arGames, oNode){
 }
 
 // add the game into the UI
-function addGame(stGame, oNode){
+function addGame(stGame, oNode, bIsNew){
+	if( typeof bIsNew != "boolean" ){
+		bIsNew = false;
+	}
 	var sFavorite = "";
 	var sUnderdog = "";
-	// make a copy of the game node
-	var oDupe = $("#defaultGame tr").clone(true).appendTo(oNode + " tbody").removeClass("hide").data("game-id", stGame.nGameID);
+	var oDupe = "";
+	// make a copy of the game node (prepend new ones)
+	if( bIsNew ){
+		oDupe = $("#defaultGame tr").clone(true).prependTo(oNode + " tbody").removeClass("hide").data("game-id", stGame.nGameID);
+	} else {
+		oDupe = $("#defaultGame tr").clone(true).appendTo(oNode + " tbody").removeClass("hide").data("game-id", stGame.nGameID);
+	}
 	// if this is the active games node then add in autocomplete
 	if( typeof stGame.bIsNew == "boolean" ){
 		// add auto complete
 		$(oDupe).find(".favorite,.underdog").autocomplete({ source: "/?action=team.searchForTeam" });
 		// add date picker
 		$(oDupe).find(".date").datepicker( { dateFormat: "yy-mm-dd" } );
+		// add time picker
+		$(oDupe).find(".time").ptTimeSelect();
 		// replace spread favor with select
 		$(oDupe).find(".spread-favor").remove();
 		$(oDupe).find(".move").closest("td").append('<select class="spread-favor"><option value="">Spread Favor</option><option value="home">Home</option><option value="away">Away</select>');
@@ -238,10 +283,11 @@ function addGame(stGame, oNode){
 			$(oDupe).find(".favorite").val(stGame.sAwayTeam).addClass("away");
 			$(oDupe).find(".underdog").val(stGame.sHomeTeam).addClass("home");
 		}
-		
-		$(oDupe).find(".date").val(stGame.sGameDateTime);
+		$(oDupe).find(".game-date").val(stGame.sGameDateTime.split(" ")[0]);
+		$(oDupe).find(".game-time").val(stGame.sGameDateTime.split(" ")[1]);
+		$(oDupe).find(".lock-date").val(stGame.dtLock.split(" ")[0]);
+		$(oDupe).find(".lock-time").val(stGame.dtLock.split(" ")[1]);
 		$(oDupe).find(".spread").val(stGame.nSpread);
-		$(oDupe).find(".spread-orig").val(stGame.sSpreadOriginal);
 		$(oDupe).find(".spread-favor").val(stGame.sSpreadFavor);
 		$(oDupe).find(".tiebreak").val(stGame.nTiebreak);
 	}
@@ -274,6 +320,13 @@ function getGames(){
 			}
 		}, "json"
 	);
+	// load date/time fields
+	setTimeout(function(){
+		// add date picker
+		$(".date").datepicker( { dateFormat: "yy-mm-dd" } );
+		// add time picker
+		$(".time").ptTimeSelect();
+	}, 1000);
 }
 
 // make it active for saving
@@ -289,4 +342,28 @@ function toDecimal(nNumber) {
 		}
 	}
 	return nNumber;
+}
+// converts a time string to an actual time
+function fixTime(sTime){
+	var arTime = [];
+	var sHours = "";
+	var sMins = "";
+	var dtFixed = sTime;
+	if(sTime.length > 0 && sTime.indexOf(":") > 0 && sTime.indexOf(" ") > 0 ){
+		// get the AM PM
+		arTime = sTime.split(":");
+		sHours = arTime[0];
+		arTime = arTime[1].split(" ");
+		sMins = arTime[0];
+		if( arTime[1] == "PM"){
+			sHours = parseInt(sHours) + 12;
+		} else if (sHours.length == 1){
+			sHours = "0" + sHours;
+		}
+		dtFixed = sHours + ":" + sMins + ":00";
+	}
+	if( dtFixed.length != 8){
+		dtFixed = "";
+	}
+	return dtFixed;
 }

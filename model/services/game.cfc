@@ -79,7 +79,7 @@ public Array function adminWeek( Required Numeric nWeekID, Boolean bSortByTiebre
 		if( arguments.bSortByTiebreak ){
 			arGames = variables.gameGateway.getByWeekSort(arguments.nWeekID, "abs(nOrder),abs(nTiebreak)");
 		} else {
-			arGames = variables.gameGateway.getByWeek(arguments.nWeekID);
+			arGames = variables.gameGateway.getByWeek(arguments.nWeekID, "nOrder");
 		}
 		// build the array that contains the proper structure
 		for( itm; itm lte arrayLen(arGames); itm++ ){
@@ -124,6 +124,7 @@ public Struct function buildGameStruct( Required model.beans.game oGame ){
 		"nTiebreak" = arguments.oGame.getNTiebreak(),
 		"sSpreadOriginal" = arguments.oGame.getSSpreadOriginal(),
 		"sGameDateTime" = arguments.oGame.getSGameDateTime(),
+		"dtLock" = arguments.oGame.getDtLock(),
 		"nWinner" = (isNull(arguments.oGame.getNWinner())) ? 0 : arguments.oGame.getNWinner(),
 		"nOrder" = arguments.oGame.getNOrder(),
 		"sGameStatus" = (isNull(arguments.oGame.getSGameStatus()))? "" : arguments.oGame.getSGameStatus(),
@@ -243,7 +244,7 @@ public Array function getGameScores( Required Array arGames){
 				// if we have a valid team name
 				if( len(oTeam.getSName()) gt 0 ){
 					// get the page from Google
-					stURLResults = variables.commonService.getURL("https://www.google.com/search?q=#oTeam.getSName()#&oq=pitts&aqs=chrome.0.69i59j69i57j0l4.1622j0j9&sourceid=chrome&es_sm=119&ie=UTF-8");
+					stURLResults = variables.commonService.getURL("https://www.google.com/search?q=#oTeam.getSName()# football&oq=pitts&aqs=chrome.0.69i59j69i57j0l4.1622j0j9&sourceid=chrome&es_sm=119&ie=UTF-8");
 					// if we have a valid document
 					if( findNoCase("200",stURLResults.statusCode) ){
 						// get the score box

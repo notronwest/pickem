@@ -39,26 +39,29 @@ Returns:
 	Game oGame
 Arguments:
 	Game oGame
-	Struct stGame
+	Struct stData
 History:
 	2012-09-12 - RLW - Created
 */
-public model.beans.game function update( Required model.beans.game oGame, Required Struct stGame ){
+public model.beans.game function update( Required model.beans.game oGame, Required Struct stData ){
+	// set the bean into request scope
+	request.oBean = arguments.oGame;
 	try{
-		arguments.oGame.setNWeekID(arguments.stGame.nWeekID);
-		arguments.oGame.setNHomeTeamID(arguments.stGame.nHomeTeamID);
-		arguments.oGame.setNAwayTeamID(arguments.stGame.nAwayTeamID);
-		arguments.oGame.setNSpread(arguments.stGame.nSpread);
-		arguments.oGame.setSSpreadFavor(arguments.stGame.sSpreadFavor);
-		arguments.oGame.setSSpreadOriginal(arguments.stGame.sSpreadOrignal);
-		arguments.oGame.setSGameDateTime(arguments.stGame.sGameDateTime);
-		arguments.oGame.setNTiebreak(arguments.stGame.nTiebreak);
-		arguments.oGame.setNOrder(arguments.stGame.nOrder);
-		save(arguments.oGame);
+		var sKey = "";
+		var lstIgnore = "nGameID";
+		// loop through all of the fields in the structure and update the data
+		for( sKey in arguments.stData ){
+			if( not listFind(lstIgnore, sKey) ){
+				include "set.cfm";
+			}
+		}
+		// save the entity
+		entitySave(request.oBean);
+		ormFlush();
 	} catch (any e){
 		registerError("Error in update function to game", e);
 	}
-	return arguments.oGame;
+	return request.oBean;
 }
 /*
 Author: 	

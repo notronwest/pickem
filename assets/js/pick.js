@@ -6,11 +6,11 @@ $(function(){
 		// turn on the controls
 		$(".page-controls .cancel, .page-controls .save").removeClass("hidden");
 		// hide the picks
-		$(".picks").addClass("hidden");
+		$(".game:not('.locked')").children(".picks").addClass("hidden");
 		// show the controls
-		$(".change").removeClass("hidden");
+		$(".game:not('.locked')").children(".change").removeClass("hidden");
 		// remove the disabled class
-		$(".picks .disabled").removeClass("disabled");
+		$(".game:not('.locked')").children(".picks .disabled").removeClass("disabled");
 	});
 	// build action for cancelling changes
 	$(".page-controls").on("click", ".cancel", function(){

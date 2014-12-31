@@ -134,4 +134,25 @@ public String function parseToFindString( Required String sContent, Required Str
 	return sResult;
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$isValidDateTime
+Summary:
+	Determines if the string is a valid date/time string
+Returns:
+	String dtValid
+Arguments:
+	String dtToValidate
+History:
+	2014-12-21 - RLW - Created
+*/
+public String function isValidDateTime( Required String dtToValidate ){
+	var dtValid = "";
+	if( isDate(arguments.dtToValidate) ){
+		dtValid = dateFormat(arguments.dtToValidate, "yyyy-mm-dd") & " " & timeFormat(arguments.dtToValidate, "HH:mm:ss"); 
+	}
+	return dtValid;
+}
 }

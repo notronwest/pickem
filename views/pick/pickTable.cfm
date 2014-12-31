@@ -1,10 +1,12 @@
 <cfparam name="local.bShowGameStatus" default="true">
 <cfoutput>
+	<div class="bs-callout bs-callout-info"><span class="fa fa-lock"></span> - indicates this pick is locked</div>
 	<cfloop from="1" to="#arrayLen(local.arWeekGames)#" index="local.itm">
 		<!--- // determine who gets pick class --->
 		<cfscript>
 			stGame = local.arWeekGames[local.itm];
 			bPick = 0;
+			bPickIsLocked = false;
 			// determine who the pick is
 			if( structKeyExists(local.stPicks, local.arWeekGames[local.itm].nGameID) ){
 				bPick = local.stPicks[local.arWeekGames[local.itm].nGameID];
@@ -39,11 +41,16 @@
 				} else if ( nFavoredTeam eq stNotPick.nID and (stNotPick.nScore - stGame.nSpread) < stPick.nScore ){
 					stPick.bIsWinning = true;
 				}
+				bPickIsLocked = true;
+			}
+			// determine if this pick is locked
+			if( isDate(stGame.dtLock) and stGame.dtLock < rc.dNow ){
+				bPickIsLocked = true;
 			}
 		</cfscript>
-		<tr class="game" data-id="#rc.arWeekGames[local.itm].nGameId#" data-nWeekID="#rc.nWeekID#">
+		<tr class="game#((bPickIsLocked) ? ' locked' : '')#" data-id="#rc.arWeekGames[local.itm].nGameId#" data-nWeekID="#rc.nWeekID#">
 			<cfif compareNoCase(getFullyQualifiedAction(), "pick.set") eq 0>
-				<td>#local.itm#</td>
+				<td>#local.itm#<cfif bPickIsLocked>&nbsp;<span class="fa fa-lock"></span></cfif></td>
 			</cfif>
 			<!--- // render picks --->
 			<td class="picks">

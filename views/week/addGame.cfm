@@ -23,8 +23,20 @@
 			</div>
 		</div>
 		<div class="control-group">
-			<label for="dGameDate" class="control-label">Date: </label>
+			<label for="dGameDate" class="control-label">Game Date: </label>
 			<div class="controls"><input type="text" id="dGameDate" value=""/></div>
+		</div>
+		<div class="control-group">
+			<label for="sGameTime" class="control-label">Game Time: </label>
+			<div class="controls"><input type="text" id="sGameTime" value=""/></div>
+		</div>
+		<div class="control-group">
+			<label for="dtLock" class="control-label">Date Picks are Locked: </label>
+			<div class="controls"><input type="text" id="dtLock" value=""/></div>
+		</div>
+		<div class="control-group">
+			<label for="sLockTime" class="control-label">Time Picks are Locked: </label>
+			<div class="controls"><input type="text" id="sLockTime" value=""/></div>
 		</div>
 		<div class="control-group">
 			<label for="nSpread" class="control-label">Spread: </label>
