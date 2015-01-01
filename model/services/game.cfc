@@ -244,7 +244,7 @@ public Array function getGameScores( Required Array arGames){
 				// if we have a valid team name
 				if( len(oTeam.getSName()) gt 0 ){
 					// get the page from Google
-					stURLResults = variables.commonService.getURL("https://www.google.com/search?q=#oTeam.getSName()# football&oq=pitts&aqs=chrome.0.69i59j69i57j0l4.1622j0j9&sourceid=chrome&es_sm=119&ie=UTF-8");
+					stURLResults = variables.commonService.getURL("https://www.google.com/search?q=#oTeam.getSName()#&oq=pitts&aqs=chrome.0.69i59j69i57j0l4.1622j0j9&sourceid=chrome&es_sm=119&ie=UTF-8");
 					// if we have a valid document
 					if( findNoCase("200",stURLResults.statusCode) ){
 						// get the score box
