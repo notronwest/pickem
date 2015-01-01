@@ -1,1 +1,1 @@
-<cfif not rc.bIsDialog><script src="/assets/js/pick.js"></script></cfif><cfoutput>#body#</cfoutput>
+<cfif not rc.bIsDialog><script src="/assets/js/pick_2015_01_01.js"></script></cfif><cfoutput>#body#</cfoutput>
