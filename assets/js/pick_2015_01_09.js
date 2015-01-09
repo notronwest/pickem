@@ -36,7 +36,7 @@ $(function(){
 		var stPicks = {};
 		var bSendPicks = true;
 		// loop through the list of games
-		$(".game").each(function(){
+		$(".game:not('.locked')").each(function(){
 			// make sure it has a pick
 			if( $(this).find(".pick").length == 0 ){
 				$(this).addClass("alert alert-danger");
