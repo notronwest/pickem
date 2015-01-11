@@ -22,4 +22,4 @@
 		</cfquery>
 	</cfif>
 
-<cfloop>
+</cfloop>
