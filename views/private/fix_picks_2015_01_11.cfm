@@ -4,7 +4,6 @@
 	where nWeekID = 40
 </cfquery>
 
-
 <cfloop query="#qryOldRecords#">
 	<!--- // see if this pick exists for this user --->
 	<cfquery name="qryDoesExist" datasource="pickem">
@@ -15,11 +14,14 @@
 	</cfquery>
 
 	<!--- // if it doesn't exist - insert it --->
-	<cfif qryDoesExist.recordCount lt 0>
-		<cfquery name="insert" datasource="pickem">
-			insert into pick (nGameID, nWeekID, nUserID, nTeamID, nWin)
-			values (#qryOldRecords.nGamID#, #qryOldRecords.nWeekID#, #qryOldRecords.nUserID#, #qryOldRecords.nTeamID#, #qryOldRecords.nWin#)
-		</cfquery>
+	<cfif qryDoesExist.recordCount eq 0>
+		<cftry>
+			<cfquery name="insert" datasource="pickem">
+				insert into pick (nGameID, nWeekID, nUserID, nTeamID, nWin)
+				values (#qryOldRecords.nGameID#, #qryOldRecords.nWeekID#, #qryOldRecords.nUserID#, #qryOldRecords.nTeamID#, #qryOldRecords.nWin#)
+			</cfquery>
+			<cfcatch></cfcatch>
+		</cftry>
 	</cfif>
 
 </cfloop>
