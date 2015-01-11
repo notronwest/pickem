@@ -5,7 +5,7 @@
 </cfquery>
 
 
-<cfloop query="qryOldRecords">
+<cfloop query="#qryOldRecords#">
 	<!--- // see if this pick exists for this user --->
 	<cfquery name="qryDoesExist" datasource="pickem">
 		select nPickID
