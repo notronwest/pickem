@@ -17,8 +17,8 @@
 	<!--- // if it doesn't exist - insert it --->
 	<cfif qryDoesExist.recordCount lt 0>
 		<cfquery name="insert" datasource="pickem">
-			insert into pick (nGameID, nWeekID, nUserID, nTeamID)
-			values (#qryOldRecords.nGamID#, #qryOldRecords.nWeekID#, #qryOldRecords.nUserID#, #qryOldRecords.nTeamID#)
+			insert into pick (nGameID, nWeekID, nUserID, nTeamID, nWin)
+			values (#qryOldRecords.nGamID#, #qryOldRecords.nWeekID#, #qryOldRecords.nUserID#, #qryOldRecords.nTeamID#, #qryOldRecords.nWin#)
 		</cfquery>
 	</cfif>
 
