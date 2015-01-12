@@ -65,12 +65,10 @@ public void function save(rc){
 	try{
 		// convert picks
 		stPicks = deserializeJSON(rc.stPicks);
-		// delete all of the picks for this user for this week
-		variables.pickGateway.deleteUserWeek(rc.nWeekID, rc.nCurrentUser);
 		// loop through the structure of picks and process them
 		for( nGameID in stPicks ){
-			// get a new pick object
-			oPick = variables.pickGateway.get();
+			// get a new pick object based on game and user
+			oPick = variables.pickGateway.getByUserAndGame(rc.stUser.nUserID, nGameID);
 			// update the picks
 			oPick = variables.pickGateway.update(oPick, { nGameID = nGameID, nTeamID = stPicks[nGameID], nWeekID = rc.nWeekID, nUserID = rc.nCurrentUser } );
 		}

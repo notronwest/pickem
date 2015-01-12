@@ -366,4 +366,29 @@ public Array function getPicksByGameAndTeam( Required numeric nGameID, Required 
 	return arPicks;
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$getByUserAndGame
+Summary:
+	Gets the pick object via the user id and the game id 
+Returns:
+	Game oPick
+Arguments:
+	Numeric nUserID
+	Numeric nGameID
+History:
+	2015-01-12 - RLW - Created
+*/
+public model.beans.pick function getByUserAndGame( Required Numeric nUserID, Required Numeric nGameID ){
+	// start by getting a blank game object
+	var oPick = get();
+	// check to see if there is a combo for this
+	var arPicks = ormExecuteQuery("from pick where nUserID = :nUserID and nGameID = :nGameID", { "nUserID" = arguments.nUserID, "nGameID" = arguments.nGameID} );
+	if( arrayLen(arPicks) gt 0 ){
+		oPick = arPicks[1];
+	}
+	return oPick;
+}
 }
