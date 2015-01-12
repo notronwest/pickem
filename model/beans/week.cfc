@@ -2,6 +2,7 @@
 component entityname="week" persistent="true" table="week" output="false" {
 	property name="nWeekID" fieldtype="ID" generator="identity";
 	property name="sName" fieldtype="column" ormtype="string" length="2000";
+	property name="nWeekNumber" fieldtype="column" ormtype="int";
 	property name="dPicksDue" fiedtype="column" ormtype="string" length="19";
 	property name="tPicksDue" fiedtype="column" ormtype="string" length="5";
 	property name="dStartDate" fieldtype="column" ormtype="string" length="19";

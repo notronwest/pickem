@@ -135,7 +135,7 @@ History:
 	2012-09-12 - RLW - Created
 */
 public Array function getSeason( Required String sSeason ){
-	var arStandings = ormExecuteQuery( "from standing where sSeason = :sSeason order by nWeekID desc, nHighestTiebreak desc", { sSeason = "#arguments.sSeason#" } );
+	var arStandings = ormExecuteQuery( "select s from standing s join s.week w where s.sSeason = :sSeason order by w.nWeekNumber desc, s.nHighestTiebreak desc", { sSeason = "#arguments.sSeason#" } );
 	return arStandings;
 }
 

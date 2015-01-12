@@ -9,6 +9,8 @@ component entityname="standing" persistent="true" table="standing" output="false
 	property name="nPlace" fieldtype="column" ormtype="int";
 	property name="bHasPicks" fieldtype="column" ormtype="int";
 	property name="sSeason" fieldtype="column" ormtype="string" length="20";
+
+	property name="week" fieldtype="many-to-one" cfc="week" fkcolumn="nWeekID" insert="false" update="false";
 	/**
 	* @output false
 	*/
