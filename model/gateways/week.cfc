@@ -110,7 +110,7 @@ History:
 	2012-09-12 - RLW - Created
 */
 public Array function getSeason( Required String sSeason ){
-	var arWeeks = ormExecuteQuery( "from week where sSeason = :sSeason order by sName", { sSeason = "#arguments.sSeason#" } );
+	var arWeeks = ormExecuteQuery( "from week where sSeason = :sSeason order by nWeekNumber", { sSeason = "#arguments.sSeason#" } );
 	return arWeeks;
 }
 

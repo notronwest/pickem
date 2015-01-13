@@ -26,7 +26,7 @@ public void function home(rc){
 	// loop through the standings and build the data for each week
 	for( itm; itm lte arrayLen(arStandings); itm++ ){
 		// setup this week
-		nWeekID = arStandings[itm].getNWeekID();
+		nWeekID = arStandings[itm].getWeek().getNWeekNumber();
 		nUserID = arStandings[itm].getNUserID();
 		// build structure for users
 		if( not structKeyExists(rc.stUsers, nUserID) ){

@@ -14,7 +14,7 @@
 				<th>Rank</th>
 				<!--- // loop through the weeks --->
 				<cfloop from="#arrayLen(rc.arWeeks)#" to="1" step="-1" index="itm">
-					<th data-week-id="#rc.arWeeks[itm].getNWeekID()#">Week ###itm#</th>
+					<th data-week-id="#rc.arWeeks[itm].getNWeekID()#">Week #rc.arWeeks[itm].getNWeekNumber()#</th>
 				</cfloop>
 			</thead>
 			<tbody>
