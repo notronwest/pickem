@@ -19,7 +19,6 @@
 			insert into pick (nGameID, nWeekID, nUserID, nTeamID, nWin)
 			values (#qryOldRecords.nGameID#, #qryOldRecords.nWeekID#, #qryOldRecords.nUserID#, #qryOldRecords.nTeamID#, #qryOldRecords.nWin#)
 		</cfquery>
-		<cfcatch></cfcatch>
 	</cfif>
 
 </cfloop>
