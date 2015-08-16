@@ -1,1 +1,1 @@
-<cfif not rc.bIsDialog><script src="/assets/js/week.js"></script><script src="/assets/js/jquery.ptTimeSelect.js"></script><link href="/assets/css/jquery.ptTimeSelect.css" rel="stylesheet"/></cfif><cfoutput>#body#</cfoutput>
+<cfif not rc.bIsDialog><script src="/assets/js/week.js"></script></cfif><cfoutput>#body#</cfoutput>

@@ -36,15 +36,16 @@ Summary:
 Returns:
 	Void
 Arguments:
-	String sSeason
+	Numeric nSeasonID
 History:
 	2014-11-03 - RLW - Created
+	2015-08-08 - RLW - Updated to use seasonID instead of string
 */
-public void function updateStandingsForSeason( Required String sSeason ){
-	var arWeeks = variables.weekGateway.getSeason(arguments.sSeason);
+public void function updateStandingsForSeason( Required Numeric nSeasonID ){
+	var arWeeks = variables.weekGateway.getSeason(arguments.nSeasonID);
 	var itm = 1;
 	for(itm; itm lte arrayLen(arWeeks); itm++ ){
-		variables.standingGateway.updateStandings(arWeeks[itm].getNWeekID(), arguments.sSeason);
+		variables.standingGateway.updateStandings(arWeeks[itm].getNWeekID(), arguments.nSeasonID);
 	}
 }
 

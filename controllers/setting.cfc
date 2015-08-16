@@ -25,12 +25,10 @@ public void function before (rc){
 }
 
 public void function save (rc){
-	rc.sMessage = "Settings saved";
-	rc.sMessageType = "info";
+	var sMessage = "Preferences saved";
 	variables.settingService.saveUserSettings(rc, rc.nUserID);
-	// get the user settings
-	rc.stSettings = variables.settingService.userSettings(rc.nUserID);
-	variables.framework.setView('setting.set');
+	// send them back to their profile page
+	variables.framework.redirect(action='user.addEdit', queryString='sMessage=#sMessage#');
 }
 
 }

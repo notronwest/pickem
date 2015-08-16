@@ -1,6 +1,6 @@
 <cfoutput>
 <button id="add" class="btn btn-inverse btn-small">Add Week</button>
-<h5>Season: #rc.sSeason#</h5>
+<h5>Season: #rc.nSeasonID#</h5>
 <ul>
 	<cfloop from="1" to="#arrayLen(rc.arWeeks)#" index="local.itm">
 		<cfif rc.nWeekID eq rc.arWeeks[itm].getNWeekID()>

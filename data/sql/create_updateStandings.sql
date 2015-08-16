@@ -37,7 +37,7 @@ UPDATE pick set nWin = isPickWin(nGameID, nTeamID)
 WHERE nWeekID = nInWeekID;
 
 -- Insert all of the wins per user
-INSERT INTO standing  (nUserID, nWeekID, sSeason, nWins, nLosses, bHasPicks)
+INSERT INTO standing  (nUserID, nWeekID, nSeasonID, nWins, nLosses, bHasPicks)
 SELECT DISTINCT nUserID, nInWeekID, sInSeason, SUM(nWin), 20 - SUM(nWin), 1 as bHasPicks
 FROM pick
 WHERE nWeekID = nInWeekID
@@ -52,7 +52,7 @@ WHERE nWeekID = nInWeekID
 AND bHasPicks = 1;
 
 -- Insert a record for users that don't have picks
-INSERT INTO standing (nUserID, nWeekID, sSeason, nWins, nLosses, nHighestTiebreak, bHasPicks)
+INSERT INTO standing (nUserID, nWeekID, nSeasonID, nWins, nLosses, nHighestTiebreak, bHasPicks)
 SELECT nUserID, nInWeekID, sInSeason, 0 as nWins, 20 as nLosses, 0 as nHighestTiebreak, 0 as bHasPicks
 FROM user
 WHERE nUserID not in (select nUserID from standing where nWeekID = nInWeekID);

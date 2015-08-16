@@ -44,32 +44,26 @@ public void function save(rc){
 		if( rc.nUserID eq 0 ){
 			rc.sMessage = "User created successfully";
 		}
-		// get this users object
-		oUser = userGateway.get(rc.nUserID);
 		if( structKeyExists(rc, "sFirstName") ){
 			// save the main user
-			oUser = userGateway.update(oUser, {
+			rc.oUser = userGateway.update(rc.oUser, {
 				"sFirstName" = rc.sFirstName,
 				"sLastName" = rc.sLastName,
-				"sEmail" = rc.sEmail,
-				"sUsername" = rc.sUsername,
-				"sPassword" = rc.sPassword,
-				"bIsAdmin" = rc.bIsAdmin
+				"sNickname" = rc.sNickname
 			});
 		}
 		if( structKeyExists(rc, "sUsername") ){
 			// save the username
-			oUser = userGateway.saveUsername(oUser.getNUserID(), rc.sUsername);
+			rc.oUser = userGateway.saveUsername(oUser.getNUserID(), rc.sUsername);
 			// save password
-			oUser = userGateway.savePassword(oUser.getNUserID(), rc.sPassword);
+			rc.oUser = userGateway.savePassword(oUser.getNUserID(), rc.sPassword);
 		}
 		// if the user is an admin redirect the user to the listing
 		if( rc.stUser.bIsAdmin ){
 			variables.framework.redirect('user.listing');
 			rc.bIsAdminAction = true;
 		} else {
-			rc.oUser = oUser;
-			rc.bProfileSaved = true;
+			rc.sMessage = "Profile saved successfully";
 			variables.framework.setView('user.addEdit');
 		}
 	} catch (any e){
@@ -143,22 +137,49 @@ public void function sendEmail(rc){
 	}
 }
 
-public void function forgotPassword(rc){
+public void function register(rc){
+	// make sure this user doesn't already exist
+	var arUser = variables.userGateway.getByEmail(rc.sEmail);
+	if( arrayLen(arUser) gt 0 ){
+		variables.framework.redirect(action="security.login", queryString="sMessage=That E-mail already exists. Please try again or go to login&sMessageType=register");
+	}
+	// get a password for this user
+	var sPassword = variables.commonService.generatePassword();
+	// setup the user
+	var stUser = {
+		"sUserName" = rc.sEmail,
+		"sPassword" = sPassword,
+		"sEmail" = rc.sEmail,
+		"bActive" = 1,
+		"bChangePassword" = 1
+	};
+	// save the user
+	var oUser = variables.userGateway.update(variables.userGateway.get(), stUser);
+	// send out e-mail
+	var sMessage = "Welcome to Pickem. We have created the following temporary password for you: #sPassword#
 
-/*
-Hi [firstname],
+	Use the above password in combination with your e-mail address to get started with the site.
 
-Welecome to Pickem, the companion to your favorite spreadsheet. Below you will find your credentials for accessing the new Pickem web site at [siteurl].
+	Good Luck!
 
-Username: [username]
-Password: [password]
+	http://pickem.inquisibee.com";
 
-From the site you can make your picks easily from your desktop, tablet or mobile phone.
-
-Good Luck!
-
-
-*/
-	
+	variables.commonService.sendEmail(request.sAdminEmail, "Welcome to Pickem!", sMessage, rc.sEmail);
 }
+
+public void function changePassword(rc){
+	param name="rc.bProcess" default="false";
+	if( rc.bProcess and compareNoCase(rc.sCurrentPassword, rc.oUser.getSPassword()) eq 0 ){
+		rc.sMessage = "Password changed";
+		// save the password
+		variables.userGateway.update(rc.oUser, {sPassword = rc.sPassword, bChangePassword = 0});
+		// redirect to account
+		variables.framework.setView('user.addEdit');
+		// reset this users session
+		session.bChangePassword = 0;
+	} else if( rc.bProcess and compareNoCase(rc.sCurrentPassword, rc.oUser.getSPassword()) neq 0 ) {
+		rc.sMessage = "Sorry please confirm your original password and try again";
+	}
+}
+
 }

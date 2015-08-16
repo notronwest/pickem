@@ -17,7 +17,12 @@ component extends="framework" {
 		// load all of the teams into memory
 		application.qryTeams = entityToQuery(getBeanFactory().getBean("teamGateway").getAll());
 		// unsecured actions
-		application.arUnsecuredActions = ["user.forgotPassword"];
+		application.arUnsecuredActions = [
+			"security.forgotPassword",
+			"security.login",
+			"security.authenticate",
+			"user.register",
+			"user.changePassword"];
 	}
 
 	/** 
@@ -27,6 +32,11 @@ component extends="framework" {
 		if( structKeyExists(rc, "reload") ){
 			setupApplication();
 		}
+		param name="rc.bHasLoggedIn" default="false";
+		// this code could maybe go somewhere else (maybe a userSettings.cfm in config??)
+		if( structKeyExists(cookie, "bHasLoggedIn") and cookie.bHasLoggedIn ){
+			rc.bHasLoggedIn = true;
+		}
 		controller( 'security.checkAuthorization' );
 	}
 
@@ -35,11 +45,13 @@ component extends="framework" {
 	*/
 	public void function before(rc){
 		param name="rc.sAPIKey" default="";
+		// default a message (used in a lot of different dialogs)
+		param name="rc.sMessage" default="";
 		rc.dDateNow = dateFormat(now(), 'yyyy-mm-dd');
 		rc.tTimeNow = timeFormat(now(), 'HH:mm');
 		rc.dNow = rc.dDateNow & " " & rc.tTimeNow;
 		// default the season
-		rc.sSeason = "2014-2015";
+		rc.nSeasonID = 3;
 		rc.bIsDialog = false;
 		rc.bIsMobile = getBeanFactory().getBean("commonService").isMobileView();
 		rc.bIsAdminAction = false;

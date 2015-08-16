@@ -15,7 +15,7 @@ public void function before(rc){
 	// if we don't have a week set
 	if( rc.nWeekID eq 0 ){
 		// try to determine this week
-		arTmpWeek = variables.weekGateway.getByDate(sSeason=rc.sSeason);
+		arTmpWeek = variables.weekGateway.getByDate(nSeasonID=rc.nSeasonID);
 		if( arrayLen(arTmpWeek) gt 0 ){
 			rc.nWeekID = arTmpWeek[1].getNWeekID();
 		}
@@ -23,7 +23,7 @@ public void function before(rc){
 	// get the details for this week
 	rc.oWeek = variables.weekGateway.get(rc.nWeekID);
 	// get the list of weeks created for this year
-	rc.arWeeks = variables.weekGateway.getSeason(rc.sSeason);
+	rc.arWeeks = variables.weekGateway.getSeason(rc.nSeasonID);
 	// set the side bar content
 	rc.sSideBar = variables.framework.view("left/pick");	
 	// get this weeks games
@@ -72,8 +72,10 @@ public void function save(rc){
 			// update the picks
 			oPick = variables.pickGateway.update(oPick, { nGameID = nGameID, nTeamID = stPicks[nGameID], nWeekID = rc.nWeekID, nUserID = rc.nCurrentUser } );
 		}
-		// send e-mail
-		variables.pickService.sendInPicks(stPicks, rc.oWeek, rc.stUser);
+		// send e-mail to mark these picks if we aren't in dev
+		if( !request.bIsDevelopment ){
+			variables.pickService.sendInPicks(stPicks, rc.oWeek, rc.stUser);
+		}
 	} catch (any e){
 		registerError("Error saving picks for user", e);
 		rc.sMessage = "Error saving picks, please try again";
@@ -117,7 +119,7 @@ public void function bulk(){
 	// get a list of all of the users
 	rc.arUsers = variables.userGateway.getAllSortByFirst();
 	// get the list of weeks created for this year
-	rc.arWeeks = variables.weekGateway.getSeason(rc.sSeason);
+	rc.arWeeks = variables.weekGateway.getSeason(rc.nSeasonID);
 	// if we are saving
 	if( rc.bDoSave ){
 		arSelections = listToArray(rc.lstPicks);

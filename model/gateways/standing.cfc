@@ -26,6 +26,7 @@ public model.beans.standing function get( Numeric nStandingID=0 ){
 	return oStanding;
 }
 
+
 /*
 Author: 	
 	Ron West
@@ -37,20 +38,31 @@ Returns:
 	Standing oStanding
 Arguments:
 	Standing oStanding
-	Struct stStanding
+	Struct stData
 History:
 	2012-09-12 - RLW - Created
 */
-public model.beans.standing function update( Required model.beans.standing oStanding, Required Struct stStanding ){
-	arguments.oStanding.setNWeekID(arguments.stStanding.nWeekID);
-	arguments.oStanding.setNWins(arguments.stStanding.nWins);
-	arguments.oStanding.setNLosses(arguments.stStanding.nLosses);
-	arguments.oStanding.setNUserID(arguments.stStanding.nUserID);
-	//arguments.oStanding.setNTiebreaks(arguments.stStanding.nTiebreaks);
-	arguments.oStanding.setSSeason(arguments.stStanding.sSeason);
-	arguments.oStanding = save(oStanding);
-	return arguments.oStanding;
+public model.beans.standing function update( Required model.beans.standing oStanding, Required Struct stData ){
+	// set the bean into request scope
+	request.oBean = arguments.oStanding;
+	try{
+		var sKey = "";
+		var lstIgnore = "nStandingID";
+		// loop through all of the fields in the structure and update the data
+		for( sKey in arguments.stData ){
+			if( not listFind(lstIgnore, sKey) ){
+				include "set.cfm";
+			}
+		}
+		// save the entity
+		entitySave(request.oBean);
+		ormFlush();
+	} catch (any e){
+		registerError("Error in update function to standing", e);
+	}
+	return request.oBean;
 }
+
 /*
 Author: 	
 	Ron West
@@ -130,12 +142,12 @@ Summary:
 Returns:
 	Array arStandings
 Arguments:
-	String sSeason
+	String nSeasonID
 History:
 	2012-09-12 - RLW - Created
 */
-public Array function getSeason( Required String sSeason ){
-	var arStandings = ormExecuteQuery( "select s from standing s join s.week w where s.sSeason = :sSeason order by w.nWeekNumber desc, s.nHighestTiebreak desc", { sSeason = "#arguments.sSeason#" } );
+public Array function getSeason( Required String nSeasonID ){
+	var arStandings = ormExecuteQuery( "select s from standing s join s.week w where s.nSeasonID = :nSeasonID order by w.nWeekNumber desc, s.nHighestTiebreak desc", { nSeasonID = "#arguments.nSeasonID#" } );
 	return arStandings;
 }
 
@@ -231,13 +243,13 @@ Returns:
 	void
 Arguments:
 	Numeric nWeekID
-	String sSeason
+	String nSeasonID
 History:
 	2014-09-11 - RLW - Created
 */
-public void function updateStandings( Required Numeric nWeekID, Required String sSeason){
+public void function updateStandings( Required Numeric nWeekID, Required String nSeasonID){
 	if( arguments.nWeekID neq 0 ){
-		variables.dbService.runStoredProc("updateStandings", [arguments.nWeekID, arguments.sSeason]
+		variables.dbService.runStoredProc("updateStandings", [arguments.nWeekID, arguments.nSeasonID]
 		);
 	}
 }

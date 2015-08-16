@@ -155,4 +155,47 @@ public String function isValidDateTime( Required String dtToValidate ){
 	}
 	return dtValid;
 }
+
+/*
+Author: 	
+	Ron West
+Name:
+	$generatePassword
+Summary:
+	Builds a dymamic password
+Returns:
+	String sPassword
+Arguments:
+	Void
+History:
+	2015-08-11 - RLW - Created
+*/
+public String function generatePassword(){
+	var nPasswordLength = 12;
+	var sLowerCaseAlpha = "abcdefghijklmnopqrstuvwxyz";
+	var sUpperCaseAlpha = uCase( sLowerCaseAlpha );
+	var sNumbers = "0123456789";
+	var sOtherChars = "~!@##$%^&*";
+	var sAllValidChars = (
+	    sLowerCaseAlpha &
+	    sUpperCaseAlpha &
+	    sNumbers &
+	    sOtherChars
+    );
+    var arPassword = [];
+    // select random number
+    arPassword[ 1 ] = mid(sNumbers, randRange( 1, len( sNumbers ) ), 1);
+    // select random lower case letter
+    arPassword[ 2 ] = mid(sLowerCaseAlpha, randRange( 1, len( sLowerCaseAlpha ) ), 1);
+    // select random upper case letter
+    arPassword[ 3 ] = mid(sUpperCaseAlpha, randRange( 1, len( sUpperCaseAlpha ) ), 1);
+    // now get the remaining characters for the password
+    for( itm = arrayLen(arPassword) + 1; itm lte nPasswordLength; itm++ ){
+    	arPassword[itm] = mid(sAllValidChars, randRange( 1, len( sAllValidChars ) ), 1);
+	}
+	// now mix up the password
+	createObject( "java", "java.util.Collections" ).Shuffle(arPassword);
+
+	return arrayToList(arPassword, "");
+}
 }

@@ -9,6 +9,8 @@ component entityname="user" persistent="true" table="user" output="false" {
 	property name="dLastLogin" fieldtype="column" ormtype="string" length="19";
 	property name="bActive" fieldtype="column" ormtype="string" length="1" dbdefault="1";
 	property name="bIsAdmin" fieldtype="column" ormtype="string" length="1" dbdefault="0";
+	property name="bChangePassword" fieldtype="column" ormtype="string" length="1" dbdefault="0";
+	property name="sNickname" fieldtype="column" ormtype="string" length="2000";
 	/**
 	* @output false
 	*/

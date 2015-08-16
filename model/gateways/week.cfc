@@ -37,23 +37,31 @@ Returns:
 	Week oWeek
 Arguments:
 	Week oWeek
-	Struct stWeek
+	Struct stData
 History:
 	2012-09-12 - RLW - Created
 */
-public model.beans.week function update( Required model.beans.week oWeek, Required Struct stWeek ){
-	// set data
-	arguments.oWeek.setSName(arguments.stWeek.sName);
-	arguments.oWeek.setDStartDate(arguments.stWeek.dStartDate);
-	arguments.oWeek.setDEndDate(arguments.stWeek.dEndDate);
-	arguments.oWeek.setLstSports(arguments.stWeek.lstSports);
-	arguments.oWeek.setSSeason(arguments.stWeek.sSeason);
-	arguments.oWeek.setNBonus(arguments.stWeek.nBonus);
-	arguments.oWeek.setDPicksDue(arguments.stWeek.dPicksDue);
-	arguments.oWeek.setTPicksDue(arguments.stWeek.tPicksDue);
-	arguments.oWeek = save(oWeek);
-	return arguments.oWeek;
+public model.beans.week function update( Required model.beans.week oWeek, Required Struct stData ){
+	// set the bean into request scope
+	request.oBean = arguments.oWeek;
+	try{
+		var sKey = "";
+		var lstIgnore = "nWeekID";
+		// loop through all of the fields in the structure and update the data
+		for( sKey in arguments.stData ){
+			if( not listFind(lstIgnore, sKey) ){
+				include "set.cfm";
+			}
+		}
+		// save the entity
+		entitySave(request.oBean);
+		ormFlush();
+	} catch (any e){
+		registerError("Error in update function to week", e);
+	}
+	return request.oBean;
 }
+
 /*
 Author: 	
 	Ron West
@@ -105,12 +113,12 @@ Summary:
 Returns:
 	Array arWeek
 Arguments:
-	String sSeason
+	String nSeasonID
 History:
 	2012-09-12 - RLW - Created
 */
-public Array function getSeason( Required String sSeason ){
-	var arWeeks = ormExecuteQuery( "from week where sSeason = :sSeason order by nWeekNumber", { sSeason = "#arguments.sSeason#" } );
+public Array function getSeason( Required Numeric nSeasonID ){
+	var arWeeks = ormExecuteQuery( "from week where nSeasonID = :nSeasonID order by nWeekNumber", { nSeasonID = "#arguments.nSeasonID#" } );
 	return arWeeks;
 }
 
@@ -126,12 +134,12 @@ Returns:
 Arguments:
 	String dtStart
 	String dtEnd
-	String sSeason
+	String nSeasonID
 History:
 	2012-09-12 - RLW - Created
 */
-public Array function getByDate( String dtStart = dateFormat(now(), "yyyy-mm-dd"), String sSeason = "2013-2014" ){
-	var arWeeks = ormExecuteQuery("from week where dStartDate <= :dtStart and dEndDate >= :dtStart and sSeason = :sSeason", { "dtStart" = arguments.dtStart, "sSeason" = arguments.sSeason });
+public Array function getByDate( String dtStart = dateFormat(now(), "yyyy-mm-dd"), String nSeasonID = "2013-2014" ){
+	var arWeeks = ormExecuteQuery("from week where dStartDate <= :dtStart and dEndDate >= :dtStart and nSeasonID = :nSeasonID", { "dtStart" = arguments.dtStart, "nSeasonID" = arguments.nSeasonID });
 	return arWeeks;
 }
 

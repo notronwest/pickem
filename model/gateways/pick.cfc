@@ -41,22 +41,31 @@ Returns:
 	Pick oPick
 Arguments:
 	Pick oPick
-	Struct stPick
+	Struct stData
 History:
 	2012-09-12 - RLW - Created
 */
-public model.beans.pick function update( Required model.beans.pick oPick, Required Struct stPick ){
+public model.beans.pick function update( Required model.beans.pick oPick, Required Struct stData ){
+	// set the bean into request scope
+	request.oBean = arguments.oPick;
 	try{
-		arguments.oPick.setNWeekID(arguments.stPick.nWeekID);
-		arguments.oPick.setNGameID(arguments.stPick.nGameID);
-		arguments.oPick.setNTeamID(arguments.stPick.nTeamID);
-		arguments.oPick.setNUserID(arguments.stPick.nUserID);
-		arguments.oPick = save(oPick);
+		var sKey = "";
+		var lstIgnore = "nPickID";
+		// loop through all of the fields in the structure and update the data
+		for( sKey in arguments.stData ){
+			if( not listFind(lstIgnore, sKey) ){
+				include "set.cfm";
+			}
+		}
+		// save the entity
+		entitySave(request.oBean);
+		ormFlush();
 	} catch (any e){
-		registerError("Error updating pick", e);
+		registerError("Error in update function to pick", e);
 	}
-	return arguments.oPick;
+	return request.oBean;
 }
+
 
 /*
 Author: 	

@@ -7,7 +7,8 @@
 		dialect = 'MySQL',	
 		logSQL = true,
 		skipCFCWithError = false,
-		useDBForMapping = true
+		useDBForMapping = true,
+		showSQL = "true"
 		//cfcLocation = arOrm
 	};
 </cfscript>

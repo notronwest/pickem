@@ -26,16 +26,16 @@
 					<input type="text" name="tPicksDue" id="tPicksDue" class="form-control" value="<cfif len(rc.oWeek.getTPicksDue()) gt 0>#rc.oWeek.getTPicksDue()#<cfelse>09:00</cfif>"/>
 					<span class="help-block">Use 24 hour time (e.g. 14:00 would be 2 PM)</span>
 				</div>
-				<div class="checkbox">
+				<!--- // <div class="checkbox">
 					Sports:
 						<label for="NCAA"><input type="checkbox" name="lstSports" id="NCAA" value="NCAA" class="sports"<cfif listFindNoCase(rc.oWeek.getLstSports(), "NCAA")> checked="checked"</cfif>/> NCAA</label> <label for="NFL"><input type="checkbox" name="lstSports" id="NFL" value="NFL" class="sports"<cfif listFindNoCase(rc.oWeek.getLstSports(), "NFL")> checked="checked"</cfif>/> NFL</label>
 				</div>
-				<input type="hidden" name="sSeason" value="#rc.sSeason#"/>
 				<div class="form-group">
 					<div class="checkbox">
 						<label for="nBonus"><input type="checkbox" name="nBonus" id="nBonus"<cfif rc.oWeek.getNBonus() eq 1> checked="checked"</cfif>/> Bonus week (*)</label>
 					</div>
-				</div>
+				</div> --->
+				<input type="hidden" name="nSeasonID" value="#rc.nSeasonID#"/>
 				<input type="hidden" name="nWeekID" id="nWeekID" value="#rc.oWeek.getNWeekID()#"/>
 			</div>
 		</div>

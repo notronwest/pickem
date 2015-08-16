@@ -17,8 +17,8 @@ public void function before (rc){
 	// get details for the week
 	rc.oWeek = variables.weekGateway.get(rc.nWeekID);
 	// if we have a zero week get the current week
-	if( rc.oWeek.getNWeekID(rc.sSeason) eq 0 ){
-		arWeek = variables.weekGateway.getByDate(sSeason=rc.sSeason);
+	if( rc.oWeek.getNWeekID(rc.nSeasonID) eq 0 ){
+		arWeek = variables.weekGateway.getByDate(nSeasonID=rc.nSeasonID);
 		if( arrayLen(arWeek) gt 0 ){
 			rc.oWeek = arWeek[1];
 			// reset weekID so other functions can use it

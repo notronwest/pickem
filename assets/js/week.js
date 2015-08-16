@@ -266,7 +266,7 @@ function addGame(stGame, oNode, bIsNew){
 		// add auto complete
 		$(oDupe).find(".favorite,.underdog").autocomplete({ source: "/?action=team.searchForTeam" });
 		// add date picker
-		$(oDupe).find(".date").datepicker( { dateFormat: "yy-mm-dd" } );
+		$(oDupe).find(".date").datepicker();
 		// add time picker
 		$(oDupe).find(".time").ptTimeSelect();
 		// replace spread favor with select
@@ -320,13 +320,6 @@ function getGames(){
 			}
 		}, "json"
 	);
-	// load date/time fields
-	setTimeout(function(){
-		// add date picker
-		$(".date").datepicker( { dateFormat: "yy-mm-dd" } );
-		// add time picker
-		$(".time").ptTimeSelect();
-	}, 1000);
 }
 
 // make it active for saving

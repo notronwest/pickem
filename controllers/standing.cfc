@@ -7,7 +7,7 @@ property name="weekGateway";
 
 public void function home(rc){
 	// get the standings records ordered by week
-	var arStandings = variables.standingGateway.getSeason(rc.sSeason);
+	var arStandings = variables.standingGateway.getSeason(rc.nSeasonID);
 	var itm = 1;
 	var nWeekID = 0;
 	var nUserID = 0;
@@ -22,7 +22,7 @@ public void function home(rc){
 	rc.stSeasonWins = {};
 	rc.arStandings = [];
 	// get the weeks
-	rc.arWeeks = variables.weekGateway.getSeason(rc.sSeason);
+	rc.arWeeks = variables.weekGateway.getSeason(rc.nSeasonID);
 	// loop through the standings and build the data for each week
 	for( itm; itm lte arrayLen(arStandings); itm++ ){
 		// setup this week
@@ -76,7 +76,7 @@ public void function calculate(rc){
 	param name="rc.nWeekID" default="0";
 	if( rc.nWeekID neq 0 ){
 		// calculate winners for this week
-		variables.standingGateway.updateStandings(rc.nWeekID, rc.sSeason);
+		variables.standingGateway.updateStandings(rc.nWeekID, rc.nSeasonID);
 		rc.sMessage = "Winners calculated";
 	} else {
 		rc.sMessage = "Error: Please provide a valid week parameter";
@@ -86,8 +86,8 @@ public void function calculate(rc){
 }
 
 public void function updateStandingsForSeason(rc){
-	variables.standingService.updateStandingsForSeason(rc.sSeason);
-	rc.sMessage = "All standings updated for #rc.sSeason#";
+	variables.standingService.updateStandingsForSeason(rc.nSeasonID);
+	rc.sMessage = "All standings updated for #rc.nSeasonID#";
 	variables.framework.setView("main.message");
 }
 

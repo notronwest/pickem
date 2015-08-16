@@ -12,14 +12,14 @@ public void function before(rc){
 	param name="rc.nWeekID" default="0";
 	param name="rc.bAdd" default="false";
 	// get the list of weeks created for this year
-	rc.arWeeks = variables.weekGateway.getSeason(rc.sSeason);
+	rc.arWeeks = variables.weekGateway.getSeason(rc.nSeasonID);
 	// treat everything like a dialog unless stated
 	rc.bIsDialog = true;
 	// get details for the week
 	rc.oWeek = variables.weekGateway.get(rc.nWeekID);
 	// if we have a zero week get the current week
-	if( rc.oWeek.getNWeekID(rc.sSeason) eq 0 and not rc.bAdd ){
-		arWeek = variables.weekGateway.getByDate(sSeason=rc.sSeason);
+	if( rc.oWeek.getNWeekID(rc.nSeasonID) eq 0 and not rc.bAdd ){
+		arWeek = variables.weekGateway.getByDate(nSeasonID=rc.nSeasonID);
 		if( arrayLen(arWeek) gt 0 ){
 			rc.oWeek = arWeek[1];
 			// reset weekID so other functions can use it
@@ -59,7 +59,7 @@ public void function addEdit(rc){
 	// setup some default data
 	if( rc.oWeek.getNWeekID() eq 0 ){
 		// get the weeks 
-		arWeeks = weekGateway.getSeason(rc.sSeason);
+		arWeeks = weekGateway.getSeason(rc.nSeasonID);
 		// set to the last week
 		if( arrayLen(arWeeks) ){
 			oLastWeek = arWeeks[arrayLen(arWeeks)];
@@ -99,8 +99,10 @@ public void function addEdit(rc){
 
 public void function save(rc){
 	param name="rc.nBonus" default="0";
+	param name="rc.lstSports" default="NCAA,NFL";
+	param name="rc.nBonus" default="0";
 	rc.bIsDialog = false;
-	oWeek = variables.weekGateway.update((rc.oWeek.getNWeekID() eq 0) ? entityNew("week") : rc.oWeek, { sName = rc.sName, dStartDate = rc.dStartDate, dEndDate = rc.dEndDate, lstSports = rc.lstSports, sSeason = rc.sSeason, nBonus = rc.nBonus, dPicksDue = rc.dPicksDue, tPicksDue = timeFormat(rc.tPicksDue, "HH:mm") });
+	oWeek = variables.weekGateway.update((rc.oWeek.getNWeekID() eq 0) ? entityNew("week") : rc.oWeek, { sName = rc.sName, dStartDate = rc.dStartDate, dEndDate = rc.dEndDate, lstSports = rc.lstSports, nSeasonID = rc.nSeasonID, nBonus = rc.nBonus, dPicksDue = rc.dPicksDue, tPicksDue = timeFormat(rc.tPicksDue, "HH:mm") });
 	rc.sMessage = "Week saved";
 	variables.framework.redirect("week.manage", "all");
 }
@@ -145,7 +147,7 @@ public void function addGame(rc){
 
 public void function manage(rc){
 	rc.bIsDialog = false;
-	rc.arWeeks = variables.weekGateway.getSeason(rc.sSeason);
+	rc.arWeeks = variables.weekGateway.getSeason(rc.nSeasonID);
 	rc.bIsAdminAction = true;
 }
 

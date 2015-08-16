@@ -20,6 +20,8 @@
 						<p>For those users that don't use the web interface, you can copy and paste their pick email content to set their picks</p></a>
 					<a class="list-group-item" href="#buildURL('user.emailUserForm')#"><h4>Email Users</h4>
 						<p>A form that allows you to easily select and email users.</p></a>
+					<a class="list-group-item" href="#buildURL('season.listing')#"><h4>Seasons</h4>
+						<p>Manage the seasons.</p></a>
             	</cfif>
 		</div>
 	</div>

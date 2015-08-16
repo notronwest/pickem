@@ -44,21 +44,29 @@ Returns:
 	User oUser
 Arguments:
 	User oUser
-	Struct stUser
+	Struct stData
 History:
 	2012-09-12 - RLW - Created
 */
-public model.beans.user function update( Required model.beans.user oUser, Required Struct stUser ){
+public model.beans.user function update( Required model.beans.user oUser, Required Struct stData ){
+	// set the bean into request scope
+	request.oBean = arguments.oUser;
 	try{
-		arguments.oUser.setSFirstName(arguments.stUser.sFirstName);
-		arguments.oUser.setSLastName(arguments.stUser.sLastName);
-		arguments.oUser.setSEmail(arguments.stUser.sEmail);
-		arguments.oUser.setBIsAdmin(arguments.stUser.bIsAdmin);
-		arguments.oUser = save(oUser);
+		var sKey = "";
+		var lstIgnore = "nUserID";
+		// loop through all of the fields in the structure and update the data
+		for( sKey in arguments.stData ){
+			if( not listFind(lstIgnore, sKey) ){
+				include "set.cfm";
+			}
+		}
+		// save the entity
+		entitySave(request.oBean);
+		ormFlush();
 	} catch (any e){
-		registerError("Error updating user", e);
+		registerError("Error in update function to user", e);
 	}
-	return arguments.oUser;
+	return request.oBean;
 }
 
 /*

@@ -1,5 +1,5 @@
 <cfoutput>
-<h5>#rc.sSeason#</h5>
+<h5>#rc.nSeasonID#</h5>
 <ul>
 	<cfloop from="1" to="#arrayLen(rc.arWeeks)#" index="local.itm">
 		<cfif rc.nWeekID eq rc.arWeeks[local.itm].getNWeekID()>
