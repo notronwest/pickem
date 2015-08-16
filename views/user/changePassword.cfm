@@ -1,4 +1,3 @@
-<cfdump var="#session#">
 <cfparam name="rc.sMessageType" default="info">
 <cfparam name="rc.sMessage" default="">
 <cfoutput>

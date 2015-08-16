@@ -38,6 +38,7 @@ public void function addEdit(rc){
 public void function save(rc){
 	var oUser = "";
 	param name="rc.bIsAdmin" default="0";
+	param name="rc.sNickname" default="";
 	rc.sMessage = "User updates";
 	try{
 		// if we are adding then change message
