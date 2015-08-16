@@ -158,13 +158,13 @@ public void function register(rc){
 	// send out e-mail
 	var sMessage = "Welcome to Pickem. We have created the following temporary password for you: #sPassword#
 
-	Use the above password in combination with your e-mail address to get started with the site.
+Use the above password in combination with your e-mail address to get started with the site.
 
-	Good Luck!
+Good Luck!
 
-	http://pickem.inquisibee.com";
+http://pickem.inquisibee.com";
 
-	variables.commonService.sendEmail(request.sAdminEmail, "Welcome to Pickem!", sMessage, rc.sEmail);
+	variables.commonService.sendEmail(rc.sEmail, "Welcome to Pickem!", sMessage);
 }
 
 public void function changePassword(rc){

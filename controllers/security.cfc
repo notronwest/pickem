@@ -106,11 +106,11 @@ public void function forgotPassword(rc){
 			// send them an e-mail
 			sMessage = "You have asked to have your password reset. We have created the following temporary password for you: #sPassword#
 
-		Use the above password in combination with your e-mail address to get back into the action.
+Use the above password in combination with your e-mail address to get back into the action.
 
-		http://pickem.inquisibee.com";
+http://pickem.inquisibee.com";
 
-			variables.commonService.sendEmail(request.sAdminEmail, "Pickem password reset", sMessage, rc.sEmail);
+			variables.commonService.sendEmail(rc.sEmail, "Pickem password reset", sMessage);
 			// set new login message
 			rc.sMessage = "An e-mail has been sent with a temporary password";
 			// redirect to login
