@@ -112,6 +112,12 @@ public void function emailUserForm(rc){
 	rc.bIsAdminAction = true;
 }
 
+public void function emailList(rc){
+	// get all of the users
+	rc.arUsers = variables.userGateway.getAllSortByFirst();
+	rc.bIsAdminAction = true;
+}
+
 public void function sendEmail(rc){
 	param name="rc.sMessage" default="";
 	param name="rc.lstEmail" default="";

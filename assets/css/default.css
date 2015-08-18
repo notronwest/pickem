@@ -85,6 +85,11 @@ body {
 	overflow: scroll;
 }
 
+#emailAddresses {
+	width: 95%;
+	overflow: scroll;
+}
+
 /* style the picks */
 .game button:disabled {
 	color: #000000 !important;
