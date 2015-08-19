@@ -16,6 +16,10 @@ public void function checkAuthorization(rc){
 	if( structKeyExists(rc.stUser, "bChangePassword") and rc.stUser.bChangePassword eq 1 and compareNoCase(variables.framework.getFullyQualifiedAction(), "user.changePassword") neq 0 ){
 		variables.framework.redirect("user.changePassword");
 	}
+	// if the user has to assign their profile information
+	if( structKeyExists(rc.stUser, "bSetProfile") and rc.stUser.bSetProfile eq 1 and compareNoCase(variables.framework.getFullyQualifiedAction(), "user.addEdit") neq 0 and comparenoCase(variables.framework.getFullyQualifiedAction(), "user.save") neq 0 ){
+		variables.framework.redirect(action="user.addEdit", queryString="sMessage=You must enter a valid name for your account");
+	}
 	// force all users to login
 	if( session.nUserID eq 0
 		and arrayFindNoCase(application.arUnsecuredActions, variables.framework.getFullyQualifiedAction()) eq 0 ){
@@ -56,6 +60,11 @@ public void function authenticate(rc){
 
 				// set cookie so the user doesn't receive the "sign up" message
 				getPageContext().getResponse().addHeader("Set-Cookie", "bHasLoggedIn=true;path=/;HTTPOnly");
+
+				// check to see if the user has a profile
+				if( len(arUser[1].getSFirstName()) eq 0 or len(arUser[1].getSLastName()) eq 0 ){
+					session.bSetProfile = 1;
+				}
 			}
 		}
 	} catch (any e){

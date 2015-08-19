@@ -46,12 +46,19 @@ public void function save(rc){
 			rc.sMessage = "User created successfully";
 		}
 		if( structKeyExists(rc, "sFirstName") ){
-			// save the main user
-			rc.oUser = userGateway.update(rc.oUser, {
-				"sFirstName" = rc.sFirstName,
-				"sLastName" = rc.sLastName,
-				"sNickname" = rc.sNickname
-			});
+			// make sure the name has length
+			if( not len(rc.sFirstName) gt 0 or not len(rc.sLastName) gt 0 ){
+				variables.framework.redirect(action="user.addEdit", queryString="sMessage=Please enter a valid first name and last name");
+			} else {
+				// save the main user
+				rc.oUser = userGateway.update(rc.oUser, {
+					"sFirstName" = rc.sFirstName,
+					"sLastName" = rc.sLastName,
+					"sNickname" = rc.sNickname
+				});
+				// reset session value for the user so they don't need a profile anymore
+				session.bSetProfile = 0;
+			}
 		}
 		if( structKeyExists(rc, "sUsername") ){
 			// save the username
