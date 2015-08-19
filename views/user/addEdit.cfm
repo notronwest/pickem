@@ -26,14 +26,6 @@
 					<label for="sEmail">E-mail: </label>
 					<input type="text" id="sEmail" name="sEmail" class="form-control" value="#rc.oUser.getSEmail()#"/>
 				</div>
-				<div class="form-group">
-					<label for="sPassword">Password: </label>
-					<input type="password" id="sPassword" name="sPassword" class="form-control" value=""/>
-				</div>
-				<div class="form-group">
-					<label for="sConfirm">Confirm: </label>
-					<input type="password" id="sConfirm" name="sConfirm" class="form-control" value=""/>
-				</div>
 			<cfelse>
 				<div class="form-group">
 					<a href="#buildURL('user.changePassword')#">Change password</a>
