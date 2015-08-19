@@ -9,6 +9,10 @@
 					<input type="text" id="sName" name="sName" class="form-control" value="#rc.oSeason.getSName()#"/>
 				</div>
 				<div class="form-group">
+					<label for="nSubscriptionAmount">Subscription Amount: </label>
+					<input type="text" id="nSubscriptionAmount" name="nSubscriptionAmount" class="form-control" value="#rc.oSeason.getNSubscriptionAmount()#"/>
+				</div>
+				<div class="form-group">
 					<label for="dtStart">Start Date: </label>
 					<input type="text" id="dtStart" name="dtStart" class="form-control date" value="#rc.oSeason.getDTStart()#"/>
 				</div>

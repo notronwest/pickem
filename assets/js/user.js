@@ -96,6 +96,11 @@ $(function(){
 		// re-run build Email addresses
 		buildEmailAddresses();
 	});
+
+	// bind for applying subscription
+	$(".container").on("click", ".subscription", function(){
+		window.location.href = '/?action=subscription.addEdit&nUserID=' + $(this).siblings(".nUserID").val() + "&nSubscriptionID=" + $(this).data("nsubscriptionid");
+	});
 });
 
 function buildEmailAddresses(){

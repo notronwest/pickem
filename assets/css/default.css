@@ -90,6 +90,12 @@ body {
 	overflow: scroll;
 }
 
+#nopayimage {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* style the picks */
 .game button:disabled {
 	color: #000000 !important;

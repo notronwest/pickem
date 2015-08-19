@@ -1,6 +1,7 @@
 component accessors="true" extends="model.services.baseService" {
 
 property name="userGateway";
+property name="subscriptionGateway";
 
 /**
  * Generates a password the length you specify.
@@ -79,6 +80,25 @@ public void function updateLastLogin( Required Numeric nUserID ){
 	var oUser = variables.userGateway.get(arguments.nUserID);
 	oUser.setDLastLogin(dateFormat(now(), 'yyyy-mm-dd') & " " & timeFormat(now(), 'HH:mm'));
 	variables.userGateway.save(oUser);
+}
+
+public Array function getAllWithSubscriptions( Required Numeric nSeasonID ){
+	// get all of the users
+	var arUsers = variables.userGateway.getAll();
+	var itm = 1;
+	var arSubscription = [];
+	// loop through users and add fee data
+	for( itm; itm lte arrayLen(arUsers); itm++ ){
+		// get the fees paid by this user for this season
+		arSubscription = variables.subscriptionGateway.getByUserAndSeason(arUsers[itm].getNUserID(), arguments.nSeasonID);
+		if( arrayLen(arSubscription) gt 0 ){
+			arUsers[itm].nSubscriptionID = arSubscription[1].getNSubscriptionID();
+		} else {
+			arUsers[itm].nSubscriptionID = 0;
+		}
+		
+	}
+	return arUsers;
 }
 
 }

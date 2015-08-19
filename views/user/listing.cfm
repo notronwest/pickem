@@ -3,7 +3,7 @@
 	<div class="panel-body">
 		<div class="text-right"><button class="add-user btn btn-default btn-small" type="button">Add</button></div>
 		<cfoutput>
-		<cfif structKeyExists(rc, "sMessage")><div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>#rc.sMessage#</div></cfif>
+		<cfif structKeyExists(rc, "sMessage") and len(rc.sMessage) gt 0><div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>#rc.sMessage#</div></cfif>
 		<table class="users table">
 			<thead>
 				<tr>
@@ -23,8 +23,11 @@
 						<td>
 							<span class="fa fa-edit edit-user icons fa-fw fa-lg" title="Edit user profile"></span>
 							<span class="fa fa-trash-o delete-user icons fa-fw fa-lg" title="Delete user" data-email="#rc.arUsers[local.itm].getSEmail()#"></span>
-							<span class="fa fa-user impersonate icons fa-fw fa-lg" title="Impersonate user"></span>
-							<input type="hidden" class="nUserID" value="#rc.arUsers[local.itm].getNUserID()#"/></td>
+							<span class="fa fa-user impersonate icons fa-fw fa-lg" title="Impersonate user"></span>	
+							<span class="fa <cfif rc.arUsers[local.itm].nSubscriptionID eq 0>fa-thumbs-o-down<cfelse>fa-dollar</cfif> subscription icons fa-fw fa-lg" data-nSubscriptionID="#rc.arUsers[local.itm].nSubscriptionID#" title="Apply subscription payment"></span>
+							<input type="hidden" class="nUserID" value="#rc.arUsers[local.itm].getNUserID()#"/>
+
+						</td>
 					</tr>
 				</cfloop>
 			</tbody>

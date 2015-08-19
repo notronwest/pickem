@@ -22,7 +22,8 @@ component extends="framework" {
 			"security.login",
 			"security.authenticate",
 			"user.register",
-			"user.changePassword"];
+			"user.changePassword",
+			"subscription.noPayNoPlay"];
 	}
 
 	/** 
@@ -52,6 +53,7 @@ component extends="framework" {
 		rc.dNow = rc.dDateNow & " " & rc.tTimeNow;
 		// default the season
 		rc.nSeasonID = 2;
+		rc.oSeason = getBeanFactory().getBean("seasonGateway").get(rc.nSeasonID);
 		rc.bIsDialog = false;
 		rc.bIsMobile = getBeanFactory().getBean("commonService").isMobileView();
 		rc.bIsAdminAction = false;

@@ -18,11 +18,11 @@ public void function before (rc){
 	if( rc.bAddNew ){
 		rc.nUserID = 0;
 	}
-	rc.oUser = userGateway.get(rc.nUserID);
+	rc.oUser = variables.userGateway.get(rc.nUserID);
 }
 
 public void function listing(rc){
-	rc.arUsers = userGateway.getAll();
+	rc.arUsers = variables.userService.getAllWithSubscriptions(rc.nSeasonID);
 	rc.bIsAdminAction = true;
 }
 
