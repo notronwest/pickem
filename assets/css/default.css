@@ -152,13 +152,9 @@ footer nav. Style link text. */
 /** mobile devices **/
 @media only screen and ( max-device-width: 480px ) and (orientation: portrait) {
 	/* change the padding on the main screen */
-	.container, .panel {
-		padding-left: 2px;
-		padding-right: 2px;
-	}
-
-	#main {
-		background-color: #c0c0c0;
+	.container, .panel-body {
+		padding-left: 3px;
+		padding-right: 3px;
 	}
 }
 
