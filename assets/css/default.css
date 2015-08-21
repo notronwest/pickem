@@ -176,6 +176,11 @@ footer nav. Style link text. */
 		display: block;
 		text-decoration: none;
 	}
+	/* change the padding on the main screen */
+	#main, .panel {
+		padding-left: 2px;
+		padding-right: 2px;
+	}
 
 }
 @media print{
