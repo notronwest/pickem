@@ -14,11 +14,17 @@ public void function checkAuthorization(rc){
 	// set the session scope into rc
 	rc.stUser = session;
 	// if the user has to change their password
-	if( structKeyExists(rc.stUser, "bChangePassword") and rc.stUser.bChangePassword eq 1 and compareNoCase(variables.framework.getFullyQualifiedAction(), "user.changePassword") neq 0 ){
+	if( structKeyExists(rc.stUser, "bChangePassword")
+		and rc.stUser.bChangePassword eq 1
+		and compareNoCase(variables.framework.getFullyQualifiedAction(), "user.changePassword") neq 0 ){
 		variables.framework.redirect("user.changePassword");
-	}
-	// if the user has to assign their profile information
-	if( structKeyExists(rc.stUser, "bSetProfile") and rc.stUser.bSetProfile eq 1 and compareNoCase(variables.framework.getFullyQualifiedAction(), "user.addEdit") neq 0 and comparenoCase(variables.framework.getFullyQualifiedAction(), "user.save") neq 0 ){
+
+	// if the user has to assign their profile information and we aren't tring to change their password
+	} else if ( structKeyExists(rc.stUser, "bSetProfile")
+		and rc.stUser.bSetProfile eq 1
+		and compareNoCase(variables.framework.getFullyQualifiedAction(), "user.changePassword") neq 0
+		and compareNoCase(variables.framework.getFullyQualifiedAction(), "user.addEdit") neq 0 and comparenoCase(variables.framework.getFullyQualifiedAction(), "user.save") neq 0 ) { 
+		// redirect them to edit their profile
 		variables.framework.redirect(action="user.addEdit", queryString="sMessage=You must enter a valid name for your account");
 	}
 	// force all users to login
@@ -50,7 +56,12 @@ public void function authenticate(rc){
 
 		rc.sMessage = "Login failed - please provide a valid username/password combination";
 		rc.sMessageType = "login";
-		if( structKeyExists(rc, "sUsername") and len(rc.sUsername) gt 0 and structKeyExists(rc, "sPassword") and len(rc.sPassword) > 0 ){
+		// if they have passed in a username and password
+		if( structKeyExists(rc, "sUsername")
+			and len(rc.sUsername) gt 0
+			and structKeyExists(rc, "sPassword") 
+			and len(rc.sPassword) > 0 ){
+			// authenticate the user
 			arUser = variables.userGateway.getByUsernamePassword(rc.sUsername, rc.sPassword);
 			if( arrayLen(arUser) ){
 				// see if this user has a valid subscription
