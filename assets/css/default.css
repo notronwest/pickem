@@ -149,6 +149,19 @@ footer nav. Style link text. */
 	}
 }
 
+/** mobile devices **/
+@media only screen and ( max-device-width: 480px ) and (orientation: portrait) {
+	/* change the padding on the main screen */
+	.container, .panel {
+		padding-left: 2px;
+		padding-right: 2px;
+	}
+
+	#main {
+		background-color: #c0c0c0;
+	}
+}
+
 /** smaller devices **/
 @media only screen and (max-width: 600px) {
 
@@ -175,11 +188,6 @@ footer nav. Style link text. */
 		color: inherit;
 		display: block;
 		text-decoration: none;
-	}
-	/* change the padding on the main screen */
-	#main, .panel {
-		padding-left: 2px;
-		padding-right: 2px;
 	}
 
 }
