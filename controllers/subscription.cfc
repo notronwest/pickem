@@ -3,7 +3,7 @@ component accessors="true" extends="model.base" {
 property name="userGateway";
 property name="userService";
 property name="subscriptionGateway";
-property name="subscriptionService";
+property name="seasonService";
 
 public void function before (rc){
 	// default the user to the current user
