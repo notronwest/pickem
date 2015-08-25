@@ -1,6 +1,6 @@
 <cfoutput><form id="addEditSubscription" action="#buildURL('subscription.save')#" method="post">
 <div class="panel panel-default">
-	<div class="panel-heading"><cfif rc.oUser.getNUserID() eq 0>Add<cfelse>Edit</cfif> Subscription for #rc.oUser.getSFirstName()# #rc.oUser.getSLastName()# for the #rc.oSeason.getSName()# season</div> 
+	<div class="panel-heading"><cfif rc.oUser.getNUserID() eq 0>Add<cfelse>Edit</cfif> Subscription for #rc.oUser.getSFirstName()# #rc.oUser.getSLastName()# for the #rc.oCurrentSeason.getSName()# season</div> 
 	<div class="panel-body">
 		<div>
 			<cfif len(rc.sMessage) gt 0>
