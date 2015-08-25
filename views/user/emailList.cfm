@@ -1,6 +1,10 @@
 <cfscript>
   // determine how many emails per column
   local.nEmailsPerColumn = arrayLen(rc.arUsers)/4;
+  // make sure we have at least 4 people
+  if( local.nEmailsPerColumn < 4 ){
+    local.nEmailsPerColumn = arrayLen(rc.arUsers);
+  }
 </cfscript>
 <h1>Send User Email</h1>
 <cfoutput><form action="#buildURL('user.sendEmail')#" method="post"></cfoutput>

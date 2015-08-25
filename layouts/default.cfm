@@ -42,6 +42,9 @@
 	<div class="container">
 		<div id="main" class="row">
 			<div class="col-md-12 content">
+        <cfif arrayLen(rc.arUserSubscription) gt 0 and rc.arUserSubscription[1].getNAmount() neq rc.oCurrentSeason.getNSubscriptionAmount()>
+          <div class="alert alert-warning">You still owe $$ for this season. No Pay. No Play. The league fee will be $50 again and you can pay me via PayPal at: evanmckechnie@gmail.com or mail me a check at: Evan McKechnie, 6114 SW 50th Ave, Portland OR 97221.</div>
+        </cfif>
         <!--- if the current user is not the current user --->
         <cfif rc.stUser.nUserID neq rc.nCurrentUser>
           <div id="impersonating" class="alert alert-info">

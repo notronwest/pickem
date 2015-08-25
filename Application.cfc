@@ -62,6 +62,8 @@ component extends="framework" {
 	public void function after(rc){
 		// get some more info about the current user
 		rc.oCurrentUser = getBeanFactory().getBean("userGateway").get(rc.nCurrentUser);
+		// get the subscription value for this current user
+		rc.arUserSubscription = getBeanFactory().getBean("subscriptionGateway").getByUserAndSeason(rc.nCurrentUser, rc.nCurrentSeasonID);
 	}
 
 	/**

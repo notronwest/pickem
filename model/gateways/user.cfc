@@ -209,12 +209,18 @@ Summary:
 Returns:
 	Array arUsers
 Arguments:
-	Void
+	Boolean bIncludeInactive
 History:
 	2012-09-12 - RLW - Created
+	2015-08-23 - RLW - Added support for not returning users that are inactive
 */
-public Array function getAllSortByFirst(){
-	var arUsers = ormExecuteQuery( "from user order by sFirstName", {} );
+public Array function getAllSortByFirst( Boolean bIncludeInactive = true ){
+	var arUsers = [];
+	if( arguments.bIncludeInactive ){
+		arUsers = ormExecuteQuery( "from user where order by sFirstName");
+	} else {
+		arUsers = ormExecuteQuery( "from user where bActive = 1 order by sFirstName" );
+	}
 	return arUsers;
 }
 

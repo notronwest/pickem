@@ -47,6 +47,9 @@
 					<label for="bIsAdmin" class="checkbox"><input type="checkbox" id="bIsAdmin" name="bIsAdmin" value="1"<cfif rc.oUser.getBIsAdmin() eq 1> checked="checked"</cfif>/> Admin (*)</label>
 				</div>
 			</cfif>
+			<cfif arrayLen(rc.arUserSubscription) gt 0 and rc.arUserSubscription[1].getNAmount() eq rc.oCurrentSeason.getNSubscriptionAmount()>
+          		<div class="alert alert-warning">Subscription paid for #rc.oCurrentSeason.getSName()# season. Thank you</div>
+        	</cfif>
 			<div class="form-group text-right">
 				<button type="button" class="save btn btn-default">Save</button><cfif rc.stUser.bIsAdmin><button type="button" class="cancel btn btn-default">Cancel</button></cfif>
 			</div>

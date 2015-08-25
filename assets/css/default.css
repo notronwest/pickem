@@ -112,6 +112,11 @@ body {
 	background-color: #c0c0c0;
 }
 
+button {
+	margin-left: 1px;
+	margin-right: 1px;
+}
+
 /*
 * Style the menu trigger and position it so it will be
 * visible even when the menu is open

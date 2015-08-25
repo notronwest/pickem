@@ -117,13 +117,13 @@ public void function impersonate(rc){
 
 public void function emailUserForm(rc){
 	// get all of the users
-	rc.arUsers = variables.userGateway.getAllSortByFirst();
+	rc.arUsers = variables.userGateway.getAllSortByFirst(false);
 	rc.bIsAdminAction = true;
 }
 
 public void function emailList(rc){
 	// get all of the users
-	rc.arUsers = variables.userGateway.getAllSortByFirst();
+	rc.arUsers = variables.userGateway.getAllSortByFirst(false);
 	rc.bIsAdminAction = true;
 }
 
