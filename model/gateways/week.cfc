@@ -49,7 +49,7 @@ public model.beans.week function update( Required model.beans.week oWeek, Requir
 		var lstIgnore = "nWeekID";
 		// loop through all of the fields in the structure and update the data
 		for( sKey in arguments.stData ){
-			if( not listFind(lstIgnore, sKey) ){
+			if( not listFindNoCase(lstIgnore, sKey) ){
 				include "set.cfm";
 			}
 		}

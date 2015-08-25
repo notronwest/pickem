@@ -50,7 +50,7 @@ public model.beans.standing function update( Required model.beans.standing oStan
 		var lstIgnore = "nStandingID";
 		// loop through all of the fields in the structure and update the data
 		for( sKey in arguments.stData ){
-			if( not listFind(lstIgnore, sKey) ){
+			if( not listFindNoCase(lstIgnore, sKey) ){
 				include "set.cfm";
 			}
 		}

@@ -11,15 +11,15 @@
 			<div class="alert alert-info error hide"></div>
 			<div class="form-group">
 				<label for="nAmount">Amount: </label>
-				<input type="text" id="nAmount" class="control-md" name="nAmount" class="form-control" value="#rc.oSubscription.getNAmount()#"/>
+				<input type="text" id="nAmount" name="nAmount" class="form-control control-md" value="#rc.oSubscription.getNAmount()#"/>
 			</div>
 			<div class="form-group">
 				<label for="dtPaid">Paid: </label>
-				<input type="text" id="dtPaid" class="date" name="dtPaid" class="form-control" value="#rc.oSubscription.getDTPaid()#"/>
+				<input type="text" id="dtPaid" name="dtPaid" class="form-control date" value="#rc.oSubscription.getDTPaid()#"/>
 			</div>
 			<div class="form-group">
 				<label for="sPaymentType">Payment Type: </label>
-				<select id="sPaymentType" class="control-md" name="sPaymentType" class="form-control">
+				<select id="sPaymentType" name="sPaymentType" class="form-control control-md">
 					<option value="">-Select-</option>
 					<option value="cash"<cfif rc.oSubscription.getSPaymentType() eq "cash"> selected="selected"</cfif>>Cash</option>
 					<option value="check"<cfif rc.oSubscription.getSPaymentType() eq "check"> selected="selected"</cfif>>Check</option>

@@ -105,6 +105,13 @@ body {
 
 .dataTables_info { display: none; }
 
+/* style inactive users */
+.users .inactive {
+	display: none;
+	color: #e4e4e4;
+	background-color: #c0c0c0;
+}
+
 /*
 * Style the menu trigger and position it so it will be
 * visible even when the menu is open

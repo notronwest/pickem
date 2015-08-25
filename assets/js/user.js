@@ -101,6 +101,15 @@ $(function(){
 	$(".container").on("click", ".subscription", function(){
 		window.location.href = '/?action=subscription.addEdit&nUserID=' + $(this).siblings(".nUserID").val() + "&nSubscriptionID=" + $(this).data("nsubscriptionid");
 	});
+
+	// bind for showing in active users
+	$("#toggleStatus").on("click", function(){
+		if( $(this).is(":checked") ){
+			$(".users .inactive").show();
+		} else {
+			$(".users .inactive").hide();
+		}
+	});
 });
 
 function buildEmailAddresses(){

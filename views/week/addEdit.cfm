@@ -35,7 +35,7 @@
 						<label for="nBonus"><input type="checkbox" name="nBonus" id="nBonus"<cfif rc.oWeek.getNBonus() eq 1> checked="checked"</cfif>/> Bonus week (*)</label>
 					</div>
 				</div> --->
-				<input type="hidden" name="nSeasonID" value="#rc.nSeasonID#"/>
+				<input type="hidden" name="nSeasonID" value="#rc.nCurrentSeasonID#"/>
 				<input type="hidden" name="nWeekID" id="nWeekID" value="#rc.oWeek.getNWeekID()#"/>
 			</div>
 		</div>

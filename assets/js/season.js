@@ -45,9 +45,14 @@ $(function(){
 	// bind onclick for deleting season
 	$(".container").on("click", ".delete-season", function(event){
 		event.stopPropagation();
-		if( confirm("Are you sure you would like to delete the season: " + $(this).data("sName")) ){
+		if( confirm("Are you sure you would like to delete the season - this will REALLY mess shit up") ){
 			window.location.href = "/index.cfm?action=season.delete&nSeasonID=" + $(this).siblings(".nSeasonID").val();
 		}
+	});
+
+	// bind for setting season payouts
+	$(".payout-season").on("click", function(){
+		window.location.href = "/?action=seasonPayout.listing";
 	});
 
 	// load date/time fields

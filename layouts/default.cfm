@@ -30,9 +30,11 @@
   	<link href="/assets/css/default.css" rel="stylesheet"/>
     <link href="/assets/css/jquery.ptTimeSelect.css" rel="stylesheet"/>
 	  <script src="/assets/js/jquery.js"></script>
-    <!--- // <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script> --->
     <script src="/assets/js/modernizr.custom.js"></script>
-    
+    <!--- // put total purse available as jquery --->
+    <script>
+        nTotalPurse = <cfoutput>#rc.oCurrentSeason.getNTotalPurse()#</cfoutput>;
+    </script>
 </head>
 <body>
 <cfoutput>

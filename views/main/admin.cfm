@@ -24,6 +24,8 @@
 						<p>A form that allows you to easily select users and get all email addresses.</p></a>
 					<a class="list-group-item" href="#buildURL('season.listing')#"><h4>Seasons</h4>
 						<p>Manage the seasons.</p></a>
+					<a class="list-group-item" href="#buildURL('payout.listing')#"><h4>Available Payouts</h4>
+						<p>Manage the list of available payouts for the season.</p></a>
             	</cfif>
 		</div>
 	</div>

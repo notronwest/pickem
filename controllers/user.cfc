@@ -22,7 +22,7 @@ public void function before (rc){
 }
 
 public void function listing(rc){
-	rc.arUsers = variables.userService.getAllWithSubscriptions(rc.nSeasonID);
+	rc.arUsers = variables.userService.getAllWithSubscriptions(rc.nCurrentSeasonID);
 	rc.bIsAdminAction = true;
 }
 
@@ -39,6 +39,7 @@ public void function save(rc){
 	var oUser = "";
 	param name="rc.bIsAdmin" default="0";
 	param name="rc.sNickname" default="";
+	param name="rc.bActive" default="1";
 	rc.sMessage = "User updates";
 	try{
 		// if we are adding then change message
@@ -54,7 +55,8 @@ public void function save(rc){
 				rc.oUser = userGateway.update(rc.oUser, {
 					"sFirstName" = rc.sFirstName,
 					"sLastName" = rc.sLastName,
-					"sNickname" = rc.sNickname
+					"sNickname" = rc.sNickname,
+					"bActive" = rc.bActive
 				});
 				// reset session value for the user so they don't need a profile anymore
 				session.bSetProfile = 0;

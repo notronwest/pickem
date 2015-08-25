@@ -67,7 +67,9 @@ public void function save(rc){
 		if( rc.nSeasonID eq 0 ){
 			rc.sMessage = "Season created successfully";
 		}
-		oSeasonSaved = variables.seasonGateway.update(variables.seasonGateway.get(), { "sName" = rc.sName, "dtStart" = rc.dtStart, "dtEnd" = rc.dtEnd });
+		// save the season
+		oSeasonSaved = variables.seasonGateway.update(rc.oSeason, rc);
+		// send them back to the listing
 		variables.framework.redirect("season.listing");
 		
 	} catch (any e){

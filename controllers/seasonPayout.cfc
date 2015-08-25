@@ -1,0 +1,117 @@
+component accessors="true" extends="model.base" {
+
+property name="seasonPayoutGateway";
+property name="seasonPayoutService";
+property name="payoutGateway";
+
+/*
+Author: 	
+	Ron West
+Name:
+	$before
+Summary:
+	Makes sure users are admins
+Returns:
+	Void
+Arguments:
+	Void
+History:
+	2015-08-21 - RLW - Created
+*/
+public void function before (rc){
+	param name="rc.nSeasonPayoutID" default="0";
+	// make sure the user is an admin
+	if( not rc.stUser.bIsAdmin ){
+		variables.fw.redirect("main.notAuthorized");
+	}
+	rc.oSeasonPayout = variables.seasonPayoutGateway.get(rc.nSeasonPayoutID);
+	rc.arSeasonPayouts = variables.seasonPayoutService.getPayouts(rc.nCurrentSeasonID);
+	rc.nAssignedPurse = variables.seasonPayoutService.getAssignedPurse(rc.nCurrentSeasonID);
+	// if we have a valid season payout get the name of the payout
+	if( not isNull(rc.oSeasonPayout.getNPayoutID()) ){
+		rc.oPayout = variables.payoutGateway.get(rc.oSeasonPayout.getNPayoutID());
+	}
+}
+
+/*
+Author: 	
+	Ron West
+Name:
+	$addEdit
+Summary:
+	Sets up the add/edit season payout dialog
+Returns:
+	Void
+Arguments:
+	Void
+History:
+	2015-08-23 - RLW - Created
+*/
+public void function addEdit(rc){
+	// get all of the payouts that aren't in use
+	rc.arAvailablePayouts = variables.seasonPayoutService.getAvailablePayouts(rc.nCurrentSeasonID);
+}
+
+/*
+Author: 	
+	Ron West
+Name:
+	$save
+Summary:
+	Saves the seasonPayout
+Returns:
+	Void
+Arguments:
+	Void
+History:
+	2015-08-21 - RLW - Created
+*/
+public void function save(rc){
+	rc.sMessage = "Season payout updated";
+	try{
+		// if we are adding then change message
+		if( rc.nSeasonPayoutID eq 0 ){
+			rc.sMessage = "SeasonPayout created successfully";
+		}
+		// save the seasonPayout
+		rc.oSeasonPayout = variables.seasonPayoutGateway.update(rc.oSeasonPayout, rc);
+		// send them back to the listing of seasons
+		variables.framework.redirect("seasonPayout.listing");
+		
+	} catch (any e){
+		registerError("Error saving seasonPayout", e);
+		rc.sType = "create";
+		variables.framework.setView("seasonPayout.error");
+	}
+	
+}
+
+/*
+Author: 	
+	Ron West
+Name:
+	$delete
+Summary:
+	Deletes the seasonPayout
+Returns:
+	Void
+Arguments:
+	Void
+History:
+	2015-08-21 - RLW - Created
+*/
+public void function delete(rc){
+	rc.sMessage = "SeasonPayout deleted successfully";
+	rc.sType = "delete";
+	try{
+		if( rc.nSeasonPayoutID != 0 ){
+			rc.oSeasonPayout = variables.seasonPayoutGateway.delete(rc.oSeasonPayout);
+			variables.framework.redirect("seasonPayout.listing");
+		}
+	} catch (any e){
+		registerError("Error deleting seasonPayout", e);
+	}
+	variables.framework.setView("seasonPayout.error");
+}
+
+}

@@ -56,7 +56,7 @@ public model.beans.user function update( Required model.beans.user oUser, Requir
 		var lstIgnore = "nUserID";
 		// loop through all of the fields in the structure and update the data
 		for( sKey in arguments.stData ){
-			if( not listFind(lstIgnore, sKey) ){
+			if( not listFindNoCase(lstIgnore, sKey) ){
 				include "set.cfm";
 			}
 		}
@@ -230,11 +230,13 @@ Returns:
 Arguments:
 	String sUsername
 	String sPassword
+	Numeric bActive
 History:
 	2012-09-12 - RLW - Created
+	2015-08-24 - RLW - Added optional flag to exclude active users
 */
 public Array function getByUsernamePassword( Required String sUsername, Required String sPassword){
-	var arUser = ormExecuteQuery( "from user where sUsername = :sUsername and sPassword = :sPassword", { sUsername = "#arguments.sUsername#", sPassword = "#arguments.sPassword#" } );
+	var arUser = ormExecuteQuery( "from user where sUsername = :sUsername and sPassword = :sPassword and bActive = 1", { sUsername = "#arguments.sUsername#", sPassword = "#arguments.sPassword#" } );
 	return arUser;
 }
 

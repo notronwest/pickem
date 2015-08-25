@@ -49,7 +49,7 @@ public model.beans.subscription function update( Required model.beans.subscripti
 		var lstIgnore = "nSubscriptionID";
 		// loop through all of the fields in the structure and update the data
 		for( sKey in arguments.stData ){
-			if( not listFind(lstIgnore, sKey) ){
+			if( not listFindNoCase(lstIgnore, sKey) ){
 				include "set.cfm";
 			}
 		}
@@ -119,6 +119,25 @@ History:
 public Array function getByUserAndSeason( Required Numeric nUserID, Required Numeric nSeasonID){
 	var arSubscriptions = ormExecuteQuery("from subscription where nUserID = :nUserID and nSeasonID = :nSeasonID", { nUserID = arguments.nUserID, nSeasonID = arguments.nSeasonID });
 	return arSubscriptions;
+}
+
+/*
+Author: 	
+	Ron West
+Name:
+	$getSubscriptionsPaid
+Summary:
+	Gets the current total subscriptions paid for the season
+Returns:
+	Numeric nSubscriptionPaid
+Arguments:
+	Numeric nSeasonID
+History:
+	2015-08-21 - RLW - Created
+*/
+public Numeric function getSubscriptionsPaid( Required Numeric nSeasonID ){
+	var arSubscriptionPaid = ormExecuteQuery("select sum(nAmount) from subscription where nSeasonID = :nSeasonID", { nSeasonID = arguments.nSeasonID });
+	return arSubscriptionPaid[1];
 }
 
 }

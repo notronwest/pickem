@@ -18,8 +18,8 @@ public void function before(rc){
 	// get details for the week
 	rc.oWeek = variables.weekGateway.get(rc.nWeekID);
 	// if we have a zero week get the current week
-	if( rc.oWeek.getNWeekID(rc.nSeasonID) eq 0 and not rc.bAdd ){
-		arWeek = variables.weekGateway.getByDate(nSeasonID=rc.nSeasonID);
+	if( rc.oWeek.getNWeekID() eq 0 and not rc.bAdd ){
+		arWeek = variables.weekGateway.getByDate(nSeasonID=rc.nSeasonSeasonID);
 		if( arrayLen(arWeek) gt 0 ){
 			rc.oWeek = arWeek[1];
 			// reset weekID so other functions can use it
@@ -59,7 +59,7 @@ public void function addEdit(rc){
 	// setup some default data
 	if( rc.oWeek.getNWeekID() eq 0 ){
 		// get the weeks 
-		arWeeks = weekGateway.getSeason(rc.nSeasonID);
+		arWeeks = weekGateway.getSeason(rc.nCurrentSeasonID);
 		// set to the last week
 		if( arrayLen(arWeeks) ){
 			oLastWeek = arWeeks[arrayLen(arWeeks)];
@@ -102,7 +102,7 @@ public void function save(rc){
 	param name="rc.lstSports" default="NCAA,NFL";
 	param name="rc.nBonus" default="0";
 	rc.bIsDialog = false;
-	oWeek = variables.weekGateway.update((rc.oWeek.getNWeekID() eq 0) ? entityNew("week") : rc.oWeek, { sName = rc.sName, dStartDate = rc.dStartDate, dEndDate = rc.dEndDate, lstSports = rc.lstSports, nSeasonID = rc.nSeasonID, nBonus = rc.nBonus, dPicksDue = rc.dPicksDue, tPicksDue = timeFormat(rc.tPicksDue, "HH:mm") });
+	oWeek = variables.weekGateway.update((rc.oWeek.getNWeekID() eq 0) ? entityNew("week") : rc.oWeek, { sName = rc.sName, dStartDate = rc.dStartDate, dEndDate = rc.dEndDate, lstSports = rc.lstSports, nSeasonID = rc.nCurrentSeasonID, nBonus = rc.nBonus, dPicksDue = rc.dPicksDue, tPicksDue = timeFormat(rc.tPicksDue, "HH:mm") });
 	rc.sMessage = "Week saved";
 	variables.framework.redirect("week.manage", "all");
 }
@@ -147,7 +147,7 @@ public void function addGame(rc){
 
 public void function manage(rc){
 	rc.bIsDialog = false;
-	rc.arWeeks = variables.weekGateway.getSeason(rc.nSeasonID);
+	rc.arWeeks = variables.weekGateway.getSeason(rc.nCurrentSeasonID);
 	rc.bIsAdminAction = true;
 }
 

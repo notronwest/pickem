@@ -26,6 +26,13 @@
 					<label for="sEmail">E-mail: </label>
 					<input type="text" id="sEmail" name="sEmail" class="form-control" value="#rc.oUser.getSEmail()#"/>
 				</div>
+				<div class="form-group">
+					<label for="bActive">Status: </label>
+					<select size="1" id="bActive" name="bActive" class="form-control">
+						<option value="1"<cfif rc.oUser.getBActive() eq 1> selected="selected"</cfif>>Active</option>
+						<option value="0"<cfif rc.oUser.getBActive() eq 0> selected="selected"</cfif>>Inactive</option>
+					</select>
+				</div>
 			<cfelse>
 				<div class="form-group">
 					<a href="#buildURL('user.changePassword')#">Change password</a>
@@ -33,6 +40,7 @@
 				<div class="form-group">
 					<a href="#buildURL('setting.set')#">Change preferences</a>
 				</div>
+				<input type="hidden" name="bActive" value="#rc.oUser.getBActive()#"/>
 			</cfif>
 			<cfif rc.stUser.bIsAdmin>
 				<div class="checkbox">

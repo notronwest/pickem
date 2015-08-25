@@ -4,6 +4,9 @@
 		<div class="text-right"><button class="add-user btn btn-default btn-small" type="button">Add</button></div>
 		<cfoutput>
 		<cfif structKeyExists(rc, "sMessage") and len(rc.sMessage) gt 0><div class="alert alert-info alert-dismissable"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>#rc.sMessage#</div></cfif>
+		<div class="checkbox">
+			<label><input type="checkbox" id="toggleStatus"/>Show inactive users</label>
+		</div>
 		<table class="users table">
 			<thead>
 				<tr>
@@ -15,7 +18,7 @@
 			</thead>
 			<tbody>
 				<cfloop from="1" to="#arrayLen(rc.arUsers)#" index="local.itm">
-					<tr>
+					<tr class="#((rc.arUsers[local.itm].getBActive() eq 0) ? 'inactive' : '')#">
 						<td>#rc.arUsers[local.itm].getSLastName()#, #rc.arUsers[local.itm].getSFirstName()#</td>
 						<td>#rc.arUsers[local.itm].getSEmail()#</td>
 						<td><cfif len(rc.arUsers[local.itm].getDLastLogin()) gt 0>#getBeanFactory().getBean("commonService").dateTimeFormat(rc.arUsers[local.itm].getDLastLogin())#</cfif>

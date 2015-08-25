@@ -1,0 +1,1 @@
+<cfif not rc.bIsDialog><script src="/assets/js/seasonPayout.js"></script></cfif><cfoutput>#body#</cfoutput>

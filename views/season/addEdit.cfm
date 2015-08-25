@@ -13,6 +13,10 @@
 					<input type="text" id="nSubscriptionAmount" name="nSubscriptionAmount" class="form-control" value="#rc.oSeason.getNSubscriptionAmount()#"/>
 				</div>
 				<div class="form-group">
+					<label for="nTotalCost">Total Cost: </label>
+					<input type="text" id="nTotalCost" name="nTotalCost" class="form-control" value="#rc.oSeason.getNTotalCost()#"/>
+				</div>
+				<div class="form-group">
 					<label for="dtStart">Start Date: </label>
 					<input type="text" id="dtStart" name="dtStart" class="form-control date" value="#rc.oSeason.getDTStart()#"/>
 				</div>

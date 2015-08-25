@@ -52,8 +52,8 @@ component extends="framework" {
 		rc.tTimeNow = timeFormat(now(), 'HH:mm');
 		rc.dNow = rc.dDateNow & " " & rc.tTimeNow;
 		// default the season
-		rc.nSeasonID = 2;
-		rc.oSeason = getBeanFactory().getBean("seasonGateway").get(rc.nSeasonID);
+		rc.nCurrentSeasonID = 2;
+		rc.oCurrentSeason = getBeanFactory().getBean("seasonGateway").get(rc.nCurrentSeasonID);
 		rc.bIsDialog = false;
 		rc.bIsMobile = getBeanFactory().getBean("commonService").isMobileView();
 		rc.bIsAdminAction = false;

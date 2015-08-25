@@ -23,19 +23,21 @@ public void function save(rc){
 		if( structKeyExists(rc, "nAmount") ){
 			// if this is a new subscription make sure the subscription doesn't already exist
 			if( rc.nSubscriptionID eq 0 ){
-				arSubscription = variables.subscriptionGateway.getByUserAndSeason(rc.nUserID, rc.nSeasonID);
+				arSubscription = variables.subscriptionGateway.getByUserAndSeason(rc.nUserID, rc.nCurrentSeasonID);
 				if( arrayLen(arSubscription) gt 0 ){
 					variables.framework.redirect(action="user.listing", queryString="sMessage=Sorry, a subscription record already exists for user #rc.oUser.getSFirstName()# #rc.oUser.getSLastName()#, please try again.");
 				}
 			}
 			// save the main user
 			rc.oSubscription = variables.subscriptionGateway.update(rc.oSubscription, {
-				"nSeasonID" = rc.nSeasonID,
+				"nSeasonID" = rc.nCurrentSeasonID,
 				"nAmount" = rc.nAmount,
 				"dtPaid" = rc.dtPaid,
 				"sPaymentType" = rc.sPaymentType,
 				"nUserID" = rc.nUserID
 			});
+			// recalculate this seasons purse
+			variables.seasonService.updatePurse(rc.nCurrentSeasonID);
 			// redirect to the listing
 			variables.framework.redirect(action="user.listing", queryString="sMessage=Subscription saved for #rc.oUser.getSFirstName()# #rc.oUser.getSLastName()#");
 		}

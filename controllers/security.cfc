@@ -18,7 +18,6 @@ public void function checkAuthorization(rc){
 		and rc.stUser.bChangePassword eq 1
 		and compareNoCase(variables.framework.getFullyQualifiedAction(), "user.changePassword") neq 0 ){
 		variables.framework.redirect("user.changePassword");
-
 	// if the user has to assign their profile information and we aren't tring to change their password
 	} else if ( structKeyExists(rc.stUser, "bSetProfile")
 		and rc.stUser.bSetProfile eq 1
@@ -65,7 +64,7 @@ public void function authenticate(rc){
 			arUser = variables.userGateway.getByUsernamePassword(rc.sUsername, rc.sPassword);
 			if( arrayLen(arUser) ){
 				// see if this user has a valid subscription
-				//if( arrayLen(variables.subscriptionGateway.getByUserAndSeason(arUser[1].getNUserID(), rc.nSeasonID)) eq 0 and arUser[1].getBIsAdmin() neq 1 ){
+				//if( arrayLen(variables.subscriptionGateway.getByUserAndSeason(arUser[1].getNUserID(), rc.nCurrentSeasonID)) eq 0 and arUser[1].getBIsAdmin() neq 1 ){
 				//	variables.framework.redirect("subscription.noPayNoPlay");
 				//}
 				// build the session
