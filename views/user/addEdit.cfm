@@ -48,7 +48,7 @@
 				</div>
 			</cfif>
 			<cfif arrayLen(rc.arUserSubscription) gt 0 and rc.arUserSubscription[1].getNAmount() eq rc.oCurrentSeason.getNSubscriptionAmount()>
-          		<div class="alert alert-warning">Subscription paid for #rc.oCurrentSeason.getSName()# season. Thank you</div>
+          		<div class="alert alert-warning">Subscription paid for #rc.oCurrentSeason.getSName()# season. Thank you.</div>
         	</cfif>
 			<div class="form-group text-right">
 				<button type="button" class="save btn btn-default">Save</button><cfif rc.stUser.bIsAdmin><button type="button" class="cancel btn btn-default">Cancel</button></cfif>

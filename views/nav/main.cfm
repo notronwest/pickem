@@ -25,6 +25,9 @@
           <li>
             <a href="#buildURL('security.logout')#"><span class="fa fa-unlock-alt fa-fw"></span> Logout</a>
           </li>
+          <li>
+            <a>#rc.oCurrentSeason.getSName()# Prize pool: #dollarFormat(rc.oCurrentSeason.getNCalculatedPurse())#</a>
+          </li>
         </cfoutput>
       </ul>
   </div>
