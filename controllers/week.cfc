@@ -12,14 +12,14 @@ public void function before(rc){
 	param name="rc.nWeekID" default="0";
 	param name="rc.bAdd" default="false";
 	// get the list of weeks created for this year
-	rc.arWeeks = variables.weekGateway.getSeason(rc.nSeasonID);
+	rc.arWeeks = variables.weekGateway.getSeason(rc.nCurrentSeasonID);
 	// treat everything like a dialog unless stated
 	rc.bIsDialog = true;
 	// get details for the week
 	rc.oWeek = variables.weekGateway.get(rc.nWeekID);
 	// if we have a zero week get the current week
 	if( rc.oWeek.getNWeekID() eq 0 and not rc.bAdd ){
-		arWeek = variables.weekGateway.getByDate(nSeasonID=rc.nSeasonSeasonID);
+		arWeek = variables.weekGateway.getByDate(nSeasonID=rc.nCurrentSeasonID);
 		if( arrayLen(arWeek) gt 0 ){
 			rc.oWeek = arWeek[1];
 			// reset weekID so other functions can use it

@@ -10,10 +10,10 @@ public void function before (rc){
 	param name="rc.nWeekID" default="0";
 	rc.oWeek = variables.weekGateway.get(rc.nWeekID);
 	// get the list of weeks created for this year
-	rc.arWeeks = variables.weekGateway.getSeason(rc.nSeasonID);
+	rc.arWeeks = variables.weekGateway.getSeason(rc.nCurrentSeasonID);
 	// if we have a zero week get the current week
 	if( rc.oWeek.getNWeekID() eq 0 ){
-		arWeek = variables.weekGateway.getByDate(nSeasonID=rc.nSeasonID);
+		arWeek = variables.weekGateway.getByDate(nSeasonID=rc.nCurrentSeasonID);
 		if( arrayLen(arWeek) gt 0 ){
 			rc.oWeek = arWeek[1];
 			// reset weekID so other functions can use it
@@ -113,7 +113,7 @@ public void function saveScores(rc){
 		bSaved = variables.gameGateway.saveScores(rc.arGames);
 		if( bSaved){
 			// calculate winners for this week
-			variables.standingGateway.updateStandings(rc.nWeekID, rc.nSeasonID);
+			variables.standingGateway.updateStandings(rc.nWeekID, rc.nCurrentSeasonID);
 			rc.sMessage = "Scores saved";
 		} else {
 			rc.sMessage = "Error saving scores.  Please try again";
@@ -146,7 +146,7 @@ public void function getGameScores(rc){
 			rc.arGameScores = variables.gameService.getGameScores(rc.arWeekGames);
 		}
 		// update the standings
-		variables.standingGateway.updateStandings(rc.nWeekID, rc.nSeasonID);
+		variables.standingGateway.updateStandings(rc.nWeekID, rc.nCurrentSeasonID);
 	} catch (any e){
 		registerError("Error trying to get the game scores", e);
 	}
