@@ -222,10 +222,12 @@ function parseTeams(){
 				stGame.sSpreadFavor = "away";
 			}
 			// add spread
-			stGame.nSpread = $(sSpreadNode).text().replace("-", "");
+			nSpread = $(sSpreadNode).text().replace("-", "");
+			stGame.nSpread = (parseFloat(nSpread).toString() == nSpread.toString()) ? parseFloat(nSpread) : parseFloat(nSpread) + 0.5 ;
 			stGame.sSpreadOriginal = stGame.nSpread;
 			stGame.bShow = true;
 			stGame.nTiebreak = "";
+			stGame.dtLock = "";
 			arGames.push(stGame);
 		});
 	});
