@@ -5,7 +5,7 @@
 		datasource = this.dsn,
 		dbcreate = "update",
 		dialect = 'MySQL',	
-		logSQL = true,
+		logSQL = (request.bIsDevelopment) ? true : false,
 		skipCFCWithError = false,
 		useDBForMapping = true,
 		showSQL = "true"

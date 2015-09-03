@@ -131,4 +131,27 @@ public void function runStoredProc( Required String sStoredProc, Array arParams 
 	}
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$backupDB
+Summary:
+	Backups a database
+Returns:
+	Void
+Arguments:
+	String sDB
+	String sUsername
+	String sPassword
+History:
+	2015-09-02 - RLW - Created
+*/
+public void function backupDB( String sDB = "pickem", String sUsername = request.sDBUsername, String sPassword = request.sDBPassword){
+	request.sArguments = "-u #arguments.sUsername# -p#arguments.sPassword# #arguments.sDB#";
+	request.sExecute = "mysqldump";
+	request.sOutputFile = "#request.sDBBackupDirectory##arguments.sDB#.sql";
+	include "cfexecute.cfm";
+}
+
 }

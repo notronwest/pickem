@@ -1,4 +1,10 @@
 <cfscript>
+	// global request variables
+	request.stJenkinsAPIKeys = {
+		"sBackupWeekly" = "rRAMrXXWrEPkA2d3NXVwX"
+	};
+	request.sJenkinsAuthToken = "bafc2176c03237ccc32b8c85c6e64016";
+	// specific variables
 	switch (cgi.http_host){
 
 		// development
@@ -11,6 +17,9 @@
 			request.dsn = "pickem";
 			request.sLocalIP = "127.0.0.1";
 			request.sAPIKey="AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U";
+			request.sDBBackupDirectory = "#expandPath('/data/weeklydbbackup/')#";
+			request.sDBUsername = "notronwest";
+			request.sDBPassword = "atp3ace!";
 			break;
 		// production
 		case "pickem.inquisibee.com":
@@ -25,6 +34,9 @@
 			request.dsn = "pickem";
 			request.sLocalIP = "54.68.81.199";
 			request.sAPIKey="AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U";
+			request.sDBBackupDirectory = "#expandPath('/data/weeklydbbackup/')#";
+			request.sDBUsername = "notronwest";
+			request.sDBPassword = "1nquisib33";
 			break;
 			
 	}
