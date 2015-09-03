@@ -77,4 +77,41 @@ public Numeric function getAssignedPurse( Numeric nSeasonID = rc.nCurrentSeasonI
 	return nAssignedPurse;
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$organizedByType
+Summary:
+	Returns the season payouts orgaznized by type
+Returns:
+	Struct stSeasonPayouts
+Arguments:
+	Numeric nSeasonID
+History:
+	2015-08-23 - RLW - Created
+*/
+public Struct function organizedByType(Numeric nSeasonID = rc.nCurrentSeasonID){
+	var arSeasonPayouts = variables.seasonPayoutGateway.getBySeason(arguments.nSeasonID);
+	var stSeasonPayouts = {
+		"season" = [], "weekly" = [], "finalWeek" = []
+	};
+	var itm = 1;
+	var stData = {};
+	for(itm; itm lte arrayLen(arSeasonPayouts); itm++ ){
+		// build simpler structure
+		stData = {
+			"nSeasonPayoutID" = arSeasonPayouts[itm].getNSeasonPayoutID(),
+			"nPayoutID" = arSeasonPayouts[itm].getNPayoutID(),
+			"sPayoutType" = arSeasonPayouts[itm].oPayout.getSType(),
+			"nPlace" = arSeasonPayouts[itm].oPayout.getNPlace(),
+			"sName" = arSeasonPayouts[itm].oPayout.getSName(),
+			"sDescription" = (isNull(arSeasonPayouts[itm].oPayout.getSDescription())) ? "" : arSeasonPayouts[itm].oPayout.getSDescription(),
+			"nAmount" = arSeasonPayouts[itm].getNAmount()
+		};
+		arrayAppend(stSeasonPayouts[arSeasonPayouts[itm].oPayout.getSType()], stData);
+	}
+	return stSeasonPayouts;
+}
+
 }

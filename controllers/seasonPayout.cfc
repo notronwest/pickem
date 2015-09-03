@@ -67,6 +67,7 @@ History:
 	2015-08-21 - RLW - Created
 */
 public void function save(rc){
+	param name="rc.bRedirect" default="true";
 	rc.sMessage = "Season payout updated";
 	try{
 		// if we are adding then change message
@@ -75,8 +76,11 @@ public void function save(rc){
 		}
 		// save the seasonPayout
 		rc.oSeasonPayout = variables.seasonPayoutGateway.update(rc.oSeasonPayout, rc);
-		// send them back to the listing of seasons
-		variables.framework.redirect("seasonPayout.listing");
+		// if we are redirecting back to the listing
+		if( rc.bRedirect ){
+			// send them back to the listing of seasons
+			variables.framework.redirect("seasonPayout.listing");
+		}
 		
 	} catch (any e){
 		registerError("Error saving seasonPayout", e);
@@ -112,6 +116,24 @@ public void function delete(rc){
 		registerError("Error deleting seasonPayout", e);
 	}
 	variables.framework.setView("seasonPayout.error");
+}
+
+/*
+Author: 	
+	Ron West
+Name:
+	$details
+Summary:
+	Renders the details for the payouts
+Returns:
+	Void
+Arguments:
+	Void
+History:
+	2015-09-02 - RLW - Created
+*/
+public void function details(rc){
+	rc.stSeasonPayouts = variables.seasonPayoutService.organizedByType(rc.nCurrentSeasonID);
 }
 
 }

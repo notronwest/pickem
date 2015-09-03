@@ -96,6 +96,10 @@ body {
     margin-right: auto;
 }
 
+.payout.updated {
+	border: 1px solid #0f0;
+}
+
 /* style the picks */
 .game button:disabled {
 	color: #000000 !important;

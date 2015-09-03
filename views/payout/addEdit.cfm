@@ -11,6 +11,10 @@
 					<abbr>E.g. Second Place</abbr>
 				</div>
 				<div class="form-group">
+					<label for="nDefaultPercent">Description: </label>
+					<textarea name="sDescription" class="form-control" id="sDescription" rows="4">#rc.oPayout.getSDescription()#</textarea>
+				</div>
+				<div class="form-group">
 					<label for="nDefaultPercent">Default Percentage: </label>
 					<input type="text" id="nDefaultPercent" name="nDefaultPercent" class="form-control control-md" value="#rc.oPayout.getNDefaultPercent()#"/>
 				</div>
