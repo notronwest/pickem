@@ -10,6 +10,14 @@
 					<input type="text" name="sName" id="sName" class="form-control" value="#rc.oWeek.getSName()#"/>
 				</div>
 				<div class="form-group">
+					<label for="dStartDate">Week Number: </label>
+					<select class="form-control" name="nWeekNumber" size="1">
+						<cfloop from="1" to="19" index="local.itm">
+							<option value="#local.itm#"<cfif rc.oWeek.getNWeekNumber() eq itm> selected="selected"</cfif>>#itm#</option>
+						</cfloop>
+					</select>
+				</div>
+				<div class="form-group">
 					<label for="dStartDate">Start: </label>
 					<input type="text" name="dStartDate" id="dStartDate" class="form-control" value="#rc.oWeek.getDStartDate()#"/>
 				</div>
