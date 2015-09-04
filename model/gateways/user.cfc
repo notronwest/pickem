@@ -217,7 +217,7 @@ History:
 public Array function getAllSortByFirst( Boolean bIncludeInactive = true ){
 	var arUsers = [];
 	if( arguments.bIncludeInactive ){
-		arUsers = ormExecuteQuery( "from user where order by sFirstName");
+		arUsers = ormExecuteQuery( "from user order by sFirstName");
 	} else {
 		arUsers = ormExecuteQuery( "from user where bActive = 1 order by sFirstName" );
 	}
