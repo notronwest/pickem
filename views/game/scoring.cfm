@@ -38,6 +38,7 @@
 							<th>Score</th>
 							<th>Underdog</th>
 							<th>Score</th>
+							<th>Is Final?</th>
 						</thead>
 						<tbody>
 							<cfloop from="1" to="#arrayLen(rc.arWeekGames)#" index="local.itm">
@@ -53,6 +54,9 @@
 										<td><label class="home">#rc.arWeekGames[local.itm].sHomeTeam#</label></td>
 										<td><input type="number" class="score control-sm home" data-id="#rc.arWeekGames[local.itm].nHomeTeamID#" value="#rc.arWeekGames[local.itm].nHomeScore#"></td>
 									</cfif>
+									<td>
+										<input type="checkbox" class="game-is-final"<cfif rc.arWeekGames[local.itm].bGameIsFinal eq 1> checked="checked"</cfif>/>
+									</td>
 								<tr>
 							</cfloop>
 						</tbody>

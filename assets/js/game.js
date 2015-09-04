@@ -11,7 +11,9 @@ $(function(){
 			stGame = {
 				"nGameID": $(this).data("id"),
 				"nHomeScore": $(this).find(".home.score").val(),
-				"nAwayScore": $(this).find(".away.score").val()
+				"nAwayScore": $(this).find(".away.score").val(),
+				"sGameStatus": ($(this).closest("tr").find(".game-is-final").is(":checked")) ? "Final" : "",
+				"bGameIsFinal": ($(this).closest("tr").find(".game-is-final").is(":checked")) ? 1 : 0,
 			}
 			arGames.push(stGame);
 		});
