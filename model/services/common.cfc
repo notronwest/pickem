@@ -90,7 +90,7 @@ public Struct function getURL( Required String sURL, Numeric nTimeout=5, Struct 
 	    httpService.setAttributes(password = arguments.sPassword);
 	   	/* add additional params */
 	   	for(sKey in arguments.stParams){
-	   		httpService.addParam(type = "url",name = sKey,value = arguments.stParams[sKey]);
+	   		httpService.addParam(type="url", name=sKey, value=arguments.stParams[sKey]);
 	   	}
 	   	// add user agent
 	   	httpService.addParam(type="header", name="user-agent", value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.44 Safari/537.36");

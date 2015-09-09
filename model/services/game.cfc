@@ -213,102 +213,78 @@ History:
 */
 public Array function getGameScores( Required Array arGames){
 	var itm = 1;
-	var oTeam = "";
+	var oHomeTeam = "";
+	var oAwayTeam = "";
 	var stURLResults = {};
-	var sPageContent = "";
-	var arScores = [];
-	var sScoreBoxBegin = "akp_target";
-	var sScoreBoxEnd = "_Xg vk_gy";
-	var sGameStatusBegin = '<span class="vk_gy">';
-	var sGameStatusEnd = '</span>';
-	var sGameStatus = "";
-	var sScoreBegin = '<div class="_UMb"><div class="vk_txt">&nbsp;</div><div>';
-	var sScoreEnd = "</div>";
-	var sHomeScoreBegin = '<div class="_wZc _fZc">';
-	var sHomeScoreEnd = '</div>';
-	var sAwayScoreBegin = '<div class="_wZc _fZc">';
-	var sAwayScoreEnd = '</div>';
-	var sHomeScore = '';
-	var sAwayScore = '';
-	var sScore = "";
-	var nStart = 0;
-	var nEnd = 0;
-	var sScoreBox = "";
+	var stGameData = {};
 	// loop through the games and get the score
 	try{
 		for( itm; itm lte arrayLen(arGames); itm++ ){
-			// if this game is today and we don't have a winner yet
-			if( (!isNumeric(arguments.arGames[itm].bGameIsFinal) or arguments.arGames[itm].bGameIsFinal eq 0) and arguments.arGames[itm].sGameDateTime lte variables.dbService.dbDateTimeFormat() ){
-				// get the away team name
-				oTeam = variables.teamGateway.get(arGames[itm].nAwayTeamID);
-				// if we have a valid team name
-				if( len(oTeam.getSName()) gt 0 ){
-					// get the page from Google
-					stURLResults = variables.commonService.getURL("https://www.google.com/search?q=#oTeam.getSName()#&oq=pitts&aqs=chrome.0.69i59j69i57j0l4.1622j0j9&sourceid=chrome&es_sm=119&ie=UTF-8");
-					// if we have a valid document
-					if( findNoCase("200",stURLResults.statusCode) ){
-						// get the score box
-						sScoreBox = variables.commonService.parseToFindString(stURLResults.fileContent.toString(), sScoreBoxBegin, sScoreBoxEnd);
-						// if we have a score box to work with
-						if( len(sScoreBox) gt 0 ){
-							// get the status of the game
-							sGameStatus = variables.commonService.parseToFindString(sScoreBox, sGameStatusBegin, sGameStatusEnd);
-							// if there was a status for the game
-							if( len(sGameStatus) gt 0 ){
-								arGames[itm].sGameStatus = sGameStatus;
-								// if the game is final then set it to final
-								if( compareNoCase(sGameStatus, "Final") eq 0 ){
-									arGames[itm].bGameIsFinal = 1;
-								}
-								// get the score (old way)
-								sScore = variables.commonService.parseToFindString(sScoreBox, sScoreBegin, sScoreEnd);
-								// if there was a score here
-								if( len(sScore) gt 0 ){
-									// set away score
-									arGames[itm].nAwayScore = trim(listFirst(sScore, "-"));
-									// set home score
-									arGames[itm].nHomeScore = trim(listLast(sScore, "-"));
-									// save the game
-									variables.gameGateway.saveScores([arGames[itm]]);
-								} else {
-									// try the new scoring mechanism
-									sAwayScore = variables.commonService.parseToFindString(sScoreBox, sAwayScoreBegin, sAwayScoreEnd);
-									if( len(sAwayScore) ){
-										// delete that section so the home score can be retrieved
-										sScoreBox = replaceNoCase(sScoreBox, sAwayScoreBegin, "");
-										// get the home score
-										sHomeScore = variables.commonService.parseToFindString(sScoreBox, sHomeScoreBegin, sHomeScoreEnd);
-										if( len(sHomeScore) ){
-											arGames[itm].nAwayScore = trim(sAwayScore);
-											arGames[itm].nHomeScore = trim(sHomeScore);
-										}
-										else {
-											structInsert(arGames[itm], "sMessage", "The new way produced no scores either");
-										}
-									} else {
-										// there was no score even though the game was final
-										structInsert(arGames[itm], "sMessage", "No Score Found - even though we should have");
-									}
-								}
-							} else {
-								// could not find the game status
-								structInsert(arGames[itm], "sMessage", "No Game Status");
-							}
-						} else {
-							// could not find the game data
-							structInsert(arGames[itm], "sMessage", "No Game Data");
-						}
-					} else {
-						throw( message="google did not like your query");
-					}
+			// if this game doesn't have a winner yet and the game date is today or greater
+			if( variables.dbService.dbDateFormat(arGames[itm].sGameDateTime) lt variables.dbService.dbDayBegin() and (!isNumeric(arguments.arGames[itm].bGameIsFinal) or arguments.arGames[itm].bGameIsFinal eq 0) ){
+
+	writeDump(arGames[itm]);
+				// get the home team name
+				oHomeTeam = variables.teamGateway.get(arGames[itm].nHomeTeamID);
+				oAwayTeam = variables.teamGateway.get(arGames[itm].nAwayTeamID);
+				stGameData = callScoreAPI(oHomeTeam.getSName(), oAwayTeam.getSName(), arGames[itm].sGameDateTime);
+				// if we have game status then update the array for this game
+				if( structKeyExists(stGameData, "stGameStatus") ){
+					// update the scores
+					arGames[itm].nHomeScore = stGameData.nHomeScore;
+					arGames[itm].nAwayScore = stGameData.nAwayScore;
+					// update the status
+					arGames[itm].sGameStatus = (stGameData.stGameStatus.bGameIsFinal eq 1) ? "Final" : stGameData.stGameStatus.nGameQuarter & " " & stGameData.stGameStatus.sGameTime;
+					arGames[itm].bGameIsFinal = stGameData.stGameStatus.bGameIsFinal;
 				}
 			}
 		}
+		// save the games
+		variables.gameGateway.saveScores(arGames);
 	} catch (any e){
-		registerError("Error retrieving game data for team: ", e);
+		registerError(e.message, e);
 		// need to do e-mail or something
 	}
 	return arGames;
+}
+
+
+/*
+Author: 	
+	Ron West
+Name:
+	$callScoreAPI
+Summary:
+	Search Yahoo to get the scores
+Returns:
+	Struct stGameData
+Arguments:
+	String sHomeTeam
+	String sAwayTeam
+	String dtGame
+	Boolean bIsHomeTeam
+History:
+	2015-09-09 - RLW - Created
+*/
+public Struct function callScoreAPI(Required String sHomeTeam, Required String sAwayTeam, Required String dtGame){
+	var stResponse = {};
+	var stGameData = {};
+	var stSearchResults = variables.commonService.getURL("http://localhost:3000/get-scores", 5, { "sHomeTeam" = arguments.sHomeTeam, "sAwayTeam" = arguments.sAwayTeam, "dtGame" = dateFormat(arguments.dtGame, "yyyymmdd")});
+	// if we have a valid response
+	if( find("200", stSearchResults.statusCode) gt 0 and isJSON(stSearchResults.fileContent.toString()) ){
+		stResponse = deserializeJSON(stSearchResults.fileContent.toString());
+		// make sure the API call was successful
+		if( find(200, stResponse.stResults.sStatus) ){
+			// get the game data
+			stGameData = stResponse.stResults.stGameData;
+writeDump(stGameData);
+		} else {
+			// API called failed
+		}
+	} else {
+		// need logging
+	}
+	return stGameData;
 }
 
 /*

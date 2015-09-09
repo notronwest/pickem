@@ -5,6 +5,9 @@
 		<!--- // determine who gets pick class --->
 		<cfscript>
 			stGame = local.arWeekGames[local.itm];
+			// set game date/time
+			sGameDate = listFirst(stGame.sGameDateTime, " ");
+			sGameTime = listLast(stGame.sGameDateTime, " ");
 			bPick = 0;
 			bPickIsLocked = false;
 			// determine who the pick is
@@ -96,7 +99,7 @@
 					<cfif len(stGame.sGameStatus) gt 0>
 						#stPick.nScore# - #stNotPick.nScore# (#stGame.sGameStatus#)
 					<cfelse>
-						#dateFormat(stGame.sGameDateTime, "mm/dd/yyyy")#
+						#dateFormat(sGameDate, "mm/dd/yyyy")#<cfif len(sGameTime) gt 0> #timeFormat(sGameTime, "hh:mm")#<cfif listFirst(sGameTime, ":") gt 11>PM<cfelse>AM</cfif></cfif>
 					</cfif>
 				</td>
 			</cfif>
