@@ -26,8 +26,9 @@ public void function checkAuthorization(rc){
 		// redirect them to edit their profile
 		variables.framework.redirect(action="user.addEdit", queryString="sMessage=You must enter a valid name for your account");
 	}
-	// force all users to login
-	if( session.nUserID eq 0
+	// force all users to login - unless they know the api code
+	if( compare(request.sAPIKey, rc.sAPIKey) neq 0
+		and session.nUserID eq 0
 		and arrayFindNoCase(application.arUnsecuredActions, variables.framework.getFullyQualifiedAction()) eq 0 ){
 		// set the action for after logging in
 		rc.sActionAfterLogin = request.action;
