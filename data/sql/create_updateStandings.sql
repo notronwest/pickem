@@ -7,6 +7,17 @@ DECLARE dtPicksDue int;
 DECLARE nStandingRecordCount int;
 DECLARE nLeastWins int;
 
+DECLARE EXIT HANDLER FOR SQLEXCEPTION
+ BEGIN
+  ROLLBACK;
+  SELECT 'SQLException invoked';
+ END;
+
+-- remove any records for users who are inactive
+DELETE FROM standing
+WHERE nUserID IN (SELECT nUserID FROM user WHERE bActive <> 1)
+AND nSeasonID = nInSeason;
+
 -- if we have a 0 week id exit
 IF nInWeekID = 0 THEN
     LEAVE doUpdate;

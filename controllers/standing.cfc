@@ -41,7 +41,6 @@ public void function home(rc){
 		if( not structKeyExists(rc.stWeekHighestTiebreak, nUserID) ){
 			rc.stWeekHighestTiebreak[nUserID] = {};
 		}
-
 		// if this user doesn't have picks for this week
 		if( arStandings[itm].getBHasPicks() neq 1 ){
 			if( not structKeyExists(rc.stWeekNoPicks, nWeekID) ){

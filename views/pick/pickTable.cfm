@@ -52,9 +52,6 @@
 			}
 		</cfscript>
 		<tr class="game#((bPickIsLocked) ? ' locked' : '')#" data-id="#rc.arWeekGames[local.itm].nGameId#" data-nWeekID="#rc.nWeekID#">
-			<!--- // <cfif compareNoCase(getFullyQualifiedAction(), "pick.set") eq 0>
-				<td>#local.itm#<cfif bPickIsLocked>&nbsp;<span class="fa fa-lock"></span></cfif></td>
-			</cfif> --->
 			<td>#stGame.nTiebreak#<cfif bPickIsLocked>&nbsp;<span class="fa fa-lock"></span></cfif></td>
 			<!--- // render picks --->
 			<td class="picks">
