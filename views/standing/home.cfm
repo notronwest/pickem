@@ -28,7 +28,7 @@
 							local.sPlace = local.itm;
 						}
 						local.stUserWins = rc.stWeekWins[local.nUserID];
-						local.stUserHighestTiebreak = rc.stWeekHighestTiebreak[local.nUserID];
+						local.arUserTiebreak = rc.stWeekTiebreak[local.nUserID];
 						if( listLen(structKeyList(local.stUserWins)) gt 0 ){
 							local.arWeeks = listToArray(listSort(structKeyList(local.stUserWins), "numeric", "asc"));
 						} else {
@@ -46,9 +46,25 @@
 						</cfif>
 						<!--- // loop through the week wins for this user --->
 						<cfloop from="#arrayLen(local.arWeeks)#" to="1" step="-1" index="local.y">
-							<cfset local.nWeekID = local.arWeeks[local.y]>
-							<td<cfif structKeyExists(rc.stWeekWinners[local.nWeekID], local.nUserID)> class="highlight-first" data-order="1000001"<cfelseif structKeyExists(rc.stWeekSecondPlace[local.nWeekID], local.nUserID)> class="highlight-second" data-order="1000000"<cfelse> data-order="#local.stUserWins[local.nWeekID]#"</cfif>>#local.stUserWins[local.nWeekID]# (#((structKeyExists(local.stUserHighestTiebreak, local.nWeekID)) ? local.stUserHighestTiebreak[local.nWeekID] : "")#)
-							<cfif structKeyExists(rc.stWeekWinners[local.nWeekID], local.nUserID)><span class="fa fa-trophy"></span></cfif>
+							<cfscript>
+								bIsFirst = false;
+								bIsSecond = false;
+								local.nWeekID = local.arWeeks[local.y];
+								// determine if this user is a winner
+								if( structKeyExists(rc.stWeekWinners[local.nWeekID], local.nUserID) ){
+									bIsFirst = true;
+								} else if( structKeyExists(rc.stWeekSecondPlace[local.nWeekID], local.nUserID) ){
+									bIsSecond = true;
+								}
+							</cfscript>
+
+							<td<cfif bIsFirst> class="highlight-first" data-order="1000001"<cfelseif bIsSecond> class="highlight-second" data-order="1000000"<cfelse> data-order="#local.stUserWins[local.nWeekID]#"</cfif>>#local.stUserWins[local.nWeekID]#
+							<cfif bIsFirst>
+								<span class="fa fa-trophy"></span>
+							</cfif>
+							<cfif bIsFirst or bIsSecond>
+								(#((structKeyExists(local.arUserTiebreak, local.nWeekID)) ? '<span title="' & local.arUserTiebreak[local.nWeekID].toString() & '">' & local.arUserTiebreak[local.nWeekID][1] & '</span>' : "")#)
+							</cfif>
 							<cfif structKeyExists(rc.stWeekNoPicks, local.nWeekID) and isArray(rc.stWeekNoPicks[local.nWeekID]) and arrayFind(rc.stWeekNoPicks[local.nWeekID], local.nUserID)><span class="fa fa-frown-o"></span></cfif>
 						</td>
 						</cfloop>

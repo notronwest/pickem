@@ -18,7 +18,7 @@ public void function home(rc){
 	rc.stWeekWinners = {};
 	rc.stWeekSecondPlace = {};
 	rc.stWeekNoPicks = {};
-	rc.stWeekHighestTiebreak = {};
+	rc.stWeekTiebreak = {};
 	rc.stUsers = {};
 	rc.stSeasonWins = {};
 	rc.arStandings = [];
@@ -38,8 +38,8 @@ public void function home(rc){
 			rc.stWeekWins[nUserID] = {};
 		}
 		// store the highest tiebreakers for each user for each week
-		if( not structKeyExists(rc.stWeekHighestTiebreak, nUserID) ){
-			rc.stWeekHighestTiebreak[nUserID] = {};
+		if( not structKeyExists(rc.stWeekTiebreak, nUserID) ){
+			rc.stWeekTiebreak[nUserID] = {};
 		}
 		// if this user doesn't have picks for this week
 		if( arStandings[itm].getBHasPicks() neq 1 ){
@@ -51,7 +51,17 @@ public void function home(rc){
 		// store this users wins
 		rc.stWeekWins[nUserID][nWeekID] = arStandings[itm].getNWins();
 		// store this users highest tiebreak
-		rc.stWeekHighestTiebreak[nUserID][nWeekID] = arStandings[itm].getNHighestTiebreak();
+		rc.stWeekTiebreak[nUserID][nWeekID] = [arStandings[itm].getNHighestTiebreak(),
+			arStandings[itm].getNTiebreak2(),
+			arStandings[itm].getNTiebreak3(),
+			arStandings[itm].getNTiebreak4(),
+			arStandings[itm].getNTiebreak5(),
+			arStandings[itm].getNTiebreak6(),
+			arStandings[itm].getNTiebreak7(),
+			arStandings[itm].getNTiebreak8(),
+			arStandings[itm].getNTiebreak9(),
+			arStandings[itm].getNTiebreak10()
+		];
 		// store the winners
 		if( not structKeyExists(rc.stWeekWinners, nWeekID) ){
 			rc.stWeekWinners[nWeekID] = {};
