@@ -6,16 +6,6 @@ doUpdate:BEGIN
 DECLARE dtPicksDue int;
 DECLARE nStandingRecordCount int;
 DECLARE nLeastWins int;
-DECLARE nTiebreak1 int;
-DECLARE nTiebreak2 int;
-DECLARE nTiebreak3 int;
-DECLARE nTiebreak4 int;
-DECLARE nTiebreak5 int;
-DECLARE nTiebreak6 int;
-DECLARE nTiebreak7 int;
-DECLARE nTiebreak8 int;
-DECLARE nTiebreak9 int;
-DECLARE nTiebreak10 int;
 
 DECLARE EXIT HANDLER FOR SQLEXCEPTION
  BEGIN
@@ -73,32 +63,19 @@ SELECT nUserID, nInWeekID, nInSeason, 0 as nWins, 20 as nLosses, 0 as nHighestTi
 FROM user
 WHERE nUserID not in (select nUserID from standing where nWeekID = nInWeekID);
 
--- Get all of the tiebreaks
-SET nTiebreak1 = getHighestTiebreak(nWeekID, nUserID)
-SET nTiebreak2 = getNextTiebreak(nWeekID, nUserID, nTiebreak1)
-SET nTiebreak3 = getNextTiebreak(nWeekID, nUserID, nTiebreak2)
-SET nTiebreak4 = getNextTiebreak(nWeekID, nUserID, nTiebreak3)
-SET nTiebreak5 = getNextTiebreak(nWeekID, nUserID, nTiebreak4)
-SET nTiebreak6 = getNextTiebreak(nWeekID, nUserID, nTiebreak5)
-SET nTiebreak7 = getNextTiebreak(nWeekID, nUserID, nTiebreak6)
-SET nTiebreak8 = getNextTiebreak(nWeekID, nUserID, nTiebreak7)
-SET nTiebreak9 = getNextTiebreak(nWeekID, nUserID, nTiebreak8)
-SET nTiebreak10 = getNextTiebreak(nWeekID, nUserID, nTiebreak9)
-
--- Update all of the tiebreak info
+-- Update number of nTiebreaks
 UPDATE standing
-SET nHighestTiebreak = nTiebreak1,
-SET nTiebreak2 = nTnTiebreak2,
-SET nTiebreak3 = nTnTiebreak3,
-SET nTiebreak4 = nTnTiebreak4,
-SET nTiebreak5 = nTnTiebreak5,
-SET nTiebreak6 = nTnTiebreak6,
-SET nTiebreak7 = nTnTiebreak7,
-SET nTiebreak8 = nTnTiebreak8,
-SET nTiebreak9 = nTnTiebreak9,
-SET nTiebreak10 = nTnTiebreak10,
-WHERE nWeekID = nInWeekID
-AND nUserID = nUserID;
+SET nHighestTiebreak = getHighestTiebreak(nWeekID, nUserID),
+nTiebreak2 = getNextTiebreak(nWeekID, nUserID, nHighestTiebreak),
+nTiebreak3 = getNextTiebreak(nWeekID, nUserID, nTiebreak2),
+nTiebreak4 = getNextTiebreak(nWeekID, nUserID, nTiebreak3),
+nTiebreak5 = getNextTiebreak(nWeekID, nUserID, nTiebreak4),
+nTiebreak6 = getNextTiebreak(nWeekID, nUserID, nTiebreak5),
+nTiebreak7 = getNextTiebreak(nWeekID, nUserID, nTiebreak6),
+nTiebreak8 = getNextTiebreak(nWeekID, nUserID, nTiebreak7),
+nTiebreak9 = getNextTiebreak(nWeekID, nUserID, nTiebreak8),
+nTiebreak10 = getNextTiebreak(nWeekID, nUserID, nTiebreak9)
+WHERE nWeekID = nInWeekID;
 
 -- Update the standings place for this week
 UPDATE standing
@@ -108,7 +85,7 @@ UPDATE standing
            FROM standing
               , (SELECT @rownum:=0) AS st
            WHERE nWeekID = nInWeekID
-           ORDER BY nWins DESC, nHighestTiebreak DESC
+           ORDER BY nWins DESC, nHighestTiebreak DESC, nTiebreak2 ASC, nTiebreak3 ASC, nTiebreak4 ASC, nTiebreak5 ASC, nTiebreak6 ASC, nTiebreak7 ASC, nTiebreak8 ASC, nTiebreak9 ASC, nTiebreak10 ASC
          ) AS r
          ON r.nStandingID = standing.nStandingID
 SET standing.nPlace = r.rank_calculated
