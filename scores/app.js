@@ -25,7 +25,8 @@ app.get('/get-scores', function(req, res){
     var arDebugMessage = [];
     var sScoreBlock = "";
     // handle URL to search for
-    sSearchURL = "https://search.yahoo.com/search;_ylt=AwrBT_xXmexV7TcAle9XNyoA;_ylc=X1MDMjc2NjY3OQRfcgMyBGZyA3lmcC10LTkwMQRncHJpZAN4NlB2dGV0NFJ0MnN4aVoyUmhkMGZBBG5fcnNsdAMwBG5fc3VnZwMxMARvcmlnaW4Dc2VhcmNoLnlhaG9vLmNvbQRwb3MDMARwcXN0cgMEcHFzdHJsAwRxc3RybAMxOQRxdWVyeQNwdXJkdWUgYm9pbGVybWFrZXJzBHRfc3RtcAMxNDQxNTY5MTQ1?fr2=sb-top-search&fr=yfp-t-901&fp=1";
+    //sSearchURL = "https://search.yahoo.com/search;_ylt=AwrBT_xXmexV7TcAle9XNyoA;_ylc=X1MDMjc2NjY3OQRfcgMyBGZyA3lmcC10LTkwMQRncHJpZAN4NlB2dGV0NFJ0MnN4aVoyUmhkMGZBBG5fcnNsdAMwBG5fc3VnZwMxMARvcmlnaW4Dc2VhcmNoLnlhaG9vLmNvbQRwb3MDMARwcXN0cgMEcHFzdHJsAwRxc3RybAMxOQRxdWVyeQNwdXJkdWUgYm9pbGVybWFrZXJzBHRfc3RtcAMxNDQxNTY5MTQ1?fr2=sb-top-search&fr=yfp-t-901&fp=1";
+    sSearchURL = "https://search.yahoo.com/search?fr2=sb-top-search&fr=yfp-t-901&fp=1";
     // setup the default response
     stResults = {
       "sStatus": 200,
