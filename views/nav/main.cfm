@@ -15,9 +15,9 @@
             <li<cfif compareNoCase(listFirst(request.action, "."), "user") eq 0 and not rc.bIsAdminAction> class="active"</cfif>>
               <a href="#buildURL('user.addEdit')#"><span class="fa fa-user fa-fw"></span>Account</a>
             </li>
-            <!--- // <li<cfif compareNoCase(listFirst(request.action, "."), "seasonPayout") eq 0> class="active"</cfif>>
+            <li<cfif compareNoCase(listFirst(request.action, "."), "seasonPayout") eq 0> class="active"</cfif>>
               <a href="#buildURL('seasonPayout.details')#"><span class="fa fa-dollar fa-fw"></span>Payouts</a>
-            </li> --->
+            </li>
       			<cfif rc.stUser.bIsAdmin eq 1>
               <li<cfif compareNoCase(listLast(request.action, "."), "admin") eq 0 or rc.bIsAdminAction> class="active"</cfif>>
                 <a href="#buildURL('main.admin')#"><span class="fa fa-cubes fa-fw"></span> Admin</a>
