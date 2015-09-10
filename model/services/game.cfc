@@ -3,6 +3,7 @@ component accessors="true" extends="model.services.baseService" {
 property name="gameGateway";
 property name="pickGateway";
 property name="teamGateway";
+property name="teamService";
 
 /*
 Author: 	
@@ -222,12 +223,10 @@ public Array function getGameScores( Required Array arGames){
 		for( itm; itm lte arrayLen(arGames); itm++ ){
 			// if this game doesn't have a winner yet and the game date is today or greater
 			if( variables.dbService.dbDateFormat(arGames[itm].sGameDateTime) lt variables.dbService.dbDayBegin() and (!isNumeric(arguments.arGames[itm].bGameIsFinal) or arguments.arGames[itm].bGameIsFinal eq 0) ){
-
-	writeDump(arGames[itm]);
 				// get the home team name
 				oHomeTeam = variables.teamGateway.get(arGames[itm].nHomeTeamID);
 				oAwayTeam = variables.teamGateway.get(arGames[itm].nAwayTeamID);
-				stGameData = callScoreAPI(oHomeTeam.getSName(), oAwayTeam.getSName(), arGames[itm].sGameDateTime);
+				stGameData = callScoreAPI(variables.teamService.getTeamNameArray(oHomeTeam), variables.teamService.getTeamNameArray(oAwayTeam), arGames[itm].sGameDateTime);
 				// if we have game status then update the array for this game
 				if( structKeyExists(stGameData, "stGameStatus") ){
 					// update the scores
@@ -248,7 +247,6 @@ public Array function getGameScores( Required Array arGames){
 	return arGames;
 }
 
-
 /*
 Author: 	
 	Ron West
@@ -259,17 +257,17 @@ Summary:
 Returns:
 	Struct stGameData
 Arguments:
-	String sHomeTeam
-	String sAwayTeam
+	Array arHomeTeamName
+	Array arAwayTeamName
 	String dtGame
 	Boolean bIsHomeTeam
 History:
 	2015-09-09 - RLW - Created
 */
-public Struct function callScoreAPI(Required String sHomeTeam, Required String sAwayTeam, Required String dtGame){
+public Struct function callScoreAPI(Required Array arHomeTeamName, Required Array arAwayTeamName, Required String dtGame){
 	var stResponse = {};
 	var stGameData = {};
-	var stSearchResults = variables.commonService.getURL("http://localhost:3000/get-scores", 5, { "sHomeTeam" = arguments.sHomeTeam, "sAwayTeam" = arguments.sAwayTeam, "dtGame" = dateFormat(arguments.dtGame, "yyyymmdd")});
+	var stSearchResults = variables.commonService.getURL("http://localhost:3000/get-scores", 5, { "lstHomeTeam" = arrayToList(arguments.arHomeTeamName, "|"), "lstAwayTeam" = arrayToList(arguments.arAwayTeamName, "|"), "dtGame" = dateFormat(arguments.dtGame, "yyyymmdd")});
 	// if we have a valid response
 	if( find("200", stSearchResults.statusCode) gt 0 and isJSON(stSearchResults.fileContent.toString()) ){
 		stResponse = deserializeJSON(stSearchResults.fileContent.toString());
@@ -277,7 +275,6 @@ public Struct function callScoreAPI(Required String sHomeTeam, Required String s
 		if( find(200, stResponse.stResults.sStatus) ){
 			// get the game data
 			stGameData = stResponse.stResults.stGameData;
-writeDump(stGameData);
 		} else {
 			// API called failed
 		}

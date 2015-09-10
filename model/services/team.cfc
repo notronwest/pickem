@@ -58,4 +58,32 @@ public Array function findTeam( Required String sName ){
 	return arTeamNames;
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$getTeamNameArray
+Summary:
+	Given a team builds out an array of team names
+Returns:
+	Array arTeamName
+Arguments:
+	Team oTeam
+History:
+	2015-09-09 - RLW - Created
+*/
+public Array function getTeamNameArray( Required model.beans.team oTeam ){
+	var arTeamName = [arguments.oTeam.getSName()];
+	if( not isNull(arguments.oTeam.getSName2()) and len(arguments.oTeam.getSName2()) gt 0 ){
+		arrayAppend(arTeamName, arguments.oTeam.getSName2());
+	}
+	if( not isNull(arguments.oTeam.getSName3()) and len(arguments.oTeam.getSName3()) gt 0 ){
+		arrayAppend(arTeamName, arguments.oTeam.getSName3());
+	}
+	if( not isNull(arguments.oTeam.getSName4()) and len(arguments.oTeam.getSName4()) gt 0 ){
+		arrayAppend(arTeamName, arguments.oTeam.getSName4());
+	}
+	return arTeamName;
+}
+
 }

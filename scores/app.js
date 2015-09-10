@@ -43,14 +43,14 @@ app.get('/get-scores', function(req, res){
       'User-Agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.1 Safari/537.36"
     }
     // get the query params sent to the page
-    var sHomeTeam = req.query.sHomeTeam;
-    var sAwayTeam = req.query.sAwayTeam;
+    var arHomeTeam = req.query.lstHomeTeam.split("|"); // will come in with team names separated by |
+    var arAwayTeam = req.query.lstAwayTeam.split("|"); // will come in with team names separated by |
     var dtGame = req.query.dtGame;
     var stOptions = {
       uri: sSearchURL,
       method: 'GET',
       headers: stHeaders,
-      qs: { "p": sHomeTeam + " Football Results" }
+      qs: { "p": arHomeTeam[0] + " Football Results" }
     }
     //get the score data from the API and handle parsing
     request(stOptions, function(err, response, body){
@@ -67,9 +67,9 @@ app.get('/get-scores', function(req, res){
                 sScoreBlock = $('.compScoreCard .score-card[data-key="' + dtGame + '"]');
 
                 if( $(sScoreBlock).length > 0 ){
-        arDebugMessage.push('Trying to match home team: ' + sHomeTeam + ' against t0: ' + $(sScoreBlock).find(".team.t0 .team-name").text() + " or away team against t1: " +  $(sScoreBlock).find(".team.t1 .team-name").text());
+        arDebugMessage.push('Trying to match home team: ' + arHomeTeam.toString() + ' against t0: ' + $(sScoreBlock).find(".team.t0 .team-name").text() + " or away team:" + arAwayTeam.toString() +  " against t1: " +  $(sScoreBlock).find(".team.t1 .team-name").text());
                   // determine which team id is home and which is away
-                  nHomeTeamID = getHomeTeamID(sScoreBlock, sHomeTeam, sAwayTeam);
+                  nHomeTeamID = getHomeTeamID(sScoreBlock, arHomeTeam, arAwayTeam);
                   nAwayTeamID = (nHomeTeamID == 0) ? 1 : 0;
         arDebugMessage.push("Home team ID: " + nHomeTeamID);
         arDebugMessage.push("Away team ID: " + nAwayTeamID.toString());
@@ -98,19 +98,30 @@ app.get('/get-scores', function(req, res){
 });
 
 // determine the home team id
-var getHomeTeamID = function(sScoreBlock, sHomeTeam, sAwayTeam){
+var getHomeTeamID = function(sScoreBlock, arHomeTeam, arAwayTeam){
   var nHomeTeamID = "";
-  // check the home team first
-  if( doTeamsMatch(sHomeTeam, $(sScoreBlock).find(".team.t0 .team-name").text()) ){
-    nHomeTeamID = 0;
-  // check away team
-  } else if(doTeamsMatch(sAwayTeam, $(sScoreBlock).find(".team.t0 .team-name").text())){
-    nHomeTeamID = 1;
-  // check against second block
-  } else if(doTeamsMatch(sHomeTeam, $(sScoreBlock).find(".team.t1 .team-name").text())){
-    nHomeTeamID = 1;
-  } else if(doTeamsMatch(sAwayTeam, $(sScoreBlock).find(".team.t1 .team-name").text())){
-    nHomeTeamID = 0;
+  var itm = 0;
+  // check the home team names first
+  for(itm; itm < arHomeTeam.length; itm++ ){
+    if( doTeamsMatch(arHomeTeam[itm], $(sScoreBlock).find(".team.t0 .team-name").text()) ){
+      nHomeTeamID = 0;
+      break;
+    } else if(doTeamsMatch(arHomeTeam[itm], $(sScoreBlock).find(".team.t1 .team-name").text())){
+      nHomeTeamID = 1;
+      break;
+    }
+  }
+  // check the away team names next
+  if( typeof nHomeTeamID != "number" ){
+    for(itm=0; itm < arAwayTeam.length; itm++ ){
+      if( doTeamsMatch(arAwayTeam[itm], $(sScoreBlock).find(".team.t0 .team-name").text()) ){
+        nHomeTeamID = 1;
+        break;
+      } else if(doTeamsMatch(arAwayTeam[itm], $(sScoreBlock).find(".team.t1 .team-name").text())){
+        nHomeTeamID = 0;
+        break;
+      }
+    }
   }
   return nHomeTeamID;
 }
@@ -192,10 +203,10 @@ var getGameStatus = function(sScoreBlock){
 var errorOccurred = function(sMessage){
   // reset the results structure
   stResults = {
-  "sStatus": 500,
-  "stGameData": {},
-  "sMessage": sMessage,
-  "sSearchURL": sSearchURL
+    "sStatus": 500,
+    "stGameData": {},
+    "sMessage": sMessage,
+    "sSearchURL": sSearchURL
 }
 }
 
@@ -213,22 +224,22 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
-      message: err.message,
-      error: err
-    });
+    // reset response data
+    stResults.sStatus = res.statusCode;
+    stResults.sMessage = "Error getting score data - dev" + new Date();
+    res.json({ "stResults": stResults });
   });
 }
 
 // production error handler
 // no stacktraces leaked to user
-/*app.use(function(err, req, res, next) {
+app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   // reset response data
   stResults.sStatus = res.statusCode;
-  stResults.sMessage = "Error getting score data";
+  stResults.sMessage = "Error getting score data - prod";
   res.json({ "stResults": stResults });
-});*/
+});
 
 
 module.exports = app;

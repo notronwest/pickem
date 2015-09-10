@@ -12,6 +12,8 @@
 						<p>Use this to add games for each week.</p></a>
 					<a class="list-group-item" href="#buildURL('game.scoring')#"><h4>Score Games</h4>
 						<p>Once the games are completed, you can use this to add the scores into each game</p></a>
+					<a class="list-group-item" href="#buildURL('team.listing')#"><h4>Teams</h4>
+						<p>Add, Edit and Delete teams</p></a>
 					<a class="list-group-item" href="#buildURL('user.listing')#"><h4>Users</h4>
 						<p>Add, Edit and Delete users</p></a>
 					<a class="list-group-item" href="#buildURL('notify.listing')#"><h4>Notifications</h4>
