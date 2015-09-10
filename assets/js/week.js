@@ -119,6 +119,7 @@ $(function(){
 		var bDoSave = true;
 		var dtGame = "";
 		var dtLock = "";
+		var arTiebreaks = [];
 		// clear the arGames to build the now active games
 		arGames = [];
 		// loop through all of the active games
@@ -128,6 +129,14 @@ $(function(){
 				alert("Please set a spread favor for this game");
 				$(this).find(".spread-favor").focus();
 				bDoSave = false;
+			}
+			// if there isn't a tiebreak defined or if there is one missing
+			if( $(this).find(".tiebreak").val() == "" ){
+				alert("Please set a tiebreak for this game");
+				$(this).find(".tiebreak").focus();
+				bDoSave = false;
+			} else {
+				arTiebreaks.push($(this).find(".tiebreak").val());
 			}
 			// store the game dates/times
 			dtGame = $(this).find(".game-date").val().trim() + " " + fixTime($(this).find(".game-time").val().trim());
@@ -177,6 +186,11 @@ $(function(){
 			};
 			arGames.push(stGame);
 		});
+		// check and make sure that all of the appropriate tiebreaks were used
+		if( bDoSave && arTiebreaks.reduce(function(a,b){return a*b;}) != fact(20) ){
+			alert("It looks like you may have tiebreakers wrong. More than likely you have used the same tiebreak number twice. Please double check");
+			bDoSave = false;
+		}
 		if( bDoSave ){
 			// send the call to save this week
 			$.post("/index.cfm?action=game.saveWeek",
@@ -361,4 +375,12 @@ function fixTime(sTime){
 		dtFixed = "";
 	}
 	return dtFixed;
+}
+
+// returns a factorial of a number
+function fact(x) {
+   if(x==0) {
+      return 1;
+   }
+   return x * fact(x-1);
 }
