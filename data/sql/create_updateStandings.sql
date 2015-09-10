@@ -6,17 +6,22 @@ doUpdate:BEGIN
 DECLARE dtPicksDue int;
 DECLARE nStandingRecordCount int;
 DECLARE nLeastWins int;
+DECLARE nTiebreak1 int;
+DECLARE nTiebreak2 int;
+DECLARE nTiebreak3 int;
+DECLARE nTiebreak4 int;
+DECLARE nTiebreak5 int;
+DECLARE nTiebreak6 int;
+DECLARE nTiebreak7 int;
+DECLARE nTiebreak8 int;
+DECLARE nTiebreak9 int;
+DECLARE nTiebreak10 int;
 
 DECLARE EXIT HANDLER FOR SQLEXCEPTION
  BEGIN
   ROLLBACK;
   SELECT 'SQLException invoked';
  END;
-
--- remove any records for users who are inactive
-DELETE FROM standing
-WHERE nUserID IN (SELECT nUserID FROM user WHERE bActive <> 1)
-AND nSeasonID = nInSeason;
 
 -- if we have a 0 week id exit
 IF nInWeekID = 0 THEN
@@ -68,10 +73,32 @@ SELECT nUserID, nInWeekID, nInSeason, 0 as nWins, 20 as nLosses, 0 as nHighestTi
 FROM user
 WHERE nUserID not in (select nUserID from standing where nWeekID = nInWeekID);
 
--- Update number of nTiebreaks
+-- Get all of the tiebreaks
+SET nTiebreak1 = getHighestTiebreak(nWeekID, nUserID)
+SET nTiebreak2 = getNextTiebreak(nWeekID, nUserID, nTiebreak1)
+SET nTiebreak3 = getNextTiebreak(nWeekID, nUserID, nTiebreak2)
+SET nTiebreak4 = getNextTiebreak(nWeekID, nUserID, nTiebreak3)
+SET nTiebreak5 = getNextTiebreak(nWeekID, nUserID, nTiebreak4)
+SET nTiebreak6 = getNextTiebreak(nWeekID, nUserID, nTiebreak5)
+SET nTiebreak7 = getNextTiebreak(nWeekID, nUserID, nTiebreak6)
+SET nTiebreak8 = getNextTiebreak(nWeekID, nUserID, nTiebreak7)
+SET nTiebreak9 = getNextTiebreak(nWeekID, nUserID, nTiebreak8)
+SET nTiebreak10 = getNextTiebreak(nWeekID, nUserID, nTiebreak9)
+
+-- Update all of the tiebreak info
 UPDATE standing
-SET nHighestTiebreak = getHighestTiebreak(nWeekID, nUserID)
-WHERE nWeekID = nInWeekID;
+SET nHighestTiebreak = nTiebreak1,
+SET nTiebreak2 = nTnTiebreak2,
+SET nTiebreak3 = nTnTiebreak3,
+SET nTiebreak4 = nTnTiebreak4,
+SET nTiebreak5 = nTnTiebreak5,
+SET nTiebreak6 = nTnTiebreak6,
+SET nTiebreak7 = nTnTiebreak7,
+SET nTiebreak8 = nTnTiebreak8,
+SET nTiebreak9 = nTnTiebreak9,
+SET nTiebreak10 = nTnTiebreak10,
+WHERE nWeekID = nInWeekID
+AND nUserID = nUserID;
 
 -- Update the standings place for this week
 UPDATE standing
@@ -101,6 +128,11 @@ SET nWins = nLeastWins,
 nLosses = (select (count(*) - nLeastWins) as nLoses from game where nWeekID = nInWeekID)
 WHERE nWeekID = nInWeekID
 AND bHasPicks <> 1;
+
+-- remove any records for users who are inactive
+DELETE FROM standing
+WHERE nUserID IN (SELECT nUserID FROM user WHERE bActive <> 1)
+AND nSeasonID = nInSeason;
 
 
 END
