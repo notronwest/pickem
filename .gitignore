@@ -1,3 +1,5 @@
 # don't include log files
 *.log
 views/main/scratch.cfm
+scores/node_modules
+

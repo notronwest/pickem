@@ -18,6 +18,7 @@ public void function home(rc){
 	rc.stWeekWinners = {};
 	rc.stWeekSecondPlace = {};
 	rc.stWeekNoPicks = {};
+	rc.stWeekHighestTiebreak = {};
 	rc.stUsers = {};
 	rc.stSeasonWins = {};
 	rc.arStandings = [];
@@ -36,6 +37,11 @@ public void function home(rc){
 		if( not structKeyExists(rc.stWeekWins, nUserID) ){
 			rc.stWeekWins[nUserID] = {};
 		}
+		// store the highest tiebreakers for each user for each week
+		if( not structKeyExists(rc.stWeekHighestTiebreak, nUserID) ){
+			rc.stWeekHighestTiebreak[nUserID] = {};
+		}
+
 		// if this user doesn't have picks for this week
 		if( arStandings[itm].getBHasPicks() neq 1 ){
 			if( not structKeyExists(rc.stWeekNoPicks, nWeekID) ){
@@ -45,6 +51,8 @@ public void function home(rc){
 		}
 		// store this users wins
 		rc.stWeekWins[nUserID][nWeekID] = arStandings[itm].getNWins();
+		// store this users highest tiebreak
+		rc.stWeekHighestTiebreak[nUserID][nWeekID] = arStandings[itm].getNHighestTiebreak();
 		// store the winners
 		if( not structKeyExists(rc.stWeekWinners, nWeekID) ){
 			rc.stWeekWinners[nWeekID] = {};

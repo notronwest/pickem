@@ -52,7 +52,7 @@
 			<div class="table-responsive">
 				<table class="table">
 					<thead>
-						<th></th>
+						<th>T</th>
 						<th class="picks">Pick (home team in CAPS)</th>
 						<th class="picks">Opponent</td>
 						<th class="change hidden">Favorite (home team in CAPS)</th>
