@@ -211,11 +211,9 @@ function parseTeams(){
 	$("#results").children(".bd").children("h4").each(function(){
 		// append the contents of the date
 		dGameDate = new Date($(this).text());
-		sGameDate = dGameDate.getFullYear() + '-' + convertMonthDay(dGameDate.getMonth() + 1) + '-' + convertMonthDay(dGameDate.getDate());
 		// find all of the games
 		$(this).next(".pointspread").children("tbody").children("tr").each(function(){
 			stGame = {};
-			stGame.sGameDate = sGameDate;
 			// get the teams
 			$(this).children(".teams").children(".team").each(function(index){
 				// get the home team
@@ -227,7 +225,10 @@ function parseTeams(){
 					stGame.sAwayTeamURL = $(this).children("a").prop("href");
 				}
 			});
-			stGame.sGameDateTime = sGameDate;
+			sGameDate = dGameDate.getFullYear() + '-' + convertMonthDay(dGameDate.getMonth() + 1) + '-' + convertMonthDay(dGameDate.getDate());
+			arGameTimeFull = $(this).children(".teams").children("div").text().trim().split(" ");
+			arGameTimeHoursMinutes = arGameTimeFull[0].split(":");
+			stGame.sGameDateTime = sGameDate.toString() + " " + ((arGameTimeFull[1].toLowerCase() == "pm" && parseInt(arGameTimeHoursMinutes[0]) < 12) ? (parseInt(arGameTimeHoursMinutes[0]) + 12).toString() + ":" + arGameTimeHoursMinutes[1] : arGameTimeHoursMinutes[0].toString() + ":" + arGameTimeHoursMinutes[1]).toString();
 			// get the spread from the second td
 			sSpreadNode = $(this).children("td:nth-child(2)").children("div:nth-child(1)").children("span");
 			if( $(sSpreadNode).hasClass("bottom-line") ){
@@ -241,7 +242,7 @@ function parseTeams(){
 			stGame.sSpreadOriginal = stGame.nSpread;
 			stGame.bShow = true;
 			stGame.nTiebreak = "";
-			stGame.dtLock = "";
+			stGame.dtLock = stGame.sGameDateTime;
 			arGames.push(stGame);
 		});
 	});
