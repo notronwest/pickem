@@ -45,14 +45,14 @@
 								<tr class="game" data-id="#rc.arWeekGames[local.itm].nGameID#">
 									<cfif rc.arWeekGames[local.itm].sSpreadFavor eq "home">
 										<td><label class="home">#rc.arWeekGames[local.itm].sHomeTeam# <span class="badge">+#rc.arWeekGames[local.itm].nSpread#</span></label></td>
-										<td><input type="number" class="score control-sm home" data-id="#rc.arWeekGames[local.itm].nHomeTeamID#" value="#rc.arWeekGames[local.itm].nHomeScore#"></td>
+										<td><input type="tel" class="score control-sm home" data-id="#rc.arWeekGames[local.itm].nHomeTeamID#" value="#rc.arWeekGames[local.itm].nHomeScore#" min="0" step="1"></td>
 										<td><label>#rc.arWeekGames[local.itm].sAwayTeam#</label></td>
-										<td><input type="number" class="score control-sm away" data-id="#rc.arWeekGames[local.itm].nAwayTeamID#" value="#rc.arWeekGames[local.itm].nAwayScore#"></td>
+										<td><input type="tel" class="score control-sm away" data-id="#rc.arWeekGames[local.itm].nAwayTeamID#" value="#rc.arWeekGames[local.itm].nAwayScore#" min="0" step="1"></td>
 									<cfelse>
 										<td><label>#rc.arWeekGames[local.itm].sAwayTeam# <span class="badge">+#rc.arWeekGames[local.itm].nSpread#</span></label></td>
-										<td><input type="number" class="score control-sm away" data-id="#rc.arWeekGames[local.itm].nAwayTeamID#" value="#rc.arWeekGames[local.itm].nAwayScore#"></td>
+										<td><input type="tel" class="score control-sm away" data-id="#rc.arWeekGames[local.itm].nAwayTeamID#" value="#rc.arWeekGames[local.itm].nAwayScore#" min="0" step="1"></td>
 										<td><label class="home">#rc.arWeekGames[local.itm].sHomeTeam#</label></td>
-										<td><input type="number" class="score control-sm home" data-id="#rc.arWeekGames[local.itm].nHomeTeamID#" value="#rc.arWeekGames[local.itm].nHomeScore#"></td>
+										<td><input type="tel" class="score control-sm home" data-id="#rc.arWeekGames[local.itm].nHomeTeamID#" value="#rc.arWeekGames[local.itm].nHomeScore#" min="0" step="1"></td>
 									</cfif>
 									<td>
 										<input type="checkbox" class="game-is-final"<cfif rc.arWeekGames[local.itm].bGameIsFinal eq 1> checked="checked"</cfif>/>
