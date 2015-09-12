@@ -162,6 +162,11 @@ var getGameStatus = function(sScoreBlock){
     if( $(this).hasClass("timeleft") ){
       // set the game time
       sGameTime = $(this).text();
+      // if its half time
+      if( $(this).hasClass("half") ){
+        nQuarter = "";
+        return;
+      }
       // if we have no value then its in between quarters
       if( sGameTime.length == 0 ){
         nQuarter = itm + 2;
@@ -170,6 +175,10 @@ var getGameStatus = function(sScoreBlock){
         nQuarter = itm + 1;
       }
       // stop looping we are done
+      return;
+    } else if ( $(this).hasClass("total") ){
+      sGameTime = "Final";
+      bGameIsFinal = 1;
       return;
     }
   });
@@ -183,9 +192,24 @@ arDebugMessage.push("Quarter: " + nQuarter);
 
   return {
     "sGameTime": sGameTime,
-    "nGameQuarter": nQuarter,
+    "nGameQuarter": (nQuarter != "" || nQuarter != 0) ? ordinal_suffix_of(nQuarter) : nQuarter,
     "bGameIsFinal": bGameIsFinal
   }
+}
+
+var ordinal_suffix_of = function(i) {
+    var j = i % 10,
+        k = i % 100;
+    if (j == 1 && k != 11) {
+        return i + "st";
+    }
+    if (j == 2 && k != 12) {
+        return i + "nd";
+    }
+    if (j == 3 && k != 13) {
+        return i + "rd";
+    }
+    return i + "th";
 }
 
 var errorOccurred = function(sMessage){

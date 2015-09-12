@@ -222,13 +222,13 @@ public Array function getGameScores( Required Array arGames){
 	try{
 		for( itm; itm lte arrayLen(arGames); itm++ ){
 			// if this game doesn't have a winner yet and the game date is today or greater
-			if( variables.dbService.dbDateFormat(arGames[itm].sGameDateTime) gt variables.dbService.dbDayBegin() and (!isNumeric(arguments.arGames[itm].bGameIsFinal) or arguments.arGames[itm].bGameIsFinal eq 0) ){
+			if( variables.dbService.dbDateFormat(arGames[itm].sGameDateTime) lte variables.dbService.dbDayBegin() and (!isNumeric(arguments.arGames[itm].bGameIsFinal) or arguments.arGames[itm].bGameIsFinal eq 0) ){
 				// get the home team name
 				oHomeTeam = variables.teamGateway.get(arGames[itm].nHomeTeamID);
 				oAwayTeam = variables.teamGateway.get(arGames[itm].nAwayTeamID);
 				stGameData = callScoreAPI(variables.teamService.getTeamNameArray(oHomeTeam), variables.teamService.getTeamNameArray(oAwayTeam), arGames[itm].sGameDateTime);
 				// if we have game status then update the array for this game
-				if( structKeyExists(stGameData, "stGameStatus") ){
+				if( structKeyExists(stGameData, "stGameStatus") and len(stGameData.nHomeScore) and len(stGameData.nAwayScore) ){
 					// update the scores
 					arGames[itm].nHomeScore = stGameData.nHomeScore;
 					arGames[itm].nAwayScore = stGameData.nAwayScore;
