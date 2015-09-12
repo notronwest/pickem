@@ -13,6 +13,7 @@ var app = express();
 var $ = "";
 var sSearchURL = "";
 var stResults = {};
+var arDebugMessage = [];
 // view engine setup
 
 app.use(logger('dev'));
@@ -22,7 +23,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.get('/get-scores', function(req, res){
     // some global variables that will be used in various functions
-    var arDebugMessage = [];
     var sScoreBlock = "";
     // handle URL to search for
     //sSearchURL = "https://search.yahoo.com/search;_ylt=AwrBT_xXmexV7TcAle9XNyoA;_ylc=X1MDMjc2NjY3OQRfcgMyBGZyA3lmcC10LTkwMQRncHJpZAN4NlB2dGV0NFJ0MnN4aVoyUmhkMGZBBG5fcnNsdAMwBG5fc3VnZwMxMARvcmlnaW4Dc2VhcmNoLnlhaG9vLmNvbQRwb3MDMARwcXN0cgMEcHFzdHJsAwRxc3RybAMxOQRxdWVyeQNwdXJkdWUgYm9pbGVybWFrZXJzBHRfc3RtcAMxNDQxNTY5MTQ1?fr2=sb-top-search&fr=yfp-t-901&fp=1";
@@ -153,46 +153,33 @@ var getTeamScore = function(sTeamBlock){
 
 // get the status of the game
 var getGameStatus = function(sScoreBlock){
-  var nLoops = 0;
+  var nQuarter = 0;
   var sGameTime = "";
   var bGameIsFinal = 0;
-  var nQuarter = 0;
-
   // loop through the children of the status block to see what the game status is
-  $(sScoreBlock).find(".period").closest("tr").children("td").each(function(){
-    nLoops++;
-    // make sure this has content
-    if( $(this).find(".period").text().length > 0 ){
+  $(sScoreBlock).find(".period").each(function(itm){
+    // stop when we find the timeleft class
+    if( $(this).hasClass("timeleft") ){
       // set the game time
-      sGameTime = $(this).find(".period").text()
+      sGameTime = $(this).text();
+      // if we have no value then its in between quarters
+      if( sGameTime.length == 0 ){
+        nQuarter = itm + 2;
+        sGameTime = "15:00";
+      } else {
+        nQuarter = itm + 1;
+      }
       // stop looping we are done
       return;
     }
   });
 
-  // see what quarter we are in
-  switch(nLoops){
-    // game is over
-    case 10:
-      bGameIsFinal = 1;
-      break;
-    // game is in 4th quarter
-    case 8:
-      nQuarter = 4;
-      break;
-    // game is in 3rd quarter
-    case 6:
-      nQuarter = 3;
-      break;
-    // game is in 2nd quarter
-    case 4:
-      nQuarter = 2;
-      break;
-    // game is in 1st quarter
-    case 1:
-      nQuarter = 1;
-      break;
+  // if we are in the "fifth" quarter then the game is over
+  if( nQuarter == 5 ){
+    bGameIsFinal = 1;
   }
+
+arDebugMessage.push("Quarter: " + nQuarter);
 
   return {
     "sGameTime": sGameTime,
