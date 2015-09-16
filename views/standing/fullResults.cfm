@@ -38,7 +38,7 @@
 						<cfloop from="1" to="#arrayLen(rc.arWeekGames)#" index="local.x">	
 							<cfif rc.arWeekGames[local.x].bGameIsFinal>
 								<td<cfif listFind(rc.arFullResults[local.itm].lstWins, rc.arWeekGames[local.x].nGameID)> class="win"<cfelse> class="loss"</cfif>>
-									<cfif listFind(rc.arFullResults[local.itm].lstWins, rc.arWeekGames[local.x].nGameID)><span class="fa  fa-smile-o"></span><cfelse><span class="fa  fa-frown-o"></span></cfif>
+									<cfif listFind(rc.arFullResults[local.itm].lstWins, rc.arWeekGames[local.x].nGameID)><span class="fa  fa-check"></span><cfelse><span class="fa  fa-times"></span></cfif>
 								</td>
 							<cfelse>
 								<td class="no-status">

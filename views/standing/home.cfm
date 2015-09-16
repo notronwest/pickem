@@ -24,7 +24,7 @@
 					<td></td>
 					<cfloop from="#arrayLen(rc.arWeeks)#" to="1" step="-1" index="itm">	
 						<td>
-							<a href="#buildURL('standing.tiebreaks')#?nWeekID=#rc.arWeeks[itm].getNWeekID()#">tiebreaks</a>
+							<a href="#buildURL('standing.fullResults')#?nWeekID=#rc.arWeeks[itm].getNWeekID()#">full results</a>
 						</td>
 					</cfloop>
 				</tr> --->
