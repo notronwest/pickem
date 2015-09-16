@@ -18,16 +18,16 @@
 				</cfloop>
 			</thead>
 			<tbody>
-				<!--- // <tr id="tiebreakHeader">
+				<tr id="fullResultsHeader">
 					<td></td>
 					<td></td>
 					<td></td>
 					<cfloop from="#arrayLen(rc.arWeeks)#" to="1" step="-1" index="itm">	
 						<td>
-							<a href="#buildURL('standing.fullResults')#?nWeekID=#rc.arWeeks[itm].getNWeekID()#">full results</a>
+							<a href="#buildURL('standing.fullResults')#&nWeekID=#rc.arWeeks[itm].getNWeekID()#">full results</a>
 						</td>
 					</cfloop>
-				</tr> --->
+				</tr>
 				<!--- // loop through the season standings --->
 				<cfloop from="1" to="#arrayLen(rc.arStandings)#" index="local.itm">
 					<cfscript>

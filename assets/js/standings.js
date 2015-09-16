@@ -12,7 +12,7 @@ $(document).ready(function() {
     });
 
     // handle the on draw event to push "tiebreaks" link to the top
-    /*$('#standings').on('draw.dt', function(){
-    	$("#tiebreakHeader").detach().insertBefore("#standings tbody tr:first-child");
-    });*/
+    $('#standings').on('draw.dt', function(){
+    	$("#fullResultsHeader").detach().insertBefore("#standings tbody tr:first-child");
+    });
 } );

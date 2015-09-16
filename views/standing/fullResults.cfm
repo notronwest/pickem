@@ -32,7 +32,7 @@
 				<!--- // loop through the results --->
 				<cfloop from="1" to="#arrayLen(rc.arFullResults)#" index="local.itm">
 					<tr>
-						<td>#rc.arFullResults[local.itm].nPlace#.#rc.arFullResults[local.itm].sFullName#</td>
+						<td><cfif rc.arFullResults[local.itm].nPlace neq 4030000>#rc.arFullResults[local.itm].nPlace#.</cfif>#rc.arFullResults[local.itm].sFullName#</td>
 						<td>#listLen(rc.arFullResults[local.itm].lstWins)#</td>
 						<!--- // loop through the weeks and get the wins/losses --->
 						<cfloop from="1" to="#arrayLen(rc.arWeekGames)#" index="local.x">	
@@ -41,8 +41,7 @@
 									<cfif listFind(rc.arFullResults[local.itm].lstWins, rc.arWeekGames[local.x].nGameID)><span class="fa  fa-check"></span><cfelse><span class="fa  fa-times"></span></cfif>
 								</td>
 							<cfelse>
-								<td class="no-status">
-								</td>
+								<td class="no-status">n/a</td>
 							</cfif>
 						</cfloop>
 					</tr>
