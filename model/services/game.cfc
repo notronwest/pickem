@@ -78,7 +78,7 @@ public Array function adminWeek( Required Numeric nWeekID, Boolean bSortByTiebre
 		var oAwayTeam = "";
 		var stGame = {};
 		if( arguments.bSortByTiebreak ){
-			arGames = variables.gameGateway.getByWeekSort(arguments.nWeekID, "abs(nOrder),abs(nTiebreak)");
+			arGames = variables.gameGateway.getByWeekSort(arguments.nWeekID, "abs(nTiebreak)");
 		} else {
 			arGames = variables.gameGateway.getByWeek(arguments.nWeekID, "nOrder");
 		}

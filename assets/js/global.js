@@ -160,3 +160,21 @@ function showError(sError){
 String.prototype.replaceAt=function(index, character) {
     return this.substr(0, index) + character + this.substr(index+character.length);
 }
+
+// move indexes in an array
+function moveArrayIndex (arToUpdate, nOldIndex, nNewIndex) {
+    while (nOldIndex < 0) {
+        nOldIndex += arToUpdate.length;
+    }
+    while (nNewIndex < 0) {
+        nNewIndex += arToUpdate.length;
+    }
+    if (nNewIndex >= arToUpdate.length) {
+        var k = nNewIndex - arToUpdate.length;
+        while ((k--) + 1) {
+            arToUpdate.push(undefined);
+        }
+    }
+    arToUpdate.splice(nNewIndex, 0, arToUpdate.splice(nOldIndex, 1)[0]);
+    return arToUpdate; // for testing purposes
+};

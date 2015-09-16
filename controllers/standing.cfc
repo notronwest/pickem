@@ -4,6 +4,11 @@ property name="standingService";
 property name="standingGateway";
 property name="userGateway";
 property name="weekGateway";
+property name="gameService";
+
+public void function before(rc){
+	param name="rc.bDebugTiebreak" default="0";
+}
 
 public void function home(rc){
 	// get the standings records ordered by week
@@ -51,16 +56,16 @@ public void function home(rc){
 		// store this users wins
 		rc.stWeekWins[nUserID][nWeekID] = arStandings[itm].getNWins();
 		// store this users highest tiebreak
-		rc.stWeekTiebreak[nUserID][nWeekID] = [arStandings[itm].getNHighestTiebreak(),
-			arStandings[itm].getNTiebreak2(),
-			arStandings[itm].getNTiebreak3(),
-			arStandings[itm].getNTiebreak4(),
-			arStandings[itm].getNTiebreak5(),
-			arStandings[itm].getNTiebreak6(),
-			arStandings[itm].getNTiebreak7(),
-			arStandings[itm].getNTiebreak8(),
-			arStandings[itm].getNTiebreak9(),
-			arStandings[itm].getNTiebreak10()
+		rc.stWeekTiebreak[nUserID][nWeekID] = [IsNull(arStandings[itm].getNHighestTiebreak()) ? 0 : arStandings[itm].getNHighestTiebreak(),
+			IsNull(arStandings[itm].getNTiebreak2()) ? 0 : arStandings[itm].getNTiebreak2(),
+			IsNull(arStandings[itm].getNTiebreak3()) ? 0 : arStandings[itm].getNTiebreak3(),
+			IsNull(arStandings[itm].getNTiebreak4()) ? 0 : arStandings[itm].getNTiebreak4(),
+			IsNull(arStandings[itm].getNTiebreak5()) ? 0 : arStandings[itm].getNTiebreak5(),
+			IsNull(arStandings[itm].getNTiebreak6()) ? 0 : arStandings[itm].getNTiebreak6(),
+			IsNull(arStandings[itm].getNTiebreak7()) ? 0 : arStandings[itm].getNTiebreak7(),
+			IsNull(arStandings[itm].getNTiebreak8()) ? 0 : arStandings[itm].getNTiebreak8(),
+			IsNull(arStandings[itm].getNTiebreak9()) ? 0 : arStandings[itm].getNTiebreak9(),
+			IsNull(arStandings[itm].getNTiebreak10()) ? 0 : arStandings[itm].getNTiebreak10()
 		];
 		// store the winners
 		if( not structKeyExists(rc.stWeekWinners, nWeekID) ){
@@ -106,6 +111,14 @@ public void function updateStandingsForSeason(rc){
 	variables.standingService.updateStandingsForSeason(rc.nCurrentSeasonID);
 	rc.sMessage = "All standings updated for #rc.oCurrentSeason.getSName()#";
 	variables.framework.setView("main.message");
+}
+
+public void function fullResults(rc){
+	param name="rc.nWeekID" default="0";
+	// get the results
+	rc.arFullResults = variables.standingService.getFullWeekResults(rc.nWeekID);
+	// get the game data
+	rc.arWeekGames = variables.gameService.adminWeek(rc.nWeekID);
 }
 
 }

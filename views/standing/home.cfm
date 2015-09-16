@@ -18,6 +18,16 @@
 				</cfloop>
 			</thead>
 			<tbody>
+				<!--- // <tr id="tiebreakHeader">
+					<td></td>
+					<td></td>
+					<td></td>
+					<cfloop from="#arrayLen(rc.arWeeks)#" to="1" step="-1" index="itm">	
+						<td>
+							<a href="#buildURL('standing.tiebreaks')#?nWeekID=#rc.arWeeks[itm].getNWeekID()#">tiebreaks</a>
+						</td>
+					</cfloop>
+				</tr> --->
 				<!--- // loop through the season standings --->
 				<cfloop from="1" to="#arrayLen(rc.arStandings)#" index="local.itm">
 					<cfscript>
@@ -62,8 +72,8 @@
 							<cfif bIsFirst>
 								<span class="fa fa-trophy"></span>
 							</cfif>
-							<cfif bIsFirst or bIsSecond>
-								(#((structKeyExists(local.arUserTiebreak, local.nWeekID)) ? '<span title="' & local.arUserTiebreak[local.nWeekID].toString() & '">' & local.arUserTiebreak[local.nWeekID][1] & '</span>' : "")#)
+							<cfif bIsFirst or bIsSecond or rc.bDebugTiebreak neq 0>
+								(#((structKeyExists(local.arUserTiebreak, local.nWeekID) and arrayLen(local.arUserTiebreak[local.nWeekID]) gt 0) ? '<span title="' & local.arUserTiebreak[local.nWeekID].toString() & '">' & local.arUserTiebreak[local.nWeekID][1] & '</span>' : "")#)
 							</cfif>
 							<cfif structKeyExists(rc.stWeekNoPicks, local.nWeekID) and isArray(rc.stWeekNoPicks[local.nWeekID]) and arrayFind(rc.stWeekNoPicks[local.nWeekID], local.nUserID)><span class="fa fa-frown-o"></span></cfif>
 						</td>

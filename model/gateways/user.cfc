@@ -190,12 +190,13 @@ Summary:
 Returns:
 	Array arUsers
 Arguments:
-	Void
+	String lstActive
 History:
 	2012-09-12 - RLW - Created
+	2015-09-15 - RLW - Added option to show active/inactive/all users
 */
-public Array function getAll(){
-	var arUsers = ormExecuteQuery( "from user order by sLastName", {} );
+public Array function getAll( String lstActive = "0,1"){
+	var arUsers = ormExecuteQuery( "from user where bActive in (:lstActive) order by sLastName", { lstActive = listToArray(arguments.lstActive) } );
 	return arUsers;
 }
 

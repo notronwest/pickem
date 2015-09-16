@@ -121,6 +121,23 @@ button {
 	margin-right: 1px;
 }
 
+/* add some styles for the full results table */
+#weekResults th {
+	font-size: 0.6em;
+}
+
+#weekResults td {
+	text-align: center;
+	vertical-align: center;
+}
+
+#weekResults td.win {
+	background-color: #dff0d8;
+}
+
+#weekResults td.loss {
+	background-color: #f2dede;
+}
 /*
 * Style the menu trigger and position it so it will be
 * visible even when the menu is open
