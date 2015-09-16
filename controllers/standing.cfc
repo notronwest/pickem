@@ -118,7 +118,7 @@ public void function fullResults(rc){
 	// get the results
 	rc.arFullResults = variables.standingService.getFullWeekResults(rc.nWeekID);
 	// get the game data
-	rc.arWeekGames = variables.gameService.adminWeek(rc.nWeekID);
+	rc.arWeekGames = variables.gameService.adminWeek(rc.nWeekID, true);
 }
 
 }
