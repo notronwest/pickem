@@ -8,16 +8,15 @@
   <property file="build-development.properties" />
 
   <!-- output which properties file we are using -->
-  <echo message="Using ${env.DEPLOYTO} properties file"/>
+  <echo message="Using ${DeployTo} properties file"/>
 
   <target name="deploy" description="Copy files to deploy folder.">
       <copy todir="${deploy.dir}">
           <fileset dir="${env.WORKSPACE}">
               <include name="**" />
-              <exclude name="**/_*/**" /> <!-- ignore files/folders starting with underscore -->
-              <exclude name="**/.svn" />
-              <exclude name="**/.git" />
-              <exclude name="build*" /> <!-- // ignore all of the build specific files -->
+              <exclude name="build.xml" /> <!-- // ignore all of the build specific files -->
+              <exclude name="build-production.properties" />
+              <exclude name="build-development.properties" />
           </fileset>
       </copy>
   </target>
