@@ -19,16 +19,24 @@
   <target name="deploy" description="Copy files to deploy folder.">
       <copy todir="${deploy.dir}" verbose="true">
           <fileset dir="${env.WORKSPACE}">
-              <!-- // <exclude name="build.xml" />
+              <exclude name="build.xml" />
               <exclude name="build-production.properties" />
-              <exclude name="build-development.properties" /> -->
+              <exclude name="build-development.properties" />
           </fileset>
       </copy>
+      <!-- // make sure the directory has the correct permissions after copying -->
+      <chown owner="notronwest:www">
+        <fileset dir="${deploy.dir}"/>
+      </chown>
+      <chmod perm="775">
+        <fileset dir="${deploy.dir}"/>
+      </chmod>
   </target>
 
+  <!-- // cleanup the workspace directory -->
   <target name="cleanup" description="Clean up the workspace directory">
       <delete includeemptydirs="true">
-        <fileset dir="${env.WORKSPACE}" includes="**/.svn/" defaultexcludes="false"/>
+        <fileset dir="${env.WORKSPACE}"/>
       </delete>
   </target>
 </project>
