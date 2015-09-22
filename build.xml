@@ -5,15 +5,20 @@
   <!-- set global properties for this build -->
   <property environment="env"/> 
   <!-- <property file="build-${env.DEPLOYTO}.properties" /> -->
-  <property file="build-development.properties" />
+  <property file="build-${DeployTo}.properties" />
 
   <!-- output which properties file we are using -->
   <echo message="Using ${DeployTo} properties file"/>
 
+  <!-- output which directory we are copying to -->
+  <echo message="Copying files to ${deploy.dir}"/>
+
+  <!-- output which directory we are copying from -->
+  <echo message="Copying files to ${env.WORKSPACE}"/>
+
   <target name="deploy" description="Copy files to deploy folder.">
       <copy todir="${deploy.dir}">
           <fileset dir="${env.WORKSPACE}">
-              <include name="**" />
               <exclude name="build.xml" /> <!-- // ignore all of the build specific files -->
               <exclude name="build-production.properties" />
               <exclude name="build-development.properties" />
