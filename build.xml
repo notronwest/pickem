@@ -14,14 +14,14 @@
   <echo message="Copying files to ${deploy.dir}"/>
 
   <!-- output which directory we are copying from -->
-  <echo message="Copying files to ${env.WORKSPACE}"/>
+  <echo message="Copying files from ${env.WORKSPACE}"/>
 
   <target name="deploy" description="Copy files to deploy folder.">
-      <copy todir="${deploy.dir}">
+      <copy todir="${deploy.dir}" verbose="true">
           <fileset dir="${env.WORKSPACE}">
-              <exclude name="build.xml" /> <!-- // ignore all of the build specific files -->
+              <!-- // <exclude name="build.xml" /> <!-- // ignore all of the build specific files
               <exclude name="build-production.properties" />
-              <exclude name="build-development.properties" />
+              <exclude name="build-development.properties" /> -->
           </fileset>
       </copy>
   </target>
