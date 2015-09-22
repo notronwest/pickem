@@ -4,7 +4,10 @@
   </description>
   <!-- set global properties for this build -->
   <property environment="env"/> 
-  <property file="build-${DEPLOY_TO}.properties" />
+  <property file="build-${env.DEPLOY_TO}.properties" />
+
+  <!-- output which properties file we are using -->
+  <echo message="Using ${env.DEPLOY_TO} properties file"/>
 
   <target name="deploy" description="Copy files to deploy folder.">
       <copy todir="${deploy.dir}">
@@ -20,7 +23,7 @@
 
   <target name="cleanup" description="Clean up the workspace directory">
       <delete includeemptydirs="true">
-        <fileset dir="${WORKSPACE}" includes="**/.svn/" defaultexcludes="false"/>
+        <fileset dir="${env.WORKSPACE}" includes="**/.svn/" defaultexcludes="false"/>
       </delete>
   </target>
 </project>
