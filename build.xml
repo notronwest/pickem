@@ -25,9 +25,9 @@
           </fileset>
       </copy>
       <!-- // make sure the directory has the correct permissions after copying -->
-      <chown owner="notronwest:www">
+      <chgrp group="www">
         <fileset dir="${deploy.dir}"/>
-      </chown>
+      </chgrp>
       <chmod perm="775">
         <fileset dir="${deploy.dir}"/>
       </chmod>
