@@ -9,32 +9,99 @@
 	<title></title>
   <meta name="google-site-verification" content="63amUBorjOqgr1ak6LIQtZT6qaqPec7cCm844FIKuog" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <meta name="keywords" content="Football">
-    <link href="/assets/css/bootstrap.min.css" rel="stylesheet"/>
-    <link href="/assets/css/jquery.dataTables.min.css" rel="stylesheet"/>
-    <link href="/assets/css/font-awesome.min.css" rel="stylesheet"/>
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
-      <script src="../assets/js/html5shiv.js"></script>
-    <![endif]-->
-    <!-- Fav and touch icons -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
-      <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
-                    <link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">
-                                   <link rel="shortcut icon" href="/assets/ico/favicon.png">
-  	<link href="/assets/css/jquery.jgrowl.css" rel="stylesheet"/>
-  	<link href="/assets/css/jquery-ui.min.css" rel="stylesheet"/>
-  	<link href="/assets/css/default.css" rel="stylesheet"/>
-    <link href="/assets/css/jquery.ptTimeSelect.css" rel="stylesheet"/>
-	  <script src="/assets/js/jquery.js"></script>
-    <script src="/assets/js/modernizr.custom.js"></script>
-    <!--- // put total purse available as jquery --->
-    <script>
-        nTotalPurse = <cfoutput>#rc.oCurrentSeason.getNTotalPurse()#</cfoutput>;
-    </script>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="keywords" content="Football">
+
+  <!-- Fav and touch icons -->
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/ico/apple-touch-icon-72-precomposed.png">
+  <link rel="apple-touch-icon-precomposed" href="/assets/ico/apple-touch-icon-57-precomposed.png">
+
+  <!--- // CSS Assets --->
+  <link href="/assets/css/styles.min.css" rel="stylesheet"/>
+
+  <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+  <!--[if lt IE 9]>
+    <script src="../assets/js/html5shiv.min.js"></script>
+  <![endif]-->
+
+  <script src="/assets/js/modernizr.custom.min.js"></script>
+  <script>
+    (function(funcName, baseObj) {
+        // The public function name defaults to window.docReady
+        // but you can pass in your own object and own function name and those will be used
+        // if you want to put them in a different namespace
+        funcName = funcName || "docReady";
+        baseObj = baseObj || window;
+        var readyList = [];
+        var readyFired = false;
+        var readyEventHandlersInstalled = false;
+
+        // call this when the document is ready
+        // this function protects itself against being called more than once
+        function ready() {
+            if (!readyFired) {
+                // this must be set to true before we start calling callbacks
+                readyFired = true;
+                for (var i = 0; i < readyList.length; i++) {
+                    // if a callback here happens to add new ready handlers,
+                    // the docReady() function will see that it already fired
+                    // and will schedule the callback to run right after
+                    // this event loop finishes so all handlers will still execute
+                    // in order and no new ones will be added to the readyList
+                    // while we are processing the list
+                    readyList[i].fn.call(window, readyList[i].ctx);
+                }
+                // allow any closures held by these functions to free
+                readyList = [];
+            }
+        }
+
+        function readyStateChange() {
+            if ( document.readyState === "complete" ) {
+                ready();
+            }
+        }
+
+        // This is the one public interface
+        // docReady(fn, context);
+        // the context argument is optional - if present, it will be passed
+        // as an argument to the callback
+        baseObj[funcName] = function(callback, context) {
+            // if ready has already fired, then just schedule the callback
+            // to fire asynchronously, but right away
+            if (readyFired) {
+                setTimeout(function() {callback(context);}, 1);
+                return;
+            } else {
+                // add the function and context to the list
+                readyList.push({fn: callback, ctx: context});
+            }
+            // if document already ready to go, schedule the ready function to run
+            if (document.readyState === "complete") {
+                setTimeout(ready, 1);
+            } else if (!readyEventHandlersInstalled) {
+                // otherwise if we don't have event handlers installed, install them
+                if (document.addEventListener) {
+                    // first choice is DOMContentLoaded event
+                    document.addEventListener("DOMContentLoaded", ready, false);
+                    // backup is window load event
+                    window.addEventListener("load", ready, false);
+                } else {
+                    // must be IE
+                    document.attachEvent("onreadystatechange", readyStateChange);
+                    window.attachEvent("onload", ready);
+                }
+                readyEventHandlersInstalled = true;
+            }
+        }
+    })("docReady", window);
+
+    // put total purse available as jquery
+    nTotalPurse = <cfoutput>#rc.oCurrentSeason.getNTotalPurse()#</cfoutput>;
+  </script>
 </head>
 <body>
 <cfoutput>
@@ -51,7 +118,7 @@
             You are currently impersonating #rc.oCurrentUser.getSFirstName()# #rc.oCurrentUser.getSLastName()#
             <a class="close" data-dismiss="alert" href="##" aria-hidden="true">&times;</a>
           </div>
-        </cfif>#body#</div>
+        </cfif><script src="/assets/js/global.min.js"></script>#body#</div>
         <footer>
           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
           <!-- Pickem - Mobile -->
@@ -74,17 +141,8 @@
 		</div>
 	</div>
 </cfoutput>
-<!--- // <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script> --->
-<script src="/assets/js/jquery-ui.min.js"></script>
-<script src="/assets/js/jquery.ptTimeSelect.js"></script>
-<script src="/assets/js/jquery.offcanvasmenu.js"></script>
-<script src="/assets/js/fastclick.js"></script>
-<script src="/assets/js/jquery.csswatch.js"></script>
-<script src="/assets/js/bootstrap.min.js"></script>
-<script src="/assets/js/jquery.dataTables.min.js"></script>
-<script src="/assets/js/jquery.jgrowl.min.js"></script>
-<script src="/assets/js/jquery.json-2.3.min.js"></script>
-<script src="/assets/js/global.js"></script>
+
+<script src="/assets/js/main.min.js"></script>
 <!--- // only do this if we are in production --->
 <cfif not request.bIsDevelopment>
   <script>

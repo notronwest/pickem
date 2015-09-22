@@ -13,7 +13,7 @@
 		var arImages = [
 			<cfloop from="1" to="#arrayLen(rc.arImages)#" index="local.itm">"#rc.arImages[local.itm]#",</cfloop>
 		];
-		$(function(){
+		docReady(function(){
 			setImage();
 			setInterval(function(){
 				setImage();

@@ -58,7 +58,7 @@
 	</form>
 </cfoutput>
 <script>
-	$(function(){
+	docReady(function(){
 		// set dates
 		$("#dStartDate,#dEndDate,#dPicksDue").datepicker( { dateFormat: "yy-mm-dd" } );
 	});

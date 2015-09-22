@@ -1,1 +1,1 @@
-<cfif not rc.bIsDialog><script src="/assets/js/season.js"></script></cfif><cfoutput>#body#</cfoutput>
+<cfif not rc.bIsDialog><script src="/assets/js/season.min.js"></script></cfif><cfoutput>#body#</cfoutput>

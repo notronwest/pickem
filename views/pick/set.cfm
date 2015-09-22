@@ -79,4 +79,4 @@
 	</div>
 </cfoutput>
 <!--- // put up message for picks saved --->
-<cfif rc.bSaved><script> $(function(){ setMessage("Picks Saved"); });</script></cfif>
+<cfif rc.bSaved><script> docReady(function(){ setMessage("Picks Saved"); });</script></cfif>

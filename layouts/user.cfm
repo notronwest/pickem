@@ -1,1 +1,1 @@
-<cfif not rc.bIsDialog><script src="/assets/js/user.js"></script></cfif><cfoutput>#body#</cfoutput>
+<cfif not rc.bIsDialog><script src="/assets/js/user.min.js"></script></cfif><cfoutput>#body#</cfoutput>

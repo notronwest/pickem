@@ -37,7 +37,7 @@
 	</div>
 </div></form>
 <script>
-	$(function(){
+	docReady(function(){
 		$(".date").datepicker();
 		<cfif rc.nSubscriptionID eq 0>$(".date").datepicker("setDate", new Date());</cfif>
 	});

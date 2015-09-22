@@ -80,7 +80,7 @@
 		
 			<script>
 				// load the games
-				$(function(){
+				docReady(function(){
 					getGames();
 				});
 			</script>

@@ -1,1 +1,1 @@
-<cfif not rc.bIsDialog><script src="/assets/js/subscription.js"></script></cfif><cfoutput>#body#</cfoutput>
+<cfif not rc.bIsDialog><script src="/assets/js/subscription.min.js"></script></cfif><cfoutput>#body#</cfoutput>

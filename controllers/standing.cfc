@@ -19,7 +19,7 @@ public void function home(rc){
 	// tracks which weeks have already had a winner determined
 	var arWeekFirstPlace = [];
 	var arWeekSecondPlace = [];
-	rc.stWeekWins = {};
+	rc.stWeekData = {};
 	rc.stWeekWinners = {};
 	rc.stWeekSecondPlace = {};
 	rc.stWeekNoPicks = {};
@@ -39,8 +39,11 @@ public void function home(rc){
 			rc.stUsers[nUserID] = variables.userGateway.get(nUserID);
 		}
 		// store the wins for this user for this week
-		if( not structKeyExists(rc.stWeekWins, nUserID) ){
-			rc.stWeekWins[nUserID] = {};
+		if( not structKeyExists(rc.stWeekData, nUserID) ){
+			rc.stWeekData[nUserID] = {};
+		}
+		if( not structKeyExists(rc.stWeekData[nUserID], nWeekID) ){
+			rc.stWeekData[nUserID][nWeekID] = {};
 		}
 		// store the highest tiebreakers for each user for each week
 		if( not structKeyExists(rc.stWeekTiebreak, nUserID) ){
@@ -54,7 +57,9 @@ public void function home(rc){
 			arrayAppend(rc.stWeekNoPicks[nWeekID], nUserID);
 		}
 		// store this users wins
-		rc.stWeekWins[nUserID][nWeekID] = arStandings[itm].getNWins();
+		rc.stWeekData[nUserID][nWeekID].wins = arStandings[itm].getNWins();
+		// store this users place
+		rc.stWeekData[nUserID][nWeekID].nPlace = arStandings[itm].getNPlace();
 		// store this users highest tiebreak
 		rc.stWeekTiebreak[nUserID][nWeekID] = [IsNull(arStandings[itm].getNHighestTiebreak()) ? 0 : arStandings[itm].getNHighestTiebreak(),
 			IsNull(arStandings[itm].getNTiebreak2()) ? 0 : arStandings[itm].getNTiebreak2(),

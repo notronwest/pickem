@@ -23,7 +23,7 @@
 					<td></td>
 					<td></td>
 					<cfloop from="#arrayLen(rc.arWeeks)#" to="1" step="-1" index="itm">	
-						<td>
+						<td data-order="0">
 							<a href="#buildURL('standing.fullResults')#&nWeekID=#rc.arWeeks[itm].getNWeekID()#">full results</a>
 						</td>
 					</cfloop>
@@ -37,10 +37,10 @@
 						if( rc.stSeasonWins[local.nUserID] neq local.sCurrentWins ){
 							local.sPlace = local.itm;
 						}
-						local.stUserWins = rc.stWeekWins[local.nUserID];
+						local.stUserWeekData = rc.stWeekData[local.nUserID];
 						local.arUserTiebreak = rc.stWeekTiebreak[local.nUserID];
-						if( listLen(structKeyList(local.stUserWins)) gt 0 ){
-							local.arWeeks = listToArray(listSort(structKeyList(local.stUserWins), "numeric", "asc"));
+						if( listLen(structKeyList(local.stUserWeekData)) gt 0 ){
+							local.arWeeks = listToArray(listSort(structKeyList(local.stUserWeekData), "numeric", "asc"));
 						} else {
 							local.arWeeks = [];
 						}
@@ -68,7 +68,7 @@
 								}
 							</cfscript>
 
-							<td<cfif bIsFirst> class="highlight-first" data-order="1000001"<cfelseif bIsSecond> class="highlight-second" data-order="1000000"<cfelse> data-order="#local.stUserWins[local.nWeekID]#"</cfif>>#local.stUserWins[local.nWeekID]#
+							<td<cfif bIsFirst> class="highlight-first"<cfelseif bIsSecond> class="highlight-second"</cfif> data-order="#local.stUserWeekData[local.nWeekID].nPlace#">#local.stUserWeekData[local.nWeekID].wins#
 							<cfif bIsFirst>
 								<span class="fa fa-trophy"></span>
 							</cfif>
