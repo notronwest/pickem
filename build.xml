@@ -4,10 +4,10 @@
   </description>
   <!-- set global properties for this build -->
   <property environment="env"/> 
-  <property file="build-${env.DEPLOY_TO}.properties" />
+  <property file="build-${env.DEPLOYTO}.properties" />
 
   <!-- output which properties file we are using -->
-  <echo message="Using ${env.DEPLOY_TO} properties file"/>
+  <echo message="Using ${env.DEPLOYTO} properties file"/>
 
   <target name="deploy" description="Copy files to deploy folder.">
       <copy todir="${deploy.dir}">
