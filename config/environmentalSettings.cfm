@@ -29,6 +29,7 @@
 			request.bIsDevelopment = false;
 			request.sSiteURL = 'http://dev.pickem.inquisibee.com/';
 			request.dsn = "dev.pickem";
+			this.dsn = "dev.pickem"; // reset the dsn for the application
 			request.sLocalIP = "54.68.81.199";
 			request.sAPIKey="AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U";
 			request.sDBBackupDirectory = "#expandPath('/data/weeklydbbackup/')#";
