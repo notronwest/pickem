@@ -26,10 +26,16 @@
       </copy>
       <!-- // make sure the directory has the correct permissions after copying -->
       <chgrp group="www">
-        <fileset dir="${deploy.dir}/*"/>
+        <fileset dir="${deploy.dir}">
+          <include name="**/*"/>
+          <include name="**/**"/>
+        </fileset>
       </chgrp>
       <chmod perm="775">
-        <fileset dir="${deploy.dir}/*"/>
+        <fileset dir="${deploy.dir}">
+          <include name="**/*"/>
+          <include name="**/**"/>
+        </fileset>
       </chmod>
   </target>
 
