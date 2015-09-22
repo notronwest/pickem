@@ -85,7 +85,7 @@ UPDATE standing
            FROM standing
               , (SELECT @rownum:=0) AS st
            WHERE nWeekID = nInWeekID
-           ORDER BY nWins DESC, nHighestTiebreak ASC, nTiebreak2 ASC, nTiebreak3 ASC, nTiebreak4 ASC, nTiebreak5 ASC, nTiebreak6 ASC, nTiebreak7 ASC, nTiebreak8 ASC, nTiebreak9 ASC, nTiebreak10 ASC
+           ORDER BY nWins DESC, nHighestTiebreak DESC, nTiebreak2 ASC, nTiebreak3 ASC, nTiebreak4 ASC, nTiebreak5 ASC, nTiebreak6 ASC, nTiebreak7 ASC, nTiebreak8 ASC, nTiebreak9 ASC, nTiebreak10 ASC
          ) AS r
          ON r.nStandingID = standing.nStandingID
 SET standing.nPlace = r.rank_calculated
