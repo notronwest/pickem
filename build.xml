@@ -19,7 +19,7 @@
   <target name="deploy" description="Copy files to deploy folder.">
       <copy todir="${deploy.dir}" verbose="true">
           <fileset dir="${env.WORKSPACE}">
-              <!-- // <exclude name="build.xml" /> <!-- // ignore all of the build specific files
+              <!-- // <exclude name="build.xml" />
               <exclude name="build-production.properties" />
               <exclude name="build-development.properties" /> -->
           </fileset>
