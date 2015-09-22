@@ -1,0 +1,25 @@
+<project name="Pickem" default="dist">
+  <description>
+    Copys files to deployment directory based on parameters
+  </description>
+  <!-- set global properties for this build -->
+  <property file="build-${DEPLOY_TO}.properties" />
+
+  <target name="deploy" description="Copy files to deploy folder.">
+      <copy todir="${deploy.dir}">
+          <fileset dir="${WORKSPACE}">
+              <include name="**" />
+              <exclude name="**/_*/**" /> <!-- ignore files/folders starting with underscore -->
+              <exclude name="**/.svn" />
+              <exclude name="**/.git" />
+              <exclude name="build*" /> <!-- // ignore all of the build specific files -->
+          </fileset>
+      </copy>
+  </target>
+
+  <target name="cleanup" description="Clean up the workspace directory">
+      <delete includeemptydirs="true">
+        <fileset dir="${WORKSPACE}" includes="**/.svn/" defaultexcludes="false"/>
+      </delete>
+  </target>
+</project>
