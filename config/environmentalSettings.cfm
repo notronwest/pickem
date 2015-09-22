@@ -21,6 +21,20 @@
 			request.sDBUsername = "notronwest";
 			request.sDBPassword = "atp3ace!";
 			break;
+		// development
+		case "dev.pickem.inquisibee.com":
+			request.sLogURL = "/data/logs/";
+			request.bReloadOnEveryRequest = false;
+			request.sAdminEmail = "ron@inquisibee.com";
+			request.bIsDevelopment = false;
+			request.sSiteURL = 'http://dev.pickem.inquisibee.com/';
+			request.dsn = "dev.pickem";
+			request.sLocalIP = "54.68.81.199";
+			request.sAPIKey="AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U";
+			request.sDBBackupDirectory = "#expandPath('/data/weeklydbbackup/')#";
+			request.sDBUsername = "notronwest";
+			request.sDBPassword = "1nquisib33";
+			break;
 		// production
 		case "pickem.inquisibee.com":
 		case "pickem.inquisibee.com:80":
