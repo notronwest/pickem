@@ -3,11 +3,12 @@
     Copys files to deployment directory based on parameters
   </description>
   <!-- set global properties for this build -->
+  <property environment="env"/> 
   <property file="build-${DEPLOY_TO}.properties" />
 
   <target name="deploy" description="Copy files to deploy folder.">
       <copy todir="${deploy.dir}">
-          <fileset dir="${WORKSPACE}">
+          <fileset dir="${env.WORKSPACE}">
               <include name="**" />
               <exclude name="**/_*/**" /> <!-- ignore files/folders starting with underscore -->
               <exclude name="**/.svn" />
