@@ -107,6 +107,8 @@
 <cfoutput>
 <cfif request.bIsDevelopment>
   <div class="alert alert-info">Development environment</div>
+<cfelseif request.bIsStaging>
+  <div class="alert alert-warning">Staging environment</div>
 </cfif>
 #view('nav/main')#
 	<div class="container">

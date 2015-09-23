@@ -13,6 +13,7 @@
 			request.bReloadOnEveryRequest = true;
 			request.sAdminEmail = "ron@inquisibee.com";
 			request.bIsDevelopment = true;
+			request.bIsStaging = false;
 			request.sSiteURL = 'http://pickem.local/';
 			request.dsn = "pickem";
 			request.sLocalIP = "127.0.0.1";
@@ -27,6 +28,7 @@
 			request.bReloadOnEveryRequest = false;
 			request.sAdminEmail = "ron@inquisibee.com";
 			request.bIsDevelopment = false;
+			request.bIsStaging = true;
 			request.sSiteURL = 'http://dev.pickem.inquisibee.com/';
 			request.dsn = "dev.pickem";
 			this.dsn = "dev.pickem"; // reset the dsn for the application
@@ -45,6 +47,7 @@
 			//request.sAdminEmail = "footballpicksaaa@gmail.com";
 			request.sAdminEmail = "pickem@inquisibee.com";
 			request.bIsDevelopment = false;
+			request.bIsStaging = false;
 			request.sSiteURL = 'http://pickem.inquisibee.com/';
 			request.dsn = "pickem";
 			request.sLocalIP = "54.68.81.199";
