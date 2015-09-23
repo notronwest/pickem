@@ -38,6 +38,11 @@
 				</div>
 				<!--- // if there are games already created - load them --->
 				<h3>Active Games</h3>
+				<div class="checkbox">
+					<label for="showLock">
+						<input type="checkbox" id="showLock"> Show Lock Date/Time
+					</label>
+				</div>
 				<div class="table-responsive">
 					<table class="table" id="activeGames">
 						<thead>
@@ -46,8 +51,8 @@
 							<th>Underdog</th>
 							<th>Game Date</th>
 							<th>Game Time</th>
-							<th>Lock Date</th>
-							<th>Lock Time</th>
+							<th class="lock-control hide">Lock Date</th>
+							<th class="lock-control hide">Lock Time</th>
 							<th>Spread</th>
 							<th>Tiebreak</th>
 							<th></th>
@@ -109,8 +114,8 @@
 		<td><input type="text" name="underdog"class="form-control input-sm underdog" data-id="" data-url=""/></td>
 		<td><input type="text" name="date" class="form-control input-sm game-date date control-md"/></td>
 		<td><input type="text" name="gameTime" class="form-control input-sm time game-time control-md"/></td>
-		<td><input type="text" name="lock" class="form-control input-sm lock-date date control-md"/></td>
-		<td><input type="text" name="lockTime" class="form-control input-sm time lock-time control-md"/></td>
+		<td class="lock-control hide"><input type="text" name="lock" class="form-control input-sm lock-date date control-md"/></td>
+		<td class="lock-control hide"><input type="text" name="lockTime" class="form-control input-sm time lock-time control-md"/></td>
 		<td><input type="number" name="spread" class="form-control input-sm spread control-sm"/></td>
 		<td><input type="number" name="tiebreak" class="form-control input-sm tiebreak control-sm"/></td>
 		<td><span title="Delete Game" class="fa fa-trash-o delete icons fa-fw fa-lg"></span> <span title="Swap HOME/Away Teams" class="fa fa-home swap-home icons fa-lg"></span> <span title="Swap Spread" class="fa fa-exchange swap-spread icons fa-lg"></span></td>

@@ -1,6 +1,5 @@
 <cfparam name="local.bShowGameStatus" default="true">
 <cfoutput>
-	<div class="bs-callout bs-callout-info"><span class="fa fa-lock"></span> - indicates this pick is locked</div>
 	<cfloop from="1" to="#arrayLen(local.arWeekGames)#" index="local.itm">
 		<!--- // determine who gets pick class --->
 		<cfscript>

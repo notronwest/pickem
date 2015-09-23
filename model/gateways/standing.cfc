@@ -198,6 +198,28 @@ public Void function deleteUserWeek( Required Numeric nUserID, Required Numeric 
 Author: 	
 	Ron West
 Name:
+	$deleteByWeek
+Summary:
+	Delete standing for this week
+Returns:
+	Array arStandings
+Arguments:
+	Numeric nWeekID
+History:
+	2015-09-23 - RLW - Created
+*/
+public Void function deleteByWeek( Required Numeric nWeekID ){
+	var arStandings = getWeek(arguments.nWeekID);
+	var itm = 1;
+	for( itm; itm lte arrayLen(arStandings); itm++ ){
+		delete(arStandings[itm]);
+	}
+}
+
+/*
+Author: 	
+	Ron West
+Name:
 	$getWeek
 Summary:
 	Gets standing for this week

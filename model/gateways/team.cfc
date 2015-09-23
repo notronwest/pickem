@@ -37,25 +37,28 @@ Returns:
 	Team oTeam
 Arguments:
 	Team oTeam
-	Struct stTeam
+	Struct stData
 History:
 	2012-09-12 - RLW - Created
 */
-public model.beans.team function update( Required model.beans.team oTeam, Required Struct stTeam ){
-	if( structKeyExists(arguments.stTeam, "sName2") and len(arguments.stTeam.sName2) gt 0 ){
-		arguments.oTeam.setSName2(arguments.stTeam.sName2);
+public model.beans.team function update( Required model.beans.team oTeam, Required Struct stData ){
+	// set the bean into request scope
+	request.oBean = arguments.oTeam;
+	try{
+		var sKey = "";
+		var lstIgnore = "nTeamID";
+		// loop through all of the fields in the structure and update the data
+		for( sKey in arguments.stData ){
+			if( not listFindNoCase(lstIgnore, sKey) ){
+				include "set.cfm";
+			}
+		}
+		// save the entity
+		entitySave(request.oBean);
+		ormFlush();
+	} catch (any e){
+		registerError("Error in update function to team", e);
 	}
-	if( structKeyExists(arguments.stTeam, "sName3") and len(arguments.stTeam.sName3) gt 0 ){
-		arguments.oTeam.setSName3(arguments.stTeam.sName3);
-	}
-	if( structKeyExists(arguments.stTeam, "sName4") and len(arguments.stTeam.sName4) gt 0 ){
-		arguments.oTeam.setSName4(arguments.stTeam.sName4);
-	}
-	if( structKeyExists(arguments.stTeam, "sURL") and len(arguments.stTeam.sURL) gt 0 ){
-		arguments.oTeam.setSURL(arguments.stTeam.sURL);
-	}
-	arguments.oTeam.setSName(arguments.stTeam.sName);
-	arguments.oTeam = save(oTeam);
 	return arguments.oTeam;
 }
 /*

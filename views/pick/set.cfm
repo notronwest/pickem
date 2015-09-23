@@ -50,11 +50,19 @@
 				<button class="save btn btn-default btn-small hidden" type="button">Save Picks</button>
 			</div></cfif>
 			<div class="table-responsive">
+				<cfif rc.bIsLocked>
+					<div class="bs-callout bs-callout-info"><span class="fa fa-lock"></span> - indicates this pick is locked</div>
+				</cfif>
 				<table class="table">
 					<thead>
-						<th>T</th>
-						<th class="picks">Pick (home team in CAPS)</th>
-						<th class="picks">Opponent</td>
+						<th><span title="Tiebreak">T</span></th>
+						<cfif rc.bUserHasPicks>
+							<th class="picks">Pick (home team in CAPS)</th>
+							<th class="picks">Opponent</td>
+						<cfelse>
+							<th class="picks">Away</th>
+							<th class="picks">Home</td>
+						</cfif>
 						<th class="change hidden">Favorite (home team in CAPS)</th>
 						<th class="change hidden">Underdog</th>
 						<th>Game Status</th>

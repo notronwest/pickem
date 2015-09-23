@@ -126,6 +126,7 @@ History:
 */
 public void function searchForTeam(rc){
 	param name="rc.term" default="foo";
+	rc.bIsDialog = true;
 	rc.aResult = variables.teamService.findTeam(rc.term);
 	// serialize result
 	variables.framework.setView(application.sSerializeView);

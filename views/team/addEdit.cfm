@@ -20,6 +20,14 @@
 					<label for="sURL">URL: </label>
 					<input type="text" id="sURL" name="sURL" class="form-control" value="#rc.oTeam.getSURL()#"/>
 				</div>
+				<div class="form-group">
+					<label for="nType">Type: </label>
+					<select name="nType" id="nType" class="form-control">
+						<option value="0">Select</option>
+						<option value="1"<cfif rc.oTeam.getNType() eq 1> selected="selected"</cfif>>NCAA</option>
+						<option value="2"<cfif rc.oTeam.getNType() eq 2> selected="selected"</cfif>>NFL</option>
+					</select>
+				</div>
 				<div class="form-group text-right">
 					<button type="button" class="save btn btn-default">Save</button> <button type="button" class="cancel btn btn-default">Cancel</button>
 				</div>

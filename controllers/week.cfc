@@ -7,6 +7,8 @@ property name="teamService";
 property name="gameService";
 property name="gameGateway";
 property name="teamGateway";
+property name="pickGateway";
+property name="standingGateway";
 
 public void function before(rc){
 	param name="rc.nWeekID" default="0";
@@ -111,6 +113,12 @@ public void function save(rc){
 public void function delete(rc){
 	param name="rc.aResult" default="false";
 	if( weekGateway.delete(rc.oWeek) ){
+		// delete games for this week
+		variables.gameGateway.deleteByWeek(rc.nWeekID);
+		// delete picks for this week
+		variables.pickGateway.deleteWeek(rc.nWeekID);
+		// delete standings for this week
+		variables.standingGateway.deleteByWeek(rc.nWeekID);
 		rc.aResult = true;
 	}
 	variables.framework.redirect("week.manage");

@@ -12,7 +12,9 @@ var gulp = require('gulp'),
     order = require('gulp-order'),
     fingerprint = require('gulp-fingerprint'),
     rev = require('gulp-rev'),
-    streamqueue = require('streamqueue');
+    streamqueue = require('streamqueue')
+    watch = require('gulp-watch')
+    batch = require('gulp-batch');
 
 var paths = {
   css: ['src/css/**/*.css', 'src/css/default.css'],
@@ -92,24 +94,20 @@ gulp.task('default', ['clean', 'styles', 'scripts', 'fonts', 'images'], function
 // Watch
 gulp.task('watch', function() {
 
-  // watch css
-  gulp.watch(paths.css + '*.css', function() {
-    gulp.run('styles');
-  });
+  watch(paths.scripts, batch(function (events, done) {
+      gulp.start('scripts', done);
+  }));
 
-  // watch images
-  gulp.watch(paths.images + '*', function() {
-    gulp.run('images');
-  });
+  watch(paths.css, batch(function (events, done) {
+      gulp.start('styles', done);
+  }));
 
-  // watch fonts
-  gulp.watch(paths.fonts + '*', function() {
-    gulp.run('fonts');
-  });
+  watch(paths.images, batch(function (events, done) {
+      gulp.start('images', done);
+  }));
 
-  // watch scripts
-  gulp.watch(paths.scripts + '*.js', function() {
-    gulp.run('scripts');
-  });
+  watch(paths.fonts, batch(function (events, done) {
+      gulp.start('fonts', done);
+  }));
 
 });

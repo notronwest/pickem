@@ -13,6 +13,7 @@
 							<th>Name</th>
 							<th>Alt 1</th>
 							<th>Alt 2</th>
+							<th>Type</th>
 							<th></th>
 						</tr>
 					</thead>
@@ -22,6 +23,7 @@
 								<td>#rc.arTeams[local.itm].getSName()#</td>
 								<td>#rc.arTeams[local.itm].getSName2()#</td>
 								<td>#rc.arTeams[local.itm].getSName3()#</td>
+								<td><cfif rc.arTeams[local.itm].getNType() eq 1>NCAA<cfelseif rc.arTeams[local.itm].getNType() eq 2>NFL</cfif></td>
 								<td>
 									<span class="fa fa-edit edit-team icons fa-fw fa-lg" title="Edit team"></span>
 									<!--- // <span class="fa fa-trash-o delete-team icons fa-fw fa-lg" title="Delete team"></span> --->

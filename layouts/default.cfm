@@ -105,6 +105,9 @@
 </head>
 <body>
 <cfoutput>
+<cfif request.bIsDevelopment>
+  <div class="alert alert-info">Development environment</div>
+</cfif>
 #view('nav/main')#
 	<div class="container">
 		<div id="main" class="row">
