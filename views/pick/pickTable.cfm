@@ -103,9 +103,9 @@
 					<cfif len(stGame.sGameStatus) gt 0>
 						#stPick.nScore# - #stNotPick.nScore# (#stGame.sGameStatus#)
 					<cfelse>
-						#dateFormat(sGameDate, "mm/dd/yyyy")#<cfif len(sGameTime) gt 0> #timeFormat(sGameTime, "hh:mm")#<cfif listFirst(sGameTime, ":") gt 11>PM<cfelse>AM</cfif><cfif structKeyExists(rc.stUser, "stSettings")
+						#dateFormat(sGameDate, "mm/dd/yyyy")#<cfif len(sGameTime) gt 0> #timeFormat(sGameTime, "hh:mm")# <cfif listFirst(sGameTime, ":") gt 11>PM<cfelse>AM</cfif> (<cfif structKeyExists(rc.stUser, "stSettings")
 				and structKeyExists(rc.stUser.stSettings, "timezone")
-				and compareNoCase(rc.stUser.stSettings.timezone, "Pacific") eq 0> PT<cfelse> ET</cfif></cfif>
+				and compareNoCase(rc.stUser.stSettings.timezone, "Pacific") eq 0>PT<cfelse>ET</cfif>)</cfif>
 					</cfif>
 				</td>
 			</cfif>
