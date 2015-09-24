@@ -52,6 +52,15 @@ public void function buildOptions(){
 			"sCodeKey" = "notificationType",
 			"sOptions" = '{ "options" : [{ "sValue" : "e-mail", "sOption" : "E-mail" }] }',
 			"nOrder" = 3
+		},{
+			"bCanNotify" = 0,
+			"sShortName" = "Timezone",
+			"sLabel" = "Timezone:",
+			"nType" = 3,
+			"sCodeKey" = "timezone",
+			"sOptions" = '{ "options" : [ { "sValue" : "Pacific", "sOption" : "Pacific" }, { "sValue" : "Eastern", "sOption" : "Eastern" }] }',
+			"nOrder" = 3
+
 		}
 	];
 	// loop through the options and add them if they don't exist

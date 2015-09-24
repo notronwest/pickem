@@ -70,7 +70,7 @@
 		</cfloop>
 	</ul>
 	<script>
-		jQuery(function(){
+		docReady(function(){
 			jQuery(".record-set").on("click", ".delete-file", function(){
 				if( confirm("Are you sure?") ){
 					window.location.href = '#buildURL("main.logReader")#&deleteFile=' + jQuery(this).siblings("a").html();

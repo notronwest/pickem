@@ -45,6 +45,42 @@ public Struct function userSettings( Required Numeric nUserID ){
 Author: 	
 	Ron West
 Name:
+	$readableUserSettings
+Summary:
+	Creates an easy to read structure of settings for this user
+Returns:
+	Struct stSettings
+Arguments:
+	Numeric nUserID
+History:
+	2015-09-23 - RLW - Created
+*/
+public Struct function readableUserSettings( Required Numeric nUserID ){
+	var arOptions = [];
+	var arOSettings = [];
+	var itm = 1;
+	var stSettings = {};
+	try{
+		// get this users settings
+		arOSettings = variables.settingGateway.getByUser(arguments.nUserID);
+
+		// loop through user settings and update settings
+		for(itm=1; itm lte arrayLen(arOSettings); itm++){
+			// get the details for this setting
+			oOption = variables.optionGateway.get(arOSettings[itm].getNOptionID());
+			// store this option in the settings
+			stSettings[oOption.getSCodeKey()] = arOSettings[itm].getSValue();
+		}
+	} catch (any e){
+		registerError("Error trying to get settings for user: #arguments.nUserID#", e);
+	}
+	return stSettings;
+}
+
+/*
+Author: 	
+	Ron West
+Name:
 	$saveUserSettings
 Summary:
 	Loops through the form structure and saves the users options
@@ -81,6 +117,8 @@ public void function saveUserSettings( Required Struct stForm, Required Numeric 
 				oSetting.setNUserID(arguments.nUserID);
 			}
 			variables.settingGateway.save(oSetting);
+			// update the session variable
+			session.stSettings = readableUserSettings(arguments.nUserID);
 		}
 	} catch (any e){
 		registerError("Error trying to save user settings for: #arguments.nUserID#", e);

@@ -5,6 +5,9 @@ property name="framework";
 
 public void function before (rc){
 	param name="rc.bDeleteFirst" default="true";
+}
+
+public void function updateOptions(rc){
 	// default messaging
 	rc.sMessage = "Added options";
 	//variables.optionService.deleteOptions();

@@ -8,9 +8,12 @@ public void function before (rc){
 	param name="rc.nUserID" default="#rc.nCurrentUser#";
 	param name="rc.bProfileSaved" default="false";
 	param name="rc.bAddNew" default="false";
+	param name="rc.bAdminIsUser" default="false";
 	// if the user isn't an admin and the user id suplied is different than the current user kick them
 	if( !rc.stUser.bIsAdmin and (rc.nCurrentUser neq rc.stUser.nUserID or rc.bAddNew) ){
 		variables.framework.redirect("security.restricted");
+	} else if( rc.stUser.bIsAdmin and rc.nUserID eq rc.stUser.nUserID ){
+		rc.bAdminIsUser = true;
 	}
 	// default all calls to a dialog
 	rc.bIsDialog = false;

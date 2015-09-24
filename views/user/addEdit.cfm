@@ -33,7 +33,8 @@
 						<option value="0"<cfif rc.oUser.getBActive() eq 0> selected="selected"</cfif>>Inactive</option>
 					</select>
 				</div>
-			<cfelse>
+			</cfif>
+			<cfif !rc.stUser.bIsAdmin or rc.bAdminIsUser>
 				<div class="form-group">
 					<a href="#buildURL('user.changePassword')#">Change password</a>
 				</div>

@@ -3,6 +3,7 @@ component accessors="true" extends="model.base" {
 property name="userGateway";
 property name="userService";
 property name="subscriptionGateway";
+property name="settingService";
 
 public void function before(rc){
 	param name="rc.sActionAfterLogin" default="standing.home";
@@ -42,6 +43,7 @@ public void function checkAuthorization(rc){
 	}
 	// set the current user
 	rc.nCurrentUser = rc.stUser.nUserID;
+
 	// if this is an admin look for a session variable for impersonation
 	if( rc.stUser.bIsAdmin and structKeyExists(session, "nImpersonateUser") and session.nImpersonateUser > 0 ){
 		rc.nCurrentUser = session.nImpersonateUser;
@@ -104,6 +106,8 @@ public void function setupSession(arUser){
 		} else {
 			session.bIsAdmin = false;
 		}
+		// load preferences
+		session.stSettings = variables.settingService.readableUserSettings(arUser[1].getNUserID());
 	} catch (any e){
 		registerError("Error setting up session", e);
 	}
