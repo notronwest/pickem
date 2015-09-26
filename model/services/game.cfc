@@ -308,4 +308,41 @@ public Struct function getGameStats( Required model.beans.game oGame ){
 	return stGameStats;
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$reassignTeam
+Summary:
+	Reassigns a team from one to another
+Returns:
+	Boolean bSuccess
+Arguments:
+	Numeric nOldTeamID
+	Numeric nNewTeamID
+History:
+	2015-09-25 - RLW - Created
+*/
+public Boolean function reassignTeam( Required Numeric nOldTeamID, Required Numeric nNewTeamID ){
+	// get the games for this team
+	var arGames = variables.gameGateway.getTeamGames(nOldTeamID);
+	var itm = 1;
+	var bSuccess = true;
+	try{
+		for(itm; itm lte arrayLen(arGames); itm++ ){
+			// update either the home or away game
+			if( arGames[itm].getNHomeTeamID() eq arguments.nOldTeamID){
+				arGames[itm].setNHomeTeamID(arguments.nNewTeamID);
+			} else {
+				arGames[itm].setNAwayTeamID(arguments.nNewTeamID);
+			}
+			variables.gameGateway.save(arGames[itm]);
+		}
+	} catch (any e){
+		bSuccess = false;
+		logError("Error trying to switch games for team #arguments.nOldTeamID# to #arguments.nNewTeamID#", e);
+	}
+	return bSuccess;
+}
+
 }

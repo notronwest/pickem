@@ -26,7 +26,7 @@
 								<td><cfif rc.arTeams[local.itm].getNType() eq 1>NCAA<cfelseif rc.arTeams[local.itm].getNType() eq 2>NFL</cfif></td>
 								<td>
 									<span class="fa fa-edit edit-team icons fa-fw fa-lg" title="Edit team"></span>
-									<!--- // <span class="fa fa-trash-o delete-team icons fa-fw fa-lg" title="Delete team"></span> --->
+									<span class="fa fa-trash-o delete-team icons fa-fw fa-lg" title="Delete team"></span>
 									<input type="hidden" class="nTeamID" value="#rc.arTeams[local.itm].getNTeamID()#"/>
 								</td>
 							</tr>

@@ -59,8 +59,15 @@ public void function buildOptions(){
 			"nType" = 3,
 			"sCodeKey" = "timezone",
 			"sOptions" = '{ "options" : [ { "sValue" : "Pacific", "sOption" : "Pacific" }, { "sValue" : "Eastern", "sOption" : "Eastern" }] }',
-			"nOrder" = 3
-
+			"nOrder" = 4
+		},{
+			"bCanNotify" = 0,
+			"sShortName" = "Autopick",
+			"sLabel" = "Autopick:",
+			"nType" = 3,
+			"sCodeKey" = "autopick",
+			"sOptions" = '{ "options" : [ { "sValue" : "None", "sOption" : "None" }, { "sValue" : "Favorites", "sOption" : "Pick all favorites" }, { "sValue" : "Underdogs", "sOption" : "Pick all underdogs" }, { "sValue" : "Random", "sOption" : "Pick random" } ] }',
+			"nOrder" = 5
 		}
 	];
 	// loop through the options and add them if they don't exist

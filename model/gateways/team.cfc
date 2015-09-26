@@ -61,6 +61,7 @@ public model.beans.team function update( Required model.beans.team oTeam, Requir
 	}
 	return arguments.oTeam;
 }
+
 /*
 Author: 	
 	Ron West
@@ -79,6 +80,25 @@ public model.beans.team function save( Required model.beans.team oTeam){
 	entitySave(arguments.oTeam);
 	ormFlush();
 	return arguments.oTeam;
+}
+
+/*
+Author: 	
+	Ron West
+Name:
+	$delete
+Summary:
+	Delete the team entity
+Returns:
+	Void
+Arguments:
+	Team oTeam
+History:
+	2015-10-25 - RLW - Created
+*/
+public void function delete( Required model.beans.team oTeam){
+	entityDelete(arguments.oTeam);
+	ormFlush();
 }
 
 

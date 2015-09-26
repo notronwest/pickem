@@ -327,18 +327,14 @@ Name:
 Summary:
 	Returns a query for the teams games
 Returns:
-	Query qryGames
+	Array arGames
 Arguments:
 	Numeric nTeamID
 History:
 	2014-10-24 - RLW - Created
 */
-public Numeric function getTeamGames( Required Numeric nTeamID ){
-	var arTeams = ormExecuteQuery("from game where nHomeTeamID = :nTeamID or nAwayTeamID = :nTeamID", { nTeamID = arguments.nTeamID} );
-	var qryTeams = queryNew("");
-	if( arrayLen(arTeams) gt 0 ){
-		qryTeams = entityToQuery(arTeams);
-	}
-	return qryTeams;
+public Array function getTeamGames( Required Numeric nTeamID ){
+	var arGames = ormExecuteQuery("from game where nHomeTeamID = :nTeamID or nAwayTeamID = :nTeamID", { nTeamID = arguments.nTeamID} );
+	return arGames;
 }
 }

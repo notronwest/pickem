@@ -2,6 +2,8 @@ component accessors="true" extends="model.base" {
 
 property name="teamGateway";
 property name="teamService";
+property name="gameGateway";
+property name="gameService";
 
 public void function before (rc){
 	param name="rc.nTeamID" default="0";
@@ -131,5 +133,34 @@ public void function searchForTeam(rc){
 	// serialize result
 	variables.framework.setView(application.sSerializeView);
 }
+
+/*
+Author: 	
+	Ron West
+Name:
+	$reassign
+Summary:
+	Reassigns previous games for a team
+Returns:
+	Void
+Arguments:
+	Void
+History:
+	2015-09-25 - RLW - Created
+*/
+public void function reassign(rc){
+	param name="rc.bProcess" default="false";
+	rc.arGames = variables.gameGateway.getTeamGames(rc.nTeamID);
+	rc.arTeams = variables.teamGateway.getAll();
+
+	if(rc.bProcess){
+		var bSuccess = variables.gameService.reassignTeam(rc.nTeamID, rc.nNewTeamID);
+		if( bSuccess ){
+			variables.teamGateway.delete(rc.oTeam);
+			variables.framework.redirect("team.listing");
+		}
+	}
+}
+
 
 }
