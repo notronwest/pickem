@@ -13,6 +13,7 @@ public void function before(rc){
 	rc.bIsDialog = true;
 	// default the week
 	param name="rc.nWeekID" default="0";
+	param name="rc.stWeeklyTeamResults" default="#{}#";
 	// if we don't have a week set
 	if( rc.nWeekID eq 0 ){
 		// try to determine this week
@@ -35,7 +36,9 @@ public void function before(rc){
 	if( compare(variables.dbService.dbDateTimeFormat(rc.dtPicksDue), variables.dbService.dbDateTimeFormat() ) lte 0){
 		rc.bIsLocked = true;
 	}
-	rc.stWeeklyTeamResults = application.stWeeklyTeamResults[rc.nWeekID];
+	if( structKeyExists(application.stWeeklyTeamResults, rc.nWeekID) ) {
+		rc.stWeeklyTeamResults = application.stWeeklyTeamResults[rc.nWeekID];
+	}
 }
 
 public void function set(rc){
