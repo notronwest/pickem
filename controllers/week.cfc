@@ -162,4 +162,8 @@ public void function manage(rc){
 	rc.bIsAdminAction = true;
 }
 
+public void function getWeeklyTeamResults(rc){
+	rc.stWeeklyTeamResults = variables.weekService.getTeamResults(rc.nWeekID);
+}
+
 }
