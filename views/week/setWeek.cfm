@@ -43,6 +43,10 @@
 						<input type="checkbox" id="showLock"> Show Lock Date/Time
 					</label>
 				</div>
+				<form id="weekGames" method="post" action="#buildURL('game.saveWeek')#">
+					<input type="hidden" name="arGames" id="arGames" value=""/>
+					<input type="hidden" name="nWeekID" id="nWeekID" value="#rc.nWeekID#"/> 
+				</form>
 				<div class="table-responsive">
 					<table class="table" id="activeGames">
 						<thead>

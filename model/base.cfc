@@ -25,7 +25,7 @@ Extended Info: #arguments.stCFCatch.extendedInfo#
 	savecontent variable="sLogEntry" { writeOutput("#sLogEntry#
 SQL: #arguments.stCFCatch.SQL#
 Query Params: #arguments.stCFCatch.where#
-Query Error: #argument.stCFCatch.queryError#
+Query Error: #arguments.stCFCatch.queryError#
 ");
 }
 }

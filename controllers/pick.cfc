@@ -6,6 +6,7 @@ property name="gameService";
 property name="weekGateway";
 property name="userGateway";
 property name="gameGateway";
+property name="statService";
 
 public void function before(rc){
 	// default all to a dialog
@@ -27,13 +28,14 @@ public void function before(rc){
 	// set the side bar content
 	rc.sSideBar = variables.framework.view("left/pick");	
 	// get this weeks games
-	rc.arWeekGames = variables.gameService.adminWeek(rc.nWeekID);
+	rc.arWeekGames = variables.gameService.adminWeek(rc.nWeekID, false, false);
 	// determine if picks are still open
 	rc.dtPicksDue = rc.oWeek.getDPicksDue() & " " & rc.oWeek.getTPicksDue();
 	rc.bIsLocked = false;
 	if( compare(variables.dbService.dbDateTimeFormat(rc.dtPicksDue), variables.dbService.dbDateTimeFormat() ) lte 0){
 		rc.bIsLocked = true;
 	}
+	rc.stWeeklyTeamResults = application.stWeeklyTeamResults[rc.nWeekID];
 }
 
 public void function set(rc){
@@ -107,7 +109,7 @@ public void function hasPicks(rc){
 	variables.framework.setView(application.sSerializeView);
 }
 
-public void function bulk(){
+public void function bulk(rc){
 	param name="rc.bDoSave" default="false";
 	param name="rc.nWeekID" default="0";
 	rc.bIsAdminAction = true;
@@ -144,7 +146,7 @@ public void function bulk(){
 	}
 }
 
-public void function compare(){
+public void function compare(rc){
 	param name="rc.nViewUserID" default="0";
 	param name="rc.stViewUSer" default={};
 	rc.bIsDialog = false;
@@ -158,7 +160,7 @@ public void function compare(){
 	rc.oViewUser = variables.userGateway.get(rc.nViewUserID);
 }
 
-public void function gameInfo(){
+public void function gameInfo(rc){
 	param name="rc.nGameID" default="0";
 	param name="rc.stGame" default="#{}#";
 	param name="rc.stGameStats" default="#{}#";
@@ -173,6 +175,16 @@ public void function gameInfo(){
 		rc.stGame = variables.gameService.buildGameStruct(rc.oGame);
 		rc.stGameStats = variables.gameService.getGameStats(rc.oGame);
 	}
+}
+
+public void function stats(rc){
+	rc.stGame = variables.gameService.buildGameStruct(variables.gameGateway.get(rc.nGameID), true);
+	// get the data for this game for this user
+	rc.arGameStats = variables.statService.getGameStatsForUser(rc.stGame, rc.nCurrentUser, rc.nCurrentSeasonID);
+	// get the data for these teams
+	rc.arTeamStats = variables.statService.getGameStatsForTeams(rc.stGame, rc.nCurrentSeasonID);
+	// set as page
+	rc.bIsDialog = false;
 }
 
 }

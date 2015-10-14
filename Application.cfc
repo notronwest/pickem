@@ -24,6 +24,8 @@ component extends="framework" {
 			"user.register",
 			"user.changePassword",
 			"subscription.noPayNoPlay"];
+		// store weekly results
+		//application.stWeeklyTeamResults = {};
 	}
 
 	/** 

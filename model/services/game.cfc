@@ -4,6 +4,7 @@ property name="gameGateway";
 property name="pickGateway";
 property name="teamGateway";
 property name="teamService";
+property name="weekService";
 
 /*
 Author: 	
@@ -67,10 +68,12 @@ Returns:
 Arguments:
 	Numeric nWeekID
 	Boolean bSortByTiebreak
+	Boolean bAppendMascot
 History:
 	2012-09-12 - RLW - Created
+	2015-10-13 - RLW - Added option to append mascot name to team name
 */
-public Array function adminWeek( Required Numeric nWeekID, Boolean bSortByTiebreak = false ){
+public Array function adminWeek( Required Numeric nWeekID, Boolean bSortByTiebreak = false, Boolean bAppendMascot = true ){
 	try{
 		var itm = 1;
 		var arGames = "";
@@ -85,7 +88,7 @@ public Array function adminWeek( Required Numeric nWeekID, Boolean bSortByTiebre
 		// build the array that contains the proper structure
 		for( itm; itm lte arrayLen(arGames); itm++ ){
 			// reset the array with the new structure
-			arGames[itm] = buildGameStruct(arGames[itm]);
+			arGames[itm] = buildGameStruct(arGames[itm], arguments.bAppendMascot);
 		}
 	} catch (any e){
 		registerError("Error setting up games for a week", e);
@@ -104,20 +107,29 @@ Returns:
 	Struct stGame
 Arguments:
 	Game oGame
+	Boolean bAppendMascot
 History:
 	2014-10-14 - RLW - Created
+	2015-10-13 - RLW - Added option to append mascot name to team name
 */
-public Struct function buildGameStruct( Required model.beans.game oGame ){
+public Struct function buildGameStruct( Required model.beans.game oGame, Boolean bAppendMascot = true ){
 	var oHomeTeam = variables.teamGateway.get(arguments.oGame.getNHomeTeamID());
 	var oAwayTeam = variables.teamGateway.get(arguments.oGame.getNAwayTeamID());
 	var stGame = {
 		"nGameID" = arguments.oGame.getNGameID(),
 		"nHomeTeamID" = arguments.oGame.getNHomeTeamID(),
-		"sHomeTeam" = oHomeTeam.getSName(),
+		"sHomeTeam" = oHomeTeam.getSName() & ((arguments.bAppendMascot) ? " " & oHomeTeam.getSMascot() : ""),
+		"sHomeTeamMascot" = oHomeTeam.getSMascot(),
 		"sHomeTeamURL" = oHomeTeam.getSURL(),
+		"nHomeTeamRanking" = (isNull(arguments.oGame.getNHomeTeamRanking())) ? "" : arguments.oGame.getNHomeTeamRanking(),
+		"sHomeTeamRecord" = (isNull(arguments.oGame.getSHomeTeamRecord())) ? "" : arguments.oGame.getSHomeTeamRecord(),
 		"nAwayTeamID" = arguments.oGame.getNAwayTeamID(),
-		"sAwayTeam" = oAwayTeam.getSName(),
+		"sAwayTeam" = oAwayTeam.getSName() & ((arguments.bAppendMascot) ? " " & oAwayTeam.getSMascot() : ""),
+		"sAwayTeamMascot" = oAwayTeam.getSMascot(),
 		"sAwayTeamURL" = oAwayTeam.getSURL(),
+		"nAwayTeamRanking" = (isNull(arguments.oGame.getNAwayTeamRanking())) ? "" : arguments.oGame.getNAwayTeamRanking(),
+		"sAwayTeamRecord" = (isNull(arguments.oGame.getSAwayTeamRecord())) ? "" : arguments.oGame.getSAwayTeamRecord(),
+		"nType" = oHomeTeam.getNType(),
 		"nSpread" = arguments.oGame.getNSpread(),
 		"sSpreadFavor" = arguments.oGame.getSSpreadFavor(),
 		"nHomeScore" = (isNull(arguments.oGame.getNHomeScore())) ? "" : arguments.oGame.getNHomeScore(),
@@ -343,6 +355,81 @@ public Boolean function reassignTeam( Required Numeric nOldTeamID, Required Nume
 		logError("Error trying to switch games for team #arguments.nOldTeamID# to #arguments.nNewTeamID#", e);
 	}
 	return bSuccess;
+}
+
+/*
+Author: 	
+	Ron West
+Name:
+	$buildTeamRankings
+Summary:
+	Builds a structure with the team rankings
+Returns:
+	Struct stRankings
+Arguments:
+	Numeric nWeekID
+	Numeric nSeasonID
+History:
+	2015-10-09 - RLW - Created
+*/
+public Struct function buildTeamRankings(){
+	// get the standings for this week
+	var arStandingsFromSource = variables.weekService.getRankings();
+	var itm = 1;
+	var arTeam = [];
+	var stRankings = {};
+	// loop over the rankings and load the team
+	for(itm; itm lte arrayLen(arStandingsFromSource); itm++ ){
+		// see if this has a team
+		arTeam = variables.teamGateway.getByNameExact(arStandingsFromSource[itm]);
+		// if this has a team then see if this team is in a game this week
+		if( arrayLen(arTeam) gt 0 ){
+			stRankings[itm] = arTeam[1].getNTeamID(); 
+		}
+	}
+	return stRankings;
+}
+
+/*
+Author: 	
+	Ron West
+Name:
+	$updateGamesWithRankings
+Summary:
+	Updates the rankings for this week
+Returns:
+	Boolean bUpdated
+Arguments:
+	Numeric nWeekID
+	Numeric nSeasonID
+History:
+	2015-10-09 - RLW - Created
+*/
+public Boolean function updateGamesWithRankings( Required Numeric nWeekID, Required Numeric nSeasonID ){
+	var bUpdated = true;
+	// get the structure of rankings
+	var stRankings = buildTeamRankings();
+	var stGameData = {};
+	var sRanking = "";
+	var arGame = [];
+	// loop through the rankings to see if the team has any games
+	for( sRanking in stRankings ){
+		// see if this team is involved with any games this week
+		arGame = variables.gameGateway.getTeamGamesByWeek(stRankings[sRanking], arguments.nWeekID, arguments.nSeasonID);
+		if( arrayLen(arGame) gt 0 ){
+			// reset game data
+			stGameData = {};
+			// see if this team is home or away
+			if( arGame[1].getNHomeTeamID() eq stRankings[sRanking] ){
+				stGameData.nHomeTeamRanking = sRanking;
+			} else {
+				stGameData.nAwayTeamRanking = sRanking;
+			}
+			// update the game with the rankings
+			variables.gameGateway.update(arGame[1], stGameData);
+		}
+	}
+	return bUpdated;
 }
 
 }

@@ -9,12 +9,20 @@
 					<input type="text" id="sName" name="sName" class="form-control" value="#rc.oTeam.getSName()#"/>
 				</div>
 				<div class="form-group">
-					<label for="sName2">Name: (alt1) </label>
+					<label for="sName2">Alternate Name: (e.g. Florida St.) </label>
 					<input type="text" id="sName2" name="sName2" class="form-control" value="#rc.oTeam.getSName2()#"/>
 				</div>
 				<div class="form-group">
-					<label for="sName3">Name: (alt2) </label>
+					<label for="sName3">Alternate Name: (e.g. Fl State.) </label>
 					<input type="text" id="sName3" name="sName3" class="form-control" value="#rc.oTeam.getSName3()#"/>
+				</div>
+				<div class="form-group">
+					<label for="sName4">Alternate Name: (e.g. Fl St.) </label>
+					<input type="text" id="sName4" name="sName4" class="form-control" value="#rc.oTeam.getSName4()#"/>
+				</div>
+				<div class="form-group">
+					<label for="sMascot">Mascot: (e.g. Seminoles)</label>
+					<input type="text" id="sMascot" name="sMascot" class="form-control" value="#rc.oTeam.getSMascot()#"/>
 				</div>
 				<div class="form-group">
 					<label for="sURL">URL: </label>

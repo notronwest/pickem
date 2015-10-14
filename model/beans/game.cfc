@@ -4,6 +4,10 @@ component entityname="game" persistent="true" table="game" output="false" {
 	property name="nWeekID" fieldtype="column" ormtype="int";
 	property name="nHomeTeamID" fieldtype="column" ormtype="int";
 	property name="nAwayTeamID" fieldtype="column" ormtype="int";
+	property name="nHomeTeamRanking" fieldtype="column" ormtype="int";
+	property name="nAwayTeamRanking" fieldtype="column" ormtype="int";
+	property name="sHomeTeamRecord" fieldtype="column" ormtype="string" length="10";
+	property name="sAwayTeamRecord" fieldtype="column" ormtype="string" length="10";
 	property name="sSpreadOriginal" fieldtype="column" ormtype="string" length="5";
 	property name="nSpread" fieldtype="column" ormtype="double";
 	property name="sSpreadFavor" fieldtype="column" ormtype="string" length="10";

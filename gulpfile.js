@@ -62,7 +62,17 @@ gulp.task('scripts', function() {
    //.pipe(rev.manifest({ base: paths.build }))
    .pipe(gulp.dest(paths.dest + 'js'))
    .pipe(notify({ message: 'Scripts task complete' }))
+});
 
+gulp.task('rev-test', function () {
+    // by default, gulp would pick `assets/css` as the base, 
+    // so we need to set it explicitly: 
+    return gulp.src("/assets/js", {base: '/assets'})
+        .pipe(gulp.dest('build/assets'))  // copy original assets to build dir 
+        .pipe(rev())
+        .pipe(gulp.dest('build/assets'))  // write rev'd assets to build dir 
+        .pipe(rev.manifest())
+        .pipe(gulp.dest('build/assets')); // write manifest to build dir 
 });
 
 // move the font files

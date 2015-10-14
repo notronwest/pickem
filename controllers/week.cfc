@@ -106,6 +106,8 @@ public void function save(rc){
 	param name="rc.nBonus" default="0";
 	rc.bIsDialog = false;
 	oWeek = variables.weekGateway.update((rc.oWeek.getNWeekID() eq 0) ? entityNew("week") : rc.oWeek, { sName = rc.sName, dStartDate = rc.dStartDate, dEndDate = rc.dEndDate, lstSports = rc.lstSports, nSeasonID = rc.nCurrentSeasonID, nBonus = rc.nBonus, dPicksDue = rc.dPicksDue, tPicksDue = timeFormat(rc.tPicksDue, "HH:mm"), nWeekNumber = rc.nWeekNumber });
+	// update the standings for this weeks games
+	//variables.gameService.updateStandings(rc.oWeek.getNWeekID());
 	rc.sMessage = "Week saved";
 	variables.framework.redirect("week.manage", "all");
 }

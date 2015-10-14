@@ -15,7 +15,6 @@ var sSearchURL = "";
 var stResults = {};
 var arDebugMessage = [];
 // view engine setup
-
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -86,6 +85,203 @@ app.get('/get-scores', function(req, res){
                     // reset response
                     errorOccurred("Got score block but couldn't match the teams provided." + arDebugMessage.toString());
                   }
+                } else {
+                  // need to do some error work here 
+                  errorOccurred("Did not get score block from API call. " + body);
+                }
+                
+                // return the game data as JSON
+                res.json({ "stResults": stResults });
+            }
+        });
+    });
+});
+
+app.get('/get-record', function(req, res){
+    // some global variables that will be used in various functions
+    var sRecordBlock = "";
+    // handle URL to search for
+    sSearchURL = "https://search.yahoo.com/search?fr2=sb-top-search&fr=yfp-t-901&fp=1";
+    // setup the default response
+    stResults = {
+      "sStatus": 200,
+      "sRanking": "",
+      "sMessage": "",
+      "sSearchURL": sSearchURL,
+      "arDebugMessage": arDebugMessage
+    }
+    // tell the response to be json
+    res.set({
+      'Content-Type': 'application/json'
+    })
+    // setup user agent so Yahoo produces score box
+    var stHeaders = {
+      'User-Agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.1 Safari/537.36"
+    }
+    // get the query params sent to the page
+    var sTeam = req.query.sTeam
+    var stOptions = {
+      uri: sSearchURL,
+      method: 'GET',
+      headers: stHeaders,
+      qs: { "p": sTeam + " Football" }
+    }
+    //get the score data from the API and handle parsing
+    request(stOptions, function(err, response, body){
+
+        // send the body of the response to jsdom and load jquery
+        jsdom.env({
+            html: body,
+            scripts: ['http://code.jquery.com/jquery-1.6.min.js'],
+            done: function (err, window) {
+                // setup jQuery scope
+                $ = window.jQuery;
+
+                // get the main score block
+                sRecordBlock = $('.compInfo');
+                if( $(sRecordBlock).length > 0 ){
+                  stResults.sRecord = $(".compInfo li:nth-child(1)").children("a").text().split(",")[0];
+                } else {
+                  // need to do some error work here 
+                  errorOccurred("Did not get standing block from API call. " + body);
+                }
+                
+                // return the game data as JSON
+                res.json({ "stResults": stResults });
+            }
+        });
+    });
+});
+
+// gets the current standings for this week
+app.get('/get-standings', function(req, res){
+    // some global variables that will be used in various functions
+    var sStandingBlock = "";
+    // handle URL to search for
+    sSearchURL = "http://sports.yahoo.com/ncaa/football/polls?poll=1";
+    // setup the default response
+    stResults = {
+      "sStatus": 200,
+      "stStandingsData": {},
+      "sMessage": "",
+      "sSearchURL": sSearchURL,
+      "arDebugMessage": arDebugMessage
+    }
+    // tell the response to be json
+    res.set({
+      'Content-Type': 'application/json'
+    })
+    // setup user agent so Yahoo produces score box
+    var stHeaders = {
+      'User-Agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.1 Safari/537.36"
+    }
+    // build parameters for HTTP call
+    var stOptions = {
+      uri: sSearchURL,
+      method: 'GET',
+      headers: stHeaders
+    }
+    //get the score data from the API and handle parsing
+    request(stOptions, function(err, response, body){
+
+        // send the body of the response to jsdom and load jquery
+        jsdom.env({
+            html: body,
+            scripts: ['http://code.jquery.com/jquery-1.6.min.js'],
+            done: function (err, window) {
+                // setup jQuery scope
+                $ = window.jQuery;
+                // variable to store results
+                var arStandings = [];
+
+                // get the main score block
+                sStandingBlock = $('#ysprankings-results-table');
+
+                if( $(sStandingBlock).length > 0 ){
+                  // loop through all of rows to get the teams and their place
+                  $("#ysprankings-results-table tr").each(function(){
+                    // make sure this is an actual team
+                    if( $(this).find(".first").length > 0 ){
+                      arStandings.push($(this).find(".first").next().text().split("(")[0].trim());
+                    }
+                  });
+                  stResults.arStandings = arStandings;
+                } else {
+                  // need to do some error work here 
+                  errorOccurred("Did not get standing block from API call. " + body);
+                }
+                // return the game data as JSON
+                res.json({ "stResults": stResults });
+            }
+        });
+    });
+});
+
+app.get('/get-results', function(req, res){
+    // some global variables that will be used in various functions
+    var sScoreBlock = "";
+    var arGames = [];
+    var arGameStats = [];
+    var stTeamData = {};
+    // handle URL to search for
+    //sSearchURL = "https://search.yahoo.com/search;_ylt=AwrBT_xXmexV7TcAle9XNyoA;_ylc=X1MDMjc2NjY3OQRfcgMyBGZyA3lmcC10LTkwMQRncHJpZAN4NlB2dGV0NFJ0MnN4aVoyUmhkMGZBBG5fcnNsdAMwBG5fc3VnZwMxMARvcmlnaW4Dc2VhcmNoLnlhaG9vLmNvbQRwb3MDMARwcXN0cgMEcHFzdHJsAwRxc3RybAMxOQRxdWVyeQNwdXJkdWUgYm9pbGVybWFrZXJzBHRfc3RtcAMxNDQxNTY5MTQ1?fr2=sb-top-search&fr=yfp-t-901&fp=1";
+    sSearchURL = "https://search.yahoo.com/search?fr2=sb-top-search&fr=yfp-t-901&fp=1";
+    // setup the default response
+    stResults = {
+      "sStatus": 200,
+      "arGames": [],
+      "sMessage": "",
+      "sSearchURL": sSearchURL,
+      "arDebugMessage": arDebugMessage
+    }
+    // tell the response to be json
+    res.set({
+      'Content-Type': 'application/json'
+    })
+    // setup user agent so Yahoo produces score box
+    var stHeaders = {
+      'User-Agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.1 Safari/537.36"
+    }
+    // get the query params sent to the page
+    var stOptions = {
+      uri: sSearchURL,
+      method: 'GET',
+      headers: stHeaders,
+      qs: { "p": req.query.sTeam + " Football Results" }
+    }
+    //get the score data from the API and handle parsing
+    request(stOptions, function(err, response, body){
+
+        // send the body of the response to jsdom and load jquery
+        jsdom.env({
+            html: body,
+            scripts: ['http://code.jquery.com/jquery-1.6.min.js'],
+            done: function (err, window) {
+                // setup jQuery scope
+                $ = window.jQuery;
+
+                // get the main score block
+                sScoreBlock = $('.card-container .score-card');
+
+                if( $(sScoreBlock).length > 0 ){
+                  // loop through each score block
+                  $(sScoreBlock).each(function(){
+                    arGameStats = [];
+                    // loop through the two team blocks to get team names
+                    $(this).find(".team").each(function(){
+                      stTeamData = {};
+                      // add the details for this team into the array
+                      if( $(this).find(".total.score").text().length > 0 ){
+                        arGameStats.push({
+                          sTeamName: $(this).find(".team-name").text(),
+                          nScore: $(this).find(".total.score").text()
+                        });
+                      }
+                    });
+                    if( arGameStats.length > 0 ){
+                      stResults.arGames.push(arGameStats);
+                    }
+                  });
                 } else {
                   // need to do some error work here 
                   errorOccurred("Did not get score block from API call. " + body);

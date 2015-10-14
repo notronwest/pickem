@@ -5,6 +5,7 @@ component entityname="team" persistent="true" table="team" output="false" {
 	property name="sName2" fieldtype="column" ormtype="string" length="2000";
 	property name="sName3" fieldtype="column" ormtype="string" length="2000";
 	property name="sName4" fieldtype="column" ormtype="string" length="2000";
+	property name="sMascot" fieldtype="column" ormtype="string" length="2000";
 	property name="sURL" fieldtype="column" ormtype="string" length="2000";
 	property name="nType" fieldtype="column" ormtype="int";
 

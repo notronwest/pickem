@@ -120,7 +120,7 @@ History:
 public Array function getByName( Required String sName, Boolean bSearchAlternatives=true ){
 	var arTeam = [];
 	if( arguments.bSearchAlternatives ){
-		arTeam = ormExecuteQuery( "from team where sName like :sName or sName2 like :sName or sName3 like :sName", { sName = "%#arguments.sName#%" } );
+		arTeam = ormExecuteQuery( "from team where sName like :sName or sName2 like :sName or sName3 like :sName", { sName = "#arguments.sName#%" } );
 	} else {
 		arTeam = ormExecuteQuery( "from team where sName like :sName", { sName = "%#arguments.sName#%" } );
 	}
@@ -146,5 +146,56 @@ public Array function getAll(){
 	return arTeams;
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$getByNameExact
+Summary:
+	Gets a team object by name exactly matched
+Returns:
+	Array arTeam
+Arguments:
+	String sName
+	String bSearchAlternatives
+History:
+	2015-10-09 - RLW - Created
+*/
+public Array function getByNameExact( Required String sName, Boolean bSearchAlternatives=true ){
+	var arTeam = [];
+	if( arguments.bSearchAlternatives ){
+		arTeam = ormExecuteQuery( "from team where sName = :sName or sName2 = :sName or sName3 = :sName", { sName = "#arguments.sName#" } );
+	} else {
+		arTeam = ormExecuteQuery( "from team where sName = :sName", { sName = "#arguments.sName#" } );
+	}
+	return arTeam;
+}
+
+/*
+Author: 	
+	Ron West
+Name:
+	$getByNameAndMascot
+Summary:
+	Gets a team object by name and mascot combination
+Returns:
+	Array arTeam
+Arguments:
+	String sName
+History:
+	2015-10-10 - RLW - Created
+*/
+public Array function getByNameAndMascot( Required String sName ){
+	var qryTeam = variables.dbService.runQuery("select * from team
+where concat(sName, ' ', sMascot) = '#arguments.sName#'
+or concat(sName2, ' ', sMascot) = '#arguments.sName#'
+or concat(sName3, ' ', sMascot) = '#arguments.sName#'
+or concat(sName4, ' ', sMascot) = '#arguments.sName#'");
+	var arTeam = [];
+	if( qryTeam.recordCount gt 0 ){
+		arTeam = [get(qryTeam.nTeamID)];
+	}
+	return arTeam;
+}
 
 }

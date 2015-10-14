@@ -24,6 +24,8 @@
 				"sName" = stGame.sHomeTeam,
 				"nID" = stGame.nHomeTeamID,
 				"nScore" = stGame.nHomeScore,
+				"nRanking" = stGame.nHomeTeamRanking,
+				"sRecord" = stGame.sHomeTeamRecord,
 				"bIsHome" = true,
 				"bIsWinning" = false,
 				"sClass" = "btn-default"
@@ -32,6 +34,8 @@
 				"sName" = stGame.sAwayTeam,
 				"nID" = stGame.nAwayTeamID,
 				"nScore" = stGame.nAwayScore,
+				"nRanking" = stGame.nAwayTeamRanking,
+				"sRecord" = stGame.sAwayTeamRecord,
 				"bIsHome" = false,
 				"bIsWinning" = false,
 				"sClass" = "btn-default"
@@ -61,7 +65,7 @@
 			<td>#stGame.nTiebreak#<cfif bPickIsLocked>&nbsp;<span class="fa fa-lock"></span></cfif></td>
 			<!--- // render picks --->
 			<td class="picks">
-				<cfif rc.bIsLocked><span class="fa fa-info-circle fa-lg game-info icons"></span></cfif>
+				<cfif rc.bIsLocked><span class="fa fa-info-circle fa-lg game-info icons"></span><cfelse><span class="fa fa-bar-chart-o fa-lg stats-info icons"></span></cfif>
 				<button type="button" disabled="disabled" class="btn btn-xs
 					#((stPick.bIsHome) ? 'home' : '')#
 					<cfif stGame.bGameIsFinal>
@@ -71,7 +75,7 @@
 					<cfelse>
 						btn-default
 					</cfif>">
-					#stPick.sName#
+					<cfif len(stPick.nRanking) gt 0>(#stPick.nRanking#) </cfif>#stPick.sName# #((len(stPick.sRecord) gt 0 ) ? "(" & stPick.sRecord & ")" : "")#
 					<span class="badge">
 						#(stPick.nID eq nFavoredTeam) ? '-' : '+'# #stGame.nSpread#
 					</span>
@@ -80,13 +84,13 @@
 			<cfif compareNoCase(getFullyQualifiedAction(), "pick.set") eq 0>
 				<td class="picks">
 					<button type="button" disabled="disabled" class="btn btn-xs btn-sm btn-default #((stNotPick.bIsHome) ? 'home' : '')#">
-						#stNotPick.sName#
+						<cfif len(stNotPick.nRanking) gt 0>(#stNotPick.nRanking#) </cfif>#stNotPick.sName# #((len(stNotPick.sRecord) gt 0 ) ? "(" & stNotPick.sRecord & ")" : "")#
 					</button>
 				</td>
 				<!--- // render controls --->
 				<td class="change hidden">
 					<button data-id="#stFavorite.nID#" type="button" class="btn btn-xs #((stFavorite.bIsHome) ? 'home' : '')##((stFavorite.nID eq bPick) ? ' pick btn-success' : ' btn-default')#">
-						#stFavorite.sName#
+						<cfif len(stFavorite.nRanking) gt 0>(#stFavorite.nRanking#) </cfif>#stFavorite.sName# #((len(stFavorite.sRecord) gt 0 ) ? "(" & stFavorite.sRecord & ")" : "")#
 						<span class="badge">
 							#(stFavorite.nID eq nFavoredTeam) ? '-' : '+'# #stGame.nSpread#
 						</span>
@@ -94,7 +98,7 @@
 				</td>
 				<td class="change hidden">
 					<button data-id="#stUnderdog.nID#" type="button" class="btn btn-xs #((stUnderdog.bIsHome) ? 'home' : '')##((stUnderdog.nID eq bPick) ? ' pick  btn-success' : ' btn-default')#">
-						#stUnderdog.sName#
+						<cfif len(stUnderdog.nRanking) gt 0>(#stUnderdog.nRanking#) </cfif>#stUnderdog.sName# #((len(stUnderdog.sRecord) gt 0 ) ? "(" & stUnderdog.sRecord & ")" : "")#
 					</button>
 				</td>
 			</cfif>

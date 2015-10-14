@@ -337,4 +337,24 @@ public Array function getTeamGames( Required Numeric nTeamID ){
 	var arGames = ormExecuteQuery("from game where nHomeTeamID = :nTeamID or nAwayTeamID = :nTeamID", { nTeamID = arguments.nTeamID} );
 	return arGames;
 }
+
+/*
+Author: 	
+	Ron West
+Name:
+	$getTeamGamesByWeek
+Summary:
+	Returns a query for the teams games this week
+Returns:
+	Array arGames
+Arguments:
+	Numeric nTeamID
+	Numeric nWeekID
+History:
+	2015-10-09 - RLW - Created
+*/
+public Array function getTeamGamesByWeek( Required Numeric nTeamID, Required Numeric nWeekID ){
+	var arGames = ormExecuteQuery("from game where (nHomeTeamID = :nTeamID or nAwayTeamID = :nTeamID) and nWeekID = :nWeekID", { nTeamID = arguments.nTeamID, nWeekID = arguments.nWeekID } );
+	return arGames;
+}
 }

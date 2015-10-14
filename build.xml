@@ -22,6 +22,10 @@
               <exclude name="build.xml" />
               <exclude name="build-production.properties" />
               <exclude name="build-development.properties" />
+              <exclude name="src"/>
+              <exclude name="src/*"/>
+              <exclude name="gulpfile.js"/>
+              <exclude name="package.json"/>
           </fileset>
       </copy>
       <!-- // make sure the directory has the correct permissions after copying -->

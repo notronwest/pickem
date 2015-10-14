@@ -69,11 +69,20 @@ public Void function saveWeek(rc){
 				if( oHomeTeam.getNTeamID() gt 0 ){
 					// add in the id
 					rc.arGames[itm].nHomeTeamID = oHomeTeam.getNTeamID();
+					// get the record
+					if( isNull(oGame.getSHomeTeamRecord()) or len(oGame.getSHomeTeamRecord()) eq 0 ){
+						rc.arGames[itm].sHomeTeamRecord = variables.teamService.getCurrentRecord(oHomeTeam.getSName() & " " & oHomeTeam.getSMascot());
+					}
 					// save the away team
 					oAwayTeam = variables.teamService.saveTeam(rc.arGames[itm].sAwayTeam, rc.arGames[itm].sAwayTeamURL);
 					if( oAwayTeam.getNTeamID() > 0 ){
 						// add in the id
 						rc.arGames[itm].nAwayTeamID = oAwayTeam.getNTeamID();
+						// get the record
+						if( isNull(oGame.getSAwayTeamRecord()) or len(oGame.getSAwayTeamRecord()) eq 0 ){
+							rc.arGames[itm].sAwayTeamRecord = variables.teamService.getCurrentRecord(oAwayTeam.getSName() & " " & oAwayTeam.getSMascot());
+						}
+						
 						// add in the week
 						rc.arGames[itm].nWeekID = rc.nWeekID;
 						// update the order
@@ -91,6 +100,8 @@ public Void function saveWeek(rc){
 		for(itm=1; itm lte arrayLen(arGamesToDelete); itm++ ){
 			variables.gameService.clearGameByGameID(arGamesToDelete[itm]);
 		}
+		// update all of the games with the rankings
+		variables.gameService.updateGamesWithRankings(rc.nWeekID, rc.nCurrentSeasonID);
 		// make sure we saved all of the games
 		if( arrayLen(rc.arGames) neq arrayLen(rc.arSavedGames) ){
 			throw("Error");
@@ -100,7 +111,8 @@ public Void function saveWeek(rc){
 		rc.sMessage = "Error saving games, please refresh and try again. #e.detail#";
 		registerError("Error saving games", e);
 	}
-	variables.framework.setView("main.message");
+	// forward back to the set week page
+	variables.framework.redirect("week.setWeek",'nWeekID,sMessage');
 }
 
 public void function saveScores(rc){
