@@ -187,7 +187,7 @@ public void function stats(rc){
 	// get the data for these teams
 	rc.arTeamStats = variables.statService.getGameStatsForTeams(rc.stGame, rc.nCurrentSeasonID);
 	// set as page
-	rc.bIsDialog = false;
+	rc.bIsDialog = true;
 }
 
 }

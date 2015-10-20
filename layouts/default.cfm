@@ -161,6 +161,19 @@
 
   </script>
 </cfif>
+<div id="modal">
+    <div id="admin" class="panel panel-default">
+      <div class="panel-heading text-right">
+        <!-- Add an optional button to close the popup -->
+        <button class="modal_close">Close</button>
+      </div>
+      <div class="content">here i am</div>
+      <div class="panel-footer text-right">
+        <!-- Add an optional button to close the popup -->
+        <button class="modal_close">Close</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
 <!--- // send back just the raw data --->
