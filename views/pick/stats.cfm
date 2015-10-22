@@ -1,22 +1,18 @@
 <cfoutput>
-	
-	<!--- // <div class="panel-heading text-right">
-		<form class="form-inline" role="form">
-			<div class="form-group">
-				<select id="nGameID" class="input-sm" size="1">
-				<cfloop from="1" to="#arrayLen(rc.arWeekGames)#" index="local.itm">
-					<option value="#rc.arWeekGames[local.itm].nGameID#"<cfif rc.nGameID eq rc.arWeekGames[local.itm].nGameID> selected="selected"</cfif>>
-						#rc.arWeekGames[local.itm].sAwayTeam# at #rc.arWeekGames[local.itm].sHomeTeam#
-					</option>
-				</cfloop>
-				</select>
-				<button type="button" class="stats btn btn-default btn-sm">Go</button>
-			</div>
-		</form>
-	</div> --->
+	<cfscript>
+		// set the time separately
+		rc.stGame.sGameTime = listLast(rc.stGame.sGameDateTime, " ");
+		// if they want to see the setting in pacific time
+		if( structKeyExists(rc.stUser, "stSettings")
+			and structKeyExists(rc.stUser.stSettings, "timezone")
+			and compareNoCase(rc.stUser.stSettings.timezone, "Pacific") eq 0 ){
+			arGameTime = listToArray(rc.stGame.sGameTime, ":");
+			rc.stGame.sGameTime = arGameTime[1] - 3 & ":" & arGameTime[2];
+		}
+	</cfscript>
 	<div class="panel-body">
 		<h4 data-id="#rc.nGameID#"><cfif len(rc.stGame.nAwayTeamRanking) gt 0>(#rc.stGame.nAwayTeamRanking#) </cfif>#rc.stGame.sAwayTeam#<cfif len(rc.stGame.sAwayTeamRecord) gt 0> (#rc.stGame.sAwayTeamRecord#)</cfif> at <cfif len(rc.stGame.nHomeTeamRanking) gt 0>(#rc.stGame.nHomeTeamRanking#) </cfif>#rc.stGame.sHomeTeam#<cfif len(rc.stGame.sHomeTeamRecord) gt 0> (#rc.stGame.sHomeTeamRecord#)</cfif></h4>
-		<h5>Game Date/Time: #dateFormat(rc.stGame.sGameDateTime, 'dddd mmmm d')# @ #timeFormat(rc.stGame.sGameDateTime, 'h:mm')# <cfif timeFormat(rc.stGame.sGameDateTime, 'HH') gte 12>PM<cfelse>AM</cfif></h5>
+		<h5>Game Date/Time: #dateFormat(rc.stGame.sGameDateTime, 'dddd mmmm d')# @ #timeFormat(rc.stGame.sGameTime, 'h:mm')# <cfif timeFormat(rc.stGame.sGameTime, 'HH') gte 12>PM<cfelse>AM</cfif></h5>
 		<h4><cfif compareNoCase(rc.stGame.sSpreadFavor, "home") eq 0>#rc.stGame.sHomeTeam# (home)<cfelse>#rc.stGame.sAwayTeam# (away)</cfif> are favored by #rc.stGame.nSpread# points</h4>
 		<div class="row">
 			<div class="col-md-8">
@@ -42,49 +38,52 @@
 			</div>
 		</div>
 			<div class="row">
-			<div class="col-md-3">
-				<h4>Previous games</h4>
-				<h5>#rc.stGame.sAwayTeam#<cfif len(rc.stGame.sAwayTeamRecord) gt 0> (#rc.stGame.sAwayTeamRecord#)</cfif></h5>
-				<cfif structKeyExists(rc.stWeeklyTeamResults, rc.stGame.nAwayTeamID)>
-					<cfloop from="1" to="#arrayLen(rc.stWeeklyTeamResults[rc.stGame.nAwayTeamID])#" index="local.itm">
-						<ul class="list-group">
-							<cfscript>
-								local.nWinner = 2;
-								if( rc.stWeeklyTeamResults[rc.stGame.nAwayTeamID][local.itm][1].nScore gt rc.stWeeklyTeamResults[rc.stGame.nAwayTeamID][local.itm][2].nScore ){
-									local.nWinner = 1;
-								}
-							</cfscript>
-							<cfloop from="1" to="#arrayLen(rc.stWeeklyTeamResults[rc.stGame.nAwayTeamID][local.itm])#" index="local.x">
-								<li class="list-group-item<cfif local.nWinner eq local.x> list-group-item-info</cfif>">
-									#rc.stWeeklyTeamResults[rc.stGame.nAwayTeamID][local.itm][local.x].sTeamName#
-									<span class="badge">
-										#rc.stWeeklyTeamResults[rc.stGame.nAwayTeamID][local.itm][local.x].nScore#
-									</span>
-								</li>
+				<div class="col-md-3">
+					<cfif structKeyExists(rc.stWeeklyTeamResults, rc.stGame.nAwayTeamID) or structKeyExists(rc.stWeeklyTeamResults, rc.stGame.nHomeTeamID)>
+						<h4>Previous games</h4>
+						<cfif structKeyExists(rc.stWeeklyTeamResults, rc.stGame.nAwayTeamID)>
+							<h5>#rc.stGame.sAwayTeam#<cfif len(rc.stGame.sAwayTeamRecord) gt 0> (#rc.stGame.sAwayTeamRecord#)</cfif></h5>
+							<cfloop from="1" to="#arrayLen(rc.stWeeklyTeamResults[rc.stGame.nAwayTeamID])#" index="local.itm">
+								<ul class="list-group">
+									<cfscript>
+										local.nWinner = 2;
+										if( rc.stWeeklyTeamResults[rc.stGame.nAwayTeamID][local.itm][1].nScore gt rc.stWeeklyTeamResults[rc.stGame.nAwayTeamID][local.itm][2].nScore ){
+											local.nWinner = 1;
+										}
+									</cfscript>
+									<cfloop from="1" to="#arrayLen(rc.stWeeklyTeamResults[rc.stGame.nAwayTeamID][local.itm])#" index="local.x">
+										<li class="list-group-item<cfif local.nWinner eq local.x> list-group-item-info</cfif>">
+											#rc.stWeeklyTeamResults[rc.stGame.nAwayTeamID][local.itm][local.x].sTeamName#
+											<span class="badge">
+												#rc.stWeeklyTeamResults[rc.stGame.nAwayTeamID][local.itm][local.x].nScore#
+											</span>
+										</li>
+									</cfloop>
+								</ul>
 							</cfloop>
-						</ul>
-					</cfloop>
-				</cfif>
-				<h4>#rc.stGame.sHomeTeam#</h4>
-				<cfif structKeyExists(rc.stWeeklyTeamResults, rc.stGame.nHomeTeamID)>
-					<cfloop from="1" to="#arrayLen(rc.stWeeklyTeamResults[rc.stGame.nHomeTeamID])#" index="local.itm">
-						<ul class="list-group">
-							<cfscript>
-								local.nWinner = 2;
-								if( rc.stWeeklyTeamResults[rc.stGame.nHomeTeamID][local.itm][1].nScore gt rc.stWeeklyTeamResults[rc.stGame.nHomeTeamID][local.itm][2].nScore ){
-									local.nWinner = 1;
-								}
-							</cfscript>
-							<cfloop from="1" to="#arrayLen(rc.stWeeklyTeamResults[rc.stGame.nHomeTeamID][local.itm])#" index="local.x">
-								<li class="list-group-item<cfif local.nWinner eq local.x> list-group-item-info</cfif>">
-									#rc.stWeeklyTeamResults[rc.stGame.nHomeTeamID][local.itm][local.x].sTeamName#
-									<span class="badge">
-										#rc.stWeeklyTeamResults[rc.stGame.nHomeTeamID][local.itm][local.x].nScore#
-									</span>
-								</li>
+						</cfif>
+						<cfif structKeyExists(rc.stWeeklyTeamResults, rc.stGame.nHomeTeamID)>
+							<h5>#rc.stGame.sHomeTeam#</h5>
+							<cfloop from="1" to="#arrayLen(rc.stWeeklyTeamResults[rc.stGame.nHomeTeamID])#" index="local.itm">
+								<ul class="list-group">
+									<cfscript>
+										local.nWinner = 2;
+										if( rc.stWeeklyTeamResults[rc.stGame.nHomeTeamID][local.itm][1].nScore gt rc.stWeeklyTeamResults[rc.stGame.nHomeTeamID][local.itm][2].nScore ){
+											local.nWinner = 1;
+										}
+									</cfscript>
+									<cfloop from="1" to="#arrayLen(rc.stWeeklyTeamResults[rc.stGame.nHomeTeamID][local.itm])#" index="local.x">
+										<li class="list-group-item<cfif local.nWinner eq local.x> list-group-item-info</cfif>">
+											#rc.stWeeklyTeamResults[rc.stGame.nHomeTeamID][local.itm][local.x].sTeamName#
+											<span class="badge">
+												#rc.stWeeklyTeamResults[rc.stGame.nHomeTeamID][local.itm][local.x].nScore#
+											</span>
+										</li>
+									</cfloop>
+								</ul>
 							</cfloop>
-						</ul>
-					</cfloop>
+						</cfif>
+					</div>
 				</cfif>
 			</div>
 		</div>
