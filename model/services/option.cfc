@@ -45,13 +45,21 @@ public void function buildOptions(){
 			"sOptions" = "",
 			"nOrder" = 2
 		},{
+			"bCanNotify" = 1,
+			"sShortName" = "Games Available",
+			"sLabel" = "Notify me when games become available",
+			"nType" = 1,
+			"sCodeKey" = "gamesAvailable",
+			"sOptions" = "",
+			"nOrder" = 3
+		},{
 			"bCanNotify" = 0,
 			"sShortName" = "Notify by",
 			"sLabel" = "Notify me by:",
 			"nType" = 3,
 			"sCodeKey" = "notificationType",
 			"sOptions" = '{ "options" : [{ "sValue" : "e-mail", "sOption" : "E-mail" }] }',
-			"nOrder" = 3
+			"nOrder" = 4
 		},{
 			"bCanNotify" = 0,
 			"sShortName" = "Timezone",
@@ -59,7 +67,7 @@ public void function buildOptions(){
 			"nType" = 3,
 			"sCodeKey" = "timezone",
 			"sOptions" = '{ "options" : [ { "sValue" : "Pacific", "sOption" : "Pacific" }, { "sValue" : "Eastern", "sOption" : "Eastern" }] }',
-			"nOrder" = 4
+			"nOrder" = 5
 		},{
 			"bCanNotify" = 0,
 			"sShortName" = "Autopick",
@@ -67,7 +75,7 @@ public void function buildOptions(){
 			"nType" = 3,
 			"sCodeKey" = "autopick",
 			"sOptions" = '{ "options" : [ { "sValue" : "None", "sOption" : "None" }, { "sValue" : "Favorites", "sOption" : "Pick all favorites" }, { "sValue" : "Underdogs", "sOption" : "Pick all underdogs" }, { "sValue" : "Random", "sOption" : "Pick random" } ] }',
-			"nOrder" = 5
+			"nOrder" = 6
 		}
 	];
 	// loop through the options and add them if they don't exist

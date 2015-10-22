@@ -1,25 +1,26 @@
 <cfif structKeyExists(rc.stGameStats, "arHomeTeam")>
 	<cfoutput>
 		<cfscript>
+			local.bPicksMade = false;
 			local.nHomeTeamPicks = arrayLen(rc.stGameStats.arHomeTeam);
 			local.nAwayTeamPicks = arrayLen(rc.stGameStats.arAwayTeam);
 			local.nTotalPicks = local.nHomeTeamPicks + local.nAwayTeamPicks;
-			local.nHomeTeamPercentage = numberFormat((local.nHomeTeamPicks/local.nTotalPicks)*100, '__');
-			local.nAwayTeamPercentage = numberFormat((local.nAwayTeamPicks/local.nTotalPicks)*100, '__');
-			local.sHomeClass = "progress-bar-success";
-			local.sAwayClass = "progress-bar-warning";
-			if( local.nHomeTeamPercentage lt local.nAwayTeamPercentage ){
-				local.sHomeClass = "progress-bar-warning";
-				local.sAwayClass = "progress-bar-success";
-			} else if ( local.nHomeTeamPercentage eq local.nAwayTeamPercentage ){
-				local.sAwayClass = "progress-bar-success";
+			if( local.nTotalPicks gt 0 ){
+				local.nHomeTeamPercentage = numberFormat((local.nHomeTeamPicks/local.nTotalPicks)*100, '__');
+				local.nAwayTeamPercentage = numberFormat((local.nAwayTeamPicks/local.nTotalPicks)*100, '__');
+				local.sHomeClass = "progress-bar-success";
+				local.sAwayClass = "progress-bar-warning";
+				if( local.nHomeTeamPercentage lt local.nAwayTeamPercentage ){
+					local.sHomeClass = "progress-bar-warning";
+					local.sAwayClass = "progress-bar-success";
+				} else if ( local.nHomeTeamPercentage eq local.nAwayTeamPercentage ){
+					local.sAwayClass = "progress-bar-success";
+				}
+				local.bPicksMade = true;
 			}
 		</cfscript>
-		<!--- // <div id="admin" class="panel panel-default">
-			<div class="panel-heading">
-				<h2>Game Info</h2>
-			</div> --->
-			<div class="panel-body">
+		<div class="panel-body">
+			<cfif local.bPicksMade>
 				<div class="row">
 					<div class="col-md-12">
 						<h5>#rc.stGame.sGameDateTime#</h5>
@@ -56,8 +57,10 @@
 						</div>
 					</div>
 				</div>
-			</div>
-		<!--- </div> --->
+			<cfelse>
+				Sorry no game stats available at this time
+			</cfif>
+		</div>
 	</cfoutput>
 <cfelse>
 	Sorry no game stats available at this time

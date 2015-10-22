@@ -5,6 +5,8 @@ property name="gameService";
 property name="teamService";
 property name="weekGateway";
 property name="standingGateway";
+property name="optionGateway";
+property name="notifyService";
 
 public void function before (rc){
 	param name="rc.nWeekID" default="0";
@@ -49,11 +51,17 @@ public Void function saveWeek(rc){
 	var stWeekGames = {};
 	var arGamesToDelete = [];
 	var lstGamesToDelete = "";
+	var bInitialSetup = false;
+	var arOption = [];
 	try {
 		// get the games that have already been saved for this week
 		stWeekGames = variables.gameService.getGameStructForWeek(rc.nWeekID);
 		// make a list of these games (this will be used to determine which games are missing e.g need delete)
 		lstGamesToDelete = structKeyList(stWeekGames);
+		// if we are in the initial setup then send out notification later
+		if( listLen(lstGamesToDelete) eq 0 ){
+			bInitialSetup = true;
+		}
 		// loop through the games and save the team (if needed)
 		for( itm; itm lte arrayLen(rc.arGames); itm++ ){
 			// get the game object (will return a new object if the gameID doesn't exist)
@@ -105,6 +113,12 @@ public Void function saveWeek(rc){
 		// make sure we saved all of the games
 		if( arrayLen(rc.arGames) neq arrayLen(rc.arSavedGames) ){
 			throw("Error");
+		} else if ( bInitialSetup ){
+			// send out notifications for all users about the beginning of the week
+			arOption = variables.optionGateway.getByCodeKey("gamesAvailable");
+			if( arrayLen(arOption) gt 0 ){
+				variables.notifyService.processNotification(arOption[1], rc.oWeek);
+			}
 		}
 	} catch ( any e ){
 		// TODO: do some logging

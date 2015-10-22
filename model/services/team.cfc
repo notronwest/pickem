@@ -53,7 +53,7 @@ public Array function findTeam( Required String sName ){
 	var itm = 1;
 	var arTeamNames = [];
 	for(itm; itm lte arrayLen(arTeams); itm++ ){
-		arrayAppend(arTeamNames, arTeams[itm].getSName());
+		arrayAppend(arTeamNames, arTeams[itm].getSName() & " " & arTeams[itm].getSMascot());
 	}
 	return arTeamNames;
 }

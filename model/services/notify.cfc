@@ -100,6 +100,7 @@ public model.beans.option function processNotification( Required model.beans.opt
 			break;
 			// handle everyone that wants a notification anyways
 			case "alwaysBeforeGames":
+			case "gamesAvailable":
 				// loop through each user
 				for( itm; itm lte arrayLen(arUserNotifications); itm++ ){
 					nUserID = arUserNotifications[itm].getNUserID();
