@@ -15,10 +15,10 @@
 				local.sAwayClass = "progress-bar-success";
 			}
 		</cfscript>
-		<div id="admin" class="panel panel-default">
+		<!--- // <div id="admin" class="panel panel-default">
 			<div class="panel-heading">
 				<h2>Game Info</h2>
-			</div>
+			</div> --->
 			<div class="panel-body">
 				<div class="row">
 					<div class="col-md-12">
@@ -57,7 +57,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		<!--- </div> --->
 	</cfoutput>
 <cfelse>
 	Sorry no game stats available at this time

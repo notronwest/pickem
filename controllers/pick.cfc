@@ -167,7 +167,7 @@ public void function gameInfo(rc){
 	param name="rc.nGameID" default="0";
 	param name="rc.stGame" default="#{}#";
 	param name="rc.stGameStats" default="#{}#";
-	rc.bIsDialog = false;
+	rc.bIsDialog = true;
 	rc.oGame = variables.gameGateway.get(rc.nGameID);
 	// if someone tries to access this view when the week isn't locked forward them back
 	if( !rc.bIsLocked){
