@@ -10,7 +10,9 @@
 					<select id="nNewTeamID" name="nNewTeamID" class="form-control" size="1">
 						<option value="">Select</option>
 						<cfloop from="1" to="#arrayLen(rc.arTeams)#" index="local.itm">
-							<option value="#rc.arTeams[local.itm].getNTeamID()#">#rc.arTeams[local.itm].getSName()#</option>
+							<cfif rc.arTeams[local.itm].getNTeamID() neq rc.oTeam.getNTeamID()>
+								<option value="#rc.arTeams[local.itm].getNTeamID()#">#rc.arTeams[local.itm].getSName()# #rc.arTeams[local.itm].getSMascot()#</option>
+							</cfif>
 						</cfloop>
 					</select>
 				</div>
