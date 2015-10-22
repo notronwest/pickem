@@ -371,8 +371,8 @@ public Query function getTeamRecord( Required Numeric nTeamID, Required Numeric 
 	if( arguments.bFavored ){
 		sOperator = ">=";
 	}
-	var qryRecord = variables.dbService.runQuery("SELECT COALESCE(sum(case when g.nWinner = #arguments.nTeamID# AND g.#sField# = #arguments.nTeamID# AND nSpread #sOperator# #arguments.nSpread# then 1 end), 0) as nWinsAgainstSpread,
-COALESCE(sum(case when g.nWinner != #arguments.nTeamID# AND g.#sField# = #arguments.nTeamID# AND nSpread #sOperator# #arguments.nSpread# then 1 end), 0) as nLossesAgainstSpread
+	var qryRecord = variables.dbService.runQuery("SELECT COALESCE(sum(case when g.nWinner = #arguments.nTeamID# AND g.#sField# = #arguments.nTeamID# AND nSpread #sOperator# #arguments.nSpread# then 1 end), 0) as nWins,
+COALESCE(sum(case when g.nWinner != #arguments.nTeamID# AND g.#sField# = #arguments.nTeamID# AND nSpread #sOperator# #arguments.nSpread# then 1 end), 0) as nLosses
 FROM game g
 JOIN `week` w
 on g.nWeekID = w.nWeekID 

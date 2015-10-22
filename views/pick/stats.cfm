@@ -23,9 +23,9 @@
 				<h4>Team stats</h4>
 				<ul class="list-group">
 					<cfloop from="1" to="#arrayLen(rc.arTeamStats)#" index="local.itm">
-						<li class="list-group-item<cfif rc.arTeamStats[local.itm].qryRecord.recordCount eq 0> alert alert-warning<cfelseif rc.arTeamStats[local.itm].qryRecord.nWinsAgainstSpread gt rc.arTeamStats[local.itm].qryRecord.nLossesAgainstSpread> alert alert-success<cfelse> alert alert-danger</cfif>">
+						<li class="list-group-item<cfif rc.arTeamStats[local.itm].qryRecord.recordCount eq 0> alert alert-warning<cfelseif rc.arTeamStats[local.itm].qryRecord.nWins gt rc.arTeamStats[local.itm].qryRecord.nLosses> alert alert-success<cfelse> alert alert-danger</cfif>">
 							The #rc.arTeamStats[local.itm].sTeamName# are 
-							<cfif rc.arTeamStats[local.itm].qryRecord.recordCount gt 0>#rc.arTeamStats[local.itm].qryRecord.nWinsAgainstSpread# - #rc.arTeamStats[local.itm].qryRecord.nLossesAgainstSpread#<cfelse>Have no record</cfif> #lCase(rc.arTeamStats[local.itm].sLabel)#.
+							<cfif rc.arTeamStats[local.itm].qryRecord.recordCount gt 0>#rc.arTeamStats[local.itm].qryRecord.nWins# - #rc.arTeamStats[local.itm].qryRecord.nLosses#<cfelse>Have no record</cfif> #lCase(rc.arTeamStats[local.itm].sLabel)#.
 					</cfloop>
 				</ul>
 			</div>
