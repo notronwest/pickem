@@ -197,4 +197,11 @@ public void function isDateValid(rc){
 	rc.aResult = variables.commonService.isValidDateTime(rc.dtToCheck);
 	variables.framework.setView("main.serialize");
 }
+
+public void function updateGamesWithRankings(rc){
+	rc.sMessage = "Games updated with AP rankings";
+	// update all of the games with the rankings
+	variables.gameService.updateGamesWithRankings(rc.nWeekID, rc.nCurrentSeasonID);
+	variables.framework.setView("main.message");
+}
 }
