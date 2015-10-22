@@ -38,7 +38,7 @@
 			</div>
 		</div>
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-md-4">
 					<cfif structKeyExists(rc.stWeeklyTeamResults, rc.stGame.nAwayTeamID) or structKeyExists(rc.stWeeklyTeamResults, rc.stGame.nHomeTeamID)>
 						<h4>Previous games</h4>
 						<cfif structKeyExists(rc.stWeeklyTeamResults, rc.stGame.nAwayTeamID)>
