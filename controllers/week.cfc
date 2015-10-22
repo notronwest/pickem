@@ -163,7 +163,8 @@ public void function manage(rc){
 }
 
 public void function getWeeklyTeamResults(rc){
-	rc.stWeeklyTeamResults = variables.weekService.getTeamResults(rc.nWeekID);
+	param name="rc.bForce" default="false";
+	rc.stWeeklyTeamResults = variables.weekService.getTeamResults(rc.nWeekID, rc.bForce);
 }
 
 }

@@ -89,6 +89,7 @@
 				</td>
 				<!--- // render controls --->
 				<td class="change hidden">
+					<span class="fa fa-bar-chart-o fa-lg stats-info icons"></span>
 					<button data-id="#stFavorite.nID#" type="button" class="btn btn-xs #((stFavorite.bIsHome) ? 'home' : '')##((stFavorite.nID eq bPick) ? ' pick btn-success' : ' btn-default')#">
 						<cfif len(stFavorite.nRanking) gt 0>(#stFavorite.nRanking#) </cfif>#stFavorite.sName# #((len(stFavorite.sRecord) gt 0 ) ? "(" & stFavorite.sRecord & ")" : "")#
 						<span class="badge">
