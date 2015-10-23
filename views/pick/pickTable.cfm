@@ -4,6 +4,12 @@
 		<!--- // determine who gets pick class --->
 		<cfscript>
 			stGame = local.arWeekGames[local.itm];
+			sGamesDividerClass = "";
+			// determine if we have changed to NFL games
+			if( !stGame.bGameIsNCAA and compareNoCase(sCurrentGame, "NCAA") eq 0 ){
+				sGamesDividerClass = " games-divider";
+				sCurrentGame = "NFL";
+			}
 			// set game date/time
 			sGameDate = listFirst(stGame.sGameDateTime, " ");
 			sGameTime = listLast(stGame.sGameDateTime, " ");
@@ -61,7 +67,7 @@
 				bPickIsLocked = true;
 			}
 		</cfscript>
-		<tr class="game#((bPickIsLocked) ? ' locked' : '')#" data-id="#rc.arWeekGames[local.itm].nGameId#" data-nWeekID="#rc.nWeekID#">
+		<tr class="game#((bPickIsLocked) ? ' locked' : '')##sGamesDividerClass#" data-id="#rc.arWeekGames[local.itm].nGameId#" data-nWeekID="#rc.nWeekID#">
 			<td>#stGame.nTiebreak#<cfif bPickIsLocked>&nbsp;<span class="fa fa-lock"></span></cfif></td>
 			<!--- // render picks --->
 			<td class="picks">

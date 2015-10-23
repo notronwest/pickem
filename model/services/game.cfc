@@ -116,6 +116,7 @@ public Struct function buildGameStruct( Required model.beans.game oGame, Boolean
 	var oHomeTeam = variables.teamGateway.get(arguments.oGame.getNHomeTeamID());
 	var oAwayTeam = variables.teamGateway.get(arguments.oGame.getNAwayTeamID());
 	var stGame = {
+		"bGameIsNCAA" = (oHomeTeam.getNType() eq 1) ? true : false,
 		"nGameID" = arguments.oGame.getNGameID(),
 		"nHomeTeamID" = arguments.oGame.getNHomeTeamID(),
 		"sHomeTeam" = oHomeTeam.getSName() & ((arguments.bAppendMascot) ? " " & oHomeTeam.getSMascot() : ""),

@@ -73,6 +73,8 @@
 							local.arWeekGames = rc.arWeekGames;
 							// set the picks for the user
 							local.stPicks = rc.stUserWeek.stPicks;
+							// start rows as ncaa
+							local.sCurrentGame = "NCAA";
 							include "pickTable.cfm";
 						</cfscript>
 					</tbody>	
