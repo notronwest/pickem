@@ -38,6 +38,7 @@
 							<th>Score</th>
 							<th>Underdog</th>
 							<th>Score</th>
+							<th>Game Status</th>
 							<th>Is Final?</th>
 						</thead>
 						<tbody>
@@ -54,6 +55,9 @@
 										<td><label class="home">#rc.arWeekGames[local.itm].sHomeTeam#</label></td>
 										<td><input type="tel" class="score control-sm home" data-id="#rc.arWeekGames[local.itm].nHomeTeamID#" value="#rc.arWeekGames[local.itm].nHomeScore#" min="0" step="1"></td>
 									</cfif>
+									<td>
+										<input type="tel" class="status control-sm" name="sGameStatus" value="#rc.arWeekGames[local.itm].sGameStatus#" min="0" step="1">
+									</td>
 									<td>
 										<input type="checkbox" class="game-is-final"<cfif rc.arWeekGames[local.itm].bGameIsFinal eq 1> checked="checked"</cfif>/>
 									</td>
