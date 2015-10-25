@@ -50,7 +50,7 @@ app.get('/get-scores', function(req, res){
       uri: sSearchURL,
       method: 'GET',
       headers: stHeaders,
-      qs: { "p": arHomeTeam[0] + " Football Results" }
+      qs: { "p": arHomeTeam[1] + " Football Results" } // using the second index gives the mascot
     }
     //get the score data from the API and handle parsing
     request(stOptions, function(err, response, body){
