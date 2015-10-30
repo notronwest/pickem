@@ -11,6 +11,7 @@ component entityname="week" persistent="true" table="week" output="false" {
 	property name="nBonus" fieldtype="column" ormtype="string" length="1" dbdefault="0";
 	property name="sSeason" fieldtype="column" ormtype="string";
 	property name="nSeasonID" fieldtype="column" ormtype="int";
+	property name="sWeeklyResults" fieldtype="column" ormtype="text";
 
 	/**
 	* @output false

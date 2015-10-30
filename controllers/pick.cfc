@@ -7,6 +7,7 @@ property name="weekGateway";
 property name="userGateway";
 property name="gameGateway";
 property name="statService";
+property name="weekService";
 
 public void function before(rc){
 	// default all to a dialog
@@ -36,9 +37,8 @@ public void function before(rc){
 	if( compare(variables.dbService.dbDateTimeFormat(rc.dtPicksDue), variables.dbService.dbDateTimeFormat() ) lte 0){
 		rc.bIsLocked = true;
 	}
-	if( structKeyExists(application.stWeeklyTeamResults, rc.nWeekID) ) {
-		rc.stWeeklyTeamResults = application.stWeeklyTeamResults[rc.nWeekID];
-	}
+	// get the weekly stats
+	rc.stWeeklyTeamResults = variables.weekService.getTeamResults(rc.nWeekID);
 }
 
 public void function set(rc){

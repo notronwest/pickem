@@ -1,7 +1,7 @@
 component accessors="true" extends="model.services.baseService" {
 property name="teamService";
 property name="gameService";
-
+property name="weekGateway";
 /*
 Author: 	
 	Ron West
@@ -56,6 +56,8 @@ public Struct function getTeamResults( Required Numeric nWeekID, Boolean bForce 
 	var itm = 1;
 	var arGames = [];
 	var bGetResults = false;
+	var oWeek = variables.weekGateway.get(arguments.nWeekID);
+
 	// clear out the old data
 	if( listLen(structKeyList(application.stWeeklyTeamResults)) gt 0 and not structKeyExists(application.stWeeklyTeamResults, arguments.nWeekID) ){
 		structClear(application.stWeeklyTeamResults);
@@ -63,8 +65,16 @@ public Struct function getTeamResults( Required Numeric nWeekID, Boolean bForce 
 	// make sure we have an entry for this week
 	if( not structKeyExists(application.stWeeklyTeamResults, arguments.nWeekID) ){
 		application.stWeeklyTeamResults[arguments.nWeekID] = {};
-		// since we added it we need to get the data
-		bGetResults = true;
+		// see if we have data for this week stored in the DB
+		if( not isNull(oWeek.getSWeeklyResults())
+			and len(oWeek.getSWeeklyResults()) gt 0
+			and isJSON(oWeek.getSWeeklyResults()) ){
+			// deserialize
+			application.stWeeklyTeamResults[arguments.nWeekID] = deserializeJSON(oWeek.getSWeeklyResults());
+		} else {
+			// we didn't have any results stored in the db
+			bGetResults = true;
+		}
 	}
 	// if we are getting the results or if we are forcing it
 	if( bGetResults or arguments.bForce ){
@@ -79,6 +89,10 @@ public Struct function getTeamResults( Required Numeric nWeekID, Boolean bForce 
 			// store this teams data in the struct
 			application.stWeeklyTeamResults[arguments.nWeekID][arWeekGames[itm].nAwayTeamID] = arGames;
 		}
+		// push the data struct into the week as JSON
+		variables.weekGateway.update(oWeek, {"sWeeklyResults" = serializeJSON(application.stWeeklyTeamResults[arguments.nWeekID])});
+
+
 	}
 	return application.stWeeklyTeamResults[arguments.nWeekID];
 }

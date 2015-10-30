@@ -165,7 +165,7 @@ join `week` w
 on g.nWeekID = w.nWeekID
 where t.nType = #arguments.nType#
 and upper(g.sSpreadFavor) = 'HOME'
-and nWinner = nHomeTeam
+and nWinner = nHomeTeamID
 and g.nSpread #arguments.sSpreadOperator# #arguments.nSpread#
 and p.nUserID = #arguments.nUserID#
 and w.nSeasonID = #arguments.nSeasonID#");

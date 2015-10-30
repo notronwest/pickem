@@ -379,6 +379,7 @@ public Struct function buildTeamRankings(){
 	var itm = 1;
 	var arTeam = [];
 	var stRankings = {};
+writeDump(arStandingsFromSource);
 	// loop over the rankings and load the team
 	for(itm; itm lte arrayLen(arStandingsFromSource); itm++ ){
 		// see if this has a team

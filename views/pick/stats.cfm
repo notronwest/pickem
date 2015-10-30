@@ -63,7 +63,7 @@
 							</cfloop>
 						</cfif>
 						<cfif structKeyExists(rc.stWeeklyTeamResults, rc.stGame.nHomeTeamID)>
-							<h5>#rc.stGame.sHomeTeam#</h5>
+							<h5>#rc.stGame.sHomeTeam#<cfif len(rc.stGame.sHomeTeamRecord) gt 0> (#rc.stGame.sHomeTeamRecord#)</cfif></h5>
 							<cfloop from="1" to="#arrayLen(rc.stWeeklyTeamResults[rc.stGame.nHomeTeamID])#" index="local.itm">
 								<ul class="list-group">
 									<cfscript>
