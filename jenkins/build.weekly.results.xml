@@ -1,0 +1,31 @@
+<project name="weekly results" default="dist">
+  <description>
+    Executes the weekly results URL
+  </description>
+  <!-- set global properties for this build -->
+  <property environment="env"/>
+
+  <target name="dist">
+    <!-- // start up a version of pm2 -->
+    <exec executable="pm2">
+      <arg line="start /store/apache/htdocs/pickem/nodejs/bin/www"></arg>
+    </exec>
+
+    <!-- // make call to get weekly results for teams -->
+    <get src="http://pickem.inquisibee.com?action=week.getWeeklyTeamResults&amp;sAPIKey=AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U" dest="weekly-results.htm"/>
+
+    <!-- // shut down pm2 -->
+    <exec executable="pm2">
+      <arg line="stop www"></arg>
+    </exec>
+
+    <exec executable="pm2">
+      <arg line="delete www"></arg>
+    </exec>
+
+    <exec executable="pm2">
+      <arg line="kill"></arg>
+    </exec>
+  </target>
+
+</project>

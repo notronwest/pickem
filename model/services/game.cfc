@@ -384,7 +384,7 @@ public Struct function buildTeamRankings(){
 		// see if this has a team
 		arTeam = variables.teamGateway.getByNameExact(arStandingsFromSource[itm]);
 		// if this has a team then see if this team is in a game this week
-		if( arrayLen(arTeam) gt 0 ){
+		if( arrayLen(arTeam) gt 0 and arTeam[1].getNType() eq 1 ){
 			stRankings[itm] = arTeam[1].getNTeamID(); 
 		}
 	}

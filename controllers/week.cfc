@@ -167,4 +167,8 @@ public void function getWeeklyTeamResults(rc){
 	rc.stWeeklyTeamResults = variables.weekService.getTeamResults(rc.nWeekID, rc.bForce);
 }
 
+public void function getAPRankings(rc){
+	variables.gameService.updateGamesWithRankings(rc.nWeekID, rc.nCurrentSeasonID);
+}
+
 }

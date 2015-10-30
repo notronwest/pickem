@@ -1,0 +1,34 @@
+<project name="get scores" default="dist">
+  <description>
+    Gets the scores for the week
+  </description>
+  <!-- set global properties for this build -->
+  <property environment="env"/>
+
+  <target name="dist">
+    <!-- // start up a version of pm2 -->
+    <exec executable="pm2">
+      <arg line="start /store/apache/htdocs/pickem/nodejs/bin/www"></arg>
+    </exec>
+
+    <!-- // pause for a few seconds to make sure the script is ready -->
+    <sleep milliseconds="2000"/>
+
+    <!-- // make call to get the scores -->
+    <get src="http://pickem.inquisibee.com?action=game.getGameScores&amp;bProcess=true&amp;sAPIKey=AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U" dest="scores-results.htm"/>
+
+    <!-- // shut down pm2 -->
+    <exec executable="pm2">
+      <arg line="stop www"></arg>
+    </exec>
+
+    <exec executable="pm2">
+      <arg line="delete www"></arg>
+    </exec>
+
+    <exec executable="pm2">
+      <arg line="kill"></arg>
+    </exec>
+  </target>
+
+</project>
