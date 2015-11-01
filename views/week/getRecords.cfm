@@ -1,2 +1,2 @@
-Rankings retrieved.
+Records updated
 <cfdump var="#rc.arGames#">

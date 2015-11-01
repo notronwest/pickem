@@ -77,20 +77,11 @@ public Void function saveWeek(rc){
 				if( oHomeTeam.getNTeamID() gt 0 ){
 					// add in the id
 					rc.arGames[itm].nHomeTeamID = oHomeTeam.getNTeamID();
-					// get the record
-					if( isNull(oGame.getSHomeTeamRecord()) or len(oGame.getSHomeTeamRecord()) eq 0 ){
-						rc.arGames[itm].sHomeTeamRecord = variables.teamService.getCurrentRecord(oHomeTeam.getSName() & " " & oHomeTeam.getSMascot());
-					}
 					// save the away team
 					oAwayTeam = variables.teamService.saveTeam(rc.arGames[itm].sAwayTeam, rc.arGames[itm].sAwayTeamURL);
 					if( oAwayTeam.getNTeamID() > 0 ){
 						// add in the id
 						rc.arGames[itm].nAwayTeamID = oAwayTeam.getNTeamID();
-						// get the record
-						if( isNull(oGame.getSAwayTeamRecord()) or len(oGame.getSAwayTeamRecord()) eq 0 ){
-							rc.arGames[itm].sAwayTeamRecord = variables.teamService.getCurrentRecord(oAwayTeam.getSName() & " " & oAwayTeam.getSMascot());
-						}
-						
 						// add in the week
 						rc.arGames[itm].nWeekID = rc.nWeekID;
 						// update the order
@@ -196,12 +187,5 @@ public void function isDateValid(rc){
 	param name="rc.dtToCheck" default="";
 	rc.aResult = variables.commonService.isValidDateTime(rc.dtToCheck);
 	variables.framework.setView("main.serialize");
-}
-
-public void function updateGamesWithRankings(rc){
-	rc.sMessage = "Games updated with AP rankings";
-	// update all of the games with the rankings
-	variables.gameService.updateGamesWithRankings(rc.nWeekID, rc.nCurrentSeasonID);
-	variables.framework.setView("main.message");
 }
 }

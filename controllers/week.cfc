@@ -28,6 +28,8 @@ public void function before(rc){
 			rc.nWeekID = rc.oWeek.getNWeekID();
 		}
 	}
+	// get the games
+	rc.arGames = variables.gameService.adminWeek(rc.nWeekID, rc.nCurrentSeasonID);
 	rc.dtPicksDue = rc.oWeek.getDPicksDue() & " " & rc.oWeek.getTPicksDue();
 	rc.bIsLocked = false;
 	if( compare(rc.dtPicksDue, dateFormat(now(), 'yyyy-mm-dd') & " " & timeFormat(now(), 'hh:mm')) lte 0){
@@ -165,10 +167,17 @@ public void function manage(rc){
 public void function getWeeklyTeamResults(rc){
 	param name="rc.bForce" default="false";
 	rc.stWeeklyTeamResults = variables.weekService.getTeamResults(rc.nWeekID, rc.bForce);
+	rc.bIsDialog = false;
 }
 
 public void function getAPRankings(rc){
 	variables.gameService.updateGamesWithRankings(rc.nWeekID, rc.nCurrentSeasonID);
+	rc.bIsDialog = false;
+}
+
+public void function getRecords(rc){
+	variables.gameService.updateGamesWithRecords(rc.nWeekID, rc.nCurrentSeasonID);
+	rc.bIsDialog = false;
 }
 
 }

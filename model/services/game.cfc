@@ -433,4 +433,44 @@ public Boolean function updateGamesWithRankings( Required Numeric nWeekID, Requi
 	return bUpdated;
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$updateGamesWithRecords
+Summary:
+	Updates the team records for this week
+Returns:
+	Boolean bUpdated
+Arguments:
+	Numeric nWeekID
+	Numeric nSeasonID
+History:
+	2015-11-01 - RLW - Created
+*/
+public Boolean function updateGamesWithRecords( Required Numeric nWeekID, Required Numeric nSeasonID){
+	bSuccess = true;
+	// get the games for this week
+	var arGames = adminWeek(arguments.nWeekID, arguments.nSeasonID, false, false);
+	var itm = 1;
+	var stGameData = {};
+	for( itm; itm lte arrayLen(arGames); itm++){
+		// reset game data
+		stGameData = {};
+		// get the record for the home team
+		if( len(arGames[itm].sHomeTeamRecord) eq 0 ){
+			stGameData.sHomeTeamRecord = variables.teamService.getCurrentRecord(arGames[itm].sHomeTeam & " " & arGames[itm].sHomeTeamMascot);
+		}
+		// get the record for the away team
+		if( len(arGames[itm].sAwayTeamRecord) eq 0 ){
+			stGameData.sAwayTeamRecord = variables.teamService.getCurrentRecord(arGames[itm].sAwayTeam & " " & arGames[itm].sAwayTeamMascot);
+		}
+		if( listLen(structKeyList(stGameData)) gt 0 ){
+			// save the game
+			variables.gameGateway.update(variables.gameGateway.get(arGames[itm].nGameID), stGameData);
+		}
+	}
+	return bSuccess;
+}
+
 }
