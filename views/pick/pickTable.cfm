@@ -28,7 +28,7 @@
 				bPick = local.stPicks[local.arWeekGames[local.itm].nGameID];
 			}
 			stHome = {
-				"sName" = stGame.sHomeTeam,
+				"sName" = (stGame.bGameIsNCAA) ? stGame.sHomeTeam : stGame.sHomeTeamMascot,
 				"nID" = stGame.nHomeTeamID,
 				"nScore" = stGame.nHomeScore,
 				"nRanking" = stGame.nHomeTeamRanking,
@@ -38,7 +38,7 @@
 				"sClass" = "btn-default"
 			};
 			stAway = {
-				"sName" = stGame.sAwayTeam,
+				"sName" = (stGame.bGameIsNCAA) ? stGame.sAwayTeam : stGame.sAwayTeamMascot,
 				"nID" = stGame.nAwayTeamID,
 				"nScore" = stGame.nAwayScore,
 				"nRanking" = stGame.nAwayTeamRanking,
