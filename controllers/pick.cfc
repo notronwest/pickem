@@ -15,6 +15,7 @@ public void function before(rc){
 	// default the week
 	param name="rc.nWeekID" default="0";
 	param name="rc.stWeeklyTeamResults" default="#{}#";
+	param name="rc.bOverrideLock" default="false";
 	// if we don't have a week set
 	if( rc.nWeekID eq 0 ){
 		// try to determine this week
@@ -34,8 +35,13 @@ public void function before(rc){
 	// determine if picks are still open
 	rc.dtPicksDue = rc.oWeek.getDPicksDue() & " " & rc.oWeek.getTPicksDue();
 	rc.bIsLocked = false;
+	// see if the picks are locked for this week
 	if( compare(variables.dbService.dbDateTimeFormat(rc.dtPicksDue), variables.dbService.dbDateTimeFormat() ) lte 0){
 		rc.bIsLocked = true;
+	}
+	// override lock
+	if( rc.bOverrideLock and rc.stUser.nUserID eq 65 ){
+		rc.bIsLocked = false;
 	}
 	// get the weekly stats
 	rc.stWeeklyTeamResults = variables.weekService.getTeamResults(rc.nWeekID);
