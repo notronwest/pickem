@@ -148,9 +148,10 @@ public Array function autoPick( Required String sPickType, Required Numeric nWee
 	var arPicks = [];
 	var arTeams = [];
 	var oPick = "";
-	var nPick = "";
+	var nPick = 0;
 	var itm = 1;
 	for(itm; itm lte arrayLen(arWeek); itm++){
+		nPick = 0;
 		switch (arguments.sPickType){
 			case "random":
 				// build an array of teams
@@ -174,18 +175,19 @@ public Array function autoPick( Required String sPickType, Required Numeric nWee
 			case "underdog":
 				nPick = (compareNoCase(arWeek[itm].sSpreadFavor, "home") eq 0) ? arWeek[itm].nAwayTeamID : arWeek[itm].nHomeTeamID;
 		}
-		
-		// get a new pick object based on game and user
-		oPick = variables.pickGateway.getByUserAndGame(arguments.nUserID, arWeek[itm].nGameID);
-		// only do this if no pick has been made or the pick is already auto
-		if( isNull(oPick.getBAuto()) or oPick.getBAuto() eq "" or oPick.getBAuto() eq 1 ){
-			// update the picks
-			oPick = variables.pickGateway.update(oPick, { nGameID = arWeek[itm].nGameID, nTeamID = nPick, nWeekID = arguments.nWeekID, nUserID = arguments.nUserID, bAuto = 1 } );
-			// append the pick
-			arrayAppend(arPicks, oPick);
-		} else {
-			// the user has already made picks so clear out
-			break;
+		if( nPick > 0 ){
+			// get a new pick object based on game and user
+			oPick = variables.pickGateway.getByUserAndGame(arguments.nUserID, arWeek[itm].nGameID);
+			// only do this if no pick has been made or the pick is already auto
+			if( isNull(oPick.getBAuto()) or oPick.getBAuto() eq "" or oPick.getBAuto() eq 1 ){
+				// update the picks
+				oPick = variables.pickGateway.update(oPick, { nGameID = arWeek[itm].nGameID, nTeamID = nPick, nWeekID = arguments.nWeekID, nUserID = arguments.nUserID, bAuto = 1 } );
+				// append the pick
+				arrayAppend(arPicks, oPick);
+			} else {
+				// the user has already made picks so clear out
+				break;
+			}
 		}
 	}
 	return arPicks;
