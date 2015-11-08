@@ -26,6 +26,8 @@ component extends="framework" {
 			"subscription.noPayNoPlay"];
 		// store weekly results
 		application.stWeeklyTeamResults = {};
+		// track when the auto picks are made each week
+		application.stAutoPicks = {};
 	}
 
 	/** 

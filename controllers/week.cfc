@@ -180,4 +180,15 @@ public void function getRecords(rc){
 	rc.bIsDialog = false;
 }
 
+public void function makeAutoPicks(rc){
+	// if the week is locked and we haven't done the autopicks yet
+	if( rc.bIsLocked and not structKeyExists(application.stAutoPicks, rc.nWeekID) ){
+		variables.weekService.makeAutoPicks(rc.nWeekID, rc.nCurrentSeasonID);
+		application.stAutoPicks[rc.nWeekID] = true;
+	}
+	rc.bIsDialog = false;
+	rc.sMessage = "Auto picks made";
+	variables.framework.setView("main.message");
+}
+
 }

@@ -126,5 +126,70 @@ public Boolean function userHasPicks( Required Numeric nWeekID, Required Numeric
 	return bHasPicks;
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$autoPick
+Summary:
+	Makes auto picks for a user for a given week
+Returns:
+	Array arPicks
+Arguments:
+	String sPickType
+	Numeric nWeekID
+	Numeric nUserID
+	Numeric nSeasonID
+History:
+	2015-11-07 - RLW - Created
+*/
+public Array function autoPick( Required String sPickType, Required Numeric nWeekID, Required Numeric nUserID, Required Numeric nSeasonID ){
+	var arWeek = variables.gameService.adminWeek(arguments.nWeekID, arguments.nSeasonID);
+	var arPicks = [];
+	var arTeams = [];
+	var oPick = "";
+	var nPick = "";
+	var itm = 1;
+	for(itm; itm lte arrayLen(arWeek); itm++){
+		switch (arguments.sPickType){
+			case "random":
+				// build an array of teams
+				arTeams = [ arWeek[itm].nHomeTeamID, arWeek[itm].nAwayTeamID ];
+				// pick randomly
+				nPick = arTeams[randRange(1,2, "SHA1PRNG")];
+			break;
+			// home team
+			case "home":
+				nPick = arWeek[itm].nHomeTeamID;
+			break;
+			// away team
+			case "away":
+				nPick = arWeek[itm].nAwayTeamID;
+			break;
+			// favorite
+			case "favorite":
+				nPick = (compareNoCase(arWeek[itm].sSpreadFavor, "home") eq 0) ? arWeek[itm].nHomeTeamID : arWeek[itm].nAwayTeamID;
+			break;
+			// underdog
+			case "underdog":
+				nPick = (compareNoCase(arWeek[itm].sSpreadFavor, "home") eq 0) ? arWeek[itm].nAwayTeamID : arWeek[itm].nHomeTeamID;
+		}
+		
+		// get a new pick object based on game and user
+		oPick = variables.pickGateway.getByUserAndGame(arguments.nUserID, arWeek[itm].nGameID);
+		// only do this if no pick has been made or the pick is already auto
+		if( isNull(oPick.getBAuto()) or oPick.getBAuto() eq "" or oPick.getBAuto() eq 1 ){
+			// update the picks
+			oPick = variables.pickGateway.update(oPick, { nGameID = arWeek[itm].nGameID, nTeamID = nPick, nWeekID = arguments.nWeekID, nUserID = arguments.nUserID, bAuto = 1 } );
+			// append the pick
+			arrayAppend(arPicks, oPick);
+		} else {
+			// the user has already made picks so clear out
+			break;
+		}
+	}
+	return arPicks;
+}
+
 }
 

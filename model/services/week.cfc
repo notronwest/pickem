@@ -2,6 +2,9 @@ component accessors="true" extends="model.services.baseService" {
 property name="teamService";
 property name="gameService";
 property name="weekGateway";
+property name="optionGateway";
+property name="settingGateway";
+property name="pickService";
 /*
 Author: 	
 	Ron West
@@ -97,5 +100,33 @@ public Struct function getTeamResults( Required Numeric nWeekID, Boolean bForce 
 	return application.stWeeklyTeamResults[arguments.nWeekID];
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$makeAutoPicks
+Summary:
+	Handles making auto picks for the week
+Returns:
+	Void
+Arguments:
+	Numeric nWeekID
+	Numeric nSeasonID
+History:
+	2015-11-07 - RLW - Created
+*/
+public Void function makeAutoPicks( Required Numeric nWeekID, Required Numeric nSeasonID ){
+	var arOption = variables.optionGateway.getByCodeKey("autopick");
+	var arUsers = [];
+	var itm = 1;
+	if( arrayLen(arOption) gt 0 ){
+		// get users with this setting
+		arUsers = variables.settingGateway.getUsersByOption(arOption[1].getNOptionID());
+		for(itm; itm lte arrayLen(arUsers); itm++){
+			variables.pickService.autoPick(arUsers[itm].getSValue(), arguments.nWeekID, arUsers[itm].getNUserID(), arguments.nSeasonID);
+		}
+
+	}
+}
 
 }

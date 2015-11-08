@@ -74,7 +74,7 @@ public void function buildOptions(){
 			"sLabel" = "Autopick:",
 			"nType" = 3,
 			"sCodeKey" = "autopick",
-			"sOptions" = '{ "options" : [ { "sValue" : "None", "sOption" : "None" }, { "sValue" : "Favorites", "sOption" : "Pick all favorites" }, { "sValue" : "Underdogs", "sOption" : "Pick all underdogs" }, { "sValue" : "Random", "sOption" : "Pick random" } ] }',
+			"sOptions" = '{ "options" : [ { "sValue" : "None", "sOption" : "None" }, { "sValue" : "Favorite", "sOption" : "Pick all favorites" }, { "sValue" : "Underdog", "sOption" : "Pick all underdogs" }, { "sValue" : "Home", "sOption" : "Pick all home teams" }, { "sValue" : "Away", "sOption" : "Pick all away teams" }, { "sValue" : "Random", "sOption" : "Pick random" } ] }',
 			"nOrder" = 6
 		}
 	];

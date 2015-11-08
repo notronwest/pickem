@@ -5,6 +5,7 @@ component entityname="pick" persistent="true" table="pick" output="false" {
 	property name="nGameID" fieldtype="column" ormtype="int";
 	property name="nTeamID" fieldtype="column" ormtype="int";
 	property name="nUserID" fieldtype="column" ormtype="int";
+	property name="bAuto" fieldtype="column" ormtype="int";
 	property name="nWin" fieldtype="column" ormtype="string" length="1" dbdefault="0";
 	/**
 	* @output false
