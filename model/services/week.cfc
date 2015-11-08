@@ -123,7 +123,9 @@ public Void function makeAutoPicks( Required Numeric nWeekID, Required Numeric n
 		// get users with this setting
 		arUsers = variables.settingGateway.getUsersByOption(arOption[1].getNOptionID());
 		for(itm; itm lte arrayLen(arUsers); itm++){
-			variables.pickService.autoPick(arUsers[itm].getSValue(), arguments.nWeekID, arUsers[itm].getNUserID(), arguments.nSeasonID);
+			if( not isNull(arUsers[itm].getSValue()) or arUsers[itm].getSValue() neq "" ){
+				variables.pickService.autoPick(arUsers[itm].getSValue(), arguments.nWeekID, arUsers[itm].getNUserID(), arguments.nSeasonID);
+			}
 		}
 
 	}

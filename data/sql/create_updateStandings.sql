@@ -108,7 +108,7 @@ AND bHasPicks <> 1;
 
 -- remove any records for users who are inactive
 DELETE FROM standing
-WHERE nUserID IN (SELECT nUserID FROM user WHERE bActive <> 1)
+WHERE nUserID IN (SELECT nUserID FROM user WHERE bActive <> 1 or dLastLogin is null)
 AND nSeasonID = nInSeason;
 
 
