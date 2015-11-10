@@ -179,7 +179,7 @@ public Array function autoPick( Required String sPickType, Required Numeric nWee
 			// get a new pick object based on game and user
 			oPick = variables.pickGateway.getByUserAndGame(arguments.nUserID, arWeek[itm].nGameID);
 			// only do this if no pick has been made or the pick is already auto
-			if( isNull(oPick.getBAuto()) or oPick.getBAuto() eq "" or oPick.getBAuto() eq 1 ){
+			if( isNull(oPick.getNGameID()) or oPick.getBAuto() eq 1 ){
 				// update the picks
 				oPick = variables.pickGateway.update(oPick, { nGameID = arWeek[itm].nGameID, nTeamID = nPick, nWeekID = arguments.nWeekID, nUserID = arguments.nUserID, bAuto = 1 } );
 				// append the pick
