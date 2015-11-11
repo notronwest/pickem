@@ -25,7 +25,7 @@
 							<td>#dateFormat(rc.arWeeks[itm].getDEndDate(), "mm/dd/yyyy")#</td>
 							<td>#getBeanFactory().getBean("commonService").dateTimeFormat(rc.arWeeks[itm].getDPicksDue() & " " & rc.arWeeks[itm].getTPicksDue())#</td>
 							<td class="week-actions">
-								<span class="fa fa-edit edit icons fa-fw fa-lg">&nbsp;</span><span class="fa fa-trash-o delete icons fa-fw fa-lg">&nbsp;</span> [#rc.arWeeks[itm].getNWeekID()#]  (<a href="#buildURL('week.setWeek')#&nWeekID=#rc.arWeeks[itm].getNWeekID()#">Set Games</a> - <a href="#buildURL('standing.calculate')#&nWeekID=#rc.arWeeks[itm].getNWeekID()#">Calculate Winners</a>)
+								<span class="fa fa-edit edit icons fa-fw fa-lg">&nbsp;</span><span class="fa fa-trash-o delete icons fa-fw fa-lg">&nbsp;</span> [#rc.arWeeks[itm].getNWeekID()#]  (<a href="#buildURL('week.setWeek')#&nWeekID=#rc.arWeeks[itm].getNWeekID()#">Games</a> - <a href="#buildURL('standing.calculate')#&nWeekID=#rc.arWeeks[itm].getNWeekID()#">Standings</a> - <a href="#buildURL('week.makeAutoPicks')#&nWeekID=#rc.arWeeks[itm].getNWeekID()#">Auto Picks</a>)
 							</td>
 						</tr></cfoutput>
 					</cfloop>
