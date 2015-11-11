@@ -42,6 +42,12 @@ AND bGameIsFinal = 1;
 UPDATE pick set nWin = isPickWin(nGameID, nTeamID)
 WHERE nWeekID = nInWeekID;
 
+-- Update all of the auto pick users
+UPDATE standing
+SET bHasPicks = 1
+WHERE nWeekID = nInWeekID
+AND nUserID in ( SELECT DISTINCT nUserID FROM pick where nWeekID = nInWeekID and bAuto = 1 );
+
 -- Insert all of the wins per user
 INSERT INTO standing  (nUserID, nWeekID, nSeasonID, nWins, nLosses, bHasPicks)
 SELECT DISTINCT nUserID, nInWeekID, nInSeason, SUM(nWin), 20 - SUM(nWin), 1 as bHasPicks
@@ -108,7 +114,7 @@ AND bHasPicks <> 1;
 
 -- remove any records for users who are inactive
 DELETE FROM standing
-WHERE nUserID IN (SELECT nUserID FROM user WHERE bActive <> 1 or dLastLogin is null)
+WHERE nUserID IN (SELECT nUserID FROM user WHERE bActive <> 1)
 AND nSeasonID = nInSeason;
 
 
