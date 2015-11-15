@@ -42,9 +42,11 @@
 							<thead>
 								<tr>
 									<th><h4>#rc.oViewUser.getSFirstName()#'s Picks</h4>
-										<span class="alert-info">#listLen(rc.stViewUserWeek.lstWins)# wins</span></th>
+										<h5>Wins:<button class="alert-success btn btn-small" disabled="disabled"><strong>#listLen(rc.stViewUserWeek.lstWins)#</strong></button><cfif rc.stViewUserWeek.bAutoPick eq 1><button class="alert-info auto-picks btn btn-small" disabled="disabled"><em>Auto Picked</em></button></cfif></h5>
+									</th> 
 									<th><h4>Your Picks</h4>
-										<span class="alert-info">#listLen(rc.stUserWeek.lstWins)# wins</span></th>
+										<h5>Wins:<button class="alert-success btn btn-small" disabled="disabled"><strong>#listLen(rc.stUserWeek.lstWins)#</strong></button><cfif rc.stUserWeek.bAutoPick eq 1><button class="alert-info auto-picks btn btn-small" disabled="disabled"><em>Auto Picked</em></button></cfif></h5>
+									</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -56,6 +58,8 @@
 												local.stPicks = rc.stViewUserWeek.stPicks;
 												// hide game status
 												local.bShowGameStatus = false;
+												// hide details
+												local.bShowDetails = false;
 												include "pickTable.cfm";
 											</cfscript>
 										</table>
@@ -67,6 +71,8 @@
 												local.stPicks = rc.stUserWeek.stPicks;
 												// show game status
 												local.bShowGameStatus = true;
+												// hide details
+												local.bShowDetails = false;
 												include "pickTable.cfm";
 											</cfscript>
 										</table>

@@ -17,6 +17,7 @@ component entityname="standing" persistent="true" table="standing" output="false
 	property name="nUserID" fieldtype="column" ormtype="int";
 	property name="nPlace" fieldtype="column" ormtype="int";
 	property name="bHasPicks" fieldtype="column" ormtype="int";
+	property name="bAutoPick" fieldtype="column" ormtype="int";
 	property name="sSeason" fieldtype="column" ormtype="string";
 	property name="nSeasonID" fieldtype="column" ormtype="int";
 

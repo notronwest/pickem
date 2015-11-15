@@ -22,6 +22,7 @@ public Struct function getUserWeek( Required Numeric nWeekID, Required Numeric n
 	var stUserWeek = {};
 	var stPicks = {};
 	var lstWins = "";
+	var bAutoPick = false;
 	var itm = 1;
 	try{
 		// get the users picks
@@ -34,9 +35,13 @@ public Struct function getUserWeek( Required Numeric nWeekID, Required Numeric n
 			if( arPicks[itm].getNWin() eq 1 ){
 				lstWins = listAppend(lstWins, arPicks[itm].getNGameID());
 			}
+			// check to see if this was an autpick
+			if( arPicks[itm].getBAuto() eq 1 ){
+				bAutoPick = 1;
+			}
 		}
 		// store data for return
-		stUserWeek = { stPicks = stPicks, lstWins = lstWins };
+		stUserWeek = { stPicks = stPicks, lstWins = lstWins, bAutoPick = bAutoPick };
 	} catch (any e){
 		registerError("Error getting picks for user", e);
 	}

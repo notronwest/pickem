@@ -23,6 +23,7 @@ public void function home(rc){
 	rc.stWeekWinners = {};
 	rc.stWeekSecondPlace = {};
 	rc.stWeekNoPicks = {};
+	rc.stWeekAutoPick = {};
 	rc.stWeekTiebreak = {};
 	rc.stUsers = {};
 	rc.stSeasonWins = {};
@@ -55,6 +56,13 @@ public void function home(rc){
 				rc.stWeekNoPicks[nWeekID] = [];
 			}
 			arrayAppend(rc.stWeekNoPicks[nWeekID], nUserID);
+		}
+		// if this user was auto picked for this week
+		if( arStandings[itm].getBAutoPick() eq 1 ){
+			if( not structKeyExists(rc.stWeekAutoPick, nWeekID) ){
+				rc.stWeekAutoPick[nWeekID] = [];
+			}
+			arrayAppend(rc.stWeekAutoPick[nWeekID], nUserID);
 		}
 		// store this users wins
 		rc.stWeekData[nUserID][nWeekID].wins = arStandings[itm].getNWins();

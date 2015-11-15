@@ -50,6 +50,7 @@ public void function before(rc){
 public void function set(rc){
 	param name="rc.bSaved" default="false";
 	rc.bUserHasPicks = false;
+	rc.bUserAutoPicked = false;
 	try{
 		// get this weeks picks for the current user
 		rc.stUserWeek = variables.pickService.getUserWeek(rc.nWeekID, rc.nCurrentUser);
@@ -59,6 +60,10 @@ public void function set(rc){
 	// check to see if this user has picks already
 	if( listLen(structKeyList(rc.stUserWeek.stPicks)) ){
 		rc.bUserHasPicks = true;
+	}
+	// check to see if the user had auto picks
+	if( rc.stUserWeek.bAutoPick ){
+		rc.bUserAutoPicked = true;
 	}
 	// if there are no games then lock the week
 	if( arrayLen(rc.arWeekGames) eq 0 ){

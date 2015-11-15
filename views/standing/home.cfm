@@ -76,6 +76,7 @@
 								(#((structKeyExists(local.arUserTiebreak, local.nWeekID) and arrayLen(local.arUserTiebreak[local.nWeekID]) gt 0) ? '<span title="' & local.arUserTiebreak[local.nWeekID].toString() & '">' & local.arUserTiebreak[local.nWeekID][1] & '</span>' : "")#)
 							</cfif>
 							<cfif structKeyExists(rc.stWeekNoPicks, local.nWeekID) and isArray(rc.stWeekNoPicks[local.nWeekID]) and arrayFind(rc.stWeekNoPicks[local.nWeekID], local.nUserID)><span class="fa fa-frown-o"></span></cfif>
+							<cfif structKeyExists(rc.stWeekAutoPick, local.nWeekID) and isArray(rc.stWeekAutoPick[local.nWeekID]) and arrayFind(rc.stWeekAutoPick[local.nWeekID], local.nUserID)>(a)</cfif>
 						</td>
 						</cfloop>
 						<cfset local.sCurrentWins = rc.stSeasonWins[local.nUserID]>
@@ -91,6 +92,7 @@
 					<td><span class="fa fa-trophy highlight-first"> 1st</span></td>
 					<td><span class="highlight-second"> 2nd</span></td>
 					<td><span class="fa fa-frown-o"> No picks</span></td>
+					<td>(a) = auto picked
 				</tr>
 			</tbody>
 		</table>

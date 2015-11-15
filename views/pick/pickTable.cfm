@@ -1,5 +1,6 @@
 <cfparam name="local.bShowGameStatus" default="true">
 <cfparam name="local.sCurrentGame" default="NCAA">
+<cfparam name="local.bShowDetails" default="true">
 <cfoutput>
 	<cfloop from="1" to="#arrayLen(local.arWeekGames)#" index="local.itm">
 		<!--- // determine who gets pick class --->
@@ -69,7 +70,12 @@
 			}
 		</cfscript>
 		<tr class="game#((bPickIsLocked) ? ' locked' : '')##sGamesDividerClass#" data-id="#rc.arWeekGames[local.itm].nGameId#" data-nWeekID="#rc.nWeekID#">
-			<td>#stGame.nTiebreak#<cfif bPickIsLocked>&nbsp;<span class="fa fa-lock"></span></cfif></td>
+			<cfif local.bShowDetails>
+				<td>
+					<cfif bPickIsLocked>&nbsp;<span class="fa fa-lock"></span></cfif>
+				</td>
+				<td>#stGame.nTiebreak#</td>
+			</cfif>
 			<!--- // render picks --->
 			<td class="picks">
 				<cfif rc.bIsLocked><span class="fa fa-info-circle fa-lg game-info icons"></span><cfelse><span class="fa fa-bar-chart-o fa-lg stats-info icons"></span></cfif>

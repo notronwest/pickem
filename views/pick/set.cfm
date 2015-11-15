@@ -1,6 +1,7 @@
 <cfoutput>
 	<div id="picks" class="panel panel-default" data-id="#rc.oWeek.getNWeekID()#">
 		<div class="panel-heading text-right">
+			<h4>#rc.oWeek.getSName()# <a href="javascript:window.print()"><span class="print fa fa-print"></span></a></h4>
 			<form class="form-inline" role="form">
 				<div class="form-group">
 					<select id="sWeekURL" class="input-sm" size="1">
@@ -21,16 +22,18 @@
 					<h6>This week is locked and no changes to your picks can be made at this time.</h6>
 				</div>
 			</cfif>
-			<h3>#rc.oWeek.getSName()# <a href="javascript:window.print()"><span class="print fa fa-print"></span></a></h3>
-			<p>
-				<cfif !rc.bIsLocked>Picks can be made up until #getBeanFactory().getBean("commonService").dateTimeFormat(rc.dtPicksDue)#</cfif>
-			</p>
-			<div class="text-left">
+			<h4>Wins:<button class="alert-success btn btn-small" disabled="disabled"><strong>#listLen(rc.stUserWeek.lstWins)#</strong></button><cfif rc.bUserAutoPicked><button class="alert-info auto-picks btn btn-small" disabled="disabled"><em>Auto Picked: #rc.stUser.stSettings.autopick#</em></button></cfif></h4>
+
+			<!--- // <h4><div class="text-left">
 				<cfif listLen(rc.stUserWeek.lstWins)>
 					<span class="alert-info">Total wins this week: #listLen(rc.stUserWeek.lstWins)#</span>
 				</cfif>
-			</div>
-			<div>
+			</div></h4> --->
+			<cfif !rc.bIsLocked><p>
+				Picks can be made up until #getBeanFactory().getBean("commonService").dateTimeFormat(rc.dtPicksDue)#
+			</p></cfif>
+			
+			<div class="text-right">
 				<a href="javascript:;" class="help">Help</a>
 				<div class="help hide">
 					<h5>Picks</h5>
@@ -50,12 +53,10 @@
 				<button class="save btn btn-default btn-small hidden" type="button">Save Picks</button>
 			</div></cfif>
 			<div class="table-responsive">
-				<cfif rc.bIsLocked>
-					<div class="bs-callout bs-callout-info"><span class="fa fa-lock"></span> - indicates this pick is locked</div>
-				</cfif>
 				<table class="table">
 					<thead>
-						<th><span title="Tiebreak">T</span></th>
+						<th></th>
+						<th></th>
 						<cfif rc.bUserHasPicks>
 							<th class="picks">Pick (home team in CAPS)</th>
 							<th class="picks">Opponent</td>
@@ -75,6 +76,8 @@
 							local.stPicks = rc.stUserWeek.stPicks;
 							// start rows as ncaa
 							local.sCurrentGame = "NCAA";
+							// show detail
+							local.bShowDetails = true;
 							include "pickTable.cfm";
 						</cfscript>
 					</tbody>	
@@ -85,6 +88,9 @@
 				<button class="cancel btn btn-default btn-small hidden" type="button">Cancel</button>
 				<button class="save btn btn-default btn-small hidden" type="button">Save Picks</button>
 			</div></cfif>
+			<cfif rc.bIsLocked>
+				<div class="bs-callout bs-callout-info"><span class="fa fa-lock"></span> - indicates this pick is locked</div>
+			</cfif>
 		</div>
 	</div>
 </cfoutput>
