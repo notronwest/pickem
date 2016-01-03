@@ -20,10 +20,6 @@ History:
 */
 public void function before (rc){
 	param name="rc.nSeasonPayoutID" default="0";
-	// make sure the user is an admin
-	if( not rc.stUser.bIsAdmin ){
-		variables.framework.redirect("main.notAuthorized");
-	}
 	rc.oSeasonPayout = variables.seasonPayoutGateway.get(rc.nSeasonPayoutID);
 	rc.arSeasonPayouts = variables.seasonPayoutService.getPayouts(rc.nCurrentSeasonID);
 	rc.nAssignedPurse = variables.seasonPayoutService.getAssignedPurse(rc.nCurrentSeasonID);
@@ -48,6 +44,10 @@ History:
 	2015-08-23 - RLW - Created
 */
 public void function addEdit(rc){
+	// make sure the user is an admin
+	if( not rc.stUser.bIsAdmin ){
+		variables.framework.redirect("main.notAuthorized");
+	}
 	// get all of the payouts that aren't in use
 	rc.arAvailablePayouts = variables.seasonPayoutService.getAvailablePayouts(rc.nCurrentSeasonID);
 }
@@ -69,6 +69,10 @@ History:
 public void function save(rc){
 	param name="rc.bRedirect" default="true";
 	rc.sMessage = "Season payout updated";
+	// make sure the user is an admin
+	if( not rc.stUser.bIsAdmin ){
+		variables.framework.redirect("main.notAuthorized");
+	}
 	try{
 		// if we are adding then change message
 		if( rc.nSeasonPayoutID eq 0 ){
@@ -107,6 +111,10 @@ History:
 public void function delete(rc){
 	rc.sMessage = "SeasonPayout deleted successfully";
 	rc.sType = "delete";
+	// make sure the user is an admin
+	if( not rc.stUser.bIsAdmin ){
+		variables.framework.redirect("main.notAuthorized");
+	}
 	try{
 		if( rc.nSeasonPayoutID != 0 ){
 			rc.oSeasonPayout = variables.seasonPayoutGateway.delete(rc.oSeasonPayout);

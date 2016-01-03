@@ -20,6 +20,10 @@ History:
 public void function before (rc){
 	param name="rc.nPayoutID" default="0";
 	param name="rc.nSeasonPayoutID" default="0";
+	// make sure the user is an admin
+	if( not rc.stUser.bIsAdmin ){
+		variables.framework.redirect("main.notAuthorized");
+	}
 	rc.oPayout = variables.payoutGateway.get(rc.nPayoutID);
 	rc.oSeasonPayout = variables.seasonPayoutGateway.get(rc.nSeasonPayoutID);
 	rc.arSeasonPayouts = variables.seasonPayoutGateway.getBySeason(rc.nCurrentSeasonID);
@@ -41,10 +45,6 @@ History:
 */
 public void function save(rc){
 	rc.sMessage = "Payout updated";
-	// make sure the user is an admin
-	if( not rc.stUser.bIsAdmin ){
-		variables.framework.redirect("main.notAuthorized");
-	}
 	try{
 		// if we are adding then change message
 		if( rc.nPayoutID eq 0 ){
@@ -80,10 +80,6 @@ History:
 public void function delete(rc){
 	rc.sMessage = "Payout deleted successfully";
 	rc.sType = "delete";
-	// make sure the user is an admin
-	if( not rc.stUser.bIsAdmin ){
-		variables.framework.redirect("main.notAuthorized");
-	}
 	try{
 		if( rc.nPayoutID != 0 ){
 			rc.oPayout = variables.payoutGateway.delete(rc.oPayout);
