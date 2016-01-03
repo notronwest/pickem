@@ -22,7 +22,7 @@ public void function before (rc){
 	param name="rc.nSeasonID" default="0";
 	// make sure the user is an admin
 	if( not rc.stUser.bIsAdmin ){
-		variables.fw.redirect("main.notAuthorized");
+		variables.framework.redirect("main.notAuthorized");
 	}
 	rc.oSeason = variables.seasonGateway.get(rc.nSeasonID);
 }

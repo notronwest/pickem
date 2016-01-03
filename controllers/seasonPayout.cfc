@@ -22,7 +22,7 @@ public void function before (rc){
 	param name="rc.nSeasonPayoutID" default="0";
 	// make sure the user is an admin
 	if( not rc.stUser.bIsAdmin ){
-		variables.fw.redirect("main.notAuthorized");
+		variables.framework.redirect("main.notAuthorized");
 	}
 	rc.oSeasonPayout = variables.seasonPayoutGateway.get(rc.nSeasonPayoutID);
 	rc.arSeasonPayouts = variables.seasonPayoutService.getPayouts(rc.nCurrentSeasonID);

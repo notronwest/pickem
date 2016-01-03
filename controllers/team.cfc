@@ -11,7 +11,7 @@ public void function before (rc){
 	rc.bIsDialog = false;
 	// make sure the user is an admin
 	if( not rc.stUser.bIsAdmin ){
-		variables.fw.redirect("main.notAuthorized");
+		variables.framework.redirect("main.notAuthorized");
 	}
 	rc.oTeam = variables.teamGateway.get(rc.nTeamID);
 }
