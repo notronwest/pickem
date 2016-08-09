@@ -100,7 +100,7 @@
     })("docReady", window);
 
     // put total purse available as jquery
-    nTotalPurse = <cfoutput>#rc.oCurrentSeason.getNTotalPurse()#</cfoutput>;
+    nTotalPurse = <cfoutput>#((!isNull(rc.oCurrentSeason.getNTotalPurse())) ? rc.oCurrentSeason.getNTotalPurse() : 0)#</cfoutput>;
   </script>
 </head>
 <body>

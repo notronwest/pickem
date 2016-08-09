@@ -14,12 +14,20 @@
 							<th>Name</th>
 							<th>E-mail</th>
 							<th>Last Login</th>
-							<th></th>
+							<th>
+								<div class="form-group">
+									<select id="toggleSubscribers" class="input-sm">
+										<option value="All">All Users</option>
+										<option value="Subscribers">Subscribers</option>
+										<option value="Deadbeats">Dead beats</option>
+									</select>
+								</div>
+							</th>
 						</tr>
 					</thead>
 					<tbody>
 						<cfloop from="1" to="#arrayLen(rc.arUsers)#" index="local.itm">
-							<tr class="#((rc.arUsers[local.itm].getBActive() eq 0) ? 'inactive' : '')#">
+							<tr class="#((rc.arUsers[local.itm].getBActive() eq 0) ? 'inactive' : '')# #((rc.arUsers[local.itm].nSubscriptionID eq 0) ? 'dead-beat' : 'subscriber')#">
 								<td>#rc.arUsers[local.itm].getSLastName()#, #rc.arUsers[local.itm].getSFirstName()#</td>
 								<td>#rc.arUsers[local.itm].getSEmail()#</td>
 								<td><cfif len(rc.arUsers[local.itm].getDLastLogin()) gt 0>#getBeanFactory().getBean("commonService").dateTimeFormat(rc.arUsers[local.itm].getDLastLogin())#</cfif>
