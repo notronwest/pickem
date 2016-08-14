@@ -28,7 +28,7 @@
               <exclude name="package.json"/>
           </fileset>
       </copy>
-      <!-- // make sure the directory has the correct permissions after copying -->
+      <!-- // make sure the directory has the correct permissions after copying 
       <chgrp group="www">
         <fileset dir="${deploy.dir}">
           <include name="*"/>
@@ -40,7 +40,7 @@
           <include name="*"/>
           <include name="**"/>
         </fileset>
-      </chmod>
+      </chmod>-->
   </target>
 
   <!-- // cleanup the workspace directory -->
