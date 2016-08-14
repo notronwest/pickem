@@ -15,7 +15,7 @@
 			request.bIsDevelopment = true;
 			request.bIsStaging = false;
 			request.sSiteURL = 'http://pickem.local/';
-			request.dsn = "pickem";
+			request.dsn = "inqsports";
 			request.sLocalIP = "127.0.0.1";
 			request.sAPIKey="AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U";
 			request.sDBBackupDirectory = "#expandPath('/data/weeklydbbackup/')#";
@@ -30,8 +30,8 @@
 			request.bIsDevelopment = false;
 			request.bIsStaging = true;
 			request.sSiteURL = 'http://dev.pickem.inquisibee.com/';
-			request.dsn = "dev.pickem";
-			this.dsn = "dev.pickem"; // reset the dsn for the application
+			request.dsn = "dev.inqsports";
+			this.dsn = "dev.inqsports"; // reset the dsn for the application
 			request.sLocalIP = "54.68.81.199";
 			request.sAPIKey="AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U";
 			request.sDBBackupDirectory = "#expandPath('/data/weeklydbbackup/')#";
@@ -49,7 +49,7 @@
 			request.bIsDevelopment = false;
 			request.bIsStaging = false;
 			request.sSiteURL = 'http://pickem.inquisibee.com/';
-			request.dsn = "pickem";
+			request.dsn = "inqsports";
 			request.sLocalIP = "54.68.81.199";
 			request.sAPIKey="AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U";
 			request.sDBBackupDirectory = "#expandPath('/data/weeklydbbackup/')#";
