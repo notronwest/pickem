@@ -67,9 +67,9 @@ public void function authenticate(rc){
 			arUser = variables.userGateway.getByUsernamePassword(rc.sUsername, rc.sPassword);
 			if( arrayLen(arUser) ){
 				// see if this user has a valid subscription
-				if( arrayLen(variables.subscriptionGateway.getByUserAndSeason(arUser[1].getNUserID(), rc.nCurrentSeasonID)) eq 0 and arUser[1].getBIsAdmin() neq 1 ){
+				/*if( arrayLen(variables.subscriptionGateway.getByUserAndSeason(arUser[1].getNUserID(), rc.nCurrentSeasonID)) eq 0 and arUser[1].getBIsAdmin() neq 1 ){
 					variables.framework.redirect("subscription.noPayNoPlay");
-				}
+				}*/
 				// build the session
 				setupSession(arUser);
 				rc.sMessage = "Login successful";
