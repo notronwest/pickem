@@ -1,4 +1,4 @@
-component extends="framework" {
+component extends="libs.framework.one" {
 	
 	include "config/applicationSettings.cfm";
 	include "config/environmentalSettings.cfm";
@@ -10,20 +10,20 @@ component extends="framework" {
 	*/
 	public void function setupApplication(){
 		// build the bean factory
-		setBeanFactory( new ioc("/model,/controllers") );
+		setBeanFactory( new libs.framework.ioc("/model") );
 		
 		application.dataDirectory = expandPath("/data/");
-		application.sSerializeView = "main.serialize";
+		application.sSerializeView = "pickem:main.serialize";
 		// load all of the teams into memory
 		application.qryTeams = entityToQuery(getBeanFactory().getBean("teamGateway").getAll());
 		// unsecured actions
 		application.arUnsecuredActions = [
-			"security.forgotPassword",
-			"security.login",
-			"security.authenticate",
-			"user.register",
-			"user.changePassword",
-			"subscription.noPayNoPlay"];
+			"security:main.forgotPassword",
+			"security:main.login",
+			"security:main.authenticate",
+			"pickem:user.register",
+			"pickem:user.changePassword",
+			"pickem:subscription.noPayNoPlay"];
 		// store weekly results
 		application.stWeeklyTeamResults = {};
 		// track when the auto picks are made each week
@@ -42,7 +42,7 @@ component extends="framework" {
 		if( structKeyExists(cookie, "bHasLoggedIn") and cookie.bHasLoggedIn ){
 			rc.bHasLoggedIn = true;
 		}
-		controller( 'security.checkAuthorization' );
+		controller( 'security:main.checkAuthorization' );
 	}
 
 	/**

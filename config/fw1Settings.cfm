@@ -1,10 +1,12 @@
 <cfscript>
 	variables.framework = {
-		usingSubsystems = false,
+		enableGlobalRC = true,
+		usingSubsystems = true,
 		generateSES = false,
-		defaultSubsystem = 'home',
+		defaultSubsystem = 'pickem',
 		defaultSection = 'standing',
 		defaultItem = 'home',
+		globalSubsystemLayout = "common",
 		suppressImplicitService = true,
 		reloadApplicationOnEveryRequest = request.bReloadOnEveryRequest
 	};

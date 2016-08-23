@@ -93,12 +93,73 @@ public Array function getAllWithSubscriptions( Required Numeric nSeasonID ){
 		arSubscription = variables.subscriptionGateway.getByUserAndSeason(arUsers[itm].getNUserID(), arguments.nSeasonID);
 		if( arrayLen(arSubscription) gt 0 ){
 			arUsers[itm].nSubscriptionID = arSubscription[1].getNSubscriptionID();
+			arUsers[itm].nSubscriptionAmount = arSubscription[1].getNAmount();
 		} else {
 			arUsers[itm].nSubscriptionID = 0;
+			arUsers[itm].nSubscriptionAmount = 0;
 		}
 		
 	}
 	return arUsers;
+}
+
+public void function sendNewUserEmail( Required String sEmail, Required String sPassword){
+	// send out e-mail
+	var sMessage = "Welcome to Pickem. We have created the following temporary password for you: #arguments.sPassword#
+
+Use the above password in combination with your e-mail address to get started with the site.
+
+Good Luck!
+
+http://pickem.inquisibee.com";
+
+	variables.commonService.sendEmail(sEmail, "Welcome to Pickem!", sMessage);
+}
+
+public model.beans.user function handleSave( Required model.beans.user oUser, Required struct stFormData, boolean bIsAdmin = false, boolean bIsNewUser = false ){
+	param name="arguments.stFormData.sNickname" default="";
+	param name="arguments.stFormData.bActive" default="1";
+	// set user data
+	var stUserData = {
+		"sFirstName" = arguments.stFormData.sFirstName,
+		"sLastName" = arguments.stFormData.sLastName,
+		"sNickname" = arguments.stFormData.sNickname,
+		"bActive" = arguments.stFormData.bActive
+	};
+	try {
+		// if this is data from an admin save more data
+		if( arguments.bIsAdmin and structKeyExists(arguments.stFormData, "sEmail") ){
+			
+			stUserData.sEmail = arguments.stFormData.sEmail;
+			stUserData.sUserName = arguments.stFormData.sEmail;
+			// if this is a new user generate a new password
+			if( arguments.bIsNewUser ){
+				arguments.stFormData.sPassword = generatePassword();
+			}
+			// if the admin is changing the password or generating a new one
+			if( structKeyExists(arguments.stFormData, "sPassword") ){
+				stUserData.sPassword = arguments.stFormData.sPassword;
+			}
+		}
+		// save the main user
+		arguments.oUser = variables.userGateway.update(arguments.oUser, stUserData);
+		// reset session value for the user so they don't need a profile anymore
+		session.bSetProfile = 0;
+		// send out email if its new
+		if( bIsNewUser and structKeyExists(arguments.stFormData, "sEmail") and structKeyExists(arguments.stFormData, "sPassword") and len(arguments.stFormData.sPassword) ){
+			sendNewUserEmail(arguments.stFormData.sEmail, arguments.stFormData.sPassword);
+		}
+		// save username and password if it is passed
+		if( structKeyExists(arguments.stFormData, "sUsername") ){
+			// save the username
+			arguments.oUser = userGateway.saveUsername(arguments.oUser.getNUserID(), arguments.stFormData.sUsername);
+			// save password
+			arguments.oUser = userGateway.savePassword(arguments.oUser.getNUserID(), arguments.stFormData.sPassword);
+		}
+	} catch ( any e ){
+		registerError("Error handling actual user save", e);
+	}
+	return arguments.oUser;
 }
 
 }
