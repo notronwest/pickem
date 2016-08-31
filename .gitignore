@@ -1,5 +1,6 @@
 # don't include log files
 *.log
+*.DS_Store
 views/main/scratch.cfm
 scores/node_modules
 
