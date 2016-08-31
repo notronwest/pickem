@@ -1,7 +1,7 @@
 <cfparam name="rc.sMessageType" default="login">
 <cfparam name="rc.sMessage" default="">
 <cfoutput>
-<form id="login" action="#buildURL('security.forgotPassword')#" method="post">
+<form id="login" action="#buildURL('security:main.forgotPassword')#" method="post">
 	<div class="panel panel-default">
 		<div class="panel-heading">
 			<h3 class="panel-title">Forgot Password</h3>
