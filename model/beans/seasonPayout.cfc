@@ -1,5 +1,5 @@
 
-component entityname="seasonPayout" persistent="true" table="seasonPayout" output="false" {
+component entityname="seasonPayout" persistent="true" table="seasonPayout" output="false" extends="model.baseORMBean" {
 	property name="nSeasonPayoutID" fieldtype="ID" generator="identity";
 	property name="nSeasonID" fieldtype="column" ormtype="int";
 	property name="nPayoutID" fieldtype="column" ormtype="int";

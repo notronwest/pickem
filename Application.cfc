@@ -13,7 +13,7 @@ component extends="libs.framework.one" {
 		setBeanFactory( new libs.framework.ioc("/model") );
 		
 		application.dataDirectory = expandPath("/data/");
-		application.sSerializeView = "pickem:main.serialize";
+		application.sSerializeView = "manager:main.serialize";
 		// load all of the teams into memory
 		application.qryTeams = entityToQuery(getBeanFactory().getBean("teamGateway").getAll());
 		// unsecured actions
@@ -21,9 +21,9 @@ component extends="libs.framework.one" {
 			"security:main.forgotPassword",
 			"security:main.login",
 			"security:main.authenticate",
-			"pickem:user.register",
-			"pickem:user.changePassword",
-			"pickem:subscription.noPayNoPlay"];
+			"manager:user.register",
+			"manager:user.changePassword",
+			"manager:subscription.noPayNoPlay"];
 		// store weekly results
 		application.stWeeklyTeamResults = {};
 		// track when the auto picks are made each week
@@ -56,8 +56,10 @@ component extends="libs.framework.one" {
 		rc.tTimeNow = timeFormat(now(), 'HH:mm');
 		rc.dNow = rc.dDateNow & " " & rc.tTimeNow;
 		// default the season
-		rc.nCurrentSeasonID = 3;
-		rc.oCurrentSeason = getBeanFactory().getBean("seasonGateway").get(rc.nCurrentSeasonID);
+		rc.oCurrentLeague = getBeanFactory().getBean("leagueService").getLeague(request.sLeagueName);
+		rc.sCurrentLeagueID = rc.oCurrentLeague.getSLeagueID();
+		rc.oCurrentSeason = getBeanFactory().getBean("seasonService").getCurrentSeason(rc.sCurrentLeagueID);
+		rc.nCurrentSeasonID = rc.oCurrentSeason.getNSeasonID();
 		rc.bIsDialog = false;
 		rc.bIsMobile = getBeanFactory().getBean("commonService").isMobileView();
 		rc.bIsAdminAction = false;

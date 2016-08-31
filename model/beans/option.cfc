@@ -1,5 +1,5 @@
 
-component entityname="option" persistent="true" table="option" output="false" {
+component entityname="option" persistent="true" table="option" output="false" extends="model.baseORMBean" {
 	property name="nOptionID" fieldtype="ID" generator="identity";
 	property name="sShortName" fieldtype="column" ormtype="string" length="100";
 	property name="bCanNotify" fieldtype="column" ormtype="int";

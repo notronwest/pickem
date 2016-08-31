@@ -1,5 +1,5 @@
 
-component entityname="subscription" persistent="true" table="subscription" output="false" {
+component entityname="subscription" persistent="true" table="subscription" output="false" extends="model.baseORMBean" {
 	property name="nSubscriptionID" fieldtype="ID" generator="identity";
 	property name="nUserID" fieldtype="column" ormtype="int";
 	property name="nSeasonID" fieldtype="column" ormtype="int";

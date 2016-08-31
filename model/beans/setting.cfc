@@ -1,5 +1,5 @@
 
-component entityname="setting" persistent="true" table="setting" output="false" {
+component entityname="setting" persistent="true" table="setting" output="false" extends="model.baseORMBean" {
 	property name="nSettingID" fieldtype="ID" generator="identity";
 	property name="nOptionID" fieldtype="column" ormtype="int";
 	property name="nUserID" fieldtype="column" ormtype="int";

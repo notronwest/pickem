@@ -1,5 +1,5 @@
 
-component entityname="game" persistent="true" table="game" output="false" {
+component entityname="game" persistent="true" table="game" output="false" extends="model.baseORMBean" {
 	property name="nGameID" fieldtype="ID" generator="identity";
 	property name="nWeekID" fieldtype="column" ormtype="int";
 	property name="nHomeTeamID" fieldtype="column" ormtype="int";

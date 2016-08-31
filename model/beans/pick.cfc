@@ -1,5 +1,5 @@
 
-component entityname="pick" persistent="true" table="pick" output="false" {
+component entityname="pick" persistent="true" table="pick" output="false" extends="model.baseORMBean" {
 	property name="nPickID" fieldtype="ID" generator="identity";
 	property name="nWeekID" fieldtype="column" ormtype="int";
 	property name="nGameID" fieldtype="column" ormtype="int";

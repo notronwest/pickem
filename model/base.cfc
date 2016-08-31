@@ -3,7 +3,12 @@ component accessors="true" {
 	property name="framework";
 	property name="dbService";
 
-	public void function registerError( Required String sMessage, stCFCatch = {} ){
+
+public string function createFormattedUUID(){
+	return replace(createUUID(), "-", "", "ALL");
+}
+
+public void function registerError( Required String sMessage, stCFCatch = {} ){
 	var sLogFile = "#expandPath(request.sLogURL)##dateFormat(now(), 'yyyymmdd')#.errors.log";
 	var dTimeStamp = dateFormat(now(), "yyyy-mm-dd") & " " & timeFormat(now(), "hh:mm:ss");
 	var sLogEntry = "";

@@ -3,7 +3,7 @@
 		enableGlobalRC = true,
 		usingSubsystems = true,
 		generateSES = false,
-		defaultSubsystem = 'pickem',
+		defaultSubsystem = 'manager',
 		defaultSection = 'standing',
 		defaultItem = 'home',
 		globalSubsystemLayout = "common",

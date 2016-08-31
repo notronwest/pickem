@@ -1,0 +1,233 @@
+body {
+    margin: auto;
+    font-family: 'trebuchet MS', 'Lucida sans', Arial;
+    font-size: 14px;
+    color: #444;
+}
+
+.print { color: #c4c4c4; }
+
+.hide { display: none; }
+
+.icons { cursor: pointer; }
+
+.panel-heading h3 {
+	width: 40%;
+}
+
+.panel-body h1 {
+	margin-top: 0px;
+}
+
+.home {
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+.set-spread-favor {
+	margin-left: 3px;
+}
+
+/* FORM OVERRIDE */
+.control-sm {
+	width: 60px;
+}
+
+.control-md {
+	width: 85px;
+}
+
+.control-lg {
+	width: 200px;
+}
+.help ol, .help h5 {
+	text-align: left;
+}
+
+.container ins {
+	margin: 0 auto;
+}
+
+.make-changes {
+	margin-bottom: 2px;
+}
+
+.left { 
+	float: left;
+}
+
+.highlight-first {
+	background-color: #FFD633 !important;
+	font-weight: 400 !important;
+}
+
+.highlight-second {
+	background-color: #FFFF99 !important;
+	font-weight: 400 !important;
+}
+
+.highlight-user td {
+	border-top: 2px solid #FFFF99 !important;
+	border-bottom: 2px solid #FFFF99 !important;
+	background-color: #e4e4e4 !important;
+}
+
+.highlight-user td:first-child {
+	border-left: 2px solid #FFFF99 !important;
+}
+
+.highlight-user td:last-child {
+	border-right: 2px solid #FFFF99 !important;
+}
+
+#emailList {
+	height: 300px;
+	overflow: scroll;
+}
+
+#emailAddresses {
+	width: 95%;
+	overflow: scroll;
+}
+
+#nopayimage {
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.payout.updated {
+	border: 1px solid #0f0;
+}
+
+/* style the picks */
+.game button:disabled {
+	color: #000000 !important;
+	border-color: #000000 !important;
+	opacity: 1;
+}
+
+.dataTables_info { display: none; }
+
+/* style inactive users */
+.users .inactive {
+	display: none;
+	color: #e4e4e4;
+	background-color: #c0c0c0;
+}
+
+button {
+	margin-left: 1px;
+	margin-right: 1px;
+}
+
+/* add some styles for the full results table */
+#weekResults th {
+	font-size: 0.8em;
+}
+
+#weekResults td {
+	text-align: center;
+	vertical-align: center;
+}
+
+#weekResults td.win {
+	background-color: #dff0d8;
+}
+
+#weekResults td.loss {
+	background-color: #f2dede;
+}
+/*
+* Style the menu trigger and position it so it will be
+* visible even when the menu is open
+*/
+
+#menu-trigger {
+	background-color: #454545;
+	border-radius: 0.25em;
+	color: #fff;
+	font-size: 0.75em;
+	font-weight: bold;
+	line-height: 1em;
+	margin-top: -1em;
+	position: absolute;
+	/*right: 1em;*/
+	text-transform: uppercase;
+	top: 2em;
+}
+/* Before enhancement, #menu-trigger behaves as a jump link to
+footer nav. Style link text. */
+#menu-trigger a {
+	color: #fff;
+	display: block;
+	padding: 0.5em;
+	text-decoration: none;
+}
+
+/*
+* Menu styles
+*/
+
+#menu ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/** hide the menu trigger on larger screens **/
+@media screen and (min-width: 40em) {
+	#menu-trigger {
+		display : none;
+	}
+}
+
+/** mobile devices **/
+@media only screen and ( max-device-width: 480px ) and (orientation: portrait) {
+	/* change the padding on the main screen */
+	.container, .panel-body {
+		padding-left: 3px;
+		padding-right: 3px;
+	}
+}
+
+/** smaller devices **/
+@media only screen and (max-width: 600px) {
+
+	/* move main brand */
+	.navbar-brand {
+		margin-left: 25px;
+	}
+	#menu {
+		background-color: #444;
+		color: #fff;
+	}
+	/* change the colors ofthe menu when on smaller screens */
+	#menu .active a {
+		color: #2F4F4F;
+	}
+
+	/* remove the border from default nav styles */
+	.navbar {
+		border: none;
+	}
+
+	#menu a {
+		border-bottom: 3px solid #333;
+		color: inherit;
+		display: block;
+		text-decoration: none;
+	}
+
+}
+@media print{
+  body{ background-color:#FFFFFF; background-image:none; color:#000000; font-size: 0.9em; line-height: 0.8; }
+  .navBar, footer, .panel-heading, .alert, .print, .help, .alert-info, .make-changes { display: none; }
+  td { padding: 0px; margin: 0px; border: none; }
+  tr { border: none; padding: 0px; margin: 0px; border-spacing: 0px; }
+  .badge { font-size: 0.9em !important }
+  table { border-spacing: 0px; padding: 0px; margin: 0px; display: inline;}
+  h1 { font-size: 1.5em; margin: 0px; padding: 0px; }
+  button { margin: 0px; border: none; }
+
+}

@@ -204,6 +204,26 @@ public Array function getAll( String lstActive = "0,1"){
 Author: 	
 	Ron West
 Name:
+	$getAll
+Summary:
+	Gets all users
+Returns:
+	Array arUsers
+Arguments:
+	Numeric nSeasonID
+	String lstActive
+History:
+	2016-08-26 - RLW - Created
+*/
+public Array function getUsersBySeason( Required numeric nSeasonID, String lstActive = "0,1"){
+	var arUsers = ormExecuteQuery( "from userSeason where nSeasonID = :nSeasonID and bActive in (:lstActive)", { nSeasonID = arguments.nSeasonID, lstActive = listToArray(arguments.lstActive) } );
+	return arUsers;
+}
+
+/*
+Author: 	
+	Ron West
+Name:
 	$getAllSortByFirst
 Summary:
 	Gets all users

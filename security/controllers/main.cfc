@@ -6,7 +6,7 @@ property name="subscriptionGateway";
 property name="settingService";
 
 public void function before(rc){
-	param name="rc.sActionAfterLogin" default="pickem:standing.home";
+	param name="rc.sActionAfterLogin" default="manager:standing.home";
 	rc.bIsDialog = false;
 
 }
@@ -17,15 +17,15 @@ public void function checkAuthorization(rc){
 	// if the user has to change their password
 	if( structKeyExists(rc.stUser, "bChangePassword")
 		and rc.stUser.bChangePassword eq 1
-		and compareNoCase(variables.framework.getFullyQualifiedAction(), "pickem:user.changePassword") neq 0 ){
-		variables.framework.redirect("pickem:user.changePassword");
+		and compareNoCase(variables.framework.getFullyQualifiedAction(), "manager:user.changePassword") neq 0 ){
+		variables.framework.redirect("manager:user.changePassword");
 	// if the user has to assign their profile information and we aren't tring to change their password
 	} else if ( structKeyExists(rc.stUser, "bSetProfile")
 		and rc.stUser.bSetProfile eq 1
-		and compareNoCase(variables.framework.getFullyQualifiedAction(), "pickem:user.changePassword") neq 0
-		and compareNoCase(variables.framework.getFullyQualifiedAction(), "pickem:user.addEdit") neq 0 and comparenoCase(variables.framework.getFullyQualifiedAction(), "pickem:user.save") neq 0 ) { 
+		and compareNoCase(variables.framework.getFullyQualifiedAction(), "manager:user.changePassword") neq 0
+		and compareNoCase(variables.framework.getFullyQualifiedAction(), "manager:user.addEdit") neq 0 and comparenoCase(variables.framework.getFullyQualifiedAction(), "manager:user.save") neq 0 ) { 
 		// redirect them to edit their profile
-		variables.framework.redirect(action="pickem:user.addEdit", queryString="sMessage=You must enter a valid name for your account");
+		variables.framework.redirect(action="manager:user.addEdit", queryString="sMessage=You must enter a valid name for your account");
 	}
 	// force all users to login - unless they know the api code
 	if( compare(request.sAPIKey, rc.sAPIKey) neq 0
@@ -83,6 +83,16 @@ public void function authenticate(rc){
 				if( len(arUser[1].getSFirstName()) eq 0 or len(arUser[1].getSLastName()) eq 0 ){
 					session.bSetProfile = 1;
 				}
+				// check to see if this user has a valid entry into this season (if not add it)
+				if( isNull(variables.userSeasonGateway.get({
+					nUserID = session.nUserID,
+					nSeasonID = rc.nCurrentSeasonID
+				})).getSUserSeasonID() ){
+					variables.userSeasonGateway.update(variables.userSeasonGateway.get(), {
+						nUserID = session.nUserID,
+						nSeasonID = rc.nCurrentSeasonID
+					});
+				}
 			}
 		}
 	} catch (any e){
@@ -117,7 +127,7 @@ public void function logout(){
 	session.nUserID = 0;
 	// set message for login window
 	rc.sMessage = "Logged out";
-	variables.framework.redirect('pickem:standing.home', 'sMessage');
+	variables.framework.redirect('manager:standing.home', 'sMessage');
 }
 
 public void function forgotPassword(rc){

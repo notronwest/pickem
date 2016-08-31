@@ -1,5 +1,5 @@
 
-component entityname="standing" persistent="true" table="standing" output="false" {
+component entityname="standing" persistent="true" table="standing" output="false" extends="model.baseORMBean" {
 	property name="nStandingID" fieldtype="ID" generator="identity";
 	property name="nWeekID" fieldtype="column" ormtype="int";
 	property name="nWins" fieldtype="column" ormtype="int";
