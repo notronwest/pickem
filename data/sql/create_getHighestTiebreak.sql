@@ -1,5 +1,8 @@
-DROP FUNCTION `getHighestTiebreak`//
-CREATE DEFINER=`pickem`@`%` FUNCTION `getHighestTiebreak`(nInWeekID int, nInUserID int) RETURNS int(11)
+DROP FUNCTION IF EXISTS fn_getHighestTiebreak;
+
+DELIMITER $$
+
+CREATE DEFINER='inqsports'@'%' FUNCTION fn_getHighestTiebreak(nInWeekID int, nInUserID int) RETURNS int
 BEGIN
 
 DECLARE nHighestTiebreak int;
@@ -17,4 +20,6 @@ SET nHighestTiebreak = (SELECT (nTiebreak - 1)
 
 RETURN nHighestTiebreak;
 
-END
+END $$
+
+DELIMITER ;

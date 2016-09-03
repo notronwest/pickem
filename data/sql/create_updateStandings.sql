@@ -1,5 +1,8 @@
-DROP PROCEDURE `updateStandings`//
-CREATE DEFINER=`pickem`@`%` PROCEDURE `updateStandings`(nInWeekID int(4), nInSeason int(4))
+DROP PROCEDURE IF EXISTS `updateStandings`;
+
+DELIMITER $$
+
+CREATE DEFINER=`inqsports`@`%` PROCEDURE `updateStandings`(nInWeekID int(4), nInSeason int(4))
     DETERMINISTIC
 doUpdate:BEGIN
 
@@ -34,12 +37,12 @@ END IF;
 
 -- Determine which team won the game
 UPDATE game
-SET nWinner = calculateWinner(nHomeTeamID,nHomeScore,nAwayTeamID,nAwayScore,nSpread,sSpreadFavor)
+SET nWinner = fn_calculateWinner(nHomeTeamID,nHomeScore,nAwayTeamID,nAwayScore,nSpread,sSpreadFavor)
 WHERE nWeekID = nInWeekID
 AND bGameIsFinal = 1;
 
 -- Update all of the wins for indivdidual picks this week
-UPDATE pick set nWin = isPickWin(nGameID, nTeamID)
+UPDATE pick set nWin = fn_isPickWin(nGameID, nTeamID)
 WHERE nWeekID = nInWeekID;
 
 -- Update all of the auto pick users
@@ -71,16 +74,16 @@ WHERE nUserID not in (select nUserID from standing where nWeekID = nInWeekID);
 
 -- Update number of nTiebreaks
 UPDATE standing
-SET nHighestTiebreak = getHighestTiebreak(nWeekID, nUserID),
-nTiebreak2 = getNextTiebreak(nWeekID, nUserID, nHighestTiebreak),
-nTiebreak3 = getNextTiebreak(nWeekID, nUserID, nTiebreak2),
-nTiebreak4 = getNextTiebreak(nWeekID, nUserID, nTiebreak3),
-nTiebreak5 = getNextTiebreak(nWeekID, nUserID, nTiebreak4),
-nTiebreak6 = getNextTiebreak(nWeekID, nUserID, nTiebreak5),
-nTiebreak7 = getNextTiebreak(nWeekID, nUserID, nTiebreak6),
-nTiebreak8 = getNextTiebreak(nWeekID, nUserID, nTiebreak7),
-nTiebreak9 = getNextTiebreak(nWeekID, nUserID, nTiebreak8),
-nTiebreak10 = getNextTiebreak(nWeekID, nUserID, nTiebreak9)
+SET nHighestTiebreak = fn_getHighestTiebreak(nWeekID, nUserID),
+nTiebreak2 = fn_getNextTiebreak(nWeekID, nUserID, nHighestTiebreak),
+nTiebreak3 = fn_getNextTiebreak(nWeekID, nUserID, nTiebreak2),
+nTiebreak4 = fn_getNextTiebreak(nWeekID, nUserID, nTiebreak3),
+nTiebreak5 = fn_getNextTiebreak(nWeekID, nUserID, nTiebreak4),
+nTiebreak6 = fn_getNextTiebreak(nWeekID, nUserID, nTiebreak5),
+nTiebreak7 = fn_getNextTiebreak(nWeekID, nUserID, nTiebreak6),
+nTiebreak8 = fn_getNextTiebreak(nWeekID, nUserID, nTiebreak7),
+nTiebreak9 = fn_getNextTiebreak(nWeekID, nUserID, nTiebreak8),
+nTiebreak10 = fn_getNextTiebreak(nWeekID, nUserID, nTiebreak9)
 WHERE nWeekID = nInWeekID;
 
 -- Update the standings place for this week
@@ -118,4 +121,6 @@ WHERE nUserID IN (SELECT nUserID FROM user WHERE bActive <> 1)
 AND nSeasonID = nInSeason;
 
 
-END
+END $$
+
+DELIMITER ;

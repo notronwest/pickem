@@ -1,9 +1,13 @@
-CREATE FUNCTION isPickWin(nInGameID int(4), nInPick int(4)) RETURNS int(4)
+DROP FUNCTION IF EXISTS fn_isPickWin;
+
+DELIMITER $$
+
+CREATE DEFINER=`inqsports`@`%` FUNCTION fn_isPickWin(nInGameID int, nInPick int) RETURNS int
 NOT DETERMINISTIC
 CONTAINS SQL
 BEGIN
 
-DECLARE nWin int(4);
+DECLARE nWin int;
 
 SET nWin = (SELECT count(nWinner)
 FROM game
@@ -14,5 +18,6 @@ AND nWinner = nInPick
 
 RETURN nWin;
 
-END
-Go
+END $$
+
+DELIMITER ;
