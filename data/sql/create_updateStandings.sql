@@ -88,13 +88,23 @@ WHERE nWeekID = nInWeekID;
 
 -- Update the standings place for this week
 UPDATE standing
-         JOIN
-         ( SELECT nStandingID
-                , @rownum:=@rownum+1 AS rank_calculated
-           FROM standing
-              , (SELECT @rownum:=0) AS st
-           WHERE nWeekID = nInWeekID
-           ORDER BY nWins DESC, nHighestTiebreak DESC, nTiebreak2 ASC, nTiebreak3 ASC, nTiebreak4 ASC, nTiebreak5 ASC, nTiebreak6 ASC, nTiebreak7 ASC, nTiebreak8 ASC, nTiebreak9 ASC, nTiebreak10 ASC
+         JOIN (
+          SELECT nStandingID, rank_calculated 
+          from ( 
+            SELECT nStandingID, nWins, nHighestTiebreak, @winrank := @winrank + 1 AS rank_calculated
+            from standing, (SELECT @winrank := 0) r
+            where nWeekID = nInWeekID
+            ORDER BY nWins DESC, nHighestTiebreak, nTiebreak2, nTiebreak3, nTiebreak4, nTiebreak5, nTiebreak6, nTiebreak7, nTiebreak8, nTiebreak9, nTiebreak10 ) rt
+          ORDER BY rank_calculated
+
+
+
+--          SELECT nStandingID
+--                , @rownum:=@rownum+1 AS rank_calculated
+--           FROM standing
+--              , (SELECT @rownum:=0) AS st
+--           WHERE nWeekID = nInWeekID
+--           ORDER BY nWins DESC, nHighestTiebreak DESC, nTiebreak2 ASC, nTiebreak3 ASC, nTiebreak4 ASC, nTiebreak5 ASC, nTiebreak6 ASC, nTiebreak7 ASC, nTiebreak8 ASC, nTiebreak9 ASC, nTiebreak10 ASC
          ) AS r
          ON r.nStandingID = standing.nStandingID
 SET standing.nPlace = r.rank_calculated
