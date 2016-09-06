@@ -1,15 +1,3 @@
-<!--- // add league column to season --->
-<cfquery name="qrySeason" datasource="#request.dsn#">
-	select * from season
-</cfquery>
-<cfif !listFindNoCase(qrySeason.columnList, "sLeagueID")>
-	<cfquery name="qryAlterSeason" datasource="#request.dsn#">
-		alter table season
-		add column sLeagueID nvarchar(32) not null,
-		add column sPaymentText nvarchar(2000) null
-	</cfquery>
-</cfif>
-
 <cfscript>
 	leagueGateway = getBeanFactory().getBean("leagueGateway");
 	seasonGateway = getBeanFactory().getBean("seasonGateway");
@@ -18,9 +6,6 @@
 
 	// build pickem league
 	league = leagueGateway.get({ "sName" = "pickem"});
-	if( isNull(league.getSLeagueID()) ){
-		league = leagueGateway.update(leagueGateway.get(), { "sName" = "pickem"} );
-	}
 	// update the seasons
 	arSeasons = seasonGateway.getAll();
 	for( itm=1; itm lte arrayLen(arSeasons); itm++ ){
@@ -42,11 +27,11 @@
 	}
 	// build underdog league
 	if( isNull(leagueGateway.get({ sName = "underdog"}).getSLeagueID()) ){
-		league = leagueGateway.update(leagueGateway.get(), { "sName" = "underdog"} );
+		league = leagueGateway.update(leagueGateway.get(), { "sName" = "NFL Underdog", "sKey" = "underdog"} );
 	}
 
 	// build NFLPick league
 	if( isNull(leagueGateway.get({ sName = "nflpick"}).getSLeagueID()) ){
-		league = leagueGateway.update(leagueGateway.get(), { "sName" = "nflpick"} );
+		league = leagueGateway.update(leagueGateway.get(), { "sName" = "NFL Pick", "sKey" = "nflPick"} );
 	}
 </cfscript>

@@ -23,7 +23,8 @@ component extends="libs.framework.one" {
 			"security:main.authenticate",
 			"manager:user.register",
 			"manager:user.changePassword",
-			"manager:subscription.noPayNoPlay"];
+			"manager:subscription.noPayNoPlay",
+			"manager:main.about"];
 		// store weekly results
 		application.stWeeklyTeamResults = {};
 		// track when the auto picks are made each week
@@ -56,10 +57,16 @@ component extends="libs.framework.one" {
 		rc.tTimeNow = timeFormat(now(), 'HH:mm');
 		rc.dNow = rc.dDateNow & " " & rc.tTimeNow;
 		// default the season
-		rc.oCurrentLeague = getBeanFactory().getBean("leagueService").getLeague(request.sLeagueName);
-		rc.sCurrentLeagueID = rc.oCurrentLeague.getSLeagueID();
-		rc.oCurrentSeason = getBeanFactory().getBean("seasonService").getCurrentSeason(rc.sCurrentLeagueID);
-		rc.nCurrentSeasonID = rc.oCurrentSeason.getNSeasonID();
+		arLeague = getBeanFactory().getBean("leagueGateway").getByKey(request.sLeagueKey);
+		if( arrayLen(arLeague) ){
+			rc.oCurrentLeague = arLeague[1];
+			rc.sCurrentLeagueID = rc.oCurrentLeague.getSLeagueID();
+			rc.oCurrentSeason = getBeanFactory().getBean("seasonService").getCurrentSeason(rc.sCurrentLeagueID);
+			rc.nCurrentSeasonID = rc.oCurrentSeason.getNSeasonID();
+		} else {
+			// TODO The league is busted
+		}
+		
 		rc.bIsDialog = false;
 		rc.bIsMobile = getBeanFactory().getBean("commonService").isMobileView();
 		rc.bIsAdminAction = false;

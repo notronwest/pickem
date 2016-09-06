@@ -101,6 +101,24 @@ public numeric function getCount(){
 	return list(argumentCollection=arguments).itemCount;
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$delete
+Summary:
+	Deletes the entity
+Returns:
+	Void
+Arguments:
+	Any object
+History:
+	2016-09-05 - RLW - Created
+*/
+public void function delete ( Required any oBean ){
+	entityDelete(arguments.oBean);
+	ormFlush();
+}
 
 // using the gateway name to get access to the bean name
 public any function getEntityName(){

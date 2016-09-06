@@ -2,21 +2,25 @@ component extends="model.base" accessors="true" {
 	
 public any function save() {
 
-	getID = this['get' & getEntityPK()];
-	if( isNull(getID()) or !len(trom(getID()))){
-		setID = this['set' & getEntityPK()];
-		setID(createFormattedUUID());
-	}
+	// if this is a newer bean with the string value
+	if( compareNoCase(left(getEntityPK(), 1), "N") neq 0){
+		getID = this['get' & getEntityPK()];
 
+		if( isNull(getID()) or !len(trim(getID()))){
+			setID = this['set' & getEntityPK()];
+			setID(createFormattedUUID());
+		}
+	}
 	entitySave(this);
 
 	return this;
 }
 
 public any function getEntityPK(){
-	var sEntityPK = 'n' & getEntityName() & 'ID';
-	if( structKeyExists(this, 'getS' & getEntityName() & 'ID')){
-		sEntityPK = 's' & getEntityName() & 'ID';
+	var sEntityPK = 'N' & getEntityName() & 'ID';
+	// default to getN...ID()
+	if( !structKeyExists(this, 'get' & sEntityPK) ){
+		sEntityPK = 'S' & getEntityName() & 'ID';	
 	}
 	return sEntityPK;
 }

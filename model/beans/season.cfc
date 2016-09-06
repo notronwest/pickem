@@ -9,6 +9,7 @@ component entityname="season" persistent="true" table="season" output="false" ex
 	property name="nTotalCost" fiedtype="column" ormtype="int";
 	property name="sPaymentText" fieldtype="column" ormtype="string";
 	property name="sLeagueID" fieldtype="column" ormtype="string" length="32";
+	property name="sSeasonID" fieldtype="column" ormtype="string" length="32";
 
 	// override the get total purse function to return the amount minus the total cost
 	public Numeric function getNCalculatedPurse(){
