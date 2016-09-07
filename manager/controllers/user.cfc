@@ -162,7 +162,7 @@ public void function register(rc){
 	// save the user
 	var oUser = variables.userGateway.update(variables.userGateway.get(), stUser);
 	// send out e-mail
-	variables.userService.sendNewUserEmail(rc.sEmail, sPassword);
+	variables.userService.sendNewUserEmail(rc.sEmail, sPassword, rc.oCurrentLeague);
 }
 
 public void function changePassword(rc){

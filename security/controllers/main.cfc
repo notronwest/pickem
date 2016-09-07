@@ -147,9 +147,9 @@ public void function forgotPassword(rc){
 
 Use the above password in combination with your e-mail address to get back into the action.
 
-http://pickem.inquisibee.com";
+#request.stLeagueSettings[rc.oCurrentLeague.getSKey()].sProductionURL#";
 
-			variables.commonService.sendEmail(rc.sEmail, "Pickem password reset", sMessage);
+			variables.commonService.sendEmail(rc.sEmail, "#rc.oCurrentLeague.getSName()# password reset", sMessage);
 			// set new login message
 			rc.sMessage = "An e-mail has been sent with a temporary password";
 			// redirect to login

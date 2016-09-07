@@ -107,17 +107,17 @@ public Array function getAllWithSubscriptions( Required Numeric nSeasonID ){
 	return arUsers;
 }
 
-public void function sendNewUserEmail( Required String sEmail, Required String sPassword){
+public void function sendNewUserEmail( Required String sEmail, Required String sPassword, Required model.beans.league oCurrentLeague){
 	// send out e-mail
-	var sMessage = "Welcome to Pickem. We have created the following temporary password for you: #arguments.sPassword#
+	var sMessage = "Welcome to #arguments.oCurrentLeague.getSName()#. We have created the following temporary password for you: #arguments.sPassword#
 
 Use the above password in combination with your e-mail address to get started with the site.
 
 Good Luck!
 
-http://pickem.inquisibee.com";
+#request.stLeagueSettings[arguments.oCurrentLeague.getSKey()].sProductionURL#";
 
-	variables.commonService.sendEmail(sEmail, "Welcome to Pickem!", sMessage);
+	variables.commonService.sendEmail(sEmail, "Welcome to #arguments.oCurrentLeague.getSName()#!", sMessage);
 }
 
 public model.beans.user function handleSave( Required model.beans.user oUser, Required struct stFormData, boolean bIsAdmin = false, boolean bIsNewUser = false ){
