@@ -1,7 +1,7 @@
 component accessors="true" {
-	property name="commonService";
-	property name="framework";
-	property name="dbService";
+	property name="commonService" persistent="false";
+	property name="framework" persistent="false";
+	property name="dbService" persistent="false";
 
 
 public string function createFormattedUUID(){
