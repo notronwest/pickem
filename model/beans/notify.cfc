@@ -1,5 +1,5 @@
 
-component entityname="notify" persistent="true" table="notify" output="false" {
+component entityname="notify" persistent="true" table="notify" output="false" extends="model.baseORMBean" {
 	property name="nNotifyID" fieldtype="ID" generator="identity";
 	property name="nOptionID" fieldtype="column" ormtype="int";
 	property name="sSubject" fieldtype="column" ormtype="string" length="1000";

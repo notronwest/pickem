@@ -1,15 +1,15 @@
 <cfparam name="rc.sMessageType" default="login">
 <cfparam name="rc.sMessage" default="">
 <cfoutput>
-
+<section>
 <!--- // show create account message if they haven't logged in --->
 <cfif !rc.bHasLoggedIn>
 <h3>Welcome</h3>
 Interested in being in on the best kept secret on the web? Well then, just fill out this form and you are in!
-<form id="register" action="#buildURL('pickem:user.register')#" method="post">
+<form id="register" action="#buildURL('manager:user.register')#" method="post">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h4 class="panel-title">Join Now!</h4>
+			<h3 class="panel-title" style="float:none;">Join Now!</h3>
 		</div>
 		<div class="panel-body">
 			<cfif len(rc.sMessage) gt 0 and compareNoCase(rc.sMessageType, "register") eq 0>

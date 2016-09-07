@@ -9,6 +9,7 @@ doUpdate:BEGIN
 DECLARE dtPicksDue int;
 DECLARE nStandingRecordCount int;
 DECLARE nLeastWins int;
+DECLARE nFirstPlace int;
 
 DECLARE EXIT HANDLER FOR SQLEXCEPTION
  BEGIN
@@ -86,25 +87,36 @@ nTiebreak9 = fn_getNextTiebreak(nWeekID, nUserID, nTiebreak8),
 nTiebreak10 = fn_getNextTiebreak(nWeekID, nUserID, nTiebreak9)
 WHERE nWeekID = nInWeekID;
 
+-- remove any records for users who are inactive
+DELETE FROM standing
+WHERE nUserID IN (SELECT nUserID FROM user WHERE bActive <> 1)
+AND nSeasonID = nInSeason;
+
 -- Update the standings place for this week
 UPDATE standing
          JOIN (
-          SELECT nStandingID, rank_calculated 
-          from ( 
-            SELECT nStandingID, nWins, nHighestTiebreak, @winrank := @winrank + 1 AS rank_calculated
-            from standing, (SELECT @winrank := 0) r
-            where nWeekID = nInWeekID
-            ORDER BY nWins DESC, nHighestTiebreak, nTiebreak2, nTiebreak3, nTiebreak4, nTiebreak5, nTiebreak6, nTiebreak7, nTiebreak8, nTiebreak9, nTiebreak10 ) rt
-          ORDER BY rank_calculated
+--          SELECT nStandingID, rank_calculated 
+--          from ( 
+--            SELECT nStandingID, nWins, nHighestTiebreak, @winrank := @winrank + 1 AS rank_calculated
+--            from standing, (SELECT @winrank := 0) r
+--            where nWeekID = nInWeekID
+--            ORDER BY nWins DESC, if( nHighestTiebreak=0, nTiebreak2, nHighestTiebreak), nTiebreak2, nTiebreak3, nTiebreak4, nTiebreak5, nTiebreak6, nTiebreak7, nTiebreak8, nTiebreak9, nTiebreak10 ) rt
+--          ORDER BY rank_calculated
 
-
-
+SELECT nStandingID, rank_calculated 
+  from (
+    SELECT    nStandingID, @curRank := @curRank + 1 AS rank_calculated
+    FROM      standing s, (SELECT @curRank := 0) st
+    WHERE nWeekID = nInWeekID
+    ORDER BY  nWins DESC, nHighestTiebreak DESC, nTiebreak2, nTiebreak3, nTiebreak4, nTiebreak5, nTiebreak6, nTiebreak7, nTiebreak8, nTiebreak9, nTiebreak10
+  ) rt
+ORDER BY rank_calculated
 --          SELECT nStandingID
 --                , @rownum:=@rownum+1 AS rank_calculated
 --           FROM standing
 --              , (SELECT @rownum:=0) AS st
 --           WHERE nWeekID = nInWeekID
---           ORDER BY nWins DESC, nHighestTiebreak DESC, nTiebreak2 ASC, nTiebreak3 ASC, nTiebreak4 ASC, nTiebreak5 ASC, nTiebreak6 ASC, nTiebreak7 ASC, nTiebreak8 ASC, nTiebreak9 ASC, nTiebreak10 ASC
+--           ORDER BY nWins DESC, if( nHighestTiebreak=0, nTiebreak2, nHighestTiebreak), nTiebreak2 ASC, nTiebreak3 ASC, nTiebreak4 ASC, nTiebreak5 ASC, nTiebreak6 ASC, nTiebreak7 ASC, nTiebreak8 ASC, nTiebreak9 ASC, nTiebreak10 ASC
          ) AS r
          ON r.nStandingID = standing.nStandingID
 SET standing.nPlace = r.rank_calculated
@@ -125,10 +137,17 @@ nLosses = (select (count(*) - nLeastWins) as nLoses from game where nWeekID = nI
 WHERE nWeekID = nInWeekID
 AND bHasPicks <> 1;
 
--- remove any records for users who are inactive
-DELETE FROM standing
-WHERE nUserID IN (SELECT nUserID FROM user WHERE bActive <> 1)
-AND nSeasonID = nInSeason;
+-- do fix for first place being off one
+SET nFirstPlace = (SELECT count(*) as nFirstPlace
+FROM standing
+WHERE nPlace = 1
+AND nWeekID = nInWeekID);
+
+IF nFirstPlace < 1 THEN
+  UPDATE standing
+  SET nPlace = (nPlace - 1)
+  WHERE nWeekID = nInWeekID;
+END IF;
 
 
 END $$

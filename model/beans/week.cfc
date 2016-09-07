@@ -1,5 +1,5 @@
 
-component entityname="week" persistent="true" table="week" output="false" {
+component entityname="week" persistent="true" table="week" output="false" extends="model.baseORMBean" {
 	property name="nWeekID" fieldtype="ID" generator="identity";
 	property name="sName" fieldtype="column" ormtype="string" length="2000";
 	property name="nWeekNumber" fieldtype="column" ormtype="int";

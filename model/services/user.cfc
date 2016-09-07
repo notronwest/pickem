@@ -1,6 +1,7 @@
 component accessors="true" extends="model.services.baseService" {
 
 property name="userGateway";
+property name="userService";
 property name="subscriptionGateway";
 
 /**
@@ -84,11 +85,14 @@ public void function updateLastLogin( Required Numeric nUserID ){
 
 public Array function getAllWithSubscriptions( Required Numeric nSeasonID ){
 	// get all of the users
-	var arUsers = variables.userGateway.getAll();
+	var arSeasonUsers = variables.userGateway.getUsersBySeason(arguments.nSeasonID);
+	var arUsers = [];
 	var itm = 1;
 	var arSubscription = [];
 	// loop through users and add fee data
-	for( itm; itm lte arrayLen(arUsers); itm++ ){
+	for( itm; itm lte arrayLen(arSeasonUsers); itm++ ){
+		// add this user into the user array
+		arrayAppend(arUsers, variables.userGateway.get(arSeasonUsers[itm].getNUserID()));
 		// get the fees paid by this user for this season
 		arSubscription = variables.subscriptionGateway.getByUserAndSeason(arUsers[itm].getNUserID(), arguments.nSeasonID);
 		if( arrayLen(arSubscription) gt 0 ){

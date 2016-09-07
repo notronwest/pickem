@@ -26,4 +26,30 @@ public void function updatePurse( Required Numeric nSeasonID ){
 	variables.seasonGateway.update(oSeason, { "nTotalPurse" = nSubscriptionsPaid });
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$getCurrentSeason
+Summary:
+	Returns the current season
+Returns:
+	Void
+Arguments:
+	String sLeagueID
+History:
+	2016-08-26 - RLW - Created
+*/
+public model.beans.season function getCurrentSeason( Required String sLeagueID){
+	var oSeason = variables.seasonGateway.getCurrentSeason(arguments.sLeagueID);
+	if( isNull(oSeason.getNSeasonID()) ){
+		// create a new season
+		oSeason = variables.seasonGateway.update(oSeason, {
+			sName = Year(now()) & "-" & Year(dateAdd("y", 1, now())),
+			sLeagueID = arguments.sLeagueID
+		});
+	}
+	return oSeason;
+}
+
 }

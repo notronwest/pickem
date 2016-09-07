@@ -1,5 +1,5 @@
 
-component entityname="user" persistent="true" table="user" output="false" {
+component entityname="user" persistent="true" table="user" output="false" extends="model.baseORMBean" {
 	property name="nUserID" fieldtype="ID" generator="identity";
 	property name="sFirstName" fieldtype="column" ormtype="string" length="2000";
 	property name="sLastName" fieldtype="column" ormtype="string" length="2000";

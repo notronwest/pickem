@@ -1,5 +1,5 @@
 
-component entityname="team" persistent="true" table="team" output="false" {
+component entityname="team" persistent="true" table="team" output="false" extends="model.baseORMBean" {
 	property name="nTeamID" fieldtype="ID" generator="identity";
 	property name="sName" fieldtype="column" ormtype="string" length="2000";
 	property name="sName2" fieldtype="column" ormtype="string" length="2000";
@@ -7,6 +7,7 @@ component entityname="team" persistent="true" table="team" output="false" {
 	property name="sName4" fieldtype="column" ormtype="string" length="2000";
 	property name="sMascot" fieldtype="column" ormtype="string" length="2000";
 	property name="sURL" fieldtype="column" ormtype="string" length="2000";
+	property name="nDonBestID" fieldtype="column" ormtype="int";
 	property name="nType" fieldtype="column" ormtype="int";
 
 	/**
