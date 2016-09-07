@@ -80,22 +80,6 @@ public void function home(rc){
 			IsNull(arStandings[itm].getNTiebreak9()) ? 0 : arStandings[itm].getNTiebreak9(),
 			IsNull(arStandings[itm].getNTiebreak10()) ? 0 : arStandings[itm].getNTiebreak10()
 		];
-		// store the winners
-		if( not structKeyExists(rc.stWeekWinners, nWeekID) ){
-			rc.stWeekWinners[nWeekID] = {};
-			rc.stWeekSecondPlace[nWeekID] = {};
-		}
-		// if there is no current first place
-		if( arStandings[itm].getNPlace() eq 1 and not arrayFind(arWeekFirstPlace, nWeekID) ){
-			rc.stWeekWinners[nWeekID][nUserID] = 1;
-			arrayAppend(arWeekFirstPlace, nWeekID);
-		} else if( arStandings[itm].getNPlace() eq 1 and not arrayFind(arWeekSecondPlace, nWeekID) ){ // if this user is second and there are no second place people outlined yet
-			rc.stWeekSecondPlace[nWeekID][nUserID] = 1;
-			arrayAppend(arWeekSecondPlace, nWeekID);
-		} else if ( arStandings[itm].getNPlace() eq 2 and not arrayFind(arWeekSecondPlace, nWeekID)){ // second place
-			rc.stWeekSecondPlace[nWeekID][nUserID] = 1;
-			arrayAppend(arWeekSecondPlace, nWeekID);
-		}
 		// increase this users season wins
 		if( not structKeyExists(rc.stSeasonWins, nUserID) ){
 			rc.stSeasonWins[nUserID] = arStandings[itm].getNWins();

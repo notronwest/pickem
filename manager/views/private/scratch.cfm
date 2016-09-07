@@ -1,8 +1,6 @@
+<cfhttp method="get" url="http://www.nfl.com/liveupdate/scores/scores.json"/>
 <cfscript>
-	season = getBeanFactory().getBean("seasonGateway").get();
-	season = getBeanFactory().getBean("seasonGateway").update(season, {
-		"sName" = "NFL Perfect Challenge",
-		"sKey" = "NFLPerfect"
-	});
-	writeDump(season);
+	if( isJSON(cfhttp.fileContent) ){
+		writeDump(deserializeJSON(cfhttp.fileContent));
+	}
 </cfscript>

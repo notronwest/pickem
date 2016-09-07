@@ -2,5 +2,5 @@
 *.log
 *.DS_Store
 views/main/scratch.cfm
-scores/node_modules
+node_modules
 

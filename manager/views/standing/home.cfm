@@ -57,24 +57,14 @@
 						<!--- // loop through the week wins for this user --->
 						<cfloop from="#arrayLen(local.arWeeks)#" to="1" step="-1" index="local.y">
 							<cfscript>
-								bIsFirst = false;
-								bIsSecond = false;
 								local.nWeekID = local.arWeeks[local.y];
-								// determine if this user is a winner
-								if( structKeyExists(rc.stWeekWinners[local.nWeekID], local.nUserID) ){
-									bIsFirst = true;
-								} else if( structKeyExists(rc.stWeekSecondPlace[local.nWeekID], local.nUserID) ){
-									bIsSecond = true;
-								}
 							</cfscript>
 
-							<td<cfif bIsFirst> class="highlight-first"<cfelseif bIsSecond> class="highlight-second"</cfif> data-order="#local.stUserWeekData[local.nWeekID].nPlace#">#local.stUserWeekData[local.nWeekID].wins#
-							<cfif bIsFirst>
-								<span class="fa fa-trophy"></span>
-							</cfif>
-							<cfif bIsFirst or bIsSecond or rc.bDebugTiebreak neq 0>
-								(#((structKeyExists(local.arUserTiebreak, local.nWeekID) and arrayLen(local.arUserTiebreak[local.nWeekID]) gt 0) ? '<span title="' & local.arUserTiebreak[local.nWeekID].toString() & '">' & local.arUserTiebreak[local.nWeekID][1] & '</span>' : "")#)
-							</cfif>
+							<td data-order="#local.stUserWeekData[local.nWeekID].nPlace#">#local.stUserWeekData[local.nWeekID].wins#
+
+							<span class="badge"><cfif local.stUserWeekData[local.nWeekID].nPlace eq 1>1<cfelseif local.stUserWeekData[local.nWeekID].nPlace eq 2>2<cfelseif local.stUserWeekData[local.nWeekID].nPlace eq 3>3</cfif></span>
+							
+							<!--- // handle no picks or auto picks --->
 							<cfif structKeyExists(rc.stWeekNoPicks, local.nWeekID) and isArray(rc.stWeekNoPicks[local.nWeekID]) and arrayFind(rc.stWeekNoPicks[local.nWeekID], local.nUserID)><span class="fa fa-frown-o"></span></cfif>
 							<cfif structKeyExists(rc.stWeekAutoPick, local.nWeekID) and isArray(rc.stWeekAutoPick[local.nWeekID]) and arrayFind(rc.stWeekAutoPick[local.nWeekID], local.nUserID)>(a)</cfif>
 						</td>

@@ -108,7 +108,7 @@ SELECT nStandingID, rank_calculated
     SELECT    nStandingID, @curRank := @curRank + 1 AS rank_calculated
     FROM      standing s, (SELECT @curRank := 0) st
     WHERE nWeekID = nInWeekID
-    ORDER BY  nWins DESC, if(nHighestTiebreak=0, 9999, nHighestTiebreak), nTiebreak2, nTiebreak3, nTiebreak4, nTiebreak5, nTiebreak6, nTiebreak7, nTiebreak8, nTiebreak9, nTiebreak10
+    ORDER BY  nWins DESC, nHighestTiebreak DESC, nTiebreak2, nTiebreak3, nTiebreak4, nTiebreak5, nTiebreak6, nTiebreak7, nTiebreak8, nTiebreak9, nTiebreak10
   ) rt
 ORDER BY rank_calculated
 --          SELECT nStandingID

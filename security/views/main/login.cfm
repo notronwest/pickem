@@ -59,7 +59,7 @@ Interested in being in on the best kept secret on the web? Well then, just fill 
 				</div>
 			</div>
 			<div class="form-group">
-				<a href="#buildURL('security.forgotPassword')#">forgot password</a>
+				<a href="#buildURL('security:main.forgotPassword')#">forgot password</a>
 			</div>
 		</div>
 		<div class="panel-footer text-right"><button class="save btn btn-primary btn-xs" id="loginUser">Login</button></div>

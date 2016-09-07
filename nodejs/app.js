@@ -294,6 +294,110 @@ app.get('/get-results', function(req, res){
     });
 });
 
+
+app.get('/get-schedule', function(req, res){
+    var stWeekData = {};
+    var stGameData = {};
+    // get the query params sent to the page
+    var sScheduleURL = req.query.sScheduleURL; 
+    // setup the default response
+    stResults = {
+      "sStatus": 200,
+      "arGameData": [],
+      "sMessage": "",
+      "sScheduleURL": sScheduleURL,
+      "arDebugMessage": arDebugMessage
+    }
+    // tell the response to be json
+    res.set({
+      'Content-Type': 'application/json'
+    })
+    // setup user agent
+    var stHeaders = {
+      'User-Agent': "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.1 Safari/537.36"
+    }
+    var stOptions = {
+      uri: sScheduleURL,
+      method: 'GET',
+      headers: stHeaders,
+      qs: ''
+    }
+    //get the score data from the API and handle parsing
+    request(stOptions, function(err, response, body){
+
+        // send the body of the response to jsdom and load jquery
+        jsdom.env({
+            html: body,
+            scripts: ['http://code.jquery.com/jquery-1.6.min.js'],
+            done: function (err, window) {
+                // setup jQuery scope
+                $ = window.jQuery;
+
+                // loop through all of the odds holders
+                $(".odds_gamesHolder").each(function(){
+                 sGameDate = $(this).find(".odds_dateRow h3").text().split("-")[1].trim() + " " + new Date().getFullYear();
+                  // loop through all of the game rows
+                  $(this).find("tr.statistics_table_alternateRow, tr.statistics_table_row").each(function(){
+                    stGameData = {};
+                    // loop through all of the cells
+                    $(this).children("td").each(function(index){
+                      switch(index){
+                        // teamIDs
+                        case 0:
+                          stGameData.nAwayTeamID = $(this).html().split("<br>")[0];
+                          stGameData.nHomeTeamID = $(this).html().split("<br>")[1];
+                        break;
+
+                        // odds
+                        case 1:
+                          stGameData.sSpreadData = $(this).children("div").html();
+                          arOdds = stGameData.sSpreadData.split("<br>");
+                          if( stGameData.sSpreadData.indexOf("+") >= 0 ){
+                              if( arOdds[0].indexOf("+") >= 0 ){
+                                stGameData.sSpread = "-" + arOdds[0].split("+")[1];
+                                stGameData.sSpreadFavor = "home";
+                              } else {
+                                stGameData.sSpread = "-" + arOdds[1].split("+")[1];
+                                stGameData.sSpreadFavor = "away";
+                              }
+                          } else if ( stGameData.sSpreadData.indexOf("-") >= 0 ){
+                            if( arOdds[0].indexOf("-") >= 0 ){
+                              stGameData.sSpread = arOdds[0];
+                              stGameData.sSpreadFavor = "away";
+                            } else {
+                              stGameData.sSpread = arOdds[1];
+                              stGameData.sSpreadFavor = "home";
+                            }
+                          }
+                        break;
+
+                        // team names
+                        case 2:
+                          $(this).find("nobr").each(function(itm){
+                            if( itm == 0 ){
+                              stGameData.sAwayTeam = $(this).text();
+                            } else {
+                              stGameData.sHomeTeam = $(this).text();
+                            }
+                          });
+                        break;
+
+                        // game time
+                        case 3:
+                          stGameData.sGameDateTime = sGameDate + " " + convertTime($(this).children("div").text());
+                        break;
+                      }
+                    });
+                    stResults.arGameData.push(stGameData);  
+                  });
+                });
+                // return the game data as JSON
+                res.json({ "stResults": stResults });
+            }
+        });
+    });
+});
+
 // determine the home team id
 var getHomeTeamID = function(sScoreBlock, arHomeTeam, arAwayTeam){
   var nHomeTeamID = "";
@@ -345,6 +449,20 @@ var doTeamsMatch = function(sTeamNameIn, sTeamNameToCheck){
 // get the teams score
 var getTeamScore = function(sTeamBlock){
   return $(sTeamBlock).find("td:last-child .score").text()
+}
+
+// convert time
+var convertTime = function(sTime){
+  var hours = Number(sTime.match(/^(\d+)/)[1]);
+  var minutes = Number(sTime.match(/:(\d+)/)[1]);
+  var AMPM = sTime.match(/\s(.*)$/)[1];
+  if(AMPM == "PM" && hours<12) hours = hours+12;
+  if(AMPM == "AM" && hours==12) hours = hours-12;
+  var sHours = hours.toString();
+  var sMinutes = minutes.toString();
+  if(hours<10) sHours = "0" + sHours;
+  if(minutes<10) sMinutes = "0" + sMinutes;
+  return sHours + ":" + sMinutes;
 }
 
 // get the status of the game

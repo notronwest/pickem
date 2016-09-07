@@ -1,5 +1,8 @@
-DROP FUNCTION `getNextTiebreak`//
-CREATE DEFINER=`pickem`@`%` FUNCTION `getNextTiebreak`(nInWeekID int, nInUserID int, nInTiebreakStart int) RETURNS int(11)
+DROP FUNCTION IF EXISTS `fn_getNextTiebreak`;
+
+DELIMITER $$
+
+CREATE DEFINER=`inqsports`@`%` FUNCTION `fn_getNextTiebreak`(nInWeekID int, nInUserID int, nInTiebreakStart int) RETURNS int
 BEGIN
 
 DECLARE nNextTiebreak int;
@@ -22,4 +25,6 @@ END IF;
 
 RETURN nNextTiebreak;
 
-END
+END $$
+
+DELIMITER ;
