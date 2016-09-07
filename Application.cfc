@@ -1,4 +1,4 @@
-component extends="libs.framework.one" {
+component extends="framework" {
 	
 	include "config/applicationSettings.cfm";
 	include "config/environmentalSettings.cfm";
@@ -10,7 +10,7 @@ component extends="libs.framework.one" {
 	*/
 	public void function setupApplication(){
 		// build the bean factory
-		setBeanFactory( new libs.framework.ioc("/model") );
+		setBeanFactory( new ioc("/model") );
 		
 		application.dataDirectory = expandPath("/data/");
 		application.sSerializeView = "manager:main.serialize";
