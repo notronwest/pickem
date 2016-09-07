@@ -473,4 +473,59 @@ public Boolean function updateGamesWithRecords( Required Numeric nWeekID, Requir
 	return bSuccess;
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$getAvailableGames
+Summary:
+	Retrieves the available games for the site
+Returns:
+	Array arGameData
+Arguments:
+	Numeric nWeekID
+History:
+	2016-09-07 - RLW - Created
+*/
+public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean bGetNFLGames = true ){
+	var arGameData = [];
+	var stGameResults = {};
+	var sNCAAScheduleURL = "http://www.donbest.com/ncaaf/odds/";
+	var sNFLScheduleURL = "http://www.donbest.com/nfl/odds/";
+	var arGameScheduleURL = [];
+	if( arguments.bGetNCAAGames ){
+		arrayAppend(arGameScheduleURL, sNCAAScheduleURL);
+	}
+	if( arguments.bGetNFLGames ){
+		arrayAppend(arGameScheduleURL, sNFLScheduleURL);
+	}
+	var itm = 1;
+	var x = 1;
+	for( itm; itm lte arrayLen(arGameScheduleURL); itm++ ){
+		// get NCAA games
+		stGameResults = variables.commonService.getURL("http://localhost:3000/get-schedule?sScheduleURL=" & arGameScheduleURL[itm], 25);
+		// if we have a valid response
+		if( find("200", stGameResults.statusCode) gt 0 and isJSON(stGameResults.fileContent.toString()) ){
+			stResponse = deserializeJSON(stGameResults.fileContent.toString());
+			// make sure the API call was successful
+			if( find(200, stResponse.stResults.sStatus) ){
+				// add games (fixing up dates)
+				for(x=1; x lte arrayLen(stResponse.stResults.arGameData); x++ ){
+					sGameDateTime = dateFormat(stResponse.stResults.arGameData[x].sGameDateTime, 'yyyy-mm-dd') & " " & timeFormat(stResponse.stResults.arGameData[x].sGameDateTime, 'HH:mm');
+					// requires lock date
+					stResponse.stResults.arGameData[x]["dtLock"] = sGameDateTime;
+					stResponse.stResults.arGameData[x].sGameDateTime = sGameDateTime;
+					arrayAppend(arGameData, stResponse.stResults.arGameData[x]);
+				}
+				
+			} else {
+				// API called failed
+			}
+		} else {
+			// need logging
+		}
+	}
+	return arGameData;
+}
+
 }

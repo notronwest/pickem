@@ -333,19 +333,19 @@ app.get('/get-schedule', function(req, res){
                 // setup jQuery scope
                 $ = window.jQuery;
 
-                // loop through all of the odds holders
-                $(".odds_gamesHolder").each(function(){
-                 sGameDate = $(this).find(".odds_dateRow h3").text().split("-")[1].trim() + " " + new Date().getFullYear();
+                // loop through all of the dates for game
+                $(".odds_dateRow h3").each(function(){
+                  sGameDate = fixUpDate($(this).text()) + " " + new Date().getFullYear();
                   // loop through all of the game rows
-                  $(this).find("tr.statistics_table_alternateRow, tr.statistics_table_row").each(function(){
+                  $(this).closest("tbody").find("tr.statistics_table_alternateRow, tr.statistics_table_row").each(function(){
                     stGameData = {};
                     // loop through all of the cells
                     $(this).children("td").each(function(index){
                       switch(index){
                         // teamIDs
                         case 0:
-                          stGameData.nAwayTeamID = $(this).html().split("<br>")[0];
-                          stGameData.nHomeTeamID = $(this).html().split("<br>")[1];
+                          stGameData.nAwayDonBestID = $(this).html().split("<br>")[0];
+                          stGameData.nHomeDonBestID = $(this).html().split("<br>")[1];
                         break;
 
                         // odds
@@ -354,18 +354,18 @@ app.get('/get-schedule', function(req, res){
                           arOdds = stGameData.sSpreadData.split("<br>");
                           if( stGameData.sSpreadData.indexOf("+") >= 0 ){
                               if( arOdds[0].indexOf("+") >= 0 ){
-                                stGameData.sSpread = "-" + arOdds[0].split("+")[1];
+                                stGameData.nSpread = "-" + arOdds[0].split("+")[1];
                                 stGameData.sSpreadFavor = "home";
                               } else {
-                                stGameData.sSpread = "-" + arOdds[1].split("+")[1];
+                                stGameData.nSpread = "-" + arOdds[1].split("+")[1];
                                 stGameData.sSpreadFavor = "away";
                               }
                           } else if ( stGameData.sSpreadData.indexOf("-") >= 0 ){
                             if( arOdds[0].indexOf("-") >= 0 ){
-                              stGameData.sSpread = arOdds[0];
+                              stGameData.nSpread = arOdds[0];
                               stGameData.sSpreadFavor = "away";
                             } else {
-                              stGameData.sSpread = arOdds[1];
+                              stGameData.nSpread = arOdds[1];
                               stGameData.sSpreadFavor = "home";
                             }
                           }
@@ -509,6 +509,24 @@ arDebugMessage.push("Quarter: " + nQuarter);
     "nGameQuarter": (nQuarter != "" || nQuarter != 0) ? ordinal_suffix_of(nQuarter) : nQuarter,
     "bGameIsFinal": bGameIsFinal
   }
+}
+
+var fixUpDate = function(sDate){
+  var arDayEndings = ["th","nd","rd","st"];
+  // first strip the bad string
+  if( sDate.indexOf("-") >= 0 ){
+    sDate = sDate.split("-")[1].trim();
+  }
+  // now strip off the day
+  if( sDate.indexOf(",") >= 0 ){
+    sDate = sDate.split(",")[1].trim();
+  }
+  // remove the day endings (e.g. th, nd, rd)
+  if( arDayEndings.indexOf(sDate.slice(-2)) >= 0 ){
+    sDate = sDate.substring(0, sDate.length - 2);
+  }
+  return sDate.trim();
+  
 }
 
 var ordinal_suffix_of = function(i) {

@@ -86,8 +86,13 @@ public Struct function getURL( Required String sURL, Numeric nTimeout=5, Struct 
 		httpService.setUrl(arguments.sURL);
 	    httpService.setTimeOut(arguments.nTimeout);
 		// set username and password
-	    httpService.setAttributes(username = arguments.sUsername);
-	    httpService.setAttributes(password = arguments.sPassword);
+		if( len(arguments.sUserName) ){
+	    	httpService.setAttributes(username = arguments.sUsername);
+	    }
+	    if( len(arguments.sPassword) ){
+	    	httpService.setAttributes(password = arguments.sPassword);
+		}
+	    
 	   	/* add additional params */
 	   	for(sKey in arguments.stParams){
 	   		httpService.addParam(type="url", name=sKey, value=arguments.stParams[sKey]);

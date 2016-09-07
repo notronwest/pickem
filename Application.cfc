@@ -2,6 +2,7 @@ component extends="framework" {
 	
 	include "config/applicationSettings.cfm";
 	include "config/environmentalSettings.cfm";
+	include "config/leagueSettings.cfm";
 	include "config/ormSettings.cfm";
 	include "config/fw1Settings.cfm";
 

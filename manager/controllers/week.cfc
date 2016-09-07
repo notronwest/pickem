@@ -52,7 +52,7 @@ public Void function getGames(rc){
 	 	rc.sGames = "";
 		// get the games for this week
 		for(itm; itm lte listLen(rc.lstLeagueList); itm++ ){
-			rc.sGames = rc.sGames & variables.sourceGateway.getRawSource(rc.nWeekID, "odds", listGetAt(rc.lstLeagueList, itm) );
+			rc.sGames = variables.gameService.getAvailableGames(request.stLeagueSettings[rc.oCurrentLeague.getSKey()].bHasNCAAGames, request.stLeagueSettings[rc.oCurrentLeague.getSKey()].bHasNFLGames);
 		}	
 	}
 }
