@@ -14,8 +14,6 @@ component extends="framework" {
 		
 		application.dataDirectory = expandPath("/data/");
 		application.sSerializeView = "manager:main.serialize";
-		// load all of the teams into memory
-		application.qryTeams = entityToQuery(getBeanFactory().getBean("teamGateway").getAll());
 		// unsecured actions
 		application.arUnsecuredActions = [
 			"security:main.forgotPassword",
