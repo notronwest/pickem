@@ -75,8 +75,6 @@
 		case "pickem.inquisibee.com":
 		case "pickem.inquisibee.com:80":
 		case "www.pickem.inquisibee.com":
-		case "nflperfection.inquisibee.com":
-		case "nflunderdog.inquisibee.com":
 			request.sLogURL = "/data/logs/";
 			request.bReloadOnEveryRequest = false;
 			//request.sAdminEmail = "footballpicksaaa@gmail.com";
