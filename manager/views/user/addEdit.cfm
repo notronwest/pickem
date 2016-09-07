@@ -40,9 +40,11 @@
 				<div class="form-group">
 					<a href="#buildURL('user.changePassword')#">Change password</a>
 				</div>
-				<div class="form-group">
-					<a href="#buildURL('setting.set')#">Change preferences</a>
-				</div>
+				<cfif request.stLeagueSettings[rc.oCurrentLeague.getSKey()].bHasUserPreferences>
+					<div class="form-group">
+						<a href="#buildURL('setting.set')#">Change preferences</a>
+					</div>
+				</cfif>
 			</cfif>
 			<cfif rc.stUser.bIsAdmin>
 				<div class="checkbox">
