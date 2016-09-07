@@ -1,1 +1,1 @@
-<cfif not rc.bIsDialog><script src="/assets/js/game.min.js"></script></cfif><cfoutput>#body#</cfoutput>
+<cfif not rc.bIsDialog><cfif fileExists(expandPath('/assets/js/#rc.oCurrentLeague.getSKey()#') & '/game.js')><script src="/assets/js/#rc.oCurrentLeague.getSKey()#/game.min.js"></script><cfelse><script src="/assets/js/game.min.js"></script></cfif></cfif><cfoutput>#body#</cfoutput>

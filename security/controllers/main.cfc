@@ -4,6 +4,7 @@ property name="userGateway";
 property name="userService";
 property name="subscriptionGateway";
 property name="settingService";
+property name="userSeasonGateway";
 
 public void function before(rc){
 	param name="rc.sActionAfterLogin" default="manager:standing.home";
