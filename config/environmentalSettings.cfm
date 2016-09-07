@@ -75,7 +75,7 @@
 		case "pickem.inquisibee.com":
 		case "pickem.inquisibee.com:80":
 		case "www.pickem.inquisibee.com":
-		case "nflperfect.inquisibee.com":
+		case "nflperfection.inquisibee.com":
 		case "nflunderdog.inquisibee.com":
 			request.sLogURL = "/data/logs/";
 			request.bReloadOnEveryRequest = false;
@@ -90,6 +90,40 @@
 			request.sDBBackupDirectory = "#expandPath('/data/weeklydbbackup/')#";
 			request.sDBUsername = "notronwest";
 			request.sDBPassword = "1nquisib33";
+			break;
+		
+		case "nflperfection.inquisibee.com":
+			request.sLogURL = "/data/logs/";
+			request.bReloadOnEveryRequest = false;
+			//request.sAdminEmail = "footballpicksaaa@gmail.com";
+			request.sAdminEmail = "pickem@inquisibee.com";
+			request.bIsDevelopment = false;
+			request.bIsStaging = false;
+			request.sSiteURL = 'http://pickem.inquisibee.com/';
+			request.dsn = "inqsports";
+			request.sLocalIP = "54.68.81.199";
+			request.sAPIKey="AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U";
+			request.sDBBackupDirectory = "#expandPath('/data/weeklydbbackup/')#";
+			request.sDBUsername = "notronwest";
+			request.sDBPassword = "1nquisib33";
+			request.sLeagueKey = "NFLPerfect";
+			break;
+
+		case "nflunderdog.inquisibee.com":
+			request.sLogURL = "/data/logs/";
+			request.bReloadOnEveryRequest = false;
+			//request.sAdminEmail = "footballpicksaaa@gmail.com";
+			request.sAdminEmail = "pickem@inquisibee.com";
+			request.bIsDevelopment = false;
+			request.bIsStaging = false;
+			request.sSiteURL = 'http://pickem.inquisibee.com/';
+			request.dsn = "inqsports";
+			request.sLocalIP = "54.68.81.199";
+			request.sAPIKey="AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U";
+			request.sDBBackupDirectory = "#expandPath('/data/weeklydbbackup/')#";
+			request.sDBUsername = "notronwest";
+			request.sDBPassword = "1nquisib33";
+			request.sLeagueKey = "NFLUnderdog";
 			break;
 			
 	}
