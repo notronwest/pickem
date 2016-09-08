@@ -11,7 +11,7 @@
   <div class="panel-group" id="accordion">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4 class="panel-title">
+        <h4 class="panel-title" style="float:none;">
           <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
             Step 1: Pick Users
           </a>
@@ -47,7 +47,7 @@
       </div>
       <div class="panel panel-default">
       <div class="panel-heading">
-        <h4 class="panel-title">
+        <h4 class="panel-title" style="float:none;">
           <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
             Step 2: Email Addressess
           </a>
