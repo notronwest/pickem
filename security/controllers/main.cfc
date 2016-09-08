@@ -55,6 +55,7 @@ public void function authenticate(rc){
 	var arUser = [];
 	var bLoggedIn = false;
 	rc.sMessageType = "warning";
+	var oUserSeason = "";
 	try{
 
 		rc.sMessage = "Login failed - please provide a valid username/password combination";
@@ -85,13 +86,15 @@ public void function authenticate(rc){
 					session.bSetProfile = 1;
 				}
 				// check to see if this user has a valid entry into this season (if not add it)
-				if( isNull(variables.userSeasonGateway.get({
+				oUserSeason = variables.userSeasonGateway.get({
 					nUserID = session.nUserID,
 					nSeasonID = rc.nCurrentSeasonID
-				})).getSUserSeasonID() ){
+				});
+				if( isNull(oUserSeason.getSUserSeasonID()) ){
 					variables.userSeasonGateway.update(variables.userSeasonGateway.get(), {
 						nUserID = session.nUserID,
-						nSeasonID = rc.nCurrentSeasonID
+						nSeasonID = rc.nCurrentSeasonID,
+						bActive = 1
 					});
 				}
 			}
