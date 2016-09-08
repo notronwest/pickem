@@ -32,7 +32,7 @@
                 <div class="form-group">
                   <div class="checkbox">
                     <label>
-                      <cfoutput><input type="checkbox" class="email-addresses" data-email="#rc.arUsers[local.itm].getSEmail()#"/> #rc.arUsers[local.itm].getSFirstName()# #rc.arUsers[local.itm].getSLastName()#</cfoutput>
+                      <cfoutput><input type="checkbox" class="email-addresses" data-email="#rc.arUsers[local.itm].getSEmail()#"/><cfif !len(rc.arUsers[local.itm].getSLastName())>#rc.arUsers[local.itm].getSEmail()#<cfelse>#rc.arUsers[local.itm].getSFirstName()# #rc.arUsers[local.itm].getSLastName()#</cfif></cfoutput>
                     </label>
                   </div>
                 </div>

@@ -107,7 +107,7 @@ public void function impersonate(rc){
 
 public void function emailUserForm(rc){
 	// get all of the users
-	rc.arUsers = variables.userGateway.getAllSortByFirst(false);
+	rc.arUsers = variables.userGateway.getBySeason(rc.nCurrentSeasonID, 1);
 	rc.bIsAdminAction = true;
 }
 

@@ -11,7 +11,7 @@
   <div class="panel-group" id="accordion">
     <div class="panel panel-default">
       <div class="panel-heading">
-        <h4 class="panel-title">
+        <h4 class="panel-title" style="float:none">
           <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
             Step 1: Pick Users
           </a>
@@ -32,7 +32,7 @@
                 <div class="form-group">
                   <div class="checkbox">
                     <label>
-                      <cfoutput><input type="checkbox" name="lstEmail" value="#rc.arUsers[local.itm].getSEmail()#" checked="checked"/> #rc.arUsers[local.itm].getSFirstName()# #rc.arUsers[local.itm].getSLastName()#</cfoutput>
+                      <cfoutput><input type="checkbox" name="lstEmail" value="#rc.arUsers[local.itm].getSEmail()#" checked="checked"/><cfif !len(rc.arUsers[local.itm].getSLastName())>#rc.arUsers[local.itm].getSEmail()#<cfelse>#rc.arUsers[local.itm].getSFirstName()# #rc.arUsers[local.itm].getSLastName()#</cfif></cfoutput>
                     </label>
                   </div>
                 </div>
@@ -47,7 +47,7 @@
       </div>
       <div class="panel panel-default">
       <div class="panel-heading">
-        <h4 class="panel-title">
+        <h4 class="panel-title" style="float:none">
           <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
             Step 2: Email
           </a>

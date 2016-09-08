@@ -215,8 +215,21 @@ Arguments:
 History:
 	2016-08-26 - RLW - Created
 */
-public Array function getUsersBySeason( Required numeric nSeasonID, String lstActive = "0,1"){
-	var arUsers = ormExecuteQuery( "from userSeason where nSeasonID = :nSeasonID and bActive in (:lstActive)", { nSeasonID = arguments.nSeasonID, lstActive = listToArray(arguments.lstActive) } );
+public Array function getBySeason( Required numeric nSeasonID, String lstActive = "0,1"){
+	var qryUsers = variables.dbService.runQuery("
+		SELECT us.nUserID
+		FROM userSeason us
+		LEFT JOIN user u
+		ON us.nUserID = u.nUserID
+		WHERE us.nSeasonID = #arguments.nSeasonID#
+		AND us.bActive in (#arguments.lstActive#)
+		ORDER BY u.sLastName, u.sFirstName
+	");
+	var itm = 1;
+	var arUsers = [];
+	for(itm; itm lte qryUsers.recordCount; itm++ ){
+		arrayAppend(arUsers, get(qryUsers.nUserID[itm]));
+	}
 	return arUsers;
 }
 

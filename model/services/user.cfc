@@ -85,7 +85,7 @@ public void function updateLastLogin( Required Numeric nUserID ){
 
 public Array function getAllWithSubscriptions( Required Numeric nSeasonID ){
 	// get all of the users
-	var arSeasonUsers = variables.userGateway.getUsersBySeason(arguments.nSeasonID);
+	var arSeasonUsers = variables.userGateway.getBySeason(arguments.nSeasonID);
 	var arUsers = [];
 	var itm = 1;
 	var arSubscription = [];
