@@ -8,7 +8,7 @@
 			"bHasUserPreferences" = true,
 			"bShowPayouts" = true
 		},
-		"NFLPerfect" = {
+		"NFLPerfection" = {
 			"bHasNCAAGames" = false,
 			"bHasNFLGames" = true,
 			"bHasNBAGames" = false,

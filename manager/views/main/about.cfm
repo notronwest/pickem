@@ -23,7 +23,7 @@
 			<p>
 			Feel free to invite anyone you want to the league. Just have them register their name and email at pickem.inquisibee.com and PayPal Evan McKechnie at evanmckechnie@gmail.com.
 			</p>
-		<cfelseif compareNoCase("NFLPerfect", request.sLeagueKey) eq 0>
+		<cfelseif compareNoCase("NFLPerfection", request.sLeagueKey) eq 0>
 			<p>
 			NFL Perfect Challenge is a league where your goal is to pick as many correct NFL games a week as possible. The more you get right, the more points you get. However, make one wrong pick, and you get nothing. Pick every Sunday game correctly but, get Monday Nights pick wrong, you get zero. But don't worry, you can start over next week. Points earned are cumulative from week to week, and if you you get your picks correct, those points are yours and, won't be taken away. Player with the most points at the end of the season (including the Super Bowl) wins.
 			</p>

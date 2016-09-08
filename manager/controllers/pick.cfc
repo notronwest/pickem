@@ -84,8 +84,9 @@ public void function save(rc){
 	try{
 		// convert picks
 		stPicks = deserializeJSON(rc.stPicks);
-// ********* ONLY FOR NFLUnderdog ************
-if( compareNoCase(rc.oCurrentLeague.getSKey(), "NFLUnderdog") eq 0 ){
+// ********* ONLY FOR NFLUnderdog AND NFLPerfection ************
+if( compareNoCase(rc.oCurrentLeague.getSKey(), "NFLUnderdog") eq 0
+	or compareNoCase(rc.oCurrentLeague.getSKey(), "NFLPerfection") eq 0 ){
 	// delete all of the picks for this user prior to setting new ones
 	variables.pickGateway.deleteUserWeek(rc.nWeekID, rc.nCurrentUser);
 

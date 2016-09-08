@@ -354,18 +354,18 @@ app.get('/get-schedule', function(req, res){
                           arOdds = stGameData.sSpreadData.split("<br>");
                           if( stGameData.sSpreadData.indexOf("+") >= 0 ){
                               if( arOdds[0].indexOf("+") >= 0 ){
-                                stGameData.nSpread = "-" + arOdds[0].split("+")[1];
+                                stGameData.nSpread = arOdds[0].split("+")[1];
                                 stGameData.sSpreadFavor = "home";
                               } else {
-                                stGameData.nSpread = "-" + arOdds[1].split("+")[1];
+                                stGameData.nSpread = arOdds[1].split("+")[1];
                                 stGameData.sSpreadFavor = "away";
                               }
                           } else if ( stGameData.sSpreadData.indexOf("-") >= 0 ){
                             if( arOdds[0].indexOf("-") >= 0 ){
-                              stGameData.nSpread = arOdds[0];
+                              stGameData.nSpread = arOdds[0].split("-")[1];
                               stGameData.sSpreadFavor = "away";
                             } else {
-                              stGameData.nSpread = arOdds[1];
+                              stGameData.nSpread = arOdds[1].split("-")[1];
                               stGameData.sSpreadFavor = "home";
                             }
                           }

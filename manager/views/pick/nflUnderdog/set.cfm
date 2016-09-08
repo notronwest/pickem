@@ -22,7 +22,7 @@
 					<h6>This week is locked and no changes to your picks can be made at this time.</h6>
 				</div>
 			</cfif>
-			<h4>Wins:<button class="alert-success btn btn-small" disabled="disabled"><strong>#listLen(rc.stUserWeek.lstWins)#</strong></button><cfif rc.bUserAutoPicked><button class="alert-info auto-picks btn btn-small" disabled="disabled"><em>Auto Picked: #rc.stUser.stSettings.autopick#</em></button></cfif></h4>
+			<h4>Points:<button class="alert-success btn btn-small" disabled="disabled"><strong>#listLen(rc.stUserWeek.lstWins)#</strong></button><cfif rc.bUserAutoPicked><button class="alert-info auto-picks btn btn-small" disabled="disabled"><em>Auto Picked: #rc.stUser.stSettings.autopick#</em></button></cfif></h4>
 
 			<!--- // <h4><div class="text-left">
 				<cfif listLen(rc.stUserWeek.lstWins)>
@@ -30,7 +30,7 @@
 				</cfif>
 			</div></h4> --->
 			<cfif !rc.bIsLocked><p>
-				Picks can be made up until #getBeanFactory().getBean("commonService").dateTimeFormat(rc.dtPicksDue)#
+				Your pick can be made up until #getBeanFactory().getBean("commonService").dateTimeFormat(rc.dtPicksDue)#
 			</p></cfif>
 			
 			<div class="text-right">
@@ -39,11 +39,11 @@
 					<h5>Picks</h5>
 					<ol>
 						<li>Use this section to make your picks for the upcoming week</li>
-						<li>Click "Change Picks/Make Picks" if you would like to change/make your picks
+						<li>Click "Change Pick/Make Pick" if you would like to change/make your picks
 						<li>Once you are "Making changes", simply click on the team that you would like to win each matchup. Once clicked the team name will highlight in green.</li>
 						<li>NOTE: the Favorite will have a negative number in their box. This signifies how many points your pick must either win by or lose by (depending on if you pick the Favorite or Underdog)
-						<li>Once you have made your picks, click the "Save Picks" button</li>
-						<li>You will be able to make unlimited changes to your picks up until the time that the picks are frozen for the week (noted at the top of the page)</li>
+						<li>Once you have made your pick, click the "Save Picks" button</li>
+						<li>You will be able to make unlimited changes to your pick up until the time that the picks are frozen for the week (noted at the top of the page)</li>
 					</ol>
 				</div>
 			</div>

@@ -74,11 +74,13 @@
 				<td>
 					<cfif bPickIsLocked>&nbsp;<span class="fa fa-lock"></span></cfif>
 				</td>
-				<td>#stGame.nTiebreak#</td>
+				<td>
+					<button type="button" class="change hidden btn btn-default btn-xs cancel-pick fa fa-ban" title="click to cancel this pick" data-id="#bPick#"></button>
+				</td>
 			</cfif>
 			<!--- // render picks --->
 			<td class="picks">
-				<cfif rc.bIsLocked><span class="fa fa-info-circle fa-lg game-info icons"></span><cfelse><span class="fa fa-bar-chart-o fa-lg stats-info icons"></span></cfif>
+				<!--- // <cfif rc.bIsLocked><span class="fa fa-info-circle fa-lg game-info icons"></span><cfelse><span class="fa fa-bar-chart-o fa-lg stats-info icons"></span></cfif> --->
 				<button type="button" disabled="disabled" class="btn btn-xs
 					#((stPick.bIsHome) ? 'home' : '')#
 					<cfif stGame.bGameIsFinal>
@@ -102,7 +104,7 @@
 				</td>
 				<!--- // render controls --->
 				<td class="change hidden">
-					<span class="fa fa-bar-chart-o fa-lg stats-info icons"></span>
+					<!--- // <span class="fa fa-bar-chart-o fa-lg stats-info icons"></span> --->
 					<button data-id="#stFavorite.nID#" type="button" class="btn btn-xs #((stFavorite.bIsHome) ? 'home' : '')##((stFavorite.nID eq bPick) ? ' pick btn-success' : ' btn-default')#">
 						<cfif len(stFavorite.nRanking) gt 0>(#stFavorite.nRanking#) </cfif>#stFavorite.sName# #((len(stFavorite.sRecord) gt 0 ) ? "(" & stFavorite.sRecord & ")" : "")#
 						<span class="badge">
