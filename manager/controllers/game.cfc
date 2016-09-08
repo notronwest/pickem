@@ -108,7 +108,10 @@ public Void function saveWeek(rc){
 			// send out notifications for all users about the beginning of the week
 			arOption = variables.optionGateway.getByCodeKey("gamesAvailable");
 			if( arrayLen(arOption) gt 0 ){
+// ****** NEEDS ATTENTION *******
+if( compareNoCase(rc.oCurrentLeague.getSKey(), "pickem") eq 0){
 				variables.notifyService.processNotification(arOption[1], rc.oWeek);
+}
 			}
 		}
 	} catch ( any e ){
