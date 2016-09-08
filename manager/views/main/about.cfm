@@ -25,7 +25,7 @@
 			</p>
 		<cfelseif compareNoCase("NFLPerfection", request.sLeagueKey) eq 0>
 			<p>
-			NFL Perfect Challenge is a league where your goal is to pick as many correct NFL games a week as possible. The more you get right, the more points you get. However, make one wrong pick, and you get nothing. Pick every Sunday game correctly but, get Monday Nights pick wrong, you get zero. But don't worry, you can start over next week. Points earned are cumulative from week to week, and if you you get your picks correct, those points are yours and, won't be taken away. Player with the most points at the end of the season (including the Super Bowl) wins.
+			The NFL Perfection Challenge is a season long pool that allows the participants to pick the winners (without spreads) of any NFL games that week and as many as they would like in any given week. Participants will get one point for each game they get correct that week, but will score zero points that week of ANY if they miss one or more of their picks. Payouts will be based on season-ending point totals.
 			</p>
 
 			<p>
