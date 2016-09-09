@@ -1,6 +1,13 @@
 docReady(function(){
+	// do some dirty work
+	$("th").addClass("hidden");
+
 	// build action for turning "make changes" on
 	$(".page-controls").on("click", ".make-changes",function(){
+		// hide the current pick
+		$("#userPick").addClass("hidden");
+		// show the headers
+		$("th").removeClass("hidden");
 		// turn off the button
 		$(".make-changes").addClass("hidden");
 		// turn on the controls
@@ -8,7 +15,7 @@ docReady(function(){
 		// hide the picks
 		$(".game:not('.locked')").children(".picks").addClass("hidden");
 		// show the controls
-		$(".game:not('.locked')").children(".change").removeClass("hidden");
+		$(".game:not('.locked')").removeClass("hidden");
 		// remove the disabled class
 		$(".game:not('.locked')").children(".picks .disabled").removeClass("disabled");
 	});

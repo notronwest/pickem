@@ -32,26 +32,7 @@
 			<cfif !rc.bIsLocked><p>
 				Your pick can be made up until #getBeanFactory().getBean("commonService").dateTimeFormat(rc.dtPicksDue)#
 			</p></cfif>
-			
-			<div class="text-right">
-				<a href="javascript:;" class="help">Help</a>
-				<div class="help hide">
-					<h5>Picks</h5>
-					<ol>
-						<li>Use this section to make your picks for the upcoming week</li>
-						<li>Click "Change Pick/Make Pick" if you would like to change/make your picks
-						<li>Once you are "Making changes", simply click on the team that you would like to win each matchup. Once clicked the team name will highlight in green.</li>
-						<li>NOTE: the Favorite will have a negative number in their box. This signifies how many points your pick must either win by or lose by (depending on if you pick the Favorite or Underdog)
-						<li>Once you have made your pick, click the "Save Picks" button</li>
-						<li>You will be able to make unlimited changes to your pick up until the time that the picks are frozen for the week (noted at the top of the page)</li>
-					</ol>
-				</div>
-			</div>
-			<cfif !rc.bIsLocked><div class="text-right page-controls">
-				<button class="make-changes btn btn-default btn-small" title="Click here to make changes to your picks" type="button"><cfif rc.bUserHasPicks>Change Pick<cfelse>Make Picks</cfif></button>
-				<button class="cancel btn btn-default btn-small hidden" type="button">Cancel</button>
-				<button class="save btn btn-default btn-small hidden" type="button">Save Pick</button>
-			</div></cfif>
+
 			<div class="table-responsive">
 				<table class="table">
 					<thead>
@@ -77,11 +58,25 @@
 					</tbody>	
 				</table>
 			</div>
-			<cfif !rc.bIsLocked><div class="text-right page-controls">
+			<cfif !rc.bIsLocked><div class="page-controls">
 				<button class="make-changes btn btn-default btn-small" title="Click here to make changes to your picks" type="button"><cfif rc.bUserHasPicks>Change Pick<cfelse>Make Picks</cfif></button>
 				<button class="cancel btn btn-default btn-small hidden" type="button">Cancel</button>
 				<button class="save btn btn-default btn-small hidden" type="button">Save Pick</button>
 			</div></cfif>
+			<div>
+				<br/>
+				<a href="javascript:;" class="help">Help</a>
+				<div class="help hide">
+					<h5>Picks</h5>
+					<ol>
+						<li>Use this section to make your pick for the upcoming week</li>
+						<li>Click "Change Pick/Make Pick" if you would like to change/make your pick
+						<li>Once you are "Making changes", simply click on the underdog team that you would like to win. Once clicked the team name will highlight in green.</li>
+						<li>Once you have made your pick, click the "Save Pick" button</li>
+						<li>You will be able to make unlimited changes to your pick up until the time that the picks are frozen for the week (noted at the top of the page)</li>
+					</ol>
+				</div>
+			</div>
 			<cfif rc.bIsLocked>
 				<div class="bs-callout bs-callout-info"><span class="fa fa-lock"></span> - indicates this pick is locked</div>
 			</cfif>

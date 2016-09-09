@@ -6,12 +6,6 @@
 		<!--- // determine who gets pick class --->
 		<cfscript>
 			stGame = local.arWeekGames[local.itm];
-			sGamesDividerClass = "";
-			// determine if we have changed to NFL games
-			if( !stGame.bGameIsNCAA and compareNoCase(sCurrentGame, "NCAA") eq 0 ){
-				sGamesDividerClass = " games-divider";
-				sCurrentGame = "NFL";
-			}
 			// set game date/time
 			sGameDate = listFirst(stGame.sGameDateTime, " ");
 			sGameTime = listLast(stGame.sGameDateTime, " ");
@@ -29,7 +23,8 @@
 				bPick = local.stPicks[local.arWeekGames[local.itm].nGameID];
 			}
 			stHome = {
-				"sName" = (stGame.bGameIsNCAA) ? stGame.sHomeTeam : stGame.sHomeTeamMascot,
+				"sName" = stGame.sHomeTeam,
+				"sMascot" = stGame.sHomeTeamMascot,
 				"nID" = stGame.nHomeTeamID,
 				"nScore" = stGame.nHomeScore,
 				"nRanking" = stGame.nHomeTeamRanking,
@@ -39,7 +34,8 @@
 				"sClass" = "btn-default"
 			};
 			stAway = {
-				"sName" = (stGame.bGameIsNCAA) ? stGame.sAwayTeam : stGame.sAwayTeamMascot,
+				"sName" = stGame.sAwayTeam,
+				"sMascot" = stGame.sAwayTeamMascot,
 				"nID" = stGame.nAwayTeamID,
 				"nScore" = stGame.nAwayScore,
 				"nRanking" = stGame.nAwayTeamRanking,
@@ -69,7 +65,21 @@
 				bPickIsLocked = true;
 			}
 		</cfscript>
-		<tr class="game#((bPickIsLocked) ? ' locked' : '')##sGamesDividerClass#" data-id="#rc.arWeekGames[local.itm].nGameId#" data-nWeekID="#rc.nWeekID#">
+
+		<cfif bPick>
+			<!--- // show the current pick --->
+			<tr id="userPick">
+				<td>
+					<h5>Current Pick:</h5><br/>
+					<strong class="#((stUnderdog.bIsHome) ? 'home' : '')#">#stUnderdog.sName# #stUnderdog.sMascot#</strong><br/>
+					vs. <span class="#((stFavorite.bIsHome) ? 'home' : '')#" style="font-weight: 100;">#stFavorite.sName# #stFavorite.sMascot#</span>
+				</td>
+				<td colspan="4"></td>
+			</tr>
+		</cfif>
+
+		<!--- // build controls for picks --->
+		<tr class="hidden game#((bPickIsLocked) ? ' locked' : '')#" data-id="#rc.arWeekGames[local.itm].nGameId#" data-nWeekID="#rc.nWeekID#">
 			<cfif local.bShowDetails>
 				<td>
 					<cfif bPickIsLocked>&nbsp;<span class="fa fa-lock"></span></cfif>
@@ -79,7 +89,7 @@
 			<!--- // render controls --->
 			<td class="change">
 				<button data-id="#stUnderdog.nID#" type="button" class="btn btn-xs #((stUnderdog.bIsHome) ? 'home' : '')##((stUnderdog.nID eq bPick) ? ' pick  btn-success' : ' btn-default')#">
-					<cfif len(stUnderdog.nRanking) gt 0>(#stUnderdog.nRanking#) </cfif>#stUnderdog.sName# #((len(stUnderdog.sRecord) gt 0 ) ? "(" & stUnderdog.sRecord & ")" : "")#
+					<cfif len(stUnderdog.nRanking) gt 0>(#stUnderdog.nRanking#) </cfif>#stUnderdog.sMascot# #((len(stUnderdog.sRecord) gt 0 ) ? "(" & stUnderdog.sRecord & ")" : "")#
 				</button>
 			</td>
 			<td class="change">
@@ -87,7 +97,7 @@
 				<span class="fa fa-bar-chart-o fa-lg stats-info icons"></span>
 				--->
 				<button disabled="disabled" class="btn btn-xs">
-					#stFavorite.sName# #((len(stFavorite.sRecord) gt 0 ) ? "(" & stFavorite.sRecord & ")" : "")#
+					#stFavorite.sMascot# #((len(stFavorite.sRecord) gt 0 ) ? "(" & stFavorite.sRecord & ")" : "")#
 					<span class="badge">
 						#(stFavorite.nID eq nFavoredTeam) ? '-' : '+'# #stGame.nSpread#
 					</span>
