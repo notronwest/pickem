@@ -2,6 +2,12 @@
 <cfparam name="local.sCurrentGame" default="NCAA">
 <cfparam name="local.bShowDetails" default="true">
 <cfoutput>
+	<cfif !listLen(structKeyList(local.stPicks))>
+		<tr id="userPick">
+			<td><h4>You have not made a pick for this week yet.</h4><td>
+			<td colspan="4"></td>
+		</tr>
+	</cfif>
 	<cfloop from="1" to="#arrayLen(local.arWeekGames)#" index="local.itm">
 		<!--- // determine who gets pick class --->
 		<cfscript>

@@ -59,7 +59,7 @@
 				</table>
 			</div>
 			<cfif !rc.bIsLocked><div class="page-controls">
-				<button class="make-changes btn btn-default btn-small" title="Click here to make changes to your picks" type="button"><cfif rc.bUserHasPicks>Change Pick<cfelse>Make Picks</cfif></button>
+				<button class="make-changes btn btn-default btn-small" title="Click here to make changes to your picks" type="button"><cfif rc.bUserHasPicks>Change Pick<cfelse>Make Pick</cfif></button>
 				<button class="cancel btn btn-default btn-small hidden" type="button">Cancel</button>
 				<button class="save btn btn-default btn-small hidden" type="button">Save Pick</button>
 			</div></cfif>
