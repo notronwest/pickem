@@ -1,5 +1,6 @@
 component accessors="true" extends="model.base" {
-	
+property name="seasonGateway";
+property name="leagueGateway";	
 /*
 Author: 	
 	Ron West
@@ -271,8 +272,15 @@ History:
 */
 public void function updateStandings( Required Numeric nWeekID, Required String nSeasonID){
 	if( arguments.nWeekID neq 0 ){
-		variables.dbService.runStoredProc("updateStandings", [arguments.nWeekID, arguments.nSeasonID]
-		);
+		try{
+			oSeason = variables.seasonGateway.get(arguments.nSeasonID);
+			// get the league for this season
+			oLeague = variables.leagueGateway.get(oSeason.getSLeagueID());
+			// call this leagues standings code
+			variables.dbService.runStoredProc("#oLeague.getSKey()#_updateStandings", [arguments.nWeekID, arguments.nSeasonID]);
+		} catch ( any e ){
+			registerError("Error trying to update standings for #arguments.nSeasonID#", e);
+		}
 	}
 }
 

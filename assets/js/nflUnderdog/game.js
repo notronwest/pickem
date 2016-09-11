@@ -1,4 +1,4 @@
-$(function(){
+docReady(function(){
 	// bind save scores
 	$(".container").on("click", ".save-scores", function(event){
 		var arGames = [];

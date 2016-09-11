@@ -27,6 +27,7 @@ public void function home(rc){
 	rc.stWeekTiebreak = {};
 	rc.stUsers = {};
 	rc.stSeasonWins = {};
+	rc.stSeasonPoints = {};
 	rc.arStandings = [];
 	// get the weeks
 	rc.arWeeks = variables.weekGateway.getSeason(rc.nCurrentSeasonID);
@@ -66,6 +67,8 @@ public void function home(rc){
 		}
 		// store this users wins
 		rc.stWeekData[nUserID][nWeekID].wins = arStandings[itm].getNWins();
+		// store this users points
+		rc.stWeekData[nUserID][nWeekID].nPoints = (isNull(arStandings[itm].getNPoints())) ? 0 : arStandings[itm].getNPoints();
 		// store this users place
 		rc.stWeekData[nUserID][nWeekID].nPlace = arStandings[itm].getNPlace();
 		// store this users highest tiebreak
@@ -86,9 +89,15 @@ public void function home(rc){
 		} else {
 			rc.stSeasonWins[nUserID] = rc.stSeasonWins[nUserID] + arStandings[itm].getNWins();
 		}
+		// increase this users season points
+		if( not structKeyExists(rc.stSeasonPoints, nUserID) ){
+			rc.stSeasonPoints[nUserID] = (isNull(arStandings[itm].getNPoints())) ? 0 : arStandings[itm].getNPoints();
+		} else {
+			rc.stSeasonPoints[nUserID] = rc.stSeasonPoints[nUserID] + (isNull(arStandings[itm].getNPoints())) ? 0 : arStandings[itm].getNPoints();
+		}
 	}
 	// sort the seasonWins
-	rc.arStandings = structSort(rc.stSeasonWins, "numeric", "desc");
+	rc.arStandings = structSort(rc.stSeasonPoints, "numeric", "desc");
 }
 
 public void function calculate(rc){
