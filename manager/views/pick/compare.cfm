@@ -60,7 +60,7 @@
 												local.bShowGameStatus = false;
 												// hide details
 												local.bShowDetails = false;
-												include "pickTable.cfm";
+												include "/manager/views/pick/#rc.oCurrentLeague.getSKey()#/pickTable.cfm";
 											</cfscript>
 										</table>
 									</td>
@@ -73,7 +73,7 @@
 												local.bShowGameStatus = true;
 												// hide details
 												local.bShowDetails = false;
-												include "pickTable.cfm";
+												include "/manager/views/pick/#rc.oCurrentLeague.getSKey()#/pickTable.cfm";
 											</cfscript>
 										</table>
 									</td>

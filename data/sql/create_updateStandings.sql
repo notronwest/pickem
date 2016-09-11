@@ -58,6 +58,7 @@ SELECT DISTINCT nUserID, nInWeekID, nInSeason, SUM(nWin), 20 - SUM(nWin), 1 as b
 FROM pick
 WHERE nWeekID = nInWeekID
 AND nUserID not in (select nUserID from standing where nWeekID = nInWeekID)
+AND nUserID in (select nUserID from userSeason where nSeasonID = nInSeason)
 GROUP BY nUserID;
     
 -- Update the records that already exist for this week
@@ -71,7 +72,8 @@ AND bHasPicks = 1;
 INSERT INTO standing (nUserID, nWeekID, nSeasonID, nWins, nLosses, nHighestTiebreak, bHasPicks)
 SELECT nUserID, nInWeekID, nInSeason, 0 as nWins, 20 as nLosses, 0 as nHighestTiebreak, 0 as bHasPicks
 FROM user
-WHERE nUserID not in (select nUserID from standing where nWeekID = nInWeekID);
+WHERE nUserID not in (select nUserID from standing where nWeekID = nInWeekID)
+AND nUserID in (select nUserID from userSeason where nSeasonID = nInSeason);
 
 -- Update number of nTiebreaks
 UPDATE standing
