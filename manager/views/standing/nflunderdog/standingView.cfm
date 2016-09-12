@@ -50,7 +50,7 @@
 								local.nWeekID = local.arWeeks[local.y];
 							</cfscript>
 
-							<td data-order="#local.stUserWeekData[local.nWeekID].nPlace#">#local.stUserWeekData[local.nWeekID].nPoints#
+							<td data-order="#local.stUserWeekData[local.nWeekID].nPlace#">#(!isNull(local.stUserWeekData[local.nWeekID].nPoints) ? local.stUserWeekData[local.nWeekID].nPoints : 0#
 							
 							<!--- // handle no picks or auto picks --->
 							<cfif structKeyExists(rc.stWeekNoPicks, local.nWeekID) and isArray(rc.stWeekNoPicks[local.nWeekID]) and arrayFind(rc.stWeekNoPicks[local.nWeekID], local.nUserID)><span class="fa fa-frown-o"></span></cfif>
