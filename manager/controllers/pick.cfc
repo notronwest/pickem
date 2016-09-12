@@ -12,11 +12,16 @@ property name="weekService";
 public void function before(rc){
 	// default all to a dialog
 	rc.bIsDialog = true;
+	rc.bUserHasPicks = false;
+	rc.bUserAutoPicked = false;
+	rc.bIsLocked = false;
 	// default the week
 	param name="rc.nWeekID" default="0";
 	param name="rc.stWeeklyTeamResults" default="#{}#";
 	param name="rc.bOverrideLock" default="false";
 	param name="rc.bCanSetPicks" default="false";
+	param name="rc.oPick" default="false";
+
 	// see if they are on the pick screen
 	if( compareNoCase(variables.framework.getFullyQualifiedAction(), "manager:pick.set") eq 0 ){
 		rc.bCanSetPicks = true;
@@ -37,7 +42,7 @@ public void function before(rc){
 	rc.arWeekGames = variables.gameService.adminWeek(rc.nWeekID, false, false);
 	// determine if picks are still open
 	rc.dtPicksDue = rc.oWeek.getDPicksDue() & " " & rc.oWeek.getTPicksDue();
-	rc.bIsLocked = false;
+	
 	// see if the picks are locked for this week
 	if( compare(variables.dbService.dbDateTimeFormat(rc.dtPicksDue), variables.dbService.dbDateTimeFormat() ) lte 0){
 		rc.bIsLocked = true;
@@ -46,28 +51,31 @@ public void function before(rc){
 	if( rc.bOverrideLock and rc.stUser.nUserID eq 65 ){
 		rc.bIsLocked = false;
 	}
+	try{
+		// get this weeks picks for the current user
+		rc.stUserWeek = variables.pickService.getUserWeek(rc.nWeekID, rc.nCurrentUser);
+		// check to see if this user has picks already
+		if( listLen(structKeyList(rc.stUserWeek.stPicks)) ){
+			rc.bUserHasPicks = true;
+		}
+		// check to see if the user had auto picks
+		if( rc.stUserWeek.bAutoPick ){
+			rc.bUserAutoPicked = true;
+		}
+		// build conditional check for nflunderdog
+		if( listLen(structKeyList(rc.stUserWeek.stPicks)) eq 1 ){
+			rc.bIsLocked = variables.gameService.hasGameStarted(structKeyList(rc.stUserWeek.stPicks), rc.dNow);
+		}
+	} catch (any e){
+		registerError("Error setting up picks", e);
+	}
 	// get the weekly stats
-	rc.stWeeklyTeamResults = variables.weekService.getTeamResults(rc.nWeekID);
+	//rc.stWeeklyTeamResults = variables.weekService.getTeamResults(rc.nWeekID);
 }
 
 public void function set(rc){
 	param name="rc.bSaved" default="false";
-	rc.bUserHasPicks = false;
-	rc.bUserAutoPicked = false;
-	try{
-		// get this weeks picks for the current user
-		rc.stUserWeek = variables.pickService.getUserWeek(rc.nWeekID, rc.nCurrentUser);
-	} catch (any e){
-		registerError("Error setting up picks", e);
-	}
-	// check to see if this user has picks already
-	if( listLen(structKeyList(rc.stUserWeek.stPicks)) ){
-		rc.bUserHasPicks = true;
-	}
-	// check to see if the user had auto picks
-	if( rc.stUserWeek.bAutoPick ){
-		rc.bUserAutoPicked = true;
-	}
+	
 	// if there are no games then lock the week
 	if( arrayLen(rc.arWeekGames) eq 0 ){
 		rc.bIsLocked = true;
@@ -82,8 +90,9 @@ public void function save(rc){
 	var stPicks = {};
 	rc.sMessage = "Picks saved";
 	try{
-		// convert picks
-		stPicks = deserializeJSON(rc.stPicks);
+		if( !rc.bIsLocked ){
+			// convert picks
+			stPicks = deserializeJSON(rc.stPicks);
 // ********* ONLY FOR NFLUnderdog AND NFLPerfection ************
 if( compareNoCase(rc.oCurrentLeague.getSKey(), "NFLUnderdog") eq 0
 	or compareNoCase(rc.oCurrentLeague.getSKey(), "NFLPerfection") eq 0 ){
@@ -91,16 +100,17 @@ if( compareNoCase(rc.oCurrentLeague.getSKey(), "NFLUnderdog") eq 0
 	variables.pickGateway.deleteUserWeek(rc.nWeekID, rc.nCurrentUser);
 
 }
-		// loop through the structure of picks and process them
-		for( nGameID in stPicks ){
-			// get a new pick object based on game and user
-			oPick = variables.pickGateway.getByUserAndGame(rc.stUser.nUserID, nGameID);
-			// update the picks
-			oPick = variables.pickGateway.update(oPick, { nGameID = nGameID, nTeamID = stPicks[nGameID], nWeekID = rc.nWeekID, nUserID = rc.nCurrentUser } );
-		}
-		// send e-mail to mark these picks if we aren't in dev
-		if( !request.bIsDevelopment ){
-			variables.pickService.sendInPicks(stPicks, rc.oWeek, rc.stUser);
+			// loop through the structure of picks and process them
+			for( nGameID in stPicks ){
+				// get a new pick object based on game and user
+				oPick = variables.pickGateway.getByUserAndGame(rc.stUser.nUserID, nGameID);
+				// update the picks
+				oPick = variables.pickGateway.update(oPick, { nGameID = nGameID, nTeamID = stPicks[nGameID], nWeekID = rc.nWeekID, nUserID = rc.nCurrentUser } );
+			}
+			// send e-mail to mark these picks if we aren't in dev
+			if( !request.bIsDevelopment ){
+				variables.pickService.sendInPicks(stPicks, rc.oWeek, rc.stUser);
+			}
 		}
 	} catch (any e){
 		registerError("Error saving picks for user", e);

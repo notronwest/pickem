@@ -528,4 +528,27 @@ public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean b
 	return arGameData;
 }
 
+/*
+Author: 	
+	Ron West
+Name:
+	$hasGameStarted
+Summary:
+	Checks to see if a given game has started
+Returns:
+	Boolean bGameHasStarted
+Arguments:
+	Numeric nGameID
+History:
+	2016-09-11 - RLW - Created
+*/
+public boolean function hasGameStarted( Required numeric nGameID, Required String dtNow ){
+	var oGame = variables.gameGateway.get(arguments.nGameID);
+	var bGameHasStarted = false;
+	if( !isNull(oGame.getNGameID()) and variables.dbService.dbDateTimeFormat(oGame.getSGameDateTime()) lte arguments.dtNow ){
+		bGameHasStarted = true;
+	}
+	return bGameHasStarted;
+}
+
 }
