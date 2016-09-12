@@ -80,7 +80,7 @@
 					<strong class="#((stUnderdog.bIsHome) ? 'home' : '')#">#stUnderdog.sName# #stUnderdog.sMascot#</strong><br/>
 					vs. <span class="#((stFavorite.bIsHome) ? 'home' : '')#" style="font-weight: 100;">#stFavorite.sName# #stFavorite.sMascot#</span>
 					<br>
-					<cfif local.bShowGameStatus><button disabled="disabled" class="btn <cfif stGame.bGameIsFinal>
+					<button disabled="disabled" class="btn <cfif stGame.bGameIsFinal>
 						#((stPick.bIsWinning) ? ' btn-success' : ' btn-danger')#
 					<cfelseif len(stGame.sGameStatus) gt 0>
 						#((stPick.bIsWinning) ? ' btn-info' : ' btn-warning')#
@@ -95,8 +95,7 @@
 						and compareNoCase(rc.stUser.stSettings.timezone, "Pacific") eq 0>PT<cfelse>ET</cfif>)
 								</cfif>
 							</cfif>
-						</button>
-					</cfif>
+					</button>
 				</td>
 				<td colspan="4"></td>
 			</tr>
