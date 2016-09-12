@@ -125,17 +125,6 @@ nPoints = 0
 WHERE nWeekID = nInWeekID
 AND bHasPicks <> 1;
 
--- do fix for first place being off one
-SET nFirstPlace = (SELECT count(*) as nFirstPlace
-FROM standing
-WHERE nPlace = 1
-AND nWeekID = nInWeekID);
-
-IF nFirstPlace < 1 THEN
-  UPDATE standing
-  SET nPlace = (nPlace - 1)
-  WHERE nWeekID = nInWeekID;
-END IF;
 
 
 END $$

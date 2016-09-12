@@ -79,6 +79,24 @@
 					<h5>Current Pick:</h5><br/>
 					<strong class="#((stUnderdog.bIsHome) ? 'home' : '')#">#stUnderdog.sName# #stUnderdog.sMascot#</strong><br/>
 					vs. <span class="#((stFavorite.bIsHome) ? 'home' : '')#" style="font-weight: 100;">#stFavorite.sName# #stFavorite.sMascot#</span>
+					<br>
+					<cfif local.bShowGameStatus><button disabled="disabled" class="btn <cfif stGame.bGameIsFinal>
+						#((stPick.bIsWinning) ? ' btn-success' : ' btn-danger')#
+					<cfelseif len(stGame.sGameStatus) gt 0>
+						#((stPick.bIsWinning) ? ' btn-info' : ' btn-warning')#
+					</cfif>">
+						<cfif len(stGame.sGameStatus) gt 0>
+								#stPick.nScore# - #stNotPick.nScore# (#stGame.sGameStatus#)
+							<cfelse>
+								#dateFormat(sGameDate, "mm/dd/yyyy")#
+								<cfif len(sGameTime) gt 0>
+									#timeFormat(sGameTime, "hh:mm")# <cfif listFirst(sGameTime, ":") gt 11>PM<cfelse>AM</cfif> (<cfif structKeyExists(rc.stUser, "stSettings")
+						and structKeyExists(rc.stUser.stSettings, "timezone")
+						and compareNoCase(rc.stUser.stSettings.timezone, "Pacific") eq 0>PT<cfelse>ET</cfif>)
+								</cfif>
+							</cfif>
+						</button>
+					</cfif>
 				</td>
 				<td colspan="4"></td>
 			</tr>
