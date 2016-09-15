@@ -54,7 +54,7 @@ WHERE nWeekID = nInWeekID;
 
 -- Insert all of the wins per user
 INSERT INTO standing  (nUserID, nWeekID, nSeasonID, nWins, nPoints, bHasPicks)
-SELECT DISTINCT nUserID, nInWeekID, nInSeason, IF(pick.nWin = 1, 1, 0), IF(pick.nWin = 1, (SELECT ABS(nHomeScore - nAwayScore) FROM game WHERE pick.nGameID = game.nGameID), 0), 1 as bHasPicks
+SELECT DISTINCT nUserID, nInWeekID, nInSeason, IF(pick.nWin = 1, 1, 0), IF(pick.nWin = 1, (SELECT ABS(nSpread) FROM game WHERE pick.nGameID = game.nGameID), 0), 1 as bHasPicks
 FROM pick
 WHERE nWeekID = nInWeekID
 AND nUserID not in (select nUserID from standing where nWeekID = nInWeekID)
@@ -64,7 +64,7 @@ GROUP BY nUserID;
 -- Update the records that already exist for this week
 UPDATE standing
 SET nWins = (SELECT SUM(nWin) FROM pick WHERE nWeekID = nInWeekID AND pick.nUserID = standing.nUserID),
-nPoints = ( SELECT ABS(nHomeScore - nAwayScore) FROM game join pick on pick.nGameID = game.nGameID WHERE game.nWeekID = nInWeekID AND pick.nWin = 1 AND pick.nUserID = standing.nUserID )
+nPoints = ( SELECT ABS(nSpread) FROM game join pick on pick.nGameID = game.nGameID WHERE game.nWeekID = nInWeekID AND pick.nWin = 1 AND pick.nUserID = standing.nUserID )
 WHERE nWeekID = nInWeekID
 AND bHasPicks = 1;
 

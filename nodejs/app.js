@@ -294,12 +294,12 @@ app.get('/get-results', function(req, res){
     });
 });
 
-
-app.get('/get-schedule', function(req, res){
+app.get('/get-games', function(req, res){
     var stWeekData = {};
     var stGameData = {};
     // get the query params sent to the page
-    var sScheduleURL = req.query.sScheduleURL; 
+    var sScheduleURL = req.query.sScheduleURL;
+    //var sScheduleURL = "http://www.vegasinsider.com/nfl/matchups/";
     // setup the default response
     stResults = {
       "sStatus": 200,
@@ -333,63 +333,95 @@ app.get('/get-schedule', function(req, res){
                 // setup jQuery scope
                 $ = window.jQuery;
 
-                // loop through all of the dates for game
-                $(".odds_dateRow h3").each(function(){
-                  sGameDate = fixUpDate($(this).text()) + " " + new Date().getFullYear();
-                  // loop through all of the game rows
-                  $(this).closest("tbody").find("tr.statistics_table_alternateRow, tr.statistics_table_row").each(function(){
-                    stGameData = {};
-                    // loop through all of the cells
-                    $(this).children("td").each(function(index){
-                      switch(index){
-                        // teamIDs
+                var sGameDate = "";
+
+                // block of games
+                $(".SLTables1").not("#weeks_calendar").first().children().each(function(){
+                  // reset the game data
+                  stGameData = {};
+                  // if this is a table tag it contains the date
+                  if( $(this).is("table") ){
+                    sCurrentGameDate = fixDate($(this).children().find("strong").text());
+                  } else if ( $(this).hasClass("SLTables1") ){
+                    // access table with game data
+                    stGameData.sAwayTeam = $(this).children().find("td").first().text().trim().split("@")[0].trim();
+                    stGameData.sHomeTeam = $(this).children().find("td").first().text().trim().split("@")[1].trim();
+                    // get game details
+                    $(this).children().find(".viBodyBorderNorm").children().find("tr").each(function(tr_index){
+                      switch(tr_index){
+                        // first row is game time
                         case 0:
-                          stGameData.nAwayDonBestID = $(this).html().split("<br>")[0];
-                          stGameData.nHomeDonBestID = $(this).html().split("<br>")[1];
+                          stGameData.sGameDateTime = sCurrentGameDate + " " + fixTime($(this).children("td").first().text());
                         break;
-
-                        // odds
-                        case 1:
-                          stGameData.sSpreadData = $(this).children("div").html();
-                          arOdds = stGameData.sSpreadData.split("<br>");
-                          if( stGameData.sSpreadData.indexOf("+") >= 0 ){
-                              if( arOdds[0].indexOf("+") >= 0 ){
-                                stGameData.nSpread = arOdds[0].split("+")[1];
-                                stGameData.sSpreadFavor = "home";
-                              } else {
-                                stGameData.nSpread = arOdds[1].split("+")[1];
-                                stGameData.sSpreadFavor = "away";
-                              }
-                          } else if ( stGameData.sSpreadData.indexOf("-") >= 0 ){
-                            if( arOdds[0].indexOf("-") >= 0 ){
-                              stGameData.nSpread = arOdds[0].split("-")[1];
-                              stGameData.sSpreadFavor = "away";
-                            } else {
-                              stGameData.nSpread = arOdds[1].split("-")[1];
-                              stGameData.sSpreadFavor = "home";
-                            }
-                          }
-                        break;
-
-                        // team names
+                        // third row is Away Team
                         case 2:
-                          $(this).find("nobr").each(function(itm){
-                            if( itm == 0 ){
-                              stGameData.sAwayTeam = $(this).text();
-                            } else {
-                              stGameData.sHomeTeam = $(this).text();
+                          $(this).children("td").each(function(td_index){
+                            switch(td_index){
+                              // first column is team name
+                              case 0:
+                                stTeam = extractTeamDetails($(this).text());
+                                stGameData.stAwayTeam = stTeam;
+                                stGameData.rawAwayTeamString = $(this).text();
+                                stGameData.nAwayTeamSiteID = stTeam.nID;
+                              break;
+                              // second column is record
+                              case 1:
+                                stGameData.sAwayTeamRecord = $(this).text();
+                              break;
+                              // third column is current streak
+                              // fourth column is opening line
+                              // fifth column is spread
+                              case 4:
+                                stGameData.rawAwaySpread = $(this).text();
+                                if( isFavored($(this).text()) ){
+                                  stGameData.sSpreadFavor = "away";
+                                  stGameData.nSpread = Math.abs(parseFloat($(this).text()));
+                                } else if( isDraw($(this).text()) ){
+                                  stGameData.sSpreadFavor = "home";
+                                  stGameData.nSpread = 0;
+                                }
+                              break;
                             }
                           });
                         break;
 
-                        // game time
+                        // fourth column is Home Team
                         case 3:
-                          stGameData.sGameDateTime = sGameDate + " " + convertTime($(this).children("div").text());
+                          $(this).children("td").each(function(td_index){
+                            switch(td_index){
+                              // first column is team name
+                              case 0:
+                                stTeam = extractTeamDetails($(this).text());
+                                stGameData.stHomeTeam = stTeam;
+                                stGameData.nHomeTeamSiteID = stTeam.nID;
+                              break;
+                              // second column is record
+                              case 1:
+                                stGameData.sHomeTeamRecord = $(this).text();
+                              break;
+                              // third column is current streak
+                              // fourth column is opening line
+                              // fifth column is spread
+                              case 4:
+                                stGameData.rawHomeSpread = $(this).text();
+                                if( !stGameData.nSpread ){
+                                  if( isFavored($(this).text()) ){
+                                    stGameData.sSpreadFavor = "home";
+                                    stGameData.nSpread = Math.abs(parseFloat($(this).text()));
+                                  } else if( isDraw($(this).text()) ){
+                                    stGameData.sSpreadFavor = "home";
+                                    stGameData.nSpread = 0;
+                                  }
+                                }
+                              break;
+                            }
+                          });
                         break;
                       }
                     });
-                    stResults.arGameData.push(stGameData);  
-                  });
+                    // add this game into the array
+                    stResults.arGameData.push(stGameData);
+                  }
                 });
                 // return the game data as JSON
                 res.json({ "stResults": stResults });
@@ -511,22 +543,72 @@ arDebugMessage.push("Quarter: " + nQuarter);
   }
 }
 
-var fixUpDate = function(sDate){
-  var arDayEndings = ["th","nd","rd","st"];
-  // first strip the bad string
-  if( sDate.indexOf("-") >= 0 ){
-    sDate = sDate.split("-")[1].trim();
-  }
-  // now strip off the day
-  if( sDate.indexOf(",") >= 0 ){
-    sDate = sDate.split(",")[1].trim();
-  }
-  // remove the day endings (e.g. th, nd, rd)
-  if( arDayEndings.indexOf(sDate.slice(-2)) >= 0 ){
-    sDate = sDate.substring(0, sDate.length - 2);
+var fixDate = function(sDate){
+  
+  var arDate = [];
+  if( sDate.indexOf(" ") >= 0 ){
+    // turn date into an array
+    arDate = sDate.trim().split(" ");
+    // if we got back the expected size array
+    if( arDate.length == 6 ){
+      // rebuild date
+      sDate = arDate[3] + " " + arDate[4] + " " + arDate[5];
+    }
   }
   return sDate.trim();
   
+}
+
+var fixTime = function(sTime){
+  var arTime = [];
+  if( sTime.indexOf(" ") >= 0 ){
+    // turn time into array
+    arTime = sTime.trim().split(" ");
+    if( arTime.length == 4){
+      // rebuild time
+      sTime = convertTime(arTime[0] + " " + arTime[1]);
+    }
+  }
+  return sTime;
+}
+
+var extractTeamDetails = function(sTeam){
+  var stDetails = {};
+  var arDataPart = [];
+  var sTeamName = "";
+  var i = 1;
+
+  if( sTeam.indexOf(" ") >= 0 ){
+    // team string will be delimited by space
+    arDataPart = sTeam.trim().split(" ");
+    
+    if( arDataPart.length > 1 ){
+      // first part of the team will be the number
+      stDetails.nID = arDataPart[0];
+      // rest of the details will be the team name
+      for(i; i < arDataPart.length; i++){
+        sTeamName = sTeamName + " " + arDataPart[i];
+      }
+      stDetails.sTeamName = sTeamName.trim();
+    }
+  }
+  return stDetails;
+}
+
+var isFavored = function(sSpread){
+  if( sSpread.trim().indexOf("-") >= 0){
+    return true;
+  } else {
+    return false;
+  }
+}
+
+var isDraw = function(sSpread){
+  if( sSpread.trim().indexOf("PK") >= 0 ){
+    return true;
+  } else {
+    return false;
+  }
 }
 
 var ordinal_suffix_of = function(i) {

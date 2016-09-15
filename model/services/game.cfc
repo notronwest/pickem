@@ -490,8 +490,10 @@ History:
 public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean bGetNFLGames = true ){
 	var arGameData = [];
 	var stGameResults = {};
-	var sNCAAScheduleURL = "http://www.donbest.com/ncaaf/odds/";
-	var sNFLScheduleURL = "http://www.donbest.com/nfl/odds/";
+	//var sNCAAScheduleURL = "http://www.donbest.com/ncaaf/odds/";
+	//var sNFLScheduleURL = "http://www.donbest.com/nfl/odds/";
+	var sNCAAScheduleURL = "http://www.vegasinsider.com/college-football/matchups/";
+	var sNFLScheduleURL = "http://www.vegasinsider.com/nfl/matchups/";
 	var arGameScheduleURL = [];
 	if( arguments.bGetNCAAGames ){
 		arrayAppend(arGameScheduleURL, sNCAAScheduleURL);
@@ -503,7 +505,7 @@ public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean b
 	var x = 1;
 	for( itm; itm lte arrayLen(arGameScheduleURL); itm++ ){
 		// get NCAA games
-		stGameResults = variables.commonService.getURL("http://localhost:3000/get-schedule?sScheduleURL=" & arGameScheduleURL[itm], 25);
+		stGameResults = variables.commonService.getURL("http://localhost:3000/get-games?sScheduleURL=" & arGameScheduleURL[itm], 25);
 		// if we have a valid response
 		if( find("200", stGameResults.statusCode) gt 0 and isJSON(stGameResults.fileContent.toString()) ){
 			stResponse = deserializeJSON(stGameResults.fileContent.toString());

@@ -52,6 +52,10 @@ public model.beans.game function update( Required model.beans.game oGame, Requir
 		// loop through all of the fields in the structure and update the data
 		for( sKey in arguments.stData ){
 			if( not listFindNoCase(lstIgnore, sKey) ){
+				// default tiebreak
+				if( compareNoCase("nTiebreak", sKey) eq 0 and !len(stData[sKey]) ){
+					stData[sKey] = 0;
+				}
 				include "set.cfm";
 			}
 		}

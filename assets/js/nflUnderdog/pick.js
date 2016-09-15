@@ -103,6 +103,12 @@ docReady(function(){
 	$(".game-info").on("click", function(){
 		window.location.href = "/?action=pick.gameInfo&nWeekID=" + $(this).closest("tr").data("nweekid") + "&nGameID=" + $(this).closest("tr").data("id");
 	});
+	$("#seeAllPicks").on("click", function(){
+		window.location.href = "/?action=pick.allWeekPicks&nWeekID=" + $("#picks").data("id");
+	});
+	$("#backToMyPicks").on("click", function(){
+		window.location.href = "/?action=pick.set&nWeekID=" + $("#picks").data("id");
+	});
 });
 // checks to see if the users have picks
 function checkPicks(){

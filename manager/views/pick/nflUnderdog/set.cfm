@@ -1,7 +1,7 @@
 <cfoutput>
 	<div id="picks" class="panel panel-default" data-id="#rc.oWeek.getNWeekID()#">
 		<div class="panel-heading text-right">
-			<h4>#rc.oWeek.getSName()# <a href="javascript:window.print()"><span class="print fa fa-print"></span></a></h4>
+			<h4>My Picks #rc.oWeek.getSName()# <a href="javascript:window.print()"><span class="print fa fa-print"></span></a></h4>
 			<form class="form-inline" role="form">
 				<div class="form-group">
 					<select id="sWeekURL" class="input-sm" size="1">
@@ -16,6 +16,7 @@
 			</form>
 		</div>
 		<div class="panel-body">
+			<p><button id="seeAllPicks" class="btn btn-sm btn-default" type="button">See All Week Picks</button></p>
 			<!--- // if the week is locked --->
 			<cfif rc.bIsLocked>
 				<div class="alert alert-warning">

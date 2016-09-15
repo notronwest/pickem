@@ -221,4 +221,9 @@ public void function stats(rc){
 	rc.bIsDialog = true;
 }
 
+public void function allWeekPicks(rc){
+	rc.arWeekPicks = variables.pickGateway.getWeek(rc.nWeeKID);
+	rc.bIsDialog = false;
+}
+
 }
