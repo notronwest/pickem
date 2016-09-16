@@ -16,7 +16,7 @@
 			</form>
 		</div>
 		<div class="panel-body">
-			<p><button id="seeAllPicks" class="btn btn-sm btn-default" type="button">See All Week Picks</button></p>
+			<p><button id="seeAllPicks" class="btn btn-sm btn-default" type="button">View All Picks</button></p>
 			<!--- // if the week is locked --->
 			<cfif rc.bIsLocked>
 				<div class="alert alert-warning">
