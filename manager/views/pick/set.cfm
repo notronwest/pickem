@@ -1,1 +1,1 @@
-<cfinclude template="/manager/views/pick/#rc.oCurrentLeague.getSKey()#/set.cfm">
+<cfinclude template="/manager/views/pick/#lCase(rc.oCurrentLeague.getSKey())#/set.cfm">
