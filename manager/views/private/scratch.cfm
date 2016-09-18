@@ -1,4 +1,4 @@
 
 <cfscript>
-	writeDump(getBeanFactory().getBean("gameService").getAvailableGames());
+	writeDump(getBeanFactory().getBean("gameService").getAvailableGames(false,true));
 </cfscript>

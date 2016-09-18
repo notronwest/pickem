@@ -16,14 +16,27 @@
 			</form>
 		</div>
 		<div class="panel-body">
-			<p><button id="seeAllPicks" class="btn btn-sm btn-default" type="button">View All Picks</button></p>
+			<table>
+				<tbody>
+					<tr>
+						<td><button id="seeAllPicks" class="btn btn-sm btn-default" type="button">View All Picks</button></td>
+						<td class="page-controls">
+							<cfif !rc.bIsLocked>
+								<button class="make-changes btn btn-default btn-sm" title="Click here to make changes to your picks" type="button" style="margin:0px;"><cfif rc.bUserHasPicks>Change Pick<cfelse>Make Pick</cfif></button>
+								<button class="cancel btn btn-default btn-sm hidden" type="button">Cancel</button>
+								<button class="save btn btn-default btn-sm hidden" type="button">Save Pick</button>
+							</cfif>
+						</td>
+					</tr>
+				</tbody>
+			</table>
 			<!--- // if the week is locked --->
 			<cfif rc.bIsLocked>
 				<div class="alert alert-warning">
 					<h6>This week is locked and no changes to your picks can be made at this time.</h6>
 				</div>
 			</cfif>
-			<h4>Points:<button class="alert-success btn btn-small" disabled="disabled"><strong>#listLen(rc.stUserWeek.lstWins)#</strong></button><cfif rc.bUserAutoPicked><button class="alert-info auto-picks btn btn-small" disabled="disabled"><em>Auto Picked: #rc.stUser.stSettings.autopick#</em></button></cfif></h4>
+			<h4 class="text-right">Points:<button class="alert-success btn btn-small" disabled="disabled"><strong>#listLen(rc.stUserWeek.lstWins)#</strong></button><cfif rc.bUserAutoPicked><button class="alert-info auto-picks btn btn-small" disabled="disabled"><em>Auto Picked: #rc.stUser.stSettings.autopick#</em></button></cfif></h4>
 
 			<!--- // <h4><div class="text-left">
 				<cfif listLen(rc.stUserWeek.lstWins)>
@@ -59,11 +72,6 @@
 					</tbody>	
 				</table>
 			</div>
-			<cfif !rc.bIsLocked><div class="page-controls">
-				<button class="make-changes btn btn-default btn-small" title="Click here to make changes to your picks" type="button"><cfif rc.bUserHasPicks>Change Pick<cfelse>Make Pick</cfif></button>
-				<button class="cancel btn btn-default btn-small hidden" type="button">Cancel</button>
-				<button class="save btn btn-default btn-small hidden" type="button">Save Pick</button>
-			</div></cfif>
 			<div>
 				<br/>
 				<a href="javascript:;" class="help">Help</a>

@@ -333,98 +333,121 @@ app.get('/get-games', function(req, res){
                 // setup jQuery scope
                 $ = window.jQuery;
 
-                var sGameDate = "";
-
                 // block of games
-                $(".SLTables1").not("#weeks_calendar").first().children().each(function(){
-                  // reset the game data
-                  stGameData = {};
+                $(".SLTables4 > table > tbody > tr").each(function(){
                   // if this is a table tag it contains the date
-                  if( $(this).is("table") ){
-                    sCurrentGameDate = fixDate($(this).children().find("strong").text());
-                  } else if ( $(this).hasClass("SLTables1") ){
-                    // access table with game data
-                    stGameData.sAwayTeam = $(this).children().find("td").first().text().trim().split("@")[0].trim();
-                    stGameData.sHomeTeam = $(this).children().find("td").first().text().trim().split("@")[1].trim();
-                    // get game details
-                    $(this).children().find(".viBodyBorderNorm").children().find("tr").each(function(tr_index){
-                      switch(tr_index){
-                        // first row is game time
-                        case 0:
-                          stGameData.sGameDateTime = sCurrentGameDate + " " + fixTime($(this).children("td").first().text());
-                        break;
-                        // third row is Away Team
-                        case 2:
-                          $(this).children("td").each(function(td_index){
-                            switch(td_index){
-                              // first column is team name
-                              case 0:
-                                stTeam = extractTeamDetails($(this).text());
-                                stGameData.stAwayTeam = stTeam;
-                                stGameData.rawAwayTeamString = $(this).text();
-                                stGameData.nAwayTeamSiteID = stTeam.nID;
-                              break;
-                              // second column is record
-                              case 1:
-                                stGameData.sAwayTeamRecord = $(this).text();
-                              break;
-                              // third column is current streak
-                              // fourth column is opening line
-                              // fifth column is spread
-                              case 4:
-                                stGameData.rawAwaySpread = $(this).text();
-                                if( isFavored($(this).text()) ){
-                                  stGameData.sSpreadFavor = "away";
-                                  stGameData.nSpread = Math.abs(parseFloat($(this).text()));
-                                } else if( isDraw($(this).text()) ){
-                                  stGameData.sSpreadFavor = "home";
-                                  stGameData.nSpread = 0;
-                                }
-                              break;
-                            }
-                          });
-                        break;
+                  if( $(this).children("td[valign='middle']").length > 0 ){
+                    sCurrentGameDate = fixDate($(this).children("td").find("strong").text());
+                  } else {
+                    // each TD with a vertical align of top represents a different game
+                    $(this).children("td[valign='top']").each(function(){
+                      // skip blank game divs
+                      if( $(this).text().length > 10 ){
 
-                        // fourth column is Home Team
-                        case 3:
-                          $(this).children("td").each(function(td_index){
-                            switch(td_index){
-                              // first column is team name
-                              case 0:
-                                stTeam = extractTeamDetails($(this).text());
-                                stGameData.stHomeTeam = stTeam;
-                                stGameData.nHomeTeamSiteID = stTeam.nID;
-                              break;
-                              // second column is record
-                              case 1:
-                                stGameData.sHomeTeamRecord = $(this).text();
-                              break;
-                              // third column is current streak
-                              // fourth column is opening line
-                              // fifth column is spread
-                              case 4:
-                                stGameData.rawHomeSpread = $(this).text();
-                                if( !stGameData.nSpread ){
-                                  if( isFavored($(this).text()) ){
-                                    stGameData.sSpreadFavor = "home";
-                                    stGameData.nSpread = Math.abs(parseFloat($(this).text()));
-                                  } else if( isDraw($(this).text()) ){
-                                    stGameData.sSpreadFavor = "home";
-                                    stGameData.nSpread = 0;
-                                  }
+                        // reset the game data
+                        stGameData = {};
+                        // get game details
+                        $(this).children("table").find(".sportPicksBorder > table").find("tr").each(function(tr_index){
+                          switch(tr_index){
+                            // first row is teams
+                            case 0:
+                              // for college games there is an extra blank td
+                              if( $(this).children("td").first().text().length == 1 ){
+                                $(this).children("td").first().remove();
+                              }
+                              stGameData.sAwayTeam = $(this).children("td").first().text().split("@")[0].trim();
+                              stGameData.sHomeTeam = $(this).children("td").first().text().split("@")[1].trim();
+                            break;
+                            // second row is game time
+                            case 1:
+                              // for college games there is an extra blank td
+                              if( $(this).children("td").first().text().length == 1 ){
+                                $(this).children("td").first().remove();
+                              }
+                              sTime = $(this).children("td").first().text();
+                              
+                              stGameData.rawTime = sTime;
+                              if( sTime.indexOf("Final") < 0 ){
+                                stGameData.sGameDateTime = sCurrentGameDate + " " + fixTime(sTime);
+                              } else {
+                                stGameData.sGameDateTime = sCurrentGameDate;
+                              }
+                            break;
+                            // fourth row is Away Team
+                            case 3:
+                              if( $(this).children("td").first().text().length == 1 ){
+                                $(this).children("td").first().remove();
+                              }
+                              $(this).children("td").each(function(td_index){
+                                switch(td_index){
+                                  // first column is team name
+                                  case 0:
+                                    stTeam = extractTeamDetails($(this).text());
+                                    stGameData.stAwayTeam = stTeam;
+                                    stGameData.rawAwayTeamString = $(this).text();
+                                    stGameData.nAwayTeamSiteID = stTeam.nID;
+                                  break;
+                                  // second column is spread
+                                  case 1:
+                                    stGameData.rawAwaySpread = $(this).text();
+                                    if( isFavored($(this).text()) ){
+                                      stGameData.sSpreadFavor = "away";
+                                      stGameData.nSpread = Math.abs(parseFloat($(this).text()));
+                                    } else if( isDraw($(this).text()) ){
+                                      stGameData.sSpreadFavor = "home";
+                                      stGameData.nSpread = 0;
+                                    }
+                                  break;
+                                  // third column is record
+                                  case 2:
+                                    stGameData.sAwayTeamRecord = $(this).text();
+                                  break;
                                 }
-                              break;
-                            }
-                          });
-                        break;
+                              });
+                            break;
+                            // fifth column is Home Team
+                            case 4:
+                              if( $(this).children("td").first().text().length == 1 ){
+                                $(this).children("td").first().remove();
+                              }
+                              $(this).children("td").each(function(td_index){
+                                switch(td_index){
+                                  // first column is team name
+                                  case 0:
+                                    stTeam = extractTeamDetails($(this).text());
+                                    stGameData.stHomeTeam = stTeam;
+                                    stGameData.nHomeTeamSiteID = stTeam.nID;
+                                  break;
+                                  // second column is spread
+                                  case 1:
+                                    stGameData.rawHomeSpread = $(this).text();
+                                    if( !stGameData.nSpread ){
+                                      if( isFavored($(this).text()) ){
+                                        stGameData.sSpreadFavor = "home";
+                                        stGameData.nSpread = Math.abs(parseFloat($(this).text()));
+                                      } else if( isDraw($(this).text()) ){
+                                        stGameData.sSpreadFavor = "home";
+                                        stGameData.nSpread = 0;
+                                      }
+                                    }
+                                  break;
+                                  // third column is record
+                                  case 1:
+                                    stGameData.sHomeTeamRecord = $(this).text();
+                                  break;
+                                }
+                              });
+                            break;
+                          }
+                        });
                       }
+                      // add this game into the array
+                      stResults.arGameData.push(stGameData);             
                     });
-                    // add this game into the array
-                    stResults.arGameData.push(stGameData);
                   }
                 });
-                // return the game data as JSON
-                res.json({ "stResults": stResults });
+              // return the game data as JSON
+              res.json({ "stResults": stResults });
             }
         });
     });
@@ -550,9 +573,9 @@ var fixDate = function(sDate){
     // turn date into an array
     arDate = sDate.trim().split(" ");
     // if we got back the expected size array
-    if( arDate.length == 6 ){
+    if( arDate.length == 7 ){
       // rebuild date
-      sDate = arDate[3] + " " + arDate[4] + " " + arDate[5];
+      sDate = arDate[4] + " " + arDate[5] + " " + arDate[6];
     }
   }
   return sDate.trim();

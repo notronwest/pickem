@@ -201,12 +201,7 @@ public Struct function getGameStructForWeek( Required Numeric nWeekID ){
 	var itm =1;
 	// loop through the games and save them to the struct
 	for(itm; itm lte arrayLen(arGames); itm ++ ){
-		structInsert(stGames, arGames[itm].getNGameID(), {
-			"nHomeTeamID" = arGames[itm].getNHomeTeamID(),
-			"nAwayTeamID" = arGames[itm].getNAwayTeamID(),
-			"sSpreadFavor" = arGames[itm].getSSpreadFavor(),
-			"nSpread" = arGames[itm].getNSpread()
-		});
+		structInsert(stGames, arGames[itm].getNGameID(), buildGameStruct(arGames[itm]));
 	}
 	return stGames;
 }
@@ -492,8 +487,8 @@ public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean b
 	var stGameResults = {};
 	//var sNCAAScheduleURL = "http://www.donbest.com/ncaaf/odds/";
 	//var sNFLScheduleURL = "http://www.donbest.com/nfl/odds/";
-	var sNCAAScheduleURL = "http://www.vegasinsider.com/college-football/matchups/";
-	var sNFLScheduleURL = "http://www.vegasinsider.com/nfl/matchups/";
+	var sNCAAScheduleURL = "http://www.vegasinsider.com/college-football/scoreboard/";
+	var sNFLScheduleURL = "http://www.vegasinsider.com/nfl/scoreboard/";
 	var arGameScheduleURL = [];
 	if( arguments.bGetNCAAGames ){
 		arrayAppend(arGameScheduleURL, sNCAAScheduleURL);
@@ -504,7 +499,7 @@ public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean b
 	var itm = 1;
 	var x = 1;
 	for( itm; itm lte arrayLen(arGameScheduleURL); itm++ ){
-		// get NCAA games
+		// get game raw data
 		stGameResults = variables.commonService.getURL("http://localhost:3000/get-games?sScheduleURL=" & arGameScheduleURL[itm], 25);
 		// if we have a valid response
 		if( find("200", stGameResults.statusCode) gt 0 and isJSON(stGameResults.fileContent.toString()) ){
@@ -513,7 +508,11 @@ public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean b
 			if( find(200, stResponse.stResults.sStatus) ){
 				// add games (fixing up dates)
 				for(x=1; x lte arrayLen(stResponse.stResults.arGameData); x++ ){
-					sGameDateTime = dateFormat(stResponse.stResults.arGameData[x].sGameDateTime, 'yyyy-mm-dd') & " " & timeFormat(stResponse.stResults.arGameData[x].sGameDateTime, 'HH:mm');
+					if( structKeyExists(stResponse.stResults.arGameData[x], "sGameDateTime") ){
+						sGameDateTime = dateFormat(stResponse.stResults.arGameData[x].sGameDateTime, 'yyyy-mm-dd') & " " & timeFormat(stResponse.stResults.arGameData[x].sGameDateTime, 'HH:mm');
+					} else {
+						sGameDateTime = "";
+					}
 					// requires lock date
 					stResponse.stResults.arGameData[x]["dtLock"] = sGameDateTime;
 					stResponse.stResults.arGameData[x].sGameDateTime = sGameDateTime;

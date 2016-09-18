@@ -1,5 +1,5 @@
 <cfoutput>
-	<div id="picks" class="panel panel-default" data-id="#rc.oWeek.getNWeekID()#">
+	<div id="allPicks" class="panel panel-default" data-id="#rc.oWeek.getNWeekID()#">
 		<div class="panel-heading text-right">
 			<h4>All Picks #rc.oWeek.getSName()# <a href="javascript:window.print()"><span class="print fa fa-print"></span></a></h4>
 			<form class="form-inline" role="form">
@@ -21,8 +21,38 @@
 				<div class="alert alert-warning">
 					<h6>Come back after #getBeanFactory().getBean("commonService").dateTimeFormat(rc.dtPicksDue)# to see everyone's picks for this week.</h6>
 				</div>
+			<cfelse>
+				<div class="table-responsive">
+					<table id="allPicks" class="table hover order-column">
+						<thead>
+							<th>User</th>
+							<th>Pick</th>
+							<th>Spread</th>
+							<th>Status</th>
+						</thead>
+						<tbody>
+							<cfloop from="1" to="#arrayLen(rc.arWeekPicks)#" index="itm">
+								<tr>
+									<cfscript>
+										stGame = rc.stWeekGames[rc.arWeekPicks[itm].getNGameID()];
+										if( compareNoCase(stGame.sSpreadFavor, "home") eq 0 ){
+											sPick = stGame.sAwayTeam;
+											sScore = stGame.nAwayScore & "-" & stGame.nHomeScore;
+										} else {
+											sPick = stGame.sHomeTeam;
+											sScore = stGame.nHomeScore & "-" & stGame.nAwayScore;
+										}
+									</cfscript>
+									<td>#getBeanFactory().getBean("userGateway").get(rc.arWeekPicks[itm].getNUserID()).getFullName()#</td>
+									<td>#sPick#</td>
+									<td>#stGame.nSpread#</td>
+									<td><cfif len(stGame.sGameStatus)>#sScore#<cfelse>#stGame.sGameDateTime#</cfif></td>
+								</tr>
+							</cfloop>
+						</tbody>
+					</table>
+				</div>
 			</cfif>
-			<cfdump var="#rc.arWeekPicks#">
 		</div>
 	</div>
 	<script>var #toScript(rc.stUserWeek.stPicks, "stPicks")#</script>

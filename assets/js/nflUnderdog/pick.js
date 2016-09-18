@@ -1,6 +1,6 @@
 docReady(function(){
 	// do some dirty work
-	$("th").addClass("hidden");
+	$("#picks th").addClass("hidden");
 
 	// build action for turning "make changes" on
 	$(".page-controls").on("click", ".make-changes",function(){
@@ -107,7 +107,7 @@ docReady(function(){
 		window.location.href = "/?action=pick.allWeekPicks&nWeekID=" + $("#picks").data("id");
 	});
 	$("#backToMyPicks").on("click", function(){
-		window.location.href = "/?action=pick.set&nWeekID=" + $("#picks").data("id");
+		window.location.href = "/?action=pick.set&nWeekID=" + $("#allPicks").data("id");
 	});
 });
 // checks to see if the users have picks

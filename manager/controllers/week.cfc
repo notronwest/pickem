@@ -136,6 +136,7 @@ public void function setWeekGames(rc){
 		rc.arPicks = [];
 		// check to see if there are any games loaded already
 		rc.arGames = variables.gameService.adminWeek(rc.nWeekID);
+		
 		if( arrayLen(rc.arGames) lt 1 ){
 			// reset the view to allow them to set the games
 			rc.sInnerView = variables.framework.view("week/setGames");

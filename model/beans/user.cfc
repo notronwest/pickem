@@ -20,4 +20,8 @@ component entityname="user" persistent="true" table="user" output="false" extend
 		}
 		return variables.nUserID;
 	}
+
+	public String function getFullName(){
+		return variables.sFirstName & " " & variables.sLastName;
+	}
 }

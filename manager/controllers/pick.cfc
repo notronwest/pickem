@@ -223,6 +223,7 @@ public void function stats(rc){
 
 public void function allWeekPicks(rc){
 	rc.arWeekPicks = variables.pickGateway.getWeek(rc.nWeeKID);
+	rc.stWeekGames = variables.gameService.getGameStructForWeek(rc.nWeekID);
 	rc.bIsDialog = false;
 }
 

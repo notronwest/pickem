@@ -76,10 +76,10 @@
 			<!--- // show the current pick --->
 			<tr id="userPick">
 				<td>
-					<h5>Current Pick:</h5><br/>
-					<strong class="#((stUnderdog.bIsHome) ? 'home' : '')#">#stUnderdog.sName# #stUnderdog.sMascot#</strong><br/>
+					Current Pick:<br/>
+					<strong style="text-decoration:underline;" class="#((stUnderdog.bIsHome) ? 'home' : '')#">#stUnderdog.sName# #stUnderdog.sMascot#</strong>
 					vs. <span class="#((stFavorite.bIsHome) ? 'home' : '')#" style="font-weight: 100;">#stFavorite.sName# #stFavorite.sMascot#</span>
-					<br>
+					<br/>
 					<button disabled="disabled" class="btn <cfif stGame.bGameIsFinal>
 						#((stPick.bIsWinning) ? ' btn-success' : ' btn-danger')#
 					<cfelseif len(stGame.sGameStatus) gt 0>
