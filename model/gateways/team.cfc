@@ -190,11 +190,7 @@ public Array function getByNameAndMascot( Required String sName ){
 where concat(sName, ' ', sMascot) = '#arguments.sName#'
 or concat(sName2, ' ', sMascot) = '#arguments.sName#'
 or concat(sName3, ' ', sMascot) = '#arguments.sName#'
-or concat(sName4, ' ', sMascot) = '#arguments.sName#'
-or sName = '#arguments.sName#'
-or sName2 = '#arguments.sName#'
-or sName3 = '#arguments.sName#'
-or sName4 = '#arguments.sName#'");
+or concat(sName4, ' ', sMascot) = '#arguments.sName#'");
 	var arTeam = [];
 	if( qryTeam.recordCount gt 0 ){
 		arTeam = [get(qryTeam.nTeamID)];

@@ -47,10 +47,12 @@ public void function before(rc){
 	if( compare(variables.dbService.dbDateTimeFormat(rc.dtPicksDue), variables.dbService.dbDateTimeFormat() ) lte 0){
 		rc.bIsLocked = true;
 	}
+
 	// override lock
 	if( rc.bOverrideLock and rc.stUser.nUserID eq 65 ){
 		rc.bIsLocked = false;
 	}
+
 	try{
 		// get this weeks picks for the current user
 		rc.stUserWeek = variables.pickService.getUserWeek(rc.nWeekID, rc.nCurrentUser);
@@ -62,13 +64,10 @@ public void function before(rc){
 		if( rc.stUserWeek.bAutoPick ){
 			rc.bUserAutoPicked = true;
 		}
-		// build conditional check for nflunderdog
-		if( listLen(structKeyList(rc.stUserWeek.stPicks)) eq 1 ){
-			rc.bIsLocked = variables.gameService.hasGameStarted(structKeyList(rc.stUserWeek.stPicks), rc.dNow);
-		}
 	} catch (any e){
 		registerError("Error setting up picks", e);
 	}
+
 	// get the weekly stats
 	//rc.stWeeklyTeamResults = variables.weekService.getTeamResults(rc.nWeekID);
 }
@@ -80,6 +79,7 @@ public void function set(rc){
 	if( arrayLen(rc.arWeekGames) eq 0 ){
 		rc.bIsLocked = true;
 	}
+
 	// set as page
 	rc.bIsDialog = false;
 }
