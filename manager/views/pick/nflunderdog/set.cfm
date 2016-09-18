@@ -16,6 +16,12 @@
 			</form>
 		</div>
 		<div class="panel-body">
+			<!--- // if the week is locked --->
+			<cfif rc.bIsLocked>
+				<div class="alert alert-warning">
+					<h6>This week is locked and no changes to your picks can be made at this time.</h6>
+				</div>
+			</cfif>
 			<table>
 				<tbody>
 					<tr>
@@ -30,12 +36,6 @@
 					</tr>
 				</tbody>
 			</table>
-			<!--- // if the week is locked --->
-			<cfif rc.bIsLocked>
-				<div class="alert alert-warning">
-					<h6>This week is locked and no changes to your picks can be made at this time.</h6>
-				</div>
-			</cfif>
 			<h4 class="text-right">Points:<button class="alert-success btn btn-small" disabled="disabled"><strong>#listLen(rc.stUserWeek.lstWins)#</strong></button><cfif rc.bUserAutoPicked><button class="alert-info auto-picks btn btn-small" disabled="disabled"><em>Auto Picked: #rc.stUser.stSettings.autopick#</em></button></cfif></h4>
 
 			<!--- // <h4><div class="text-left">

@@ -77,7 +77,7 @@
 			<tr id="userPick">
 				<td>
 					Current Pick:<br/>
-					<strong style="text-decoration:underline;" class="#((stUnderdog.bIsHome) ? 'home' : '')#">#stUnderdog.sName# #stUnderdog.sMascot#</strong>
+					<strong style="text-decoration:underline;" class="#((stUnderdog.bIsHome) ? 'home' : '')#">#stUnderdog.sName# #stUnderdog.sMascot# (-#stGame.nSpread#)</strong>
 					vs. <span class="#((stFavorite.bIsHome) ? 'home' : '')#" style="font-weight: 100;">#stFavorite.sName# #stFavorite.sMascot#</span>
 					<br/>
 					<button disabled="disabled" class="btn <cfif stGame.bGameIsFinal>
