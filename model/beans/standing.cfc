@@ -2,7 +2,7 @@
 component entityname="standing" persistent="true" table="standing" output="false" extends="model.baseORMBean" {
 	property name="nStandingID" fieldtype="ID" generator="identity";
 	property name="nWeekID" fieldtype="column" ormtype="int";
-	property name="nPoints" fieldtype="column" ormtype="int";
+	property name="nPoints" fieldtype="column" ormtype="double";
 	property name="nWins" fieldtype="column" ormtype="int";
 	property name="nLosses" fieldtype="column" ormtype="int";
 	property name="nHighestTiebreak" fieldtype="column" ormtype="int";

@@ -60,6 +60,12 @@ WHERE nWeekID = nInWeekID
 AND nUserID not in (select nUserID from standing where nWeekID = nInWeekID)
 AND nUserID in (select nUserID from userSeason where nSeasonID = nInSeason)
 GROUP BY nUserID;
+
+-- Update bHasPicks for existing users
+UPDATE standing
+SET bHasPicks = 1
+WHERE nUserID in (SELECT nUserID FROM pick where nWeekID = nInWeekID)
+AND nWeekID = nInWeekID
     
 -- Update the records that already exist for this week
 UPDATE standing
@@ -67,6 +73,11 @@ SET nWins = (SELECT SUM(nWin) FROM pick WHERE nWeekID = nInWeekID AND pick.nUser
 nPoints = ( SELECT ABS(nSpread) FROM game join pick on pick.nGameID = game.nGameID WHERE game.nWeekID = nInWeekID AND pick.nWin = 1 AND pick.nUserID = standing.nUserID )
 WHERE nWeekID = nInWeekID
 AND bHasPicks = 1;
+
+-- Update points to be zero where null
+UPDATE standing
+SET nPoints = 0
+WHERE nPoints is null;
 
 -- Insert a record for users that don't have picks
 INSERT INTO standing (nUserID, nWeekID, nSeasonID, nWins, nPoints, bHasPicks)

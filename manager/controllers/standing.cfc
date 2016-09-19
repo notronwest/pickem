@@ -12,7 +12,7 @@ public void function before(rc){
 
 public void function home(rc){
 	// get the standings records ordered by week
-	var arStandings = variables.standingGateway.getSeason(rc.nCurrentSeasonID);
+	var arTempStandings = variables.standingGateway.getSeason(rc.nCurrentSeasonID);
 	var itm = 1;
 	var nWeekID = 0;
 	var nUserID = 0;
@@ -32,10 +32,10 @@ public void function home(rc){
 	// get the weeks
 	rc.arWeeks = variables.weekGateway.getSeason(rc.nCurrentSeasonID);
 	// loop through the standings and build the data for each week
-	for( itm; itm lte arrayLen(arStandings); itm++ ){
+	for( itm; itm lte arrayLen(arTempStandings); itm++ ){
 		// setup this week
-		nWeekID = arStandings[itm].getWeek().getNWeekNumber();
-		nUserID = arStandings[itm].getNUserID();
+		nWeekID = arTempStandings[itm].getWeek().getNWeekNumber();
+		nUserID = arTempStandings[itm].getNUserID();
 		// build structure for users
 		if( not structKeyExists(rc.stUsers, nUserID) ){
 			rc.stUsers[nUserID] = variables.userGateway.get(nUserID);
@@ -52,48 +52,48 @@ public void function home(rc){
 			rc.stWeekTiebreak[nUserID] = {};
 		}
 		// if this user doesn't have picks for this week
-		if( arStandings[itm].getBHasPicks() neq 1 ){
+		if( arTempStandings[itm].getBHasPicks() neq 1 ){
 			if( not structKeyExists(rc.stWeekNoPicks, nWeekID) ){
 				rc.stWeekNoPicks[nWeekID] = [];
 			}
 			arrayAppend(rc.stWeekNoPicks[nWeekID], nUserID);
 		}
 		// if this user was auto picked for this week
-		if( arStandings[itm].getBAutoPick() eq 1 ){
+		if( arTempStandings[itm].getBAutoPick() eq 1 ){
 			if( not structKeyExists(rc.stWeekAutoPick, nWeekID) ){
 				rc.stWeekAutoPick[nWeekID] = [];
 			}
 			arrayAppend(rc.stWeekAutoPick[nWeekID], nUserID);
 		}
 		// store this users wins
-		rc.stWeekData[nUserID][nWeekID].wins = arStandings[itm].getNWins();
+		rc.stWeekData[nUserID][nWeekID].wins = arTempStandings[itm].getNWins();
 		// store this users points
-		rc.stWeekData[nUserID][nWeekID].nPoints = (isNull(arStandings[itm].getNPoints())) ? 0 : arStandings[itm].getNPoints();
+		rc.stWeekData[nUserID][nWeekID].nPoints = (isNull(arTempStandings[itm].getNPoints())) ? 0 : arTempStandings[itm].getNPoints();
 		// store this users place
-		rc.stWeekData[nUserID][nWeekID].nPlace = arStandings[itm].getNPlace();
+		rc.stWeekData[nUserID][nWeekID].nPlace = arTempStandings[itm].getNPlace();
 		// store this users highest tiebreak
-		rc.stWeekTiebreak[nUserID][nWeekID] = [IsNull(arStandings[itm].getNHighestTiebreak()) ? 0 : arStandings[itm].getNHighestTiebreak(),
-			IsNull(arStandings[itm].getNTiebreak2()) ? 0 : arStandings[itm].getNTiebreak2(),
-			IsNull(arStandings[itm].getNTiebreak3()) ? 0 : arStandings[itm].getNTiebreak3(),
-			IsNull(arStandings[itm].getNTiebreak4()) ? 0 : arStandings[itm].getNTiebreak4(),
-			IsNull(arStandings[itm].getNTiebreak5()) ? 0 : arStandings[itm].getNTiebreak5(),
-			IsNull(arStandings[itm].getNTiebreak6()) ? 0 : arStandings[itm].getNTiebreak6(),
-			IsNull(arStandings[itm].getNTiebreak7()) ? 0 : arStandings[itm].getNTiebreak7(),
-			IsNull(arStandings[itm].getNTiebreak8()) ? 0 : arStandings[itm].getNTiebreak8(),
-			IsNull(arStandings[itm].getNTiebreak9()) ? 0 : arStandings[itm].getNTiebreak9(),
-			IsNull(arStandings[itm].getNTiebreak10()) ? 0 : arStandings[itm].getNTiebreak10()
+		rc.stWeekTiebreak[nUserID][nWeekID] = [IsNull(arTempStandings[itm].getNHighestTiebreak()) ? 0 : arTempStandings[itm].getNHighestTiebreak(),
+			IsNull(arTempStandings[itm].getNTiebreak2()) ? 0 : arTempStandings[itm].getNTiebreak2(),
+			IsNull(arTempStandings[itm].getNTiebreak3()) ? 0 : arTempStandings[itm].getNTiebreak3(),
+			IsNull(arTempStandings[itm].getNTiebreak4()) ? 0 : arTempStandings[itm].getNTiebreak4(),
+			IsNull(arTempStandings[itm].getNTiebreak5()) ? 0 : arTempStandings[itm].getNTiebreak5(),
+			IsNull(arTempStandings[itm].getNTiebreak6()) ? 0 : arTempStandings[itm].getNTiebreak6(),
+			IsNull(arTempStandings[itm].getNTiebreak7()) ? 0 : arTempStandings[itm].getNTiebreak7(),
+			IsNull(arTempStandings[itm].getNTiebreak8()) ? 0 : arTempStandings[itm].getNTiebreak8(),
+			IsNull(arTempStandings[itm].getNTiebreak9()) ? 0 : arTempStandings[itm].getNTiebreak9(),
+			IsNull(arTempStandings[itm].getNTiebreak10()) ? 0 : arTempStandings[itm].getNTiebreak10()
 		];
 		// increase this users season wins
 		if( not structKeyExists(rc.stSeasonWins, nUserID) ){
-			rc.stSeasonWins[nUserID] = arStandings[itm].getNWins();
+			rc.stSeasonWins[nUserID] = arTempStandings[itm].getNWins();
 		} else {
-			rc.stSeasonWins[nUserID] = rc.stSeasonWins[nUserID] + arStandings[itm].getNWins();
+			rc.stSeasonWins[nUserID] = rc.stSeasonWins[nUserID] + arTempStandings[itm].getNWins();
 		}
 		// increase this users season points
 		if( not structKeyExists(rc.stSeasonPoints, nUserID) ){
-			rc.stSeasonPoints[nUserID] = (isNull(arStandings[itm].getNPoints())) ? 0 : arStandings[itm].getNPoints();
+			structInsert(rc.stSeasonPoints, nUserID, arTempStandings[itm].getNPoints());
 		} else {
-			rc.stSeasonPoints[nUserID] = rc.stSeasonPoints[nUserID] + (isNull(arStandings[itm].getNPoints())) ? 0 : arStandings[itm].getNPoints();
+			structUpdate(rc.stSeasonPoints, nUserID, rc.stSeasonPoints[nUserID] + arTempStandings[itm].getNPoints());
 		}
 	}
 	// sort the seasonWins

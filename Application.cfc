@@ -56,7 +56,7 @@ component extends="framework" {
 		rc.tTimeNow = timeFormat(now(), 'HH:mm');
 		rc.dNow = rc.dDateNow & " " & rc.tTimeNow;
 		// default the season
-		arLeague = getBeanFactory().getBean("leagueGateway").getByKey(request.sLeagueKey);
+		var arLeague = getBeanFactory().getBean("leagueGateway").getByKey(request.sLeagueKey);
 		if( arrayLen(arLeague) ){
 			rc.oCurrentLeague = arLeague[1];
 			rc.sCurrentLeagueID = rc.oCurrentLeague.getSLeagueID();

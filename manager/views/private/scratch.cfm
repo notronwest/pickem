@@ -1,4 +1,4 @@
 
 <cfscript>
-	writeDump(getBeanFactory().getBean("gameService").adminWeek(127,false,false));
+	writeDump(4.5 + 2.0);
 </cfscript>
