@@ -39,22 +39,23 @@ public void function before(rc){
 }
 
 public Void function getGames(rc){
-	param name="rc.lstLeagueList" default="ncaa,nfl";
 	var itm = 1;
-	rc.sGames = "";
+	var bGamesAreSelected = false;
 	// get the details of the week
 	var oWeek = weekGateway.get(rc.nWeekID);
 	// check to see if this week already has games
-	rc.sGames = variables.gameService.adminWeek(rc.nWeekID);
+	var arGames = variables.gameService.adminWeek(rc.nWeekID);
 	// if we are in the current week and we have no games yet then get the source
-	if( arrayLen(rc.sGames) eq 0 and compare(oWeek.getDStartDate(), rc.dDateNow) lte 0 and compare(rc.dDateNow, oWeek.getDPicksDue()) lte 0 ){
-	 	// reset rc.sGames to a string
-	 	rc.sGames = "";
-		// get the games for this week
-		for(itm; itm lte listLen(rc.lstLeagueList); itm++ ){
-			rc.sGames = variables.gameService.getAvailableGames(request.stLeagueSettings[rc.oCurrentLeague.getSKey()].bHasNCAAGames, request.stLeagueSettings[rc.oCurrentLeague.getSKey()].bHasNFLGames);
-		}	
+	if( arrayLen(arGames) eq 0 ){
+	 	arGames = variables.gameService.getAvailableGames(request.stLeagueSettings[rc.oCurrentLeague.getSKey()].bHasNCAAGames, request.stLeagueSettings[rc.oCurrentLeague.getSKey()].bHasNFLGames);	
+	} else {
+		bGamesAreSelected = true;
 	}
+
+	rc.stGames = {
+		"arGames" = arGames,
+		"bGamesAreSelected" = bGamesAreSelected
+	};
 }
 
 public void function addEdit(rc){

@@ -18,4 +18,15 @@ component entityname="team" persistent="true" table="team" output="false" extend
 		}
 		return variables.nTeamID;
 	}
+
+	// default the mascott value
+	/**
+	* @output false
+	*/
+	public String function getSMascot(){
+		if( not structKeyExists(variables, "sMascot") ){
+			variables.sMascot = "";
+		}
+		return variables.sMascot;
+	}
 }

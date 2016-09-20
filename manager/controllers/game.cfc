@@ -120,7 +120,8 @@ if( compareNoCase(rc.oCurrentLeague.getSKey(), "pickem") eq 0){
 		registerError("Error saving games", e);
 	}
 	// forward back to the set week page
-	variables.framework.redirect("week.setWeekGames",'nWeekID,sMessage');
+	//variables.framework.redirect("week.setWeekGames",'nWeekID,sMessage');
+	variables.framework.setView("manager:main.message");
 }
 
 public void function saveScores(rc){

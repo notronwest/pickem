@@ -197,7 +197,7 @@ docReady(function(){
 					arGames: $.toJSON(arGames)
 				}, function(sResult){
 					$.jGrowl(sResult);
-					//softReload();
+					softReload();
 				}
 			);
 		}
@@ -251,6 +251,8 @@ function buildForm(arGames, oNode){
 	// default node to available games
 	if( typeof oNode != "string"){
 		oNode = "#availableGames";
+		// show the source
+		$("#source").show().removeClass("hide");
 	}
 	// loop through the data in the hidden table tag
 	for( itm=0; itm < arGames.length; itm++ ){
@@ -312,26 +314,19 @@ function getGames(){
 	// get source
 	$.get("/index.cfm?action=week.getGames&" + new Date().getTime(),
 		{
-			nWeekID: $("#setWeek").data("id"),
-			lstLeagueList: "ncaa,nfl"
-		}, function(results){
-			// if this is a string then process it, otherwise run it
-			if(typeof results == "string" && results.length > 0){
-				$("#results").html(results);
-				$("#start").removeClass("hide");
-				$(".loading").addClass("hide");
-				// parse the games and load them
-				parseTeams();
-				buildForm(arGames);
-				$("#source").removeClass("hide");
-			} else if (typeof results == "object") { // this is an edit -- load the games
-				// if there are games
-				if( results.length > 0){
-					buildForm(results, "#activeGames");
+			nWeekID: $("#setWeek").data("id")
+		}, function(stGames){
+			if (typeof stGames == "object") { // this is an edit -- load the games
+				// if there are games load them into active
+				if( stGames.bGamesAreSelected ){
+					buildForm(stGames.arGames, "#activeGames");
 				} else {
-					// hide loading
-					$(".loading").addClass("hide");
+					buildForm(stGames.arGames);
 				}
+			} else {
+				alert("error getting games, please try again");
+				// hide loading
+				$(".loading").addClass("hide");
 			}
 		}, "json"
 	);
@@ -357,7 +352,10 @@ function fixTime(sTime){
 	var sHours = "";
 	var sMins = "";
 	var dtFixed = sTime;
-	if(sTime.length > 0 && sTime.indexOf(":") > 0 && sTime.indexOf(" ") > 0 ){
+	// if its already the correct format
+	if(sTime.length == 5 && sTime.indexOf(":") > 0 ){
+		return dtFixed;
+	} else if(sTime.length > 0 && sTime.indexOf(":") > 0 && sTime.indexOf(" ") > 0 ){
 		// get the AM PM
 		arTime = sTime.split(":");
 		sHours = arTime[0];

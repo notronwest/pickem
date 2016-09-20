@@ -1,1 +1,1 @@
-<cfoutput>#serializeJSON(rc.sGames)#</cfoutput>
+<cfoutput>#serializeJSON(rc.stGames)#</cfoutput>
