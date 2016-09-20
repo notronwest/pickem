@@ -120,6 +120,7 @@ docReady(function(){
 		var dtGame = "";
 		var dtLock = "";
 		var arTiebreaks = [];
+		$(this).prop("disabled", true);
 		// clear the arGames to build the now active games
 		arGames = [];
 		// loop through all of the active games
@@ -200,9 +201,12 @@ docReady(function(){
 					arGames: $.toJSON(arGames)
 				}, function(sResult){
 					$.jGrowl(sResult);
-					//softReload();
+					softReload();
 				}
 			);
+		} else {
+			// reset UI
+			$(this).prop("disabled", false);
 		}
 	});
 });
