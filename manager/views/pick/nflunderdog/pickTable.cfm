@@ -102,13 +102,13 @@
 		</cfif>
 
 		<!--- // build controls for picks --->
-		<tr class="hidden game#((bPickIsLocked) ? ' locked' : '')#" data-id="#rc.arWeekGames[local.itm].nGameId#" data-nWeekID="#rc.nWeekID#">
-			<cfif local.bShowDetails>
+		<tr class="hidden game" data-id="#rc.arWeekGames[local.itm].nGameId#" data-nWeekID="#rc.nWeekID#">
+			<!--- // <cfif local.bShowDetails>
 				<td>
 					<cfif bPickIsLocked>&nbsp;<span class="fa fa-lock"></span></cfif>
 				</td>
 				<td></td>
-			</cfif>
+			</cfif> --->
 			<!--- // render controls --->
 			<td class="change">
 				<button data-id="#stUnderdog.nID#" type="button" class="btn btn-xs #((stUnderdog.bIsHome) ? 'home' : '')##((stUnderdog.nID eq bPick) ? ' pick  btn-success' : ' btn-default')#">

@@ -99,6 +99,8 @@ public void function impersonate(rc){
 	} else if ( rc.stUser.bIsAdmin ){
 		// cancel impersonation
 		session.nImpersonateUser = 0;
+		// cancel overriding picks
+		session.bManualOverridePicks = false;
 		rc.sMessage = "User impersonation cancelled";
 	}
 	variables.framework.setView('main.message');

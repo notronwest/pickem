@@ -65,7 +65,7 @@ GROUP BY nUserID;
 UPDATE standing
 SET bHasPicks = 1
 WHERE nUserID in (SELECT nUserID FROM pick where nWeekID = nInWeekID)
-AND nWeekID = nInWeekID
+AND nWeekID = nInWeekID;
     
 -- Update the records that already exist for this week
 UPDATE standing

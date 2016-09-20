@@ -48,11 +48,6 @@ public void function before(rc){
 		rc.bIsLocked = true;
 	}
 
-	// override lock
-	if( rc.bOverrideLock and rc.stUser.nUserID eq 65 ){
-		rc.bIsLocked = false;
-	}
-
 	try{
 		// get this weeks picks for the current user
 		rc.stUserWeek = variables.pickService.getUserWeek(rc.nWeekID, rc.nCurrentUser);
@@ -70,6 +65,12 @@ public void function before(rc){
 
 	// get the weekly stats
 	//rc.stWeeklyTeamResults = variables.weekService.getTeamResults(rc.nWeekID);
+}
+
+public void function after(rc){
+	if( rc.bManualOverridePicks ){
+		rc.bIsLocked = false;
+	}
 }
 
 public void function set(rc){
@@ -90,7 +91,7 @@ public void function save(rc){
 	var stPicks = {};
 	rc.sMessage = "Picks saved";
 	try{
-		if( !rc.bIsLocked ){
+		if( !rc.bIsLocked or rc.bManualOverridePicks ){
 			// convert picks
 			stPicks = deserializeJSON(rc.stPicks);
 // ********* ONLY FOR NFLUnderdog AND NFLPerfection ************

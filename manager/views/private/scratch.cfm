@@ -1,4 +1,4 @@
 
 <cfscript>
-	writeDump(4.5 + 2.0);
+	writeDump(getBeanFactory().getBean("userSeasonGateway").createFormattedUUID());
 </cfscript>

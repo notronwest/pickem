@@ -8,7 +8,12 @@ property name="userSeasonGateway";
 
 public void function before(rc){
 	param name="rc.sActionAfterLogin" default="manager:standing.home";
+	param name="rc.bManualOverridePicks" default="false";
 	rc.bIsDialog = false;
+	if( structKeyExists(session, "bManualOverridePicks") and session.bManualOverridePicks ){
+		rc.bManualOverridePicks = true;
+	}
+	
 
 }
 
@@ -163,4 +168,25 @@ Use the above password in combination with your e-mail address to get back into 
 		}
 	}
 }
+
+public void function overridePicks(rc){
+	rc.aResult = false;
+	rc.bIsDialog = true;
+	if( rc.stUser.bIsAdmin ){
+		rc.aResult = true;
+		session.bManualOverridePicks = true;
+	}
+	variables.framework.setView('manager:main.serialize');
+}
+
+public void function cancelOverridePicks(rc){
+	rc.aResult = false;
+	rc.bIsDialog = true;
+	if( rc.stUser.bIsAdmin and rc.bManualOverridePicks ){
+		rc.aResult = true;
+		session.bManualOverridePicks = false;
+	}
+	variables.framework.setView('manager:main.serialize');
+}
+
 }

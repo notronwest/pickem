@@ -98,6 +98,31 @@
         }
     })("docReady", window);
 
+    docReady(function(){
+      $("#overridePicks").on("click", function(){
+        $.get("/?action=security:main.overridePicks", function(bOk){
+            if( !bOk ){
+              alert("Sorry you are not permitted to override picks at this point");
+            } else {
+              alert("Ok, you can now override any picks - please be careful");
+              location.reload();
+            }
+          }, "json"
+        );
+      });
+      $("#cancelOverride").on("click", function(){
+        $.get("/?action=security:main.cancelOverridePicks", function(bOk){
+            if( bOk ){
+              alert("Ok, you are no longer overriding picks for this user");
+              location.reload();
+            } else {
+              alert("Something went wrong, please try again");
+            }
+          }, "json"
+        );
+      })
+    });
+
     // put total purse available as jquery
     nTotalPurse = <cfoutput>#((!isNull(rc.oCurrentSeason.getNTotalPurse())) ? rc.oCurrentSeason.getNTotalPurse() : 0)#</cfoutput>;
   </script>
@@ -121,6 +146,7 @@
           <div id="impersonating" class="alert alert-info">
             You are currently impersonating #rc.oCurrentUser.getSFirstName()# #rc.oCurrentUser.getSLastName()#
             <a class="close" data-dismiss="alert" href="##" aria-hidden="true">&times;</a>
+            <cfif !rc.bManualOverridePicks><button id="overridePicks">Override Picks</button><cfelse><button id="cancelOverride">Cancel Override Picks</button></cfif>
           </div>
         </cfif><script src="/assets/js/global.min.js"></script>#body#</div>
         <footer>
