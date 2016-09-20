@@ -377,7 +377,7 @@ public Struct function buildTeamRankings(){
 	// loop over the rankings and load the team
 	for(itm; itm lte arrayLen(arStandingsFromSource); itm++ ){
 		// see if this has a team
-		arTeam = variables.teamGateway.getByNameExact(arStandingsFromSource[itm]);
+		arTeam = variables.teamGateway.getByExactName(arStandingsFromSource[itm]);
 		// if this has a team then see if this team is in a game this week
 		if( arrayLen(arTeam) gt 0 and arTeam[1].getNType() eq 1 ){
 			stRankings[itm] = arTeam[1].getNTeamID(); 
@@ -516,6 +516,12 @@ public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean b
 					// requires lock date
 					stResponse.stResults.arGameData[x]["dtLock"] = sGameDateTime;
 					stResponse.stResults.arGameData[x].sGameDateTime = sGameDateTime;
+					// add in team league
+					if( findNoCase("/college", arGameScheduleURL[itm]) ){
+						stResponse.stResults.arGameData[x]["nType"] = 1;
+					} else {
+						stResponse.stResults.arGameData[x]["nType"] = 2;
+					}
 					arrayAppend(arGameData, stResponse.stResults.arGameData[x]);
 				}
 				

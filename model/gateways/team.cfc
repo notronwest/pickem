@@ -150,7 +150,7 @@ public Array function getAll(){
 Author: 	
 	Ron West
 Name:
-	$getByNameExact
+	$getByExactName
 Summary:
 	Gets a team object by name exactly matched
 Returns:
@@ -161,12 +161,38 @@ Arguments:
 History:
 	2015-10-09 - RLW - Created
 */
-public Array function getByNameExact( Required String sName, Boolean bSearchAlternatives=true ){
+public Array function getByExactName( Required String sName, Boolean bSearchAlternatives=true ){
 	var arTeam = [];
 	if( arguments.bSearchAlternatives ){
 		arTeam = ormExecuteQuery( "from team where sName = :sName or sName2 = :sName or sName3 = :sName", { sName = "#arguments.sName#" } );
 	} else {
 		arTeam = ormExecuteQuery( "from team where sName = :sName", { sName = "#arguments.sName#" } );
+	}
+	return arTeam;
+}
+
+/*
+Author: 	
+	Ron West
+Name:
+	$getByExactNameAndType
+Summary:
+	Gets a team object by name and league exactly matched
+Returns:
+	Array arTeam
+Arguments:
+	String sName
+	String bSearchAlternatives
+	String sType
+History:
+	2016-09-20 - RLW - Created
+*/
+public Array function getByExactNameAndType( Required String sName, Boolean bSearchAlternatives=true, String lstType = "1,2" ){
+	var arTeam = [];
+	if( arguments.bSearchAlternatives ){
+		arTeam = ormExecuteQuery( "from team where (sName = :sName or sName2 = :sName or sName3 = :sName) and nType in (:lstType)", { sName = "#arguments.sName#", lstType = listToArray(arguments.lstType) } );
+	} else {
+		arTeam = ormExecuteQuery( "from team where sName = :sName and nType in (:lstType)", { sName = "#arguments.sName#", lstType = listToArray(arguments.lstType) } );
 	}
 	return arTeam;
 }

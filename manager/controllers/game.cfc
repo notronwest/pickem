@@ -73,12 +73,12 @@ public Void function saveWeek(rc){
 			// if this game is completed - don't make any changes
 			if( !oGame.getBGameIsFinal() eq 1 ){
 				// save the home team
-				oHomeTeam = variables.teamService.saveTeam(rc.arGames[itm].sHomeTeam, rc.arGames[itm].sHomeTeamURL);
+				oHomeTeam = variables.teamService.saveTeam(rc.arGames[itm].sHomeTeam, rc.arGames[itm].sHomeTeamURL, (structKeyExists(rc.arGames[itm], "nType")) ? rc.arGames[itm].nType : "");
 				if( oHomeTeam.getNTeamID() gt 0 ){
 					// add in the id
 					rc.arGames[itm].nHomeTeamID = oHomeTeam.getNTeamID();
 					// save the away team
-					oAwayTeam = variables.teamService.saveTeam(rc.arGames[itm].sAwayTeam, rc.arGames[itm].sAwayTeamURL);
+					oAwayTeam = variables.teamService.saveTeam(rc.arGames[itm].sAwayTeam, rc.arGames[itm].sAwayTeamURL, (structKeyExists(rc.arGames[itm], "nType")) ? rc.arGames[itm].nType : "");
 					if( oAwayTeam.getNTeamID() > 0 ){
 						// add in the id
 						rc.arGames[itm].nAwayTeamID = oAwayTeam.getNTeamID();

@@ -122,6 +122,7 @@
 		<td class="lock-control hide"><input type="text" name="lockTime" class="form-control input-sm time lock-time control-md"/></td>
 		<td><input type="number" name="spread" class="form-control input-sm spread control-sm"/></td>
 		<td><input type="number" name="tiebreak" class="form-control input-sm tiebreak control-sm"/></td>
-		<td><span title="Delete Game" class="fa fa-trash-o delete icons fa-fw fa-lg"></span> <span title="Swap HOME/Away Teams" class="fa fa-home swap-home icons fa-lg"></span> <span title="Swap Spread" class="fa fa-exchange swap-spread icons fa-lg"></span></td>
+		<td><span title="Delete Game" class="fa fa-trash-o delete icons fa-fw fa-lg"></span> <span title="Swap HOME/Away Teams" class="fa fa-home swap-home icons fa-lg"></span> <span title="Swap Spread" class="fa fa-exchange swap-spread icons fa-lg"></span>
+		<input type="hidden" name="nType" class="nType"></td>
 	<tr>
 </table>

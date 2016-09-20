@@ -14,13 +14,22 @@ Returns:
 Arguments:
 	String sName
 	String sURL
+	String lstType
 History:
 	2012-09-12 - RLW - Created
+	2016-09-20 - RLW - Added league to help target leagues
 */
-public model.beans.team function saveTeam( Required String sName, String sURL="" ){
-	// store the team if it doesn't already exist
-	var arTeam = variables.teamGateway.getByNameAndMascot(arguments.sName);
+public model.beans.team function saveTeam( Required String sName, String sURL="", String lstType = "1,2" ){
 	var stTeam = { "sName" = arguments.sName };
+	// see if this team exists
+	if( !listLen(arguments.lstType) ){
+		arguments.lstType = "1,2";
+	}
+	var arTeam = variables.teamGateway.getByExactNameAndType(arguments.sName, true, arguments.lstType);
+	if( !arrayLen(arTeam) ){
+		// try and get by the mascot
+		arTeam = variables.teamGateway.getByNameAndMascot(arguments.sName);
+	}
 	if( not arrayLen(arTeam) ){
 		oTeam = teamGateway.get();
 		if( len(arguments.sURL) ){
