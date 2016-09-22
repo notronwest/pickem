@@ -52,6 +52,9 @@ component extends="framework" {
 		param name="rc.sAPIKey" default="";
 		// default a message (used in a lot of different dialogs)
 		param name="rc.sMessage" default="";
+		param name="rc.bIsPickem" default="false";
+		param name="rc.bIsNFLUnderdog" default="false";
+		param name="rc.bIsNFLPerfection" default="false";
 		rc.dDateNow = dateFormat(now(), 'yyyy-mm-dd');
 		rc.tTimeNow = timeFormat(now(), 'HH:mm');
 		rc.dNow = rc.dDateNow & " " & rc.tTimeNow;
@@ -62,6 +65,18 @@ component extends="framework" {
 			rc.sCurrentLeagueID = rc.oCurrentLeague.getSLeagueID();
 			rc.oCurrentSeason = getBeanFactory().getBean("seasonService").getCurrentSeason(rc.sCurrentLeagueID);
 			rc.nCurrentSeasonID = rc.oCurrentSeason.getNSeasonID();
+			// setup quick variables for leagues
+			switch(request.sLeagueKey){
+				case "pickem":
+					rc.bIsPickem = true;
+				break;
+				case "nflunderdog":
+					rc.bIsNFLUnderdog = true;
+				break;
+				case "nflperfection":
+					rc.bIsNFLPerfection = true;
+				break;
+			}
 		} else {
 			// TODO The league is busted
 		}

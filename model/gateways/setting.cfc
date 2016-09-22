@@ -154,11 +154,31 @@ Returns:
 	Array arSettings
 Arguments:
 	Numeric nOptionID
+	Numeric nSeasonID
 History:
 	2014-09-19 - RLW - Created
+	2016-09-21 - RLW - Updated to use seasonID (for leagues) and make sure they are active
 */
-public Array function getUsersByOption( Required Numeric nOptionID ){
-	var arSettings = ormExecuteQuery("from setting where nOptionID = :nOptionID and sValue <> ''", { "nOptionID" = arguments.nOptionID });
+public Array function getUsersByOption( Required Numeric nOptionID, Required Numeric nSeasonID ){
+	var qryUserSettings = variables.dbService.runQuery( "
+		SELECT nSettingID
+		FROM setting s
+		JOIN user u
+		ON s.nUserID = u.nUserID
+		JOIN userSeason us
+		ON s.nUserID = us.nUserID
+		AND s.nOptionID = #arguments.nOptionID#
+		AND s.sValue <> ''
+		AND u.bActive = 1
+		AND us.nSeasonID = #arguments.nSeasonID#
+		AND us.bActive = 1
+	" );
+	var arSettings = [];
+	var itm = 1;
+	for( itm; itm lte qryUserSettings.recordCount; itm++ ){
+		arrayAppend(arSettings, get(qryUserSettings.nSettingID[itm]));
+	}
+	//var arSettings = ormExecuteQuery("from setting where nOptionID = :nOptionID and sValue <> ''", { "nOptionID" = arguments.nOptionID });
 	return arSettings;
 }
 

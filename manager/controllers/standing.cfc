@@ -97,7 +97,11 @@ public void function home(rc){
 		}
 	}
 	// sort the seasonWins
-	rc.arStandings = structSort(rc.stSeasonPoints, "numeric", "desc");
+	if( rc.bIsNFLUnderdog or rc.bIsNFLPerfection ){
+		rc.arStandings = structSort(rc.stSeasonPoints, "numeric", "desc");
+	} else {
+		rc.arStandings = structSort(rc.stSeasonWins, "numeric", "desc");
+	}
 }
 
 public void function calculate(rc){

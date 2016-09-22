@@ -20,10 +20,12 @@ Returns:
 Arguments:
 	Week oWeek
 	Boolean bForceNotification
+	Numeric nSeasonID
 History:
 	2014-09-19 - RLW - Created
+	2016-09-21 - RLW - Added seasonID to track notifications for different leagues
 */
-public Array function notificationsBySchedule( Required model.beans.week oWeek, Boolean bForceNotification = false ){
+public Array function notificationsBySchedule( Required model.beans.week oWeek, Required Numeric nSeasonID, Boolean bForceNotification = false ){
 	// get all options that have notificaiton ability
 	var arNotifyOptions = variables.optionGateway.getAllForNotification();
 	var itm = 1;
@@ -47,7 +49,7 @@ public Array function notificationsBySchedule( Required model.beans.week oWeek, 
 					// make sure we are a few hours from the start of the weeks games
 					if( ( dtPicksDue lte variables.dbService.dbDateTimeFormat(dateAdd("h", 12, now())) and dtPicksDue gte variables.dbService.dbDateTimeFormat(dateAdd("h", 11, now())) ) or arguments.bForceNotification ){
 						// handle processing for this notification type
-						arrayAppend(arCompletedNotifications, processNotification(arNotifyOptions[itm], arguments.oWeek));
+						arrayAppend(arCompletedNotifications, processNotification(arNotifyOptions[itm], arguments.oWeek, arguments.nSeasonID));
 					}
 			}
 		}
@@ -69,12 +71,13 @@ Returns:
 Arguments:
 	Option oOption
 	Week oWeek
+	Numeric nSeasonID
 History:
 	2014-09-19 - RLW - Created
 */
-public model.beans.option function processNotification( Required model.beans.option oOption, Required model.beans.week oWeek ){
+public model.beans.option function processNotification( Required model.beans.option oOption, Required model.beans.week oWeek, Required Numeric nSeasonID ){
 	// get all of the users with this setting
-	var arUserNotifications = variables.settingGateway.getUsersByOption(arguments.oOption.getNOptionID());
+	var arUserNotifications = variables.settingGateway.getUsersByOption(arguments.oOption.getNOptionID(), arguments.nSeasonID);
 	// get the notification details for this option
 	var oNotification = variables.notifyGateway.getByOption(arguments.oOption.getNOptionID())[1];
 	var itm = 1;

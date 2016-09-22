@@ -110,7 +110,7 @@ public Void function saveWeek(rc){
 			if( arrayLen(arOption) gt 0 ){
 // ****** NEEDS ATTENTION *******
 if( compareNoCase(rc.oCurrentLeague.getSKey(), "pickem") eq 0){
-				variables.notifyService.processNotification(arOption[1], rc.oWeek);
+				variables.notifyService.processNotification(arOption[1], rc.oWeek, rc.nCurrentSeasonID);
 }
 			}
 		}

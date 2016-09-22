@@ -121,7 +121,7 @@ public Void function makeAutoPicks( Required Numeric nWeekID, Required Numeric n
 	var itm = 1;
 	if( arrayLen(arOption) gt 0 ){
 		// get users with this setting
-		arUsers = variables.settingGateway.getUsersByOption(arOption[1].getNOptionID());
+		arUsers = variables.settingGateway.getUsersByOption(arOption[1].getNOptionID(), arguments.nSeasonID);
 		for(itm; itm lte arrayLen(arUsers); itm++){
 			// only run the job if the user has a setting for auto pick
 			if( not isNull(arUsers[itm].getSValue()) or arUsers[itm].getSValue() neq "" ){
