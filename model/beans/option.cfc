@@ -20,7 +20,8 @@ component entityname="option" persistent="true" table="option" output="false" ex
 	property name="nType" fieldtype="column" ormtype="int";
 	property name="sOptions" fieldtype="column" ormtype="string" length="4000";
 	property name="nOrder" fieldtype="column" ormtype="int";
-	
+	property name="sLeagueID" fieldtype="column" ormtype="string" length="32";
+
 	/**
 	* @output false
 	*/
