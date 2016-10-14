@@ -1,5 +1,4 @@
 
 <cfscript>
-	writeDump(getBeanFactory().getBean("teamService").saveTeam("Minnesota", "", 1));
-	writeDump(getBeanFactory().getBean("teamGateway").getByExactNameAndType("Minnesota", true, 1));
+	writeDump(getBeanFactory().getBean("settingService").readableUserSettings(65, rc.sCurrentLeagueID));
 </cfscript>

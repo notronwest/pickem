@@ -125,8 +125,6 @@ public void function setupSession(arUser){
 		} else {
 			session.bIsAdmin = false;
 		}
-		// load preferences
-		session.stSettings = variables.settingService.readableUserSettings(arUser[1].getNUserID());
 	} catch (any e){
 		registerError("Error setting up session", e);
 	}

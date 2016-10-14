@@ -5,6 +5,8 @@ property name="weekGateway";
 property name="optionGateway";
 property name="settingGateway";
 property name="pickService";
+property name="leagueGateway";
+property name="seasonGateway";
 /*
 Author: 	
 	Ron West
@@ -116,7 +118,8 @@ History:
 	2015-11-07 - RLW - Created
 */
 public Void function makeAutoPicks( Required Numeric nWeekID, Required Numeric nSeasonID ){
-	var arOption = variables.optionGateway.getByCodeKey("autopick");
+	var oLeague = variables.leagueGateway.get(variables.seasonGateway.get(arguments.nSeasonID).getSLeagueID());
+	var arOption = variables.optionGateway.getByCodeKey("autopick", oLeague.getSLeagueID());
 	var arUsers = [];
 	var itm = 1;
 	if( arrayLen(arOption) gt 0 ){

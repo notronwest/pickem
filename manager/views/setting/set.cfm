@@ -2,7 +2,7 @@
 	<form id="setting" action="#buildURL('setting.save')#" method="post">
 	<div class="panel panel-default">
 		<div class="panel-heading">
-			<h3>Settings</h3>
+			<h3 style="float:none;">Settings</h3>
 		</div>
 		<div class="panel-body">
 			<cfif len(rc.sMessage) gt 0><div class="alert alert-#rc.sMessageType#">

@@ -68,7 +68,7 @@ public String function applyEmailMask( Required String sMessage, Required String
 		if( arrayLen(arUser) gt 0 ){
 			oUser = arUser[1];
 			lstMasks = ("[username],[password],[firstname],[lastname],[email],[siteurl]");
-			lstValues = ("#oUser.getSUsername()#,#oUser.getSPassword()#,#oUser.getSFirstName()#,#oUser.getSLastName()#,#oUser.getSEmail()#,#request.sSiteURL#" );
+			lstValues = ("#oUser.getSUsername()#,#oUser.getSPassword()#,#oUser.getSFirstName()#,#oUser.getSLastName()#,#oUser.getSEmail()#,#request.sProductionURL#" );
 		}
 	} catch (any e){
 		registerError("Error trying to apply the email mask", e);

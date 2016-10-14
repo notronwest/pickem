@@ -106,12 +106,12 @@ public Void function saveWeek(rc){
 			throw("Error");
 		} else if ( bInitialSetup ){
 			// send out notifications for all users about the beginning of the week
-			arOption = variables.optionGateway.getByCodeKey("gamesAvailable");
+			arOption = variables.optionGateway.getByCodeKey("gamesAvailable", rc.sCurrentLeagueID);
 			if( arrayLen(arOption) gt 0 ){
 // ****** NEEDS ATTENTION *******
-if( compareNoCase(rc.oCurrentLeague.getSKey(), "pickem") eq 0){
+//if( compareNoCase(rc.oCurrentLeague.getSKey(), "pickem") eq 0){
 				variables.notifyService.processNotification(arOption[1], rc.oWeek, rc.nCurrentSeasonID);
-}
+//}
 			}
 		}
 	} catch ( any e ){

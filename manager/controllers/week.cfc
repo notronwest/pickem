@@ -182,12 +182,13 @@ public void function getRecords(rc){
 
 public void function makeAutoPicks(rc){
 	// if the week is locked and we haven't done the autopicks yet
-	if( rc.bIsLocked and not structKeyExists(application.stAutoPicks, rc.nWeekID) ){
+	if( rc.bIsLocked and !isNull(rc.oWeek.getNWeekID()) and isNull(rc.oWeek.getBAutoPicksMade()) ){
 		variables.weekService.makeAutoPicks(rc.nWeekID, rc.nCurrentSeasonID);
-		application.stAutoPicks[rc.nWeekID] = true;
+		// update the week status
+		rc.oWeek = variables.weekGateway.update(rc.oWeek, { "bAutoPicksMade" = 1 });
 	}
 	rc.bIsDialog = false;
-	rc.sMessage = "Auto picks made";
+	rc.sMessage = "Auto picks made - [#rc.oWeek.getBAutoPicksMade()#]";
 	variables.framework.setView("main.message");
 }
 

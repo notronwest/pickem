@@ -26,8 +26,6 @@ component extends="framework" {
 			"manager:main.about"];
 		// store weekly results
 		application.stWeeklyTeamResults = {};
-		// track when the auto picks are made each week
-		application.stAutoPicks = {};
 	}
 
 	/** 
@@ -77,6 +75,8 @@ component extends="framework" {
 					rc.bIsNFLPerfection = true;
 				break;
 			}
+			// reset the site url
+			request.sProductionURL = request.stLeagueSettings[request.sLeagueKey].sProductionURL;
 		} else {
 			// TODO The league is busted
 		}
@@ -91,6 +91,8 @@ component extends="framework" {
 		rc.oCurrentUser = getBeanFactory().getBean("userGateway").get(rc.nCurrentUser);
 		// get the subscription value for this current user
 		rc.arUserSubscription = getBeanFactory().getBean("subscriptionGateway").getByUserAndSeason(rc.nCurrentUser, rc.nCurrentSeasonID);
+		// load preferences
+		rc.stUser.stSettings = getBeanFactory().getBean("settingService").readableUserSettings(rc.nCurrentUser, rc.sCurrentLeagueID);
 	}
 
 	/**

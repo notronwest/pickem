@@ -2,7 +2,7 @@ component accessors="true" extends="model.services.baseService" {
 
 property name="settingGateway";
 property name="optionGateway";
-
+property name="seasonGateway";
 /*
 Author: 	
 	Ron West
@@ -14,17 +14,19 @@ Returns:
 	Struct stSettings
 Arguments:
 	Numeric nUserID
+	Numeric sLeagueID
 History:
 	2014-09-18 - RLW - Created
+	2016-10-12 - RLW - Added support for different settings based on season/league
 */
-public Struct function userSettings( Required Numeric nUserID ){
+public Struct function userSettings( Required Numeric nUserID, Required String sLeagueID ){
 	var arOptions = [];
 	var arOSettings = [];
 	var itm = 1;
 	var stSettings = {};
 	try{
-		arOptions = variables.optionGateway.getAll();
-		arOSettings = variables.settingGateway.getByUser(arguments.nUserID);
+		arOptions = variables.optionGateway.getAll(arguments.sLeagueID);
+		arOSettings = variables.settingGateway.getByUser(arguments.nUserID, arguments.sLeagueID);
 		// build default structure of settings from the options
 		for(itm; itm lte arrayLen(arOptions); itm++){
 			structInsert(stSettings, arOptions[itm].getNOptionID(), "");
@@ -52,17 +54,19 @@ Returns:
 	Struct stSettings
 Arguments:
 	Numeric nUserID
+	String sLeagueID
 History:
 	2015-09-23 - RLW - Created
+	2016-10-13 - RLW - Updated to support leagues
 */
-public Struct function readableUserSettings( Required Numeric nUserID ){
+public Struct function readableUserSettings( Required Numeric nUserID, Required String sLeagueID ){
 	var arOptions = [];
 	var arOSettings = [];
 	var itm = 1;
 	var stSettings = {};
 	try{
 		// get this users settings
-		arOSettings = variables.settingGateway.getByUser(arguments.nUserID);
+		arOSettings = variables.settingGateway.getByUser(arguments.nUserID, arguments.sLeagueID);
 
 		// loop through user settings and update settings
 		for(itm=1; itm lte arrayLen(arOSettings); itm++){
@@ -89,12 +93,15 @@ Returns:
 Arguments:
 	Struct stForm
 	Numeric nUserID
+	Numeric nSeasonID
 History:
 	2014-09-18 - RLW - Created
+	2016-10-16 - RLW - Added support for league/season
 */
-public void function saveUserSettings( Required Struct stForm, Required Numeric nUserID ){
+public void function saveUserSettings( Required Struct stForm, Required Numeric nUserID, Required Numeric nSeasonID ){
 	// get the current settings for this user
-	var stSettings = userSettings(arguments.nUserID);
+	var oSeason = variables.seasonGateway.get(arguments.nSeasonID);
+	var stSettings = userSettings(arguments.nUserID, oSeason.sLeagueID);
 	var nOptionID = 1;
 	var oSetting = "";
 	var oOption = "";
@@ -136,17 +143,19 @@ Returns:
 	String sNotificationSetting
 Arguments:
 	Numeric nUserID
+	String sLeagueID
 History:
 	2014-09-19 - RLW - Created
+	2016-10-13 - RLW - Updated to support different settings per league
 */
-public String function getUsersNotificationSetting( Required Numeric nUserID ){
-	var arOption = variables.optionGateway.getByCodeKey("notificationType");
+public String function getUsersNotificationSetting( Required Numeric nUserID, Required String sLeagueID ){
+	var arOption = variables.optionGateway.getByCodeKey("notificationType", arguments.sLeagueID);
 	var stSettings = {};
 	var sNotificationSetting = "";
 	var itm = 1;
 	try{
 		if( arrayLen(arOption) gt 0 ){
-			stSettings = userSettings(arguments.nUserID);
+			stSettings = userSettings(arguments.nUserID, arguments.sLeagueID);
 			if( structKeyExists(stSettings, arOption[1].getNOptionID()) ){
 				sNotificationSetting = stSettings[arOption[1].getNOptionID()];
 			}

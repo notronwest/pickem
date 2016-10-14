@@ -110,12 +110,13 @@ Summary:
 Returns:
 	Array arOptions
 Arguments:
-	Void
+	String sLeagueID
 History:
 	2014-09-18 - RLW - Created
+	2016-10-12 - RLW - Updated to use season/league settings
 */
-public Array function getAll(){
-	var arOptions = ormExecuteQuery("from option order by nOrder");
+public Array function getAll( Required String sLeagueID ){
+	var arOptions = ormExecuteQuery("from option where sLeagueID = :sLeagueID order by nOrder", { sLeagueID = arguments.sLeagueID });
 	return arOptions;
 }
 
@@ -129,12 +130,13 @@ Summary:
 Returns:
 	Array arOptions
 Arguments:
-	Void
+	String sLeagueID
 History:
 	2014-09-19 - RLW - Created
+	2016-10-13 - RLW - Updated to take league into consideration
 */
-public Array function getAllForNotification(){
-	var arOptions = ormExecuteQuery("from option where bCanNotify = 1 order by nOrder");
+public Array function getAllForNotification( Required String sLeagueID){
+	var arOptions = ormExecuteQuery("from option where bCanNotify = 1 and sLeagueID = :sLeagueID order by nOrder", { sLeagueID = arguments.sLeagueID });
 	return arOptions;
 }
 
@@ -149,11 +151,13 @@ Returns:
 	Array arOptions
 Arguments:
 	String sLabel
+	String sLeagueID
 History:
 	2014-09-18 - RLW - Created
+	2016-10-13 - RLW - Updated to allow for multiple types per league
 */
-public Array function getByLabel( Required String sLabel ){
-	var arOptions = ormExecuteQuery("from option where sLabel = :sLabel order by nOrder", { "sLabel" = arguments.sLabel });
+public Array function getByLabel( Required String sLabel, Required String sLeagueID ){
+	var arOptions = ormExecuteQuery("from option where sLabel = :sLabel and sLeagueID = :sLeagueID order by nOrder", { "sLabel" = arguments.sLabel, "sLeagueID" = arguments.sLeagueID });
 	return arOptions;
 }
 
@@ -168,11 +172,13 @@ Returns:
 	Array arOptions
 Arguments:
 	String sCodeKey
+	String sLeagueID
 History:
 	2014-09-18 - RLW - Created
+	2106-10-12 - RLW - Updated to support different leagues
 */
-public Array function getByCodeKey( Required String sCodeKey ){
-	var arOptions = ormExecuteQuery("from option where sCodeKey = :sCodeKey order by nOrder", { "sCodeKey" = arguments.sCodeKey });
+public Array function getByCodeKey( Required String sCodeKey, Required String sLeagueID ){
+	var arOptions = ormExecuteQuery("from option where sCodeKey = :sCodeKey and sLeagueID = :sLeagueID order by nOrder", { "sCodeKey" = arguments.sCodeKey, "sLeagueID" = arguments.sLeagueID });
 	return arOptions;
 }
 

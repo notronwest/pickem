@@ -111,11 +111,25 @@ Returns:
 	Array arSettings
 Arguments:
 	Numeric nUserID
+	String sLeagueID
 History:
 	2014-09-18 - RLW - Created
+	2016-10-13 - RLW - Updated to support league settings
 */
-public Array function getByUser( Required Numeric nUserID ){
-	var arSettings = ormExecuteQuery("from setting where nUserID = :nUserID", { "nUserID" = arguments.nUserID} );
+public Array function getByUser( Required Numeric nUserID, Required String sLeagueID ){
+	var itm = 1;
+	var arSettings = [];
+	var qrySettings = variables.dbService.runQuery("
+			SELECT nSettingID
+			FROM setting s
+			LEFT JOIN `option` o
+			ON s.nOptionID = o.nOptionID
+			WHERE nUserID = '#arguments.nUserID#'
+			AND o.sLeagueID = '#arguments.sLeagueID#'
+		");
+	for( itm; itm lte qrySettings.recordCount; itm++ ){
+		arrayAppend(arSettings, get(qrySettings.nSettingID[itm]));
+	}
 	return arSettings;
 }
 

@@ -12,6 +12,7 @@ component entityname="week" persistent="true" table="week" output="false" extend
 	property name="sSeason" fieldtype="column" ormtype="string";
 	property name="nSeasonID" fieldtype="column" ormtype="int";
 	property name="sWeeklyResults" fieldtype="column" ormtype="text";
+	property name="bAutoPicksMade" fieldtype="column" ormtype="int";
 
 	/**
 	* @output false

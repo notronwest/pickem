@@ -29,7 +29,7 @@
 					<textarea class="form-control" id="sMessage" name="sMessage" rows="5">#rc.oNotification.getSMessage()#</textarea>
 					<span class="help-block">Enter the following codes to make the form dynamic
 						<ul>
-							<li>[fistname] - the users first name</li>
+							<li>[firstname] - the users first name</li>
 							<li>[lastname] - the users last name</li>
 							<li>[email] - the users email address</li>
 							<li>[siteurl] - the url used to get to the site</li>

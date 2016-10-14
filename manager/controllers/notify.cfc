@@ -40,9 +40,9 @@ public void function save (rc){
 
 public void function after (rc){
 	// get available options
-	rc.stOptions = variables.optionService.getOptions();
+	rc.stOptions = variables.optionService.getOptions(rc.sCurrentLeagueID);
 	// get available notifications
-	rc.arNotifications = variables.notifyGateway.getAll();
+	rc.arNotifications = variables.notifyGateway.getAll(rc.sCurrentLeagueID);
 }
 
 public void function delete (rc){

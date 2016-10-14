@@ -7,6 +7,7 @@ property name="userGateway";
 property name="pickService";
 property name="settingService";
 property name="userService";
+property name="seasonGateway";
 
 /*
 Author: 	
@@ -26,8 +27,9 @@ History:
 	2016-09-21 - RLW - Added seasonID to track notifications for different leagues
 */
 public Array function notificationsBySchedule( Required model.beans.week oWeek, Required Numeric nSeasonID, Boolean bForceNotification = false ){
+	var oSeason = variables.seasonGateway.get(arguments.nSeasonID);
 	// get all options that have notificaiton ability
-	var arNotifyOptions = variables.optionGateway.getAllForNotification();
+	var arNotifyOptions = variables.optionGateway.getAllForNotification(oSeason.getSLeagueID());
 	var itm = 1;
 	var dtPicksDue = "";
 	var arCompletedNotifications = [];
@@ -80,6 +82,7 @@ public model.beans.option function processNotification( Required model.beans.opt
 	var arUserNotifications = variables.settingGateway.getUsersByOption(arguments.oOption.getNOptionID(), arguments.nSeasonID);
 	// get the notification details for this option
 	var oNotification = variables.notifyGateway.getByOption(arguments.oOption.getNOptionID())[1];
+	var oSeason = variables.seasonGateway.get(arguments.nSeasonID);
 	var itm = 1;
 	var oUser = "";
 	var stPicks = {};
@@ -97,7 +100,7 @@ public model.beans.option function processNotification( Required model.beans.opt
 					if( !variables.pickService.userHasPicks(arguments.oWeek.getNWeekID(), nUserID) ){
 						// get this users info
 						oUser = variables.userGateway.get(nUserID);
-						doNotification(oNotification, oUser);
+						doNotification(oNotification, oUser, oSeason.getSLeagueID());
 					}
 				}
 			break;
@@ -110,7 +113,7 @@ public model.beans.option function processNotification( Required model.beans.opt
 					// get this users info
 					oUser = variables.userGateway.get(nUserID);	
 					// doNotification
-					doNotification(oNotification, oUser);
+					doNotification(oNotification, oUser, oSeason.getSLeagueID());
 				}
 			break;
 		}
@@ -134,11 +137,12 @@ Arguments:
 	User oUser
 History:
 	2014-09-19 - RLW - Created
+	2016-10-12 - RLW - Updated to support leagues
 */
-public void function doNotification( Required model.beans.notify oNotify, Required model.beans.user oUser){
+public void function doNotification( Required model.beans.notify oNotify, Required model.beans.user oUser, Required String sLeagueID){
 	try{
 		// determine what type of notification we are doing
-		switch(variables.settingService.getUsersNotificationSetting(arguments.oUser.getNUserID())){
+		switch(variables.settingService.getUsersNotificationSetting(arguments.oUser.getNUserID(), arguments.sLeagueID)){
 			case "e-mail":
 				// send out notification
 				variables.commonService.sendEmail(

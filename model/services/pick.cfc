@@ -149,7 +149,7 @@ History:
 	2015-11-07 - RLW - Created
 */
 public Array function autoPick( Required String sPickType, Required Numeric nWeekID, Required Numeric nUserID, Required Numeric nSeasonID ){
-	var arWeek = variables.gameService.adminWeek(arguments.nWeekID, arguments.nSeasonID);
+	var arWeek = variables.gameService.adminWeek(arguments.nWeekID);
 	var arPicks = [];
 	var arTeams = [];
 	var oPick = "";
@@ -179,6 +179,13 @@ public Array function autoPick( Required String sPickType, Required Numeric nWee
 			// underdog
 			case "underdog":
 				nPick = (compareNoCase(arWeek[itm].sSpreadFavor, "home") eq 0) ? arWeek[itm].nAwayTeamID : arWeek[itm].nHomeTeamID;
+			break;
+			// monday night pick
+			case "mondaydog":
+				if( nPick eq 0 and dayOfWeek(arWeek[itm].sGameDateTime) eq 2 ){
+					nPick = (compareNoCase(arWeek[itm].sSpreadFavor, "home") eq 0) ? arWeek[itm].nAwayTeamID : arWeek[itm].nHomeTeamID;
+				}
+			break;
 		}
 		if( nPick > 0 ){
 			// get a new pick object based on game and user

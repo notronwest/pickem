@@ -21,7 +21,7 @@
 			"bHasNFLGames" = true,
 			"bHasNBAGames" = false,
 			"sProductionURL" = "http://nflunderdog.inquisibee.com",
-			"bHasUserPreferences" = false,
+			"bHasUserPreferences" = true,
 			"bShowPayouts" = false
 		}
 	};

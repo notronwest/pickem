@@ -19,14 +19,14 @@ public void function before (rc){
 	// get the user info
 	rc.oUser = userGateway.get(rc.nUserID);
 	// get the user settings
-	rc.stSettings = variables.settingService.userSettings(rc.nUserID);
+	rc.stSettings = variables.settingService.userSettings(rc.nUserID, rc.sCurrentLeagueID);
 	// get available options
-	rc.arOptions = variables.optionGateway.getAll();
+	rc.arOptions = variables.optionGateway.getAll(rc.sCurrentLeagueID);
 }
 
 public void function save (rc){
 	var sMessage = "Preferences saved";
-	variables.settingService.saveUserSettings(rc, rc.nUserID);
+	variables.settingService.saveUserSettings(rc, rc.nUserID, rc.sCurrentLeagueID);
 	// send them back to their profile page
 	variables.framework.redirect(action='user.addEdit', queryString='sMessage=#sMessage#');
 }

@@ -1,0 +1,15 @@
+<project name="weekly notifications" default="dist">
+  <description>
+    Handles notifications
+  </description>
+  <!-- set global properties for this build -->
+  <property environment="env"/>
+
+  <target name="dist">
+    <!-- // make call to get weekly results for teams -->
+    <get src="http://pickem.inquisibee.com?action=notify.notificationsBySchedule&amp;sAPIKey=AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U" dest="notifications-pickem.htm"/>
+
+    <get src="http://nflunderdog.inquisibee.com?action=notify.notificationsBySchedule&amp;sAPIKey=AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U" dest="notifications-nflunderdog.htm"/>
+  </target>
+
+</project>

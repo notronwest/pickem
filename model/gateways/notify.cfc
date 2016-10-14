@@ -114,12 +114,24 @@ Summary:
 Returns:
 	Array arNotifications
 Arguments:
-	Void
+	String sLeagueID
 History:
 	2014-09-18 - RLW - Created
+	2016-10-13 - RLW - Added support for leagues
 */
-public Array function getAll(){
-	var arNotifications = ormExecuteQuery("from notify");
+public Array function getAll( Required String sLeagueID ){
+	var arNotifications = [];
+	var qryNotify = variables.dbService.runQuery("
+			SELECT n.nNotifyID
+			FROM notify n
+			LEFT JOIN `option` o
+			ON n.nOptionID = o.nOptionID
+			WHERE o.sLeagueID = '#arguments.sLeagueID#'
+		");
+	var itm = 1;
+	for( itm; itm lte qryNotify.recordCount; itm++ ){
+		arrayAppend(arNotifications, get(qryNotify.nNotifyID[itm]));
+	}
 	return arNotifications;
 }
 
