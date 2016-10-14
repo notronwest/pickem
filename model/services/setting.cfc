@@ -101,7 +101,7 @@ History:
 public void function saveUserSettings( Required Struct stForm, Required Numeric nUserID, Required Numeric nSeasonID ){
 	// get the current settings for this user
 	var oSeason = variables.seasonGateway.get(arguments.nSeasonID);
-	var stSettings = userSettings(arguments.nUserID, oSeason.sLeagueID);
+	var stSettings = userSettings(arguments.nUserID, oSeason.getSLeagueID());
 	var nOptionID = 1;
 	var oSetting = "";
 	var oOption = "";
@@ -124,8 +124,6 @@ public void function saveUserSettings( Required Struct stForm, Required Numeric 
 				oSetting.setNUserID(arguments.nUserID);
 			}
 			variables.settingGateway.save(oSetting);
-			// update the session variable
-			session.stSettings = readableUserSettings(arguments.nUserID);
 		}
 	} catch (any e){
 		registerError("Error trying to save user settings for: #arguments.nUserID#", e);

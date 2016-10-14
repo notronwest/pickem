@@ -26,7 +26,7 @@ public void function before (rc){
 
 public void function save (rc){
 	var sMessage = "Preferences saved";
-	variables.settingService.saveUserSettings(rc, rc.nUserID, rc.sCurrentLeagueID);
+	variables.settingService.saveUserSettings(rc, rc.nUserID, rc.nCurrentSeasonID);
 	// send them back to their profile page
 	variables.framework.redirect(action='user.addEdit', queryString='sMessage=#sMessage#');
 }
