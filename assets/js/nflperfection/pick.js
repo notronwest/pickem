@@ -11,6 +11,8 @@ docReady(function(){
 		$(".game:not('.locked')").find(".change:not([data-id='0'])").removeClass("hidden");
 		// remove the disabled class
 		$(".game:not('.locked')").children(".picks .disabled").removeClass("disabled");
+		// show the not-picked
+		$(".game:not('.locked').not-picked").removeClass("hidden");
 	});
 	// build action for cancelling changes
 	$(".page-controls").on("click", ".cancel", function(){

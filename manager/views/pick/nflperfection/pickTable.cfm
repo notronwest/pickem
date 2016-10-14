@@ -69,7 +69,7 @@
 				bPickIsLocked = true;
 			}
 		</cfscript>
-		<tr class="game#((bPickIsLocked) ? ' locked' : '')##sGamesDividerClass#" data-id="#rc.arWeekGames[local.itm].nGameId#" data-nWeekID="#rc.nWeekID#">
+		<tr class="game#((bPickIsLocked) ? ' locked' : '')##sGamesDividerClass#<cfif rc.bUserHasPicks and !bPick> hidden not-picked</cfif>" data-id="#rc.arWeekGames[local.itm].nGameId#" data-nWeekID="#rc.nWeekID#">
 			<cfif local.bShowDetails>
 				<td>
 					<cfif bPickIsLocked>&nbsp;<span class="fa fa-lock"></span></cfif>
