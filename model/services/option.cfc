@@ -139,6 +139,54 @@ public void function buildOptions(){
 			"sOptions" = '{ "options" : [ { "sValue" : "None", "sOption" : "None" }, { "sValue" : "mondaydog", "sOption" : "Monday Night Dog" } ] }',
 			"nOrder" = 12,
 			"sLeagueID" = "C89C3370A58C1E6B62588C46C647CFC6"
+		},
+		{
+			"bCanNotify" = 1,
+			"sSchedule" = "weekly",
+			"sCodeKey" = "beforeNoPicks",
+			"sShortName" = "Before games - No Picks",
+			"sLabel" = "Remind me to make my picks prior to the start of the first game if I haven't set my picks",
+			"nType" = 1,
+			"sOptions" = "",
+			"nOrder" = 7,
+			"sLeagueID" = "C89DE23DE0BE12F927789325F2AB9672"
+		},{ 
+			"bCanNotify" = 1,
+			"sSchedule" = "weekly",
+			"sShortName" = "Always before games",
+			"sCodeKey" = "alwaysBeforeGames",
+			"sLabel" = "Always remind me to review my picks prior to the start of the first game",
+			"nType" = 1,
+			"sOptions" = "",
+			"nOrder" = 8,
+			"sLeagueID" = "C89DE23DE0BE12F927789325F2AB9672"
+		},{
+			"bCanNotify" = 1,
+			"sShortName" = "Games Available",
+			"sLabel" = "Notify me when games become available",
+			"nType" = 1,
+			"sCodeKey" = "gamesAvailable",
+			"sOptions" = "",
+			"nOrder" = 9,
+			"sLeagueID" = "C89DE23DE0BE12F927789325F2AB9672"
+		},{
+			"bCanNotify" = 0,
+			"sShortName" = "Notify by",
+			"sLabel" = "Notify me by:",
+			"nType" = 3,
+			"sCodeKey" = "notificationType",
+			"sOptions" = '{ "options" : [{ "sValue" : "e-mail", "sOption" : "E-mail" }] }',
+			"nOrder" = 10,
+			"sLeagueID" = "C89DE23DE0BE12F927789325F2AB9672"
+		},{
+			"bCanNotify" = 0,
+			"sShortName" = "Timezone",
+			"sLabel" = "Timezone:",
+			"nType" = 3,
+			"sCodeKey" = "timezone",
+			"sOptions" = '{ "options" : [ { "sValue" : "Pacific", "sOption" : "Pacific" }, { "sValue" : "Eastern", "sOption" : "Eastern" }] }',
+			"nOrder" = 11,
+			"sLeagueID" = "C89DE23DE0BE12F927789325F2AB9672"
 		}
 	];
 	// loop through the options and add them if they don't exist

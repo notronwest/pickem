@@ -13,7 +13,7 @@
 			"bHasNFLGames" = true,
 			"bHasNBAGames" = false,
 			"sProductionURL" = "http://nflperfection.inquisibee.com",
-			"bHasUserPreferences" = false,
+			"bHasUserPreferences" = true,
 			"bShowPayouts" = false
 		},
 		"NFLUnderdog" = {
