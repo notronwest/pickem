@@ -9,7 +9,7 @@
 			<thead>
 				<th>Player</th>
 				<!--- // <th>Money</th> --->
-				<th>Wins</th>
+				<th>Points</th>
 				<!--- // <th>Losses</th> --->
 				<th>Rank</th>
 				<!--- // loop through the weeks --->

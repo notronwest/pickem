@@ -57,9 +57,7 @@
 			stNotPick = ( bPick eq stHome.nID ) ? stAway : stHome;
 			// determine who is winning
 			if( len(stGame.sGameStatus) gt 0 ){
-				if( nFavoredTeam eq stPick.nID and (stPick.nScore - stGame.nSpread) > stNotPick.nScore ){
-					stPick.bIsWinning = true;
-				} else if ( nFavoredTeam eq stNotPick.nID and (stNotPick.nScore - stGame.nSpread) < stPick.nScore ){
+				if( stPick.nScore > stNotPick.nScore ){
 					stPick.bIsWinning = true;
 				}
 				bPickIsLocked = true;

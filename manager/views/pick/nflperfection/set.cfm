@@ -22,13 +22,8 @@
 					<h6>This week is locked and no changes to your picks can be made at this time.</h6>
 				</div>
 			</cfif>
-			<h4>Wins:<button class="alert-success btn btn-small" disabled="disabled"><strong>#listLen(rc.stUserWeek.lstWins)#</strong></button><cfif rc.bUserAutoPicked><button class="alert-info auto-picks btn btn-small" disabled="disabled"><em>Auto Picked: #rc.stUser.stSettings.autopick#</em></button></cfif></h4>
-
-			<!--- // <h4><div class="text-left">
-				<cfif listLen(rc.stUserWeek.lstWins)>
-					<span class="alert-info">Total wins this week: #listLen(rc.stUserWeek.lstWins)#</span>
-				</cfif>
-			</div></h4> --->
+			<h4>Points:<button class="<cfif listLen(rc.stUserWeek.lstLosses)>alert-danger<cfelse>alert-success</cfif> btn btn-small" disabled="disabled"><strong><cfif listLen(rc.stUserWeek.lstLosses)>0<cfelse>#listLen(structKeyList(rc.stUserWeek.stPicks))#
+			</cfif></strong></button><cfif rc.bUserAutoPicked><button class="alert-info auto-picks btn btn-small" disabled="disabled"><em>Auto Picked: #rc.stUser.stSettings.autopick#</em></button></cfif></h4>
 			<cfif !rc.bIsLocked><p>
 				Picks can be made up until #getBeanFactory().getBean("commonService").dateTimeFormat(rc.dtPicksDue)#
 			</p></cfif>
