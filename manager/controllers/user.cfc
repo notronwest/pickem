@@ -115,7 +115,7 @@ public void function emailUserForm(rc){
 
 public void function emailList(rc){
 	// get all of the users
-	rc.arUsers = variables.userGateway.getAllSortByFirst(false);
+	rc.arUsers = variables.userGateway.getBySeason(rc.nCurrentSeasonID, 1);
 	rc.bIsAdminAction = true;
 }
 
@@ -142,6 +142,11 @@ public void function sendEmail(rc){
 
 	} catch ( any e ){
 		registerError("Error sending user email", e);
+		rc.sMessage = "Please enter a value into the e-mail section (Step 2: of the form)";
+		// get all of the users
+		rc.arUsers = variables.userGateway.getBySeason(rc.nCurrentSeasonID, 1);
+		rc.bIsAdminAction = true;
+		variables.framework.setView("manager:user.emailUserForm");
 	}
 }
 

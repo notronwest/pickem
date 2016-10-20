@@ -7,6 +7,10 @@
   }
 </cfscript>
 <h1>Send User Email</h1>
+<cfif structKeyExists(rc, "sMessage") and len(rc.sMessage)>
+  <div class="alert-danger"><cfoutput>#rc.sMessage#</cfoutput></div>
+  <br/>
+</cfif>
 <cfoutput><form action="#buildURL('user.sendEmail')#" method="post"></cfoutput>
   <div class="panel-group" id="accordion">
     <div class="panel panel-default">

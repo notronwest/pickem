@@ -6,7 +6,7 @@
 				<div class="form-group">
 					<select id="sWeekURL" class="input-sm" size="1">
 					<cfloop from="1" to="#arrayLen(rc.arWeeks)#" index="local.itm">
-						<option value="#buildURL('pick.set')#&nWeekID=#rc.arWeeks[local.itm].getNWeekID()#"<cfif rc.oWeek.getNWeekID() eq rc.arWeeks[local.itm].getNWeekID()> selected="selected"</cfif>>
+						<option value="#buildURL('pick.allWeekPicks')#&nWeekID=#rc.arWeeks[local.itm].getNWeekID()#"<cfif rc.oWeek.getNWeekID() eq rc.arWeeks[local.itm].getNWeekID()> selected="selected"</cfif>>
 							#rc.arWeeks[local.itm].getSName()# (#dateFormat(rc.arWeeks[local.itm].getDStartDate(), "mm/dd")# - #dateFormat(rc.arWeeks[local.itm].getDEndDate(), "mm/dd")#)
 						</option>
 					</cfloop>
@@ -32,17 +32,41 @@
 						</thead>
 						<tbody>
 							<cfloop from="1" to="#arrayLen(rc.arWeekPicks)#" index="itm">
-								<tr>
-									<cfscript>
-										stGame = rc.stWeekGames[rc.arWeekPicks[itm].getNGameID()];
-										if( compareNoCase(stGame.sSpreadFavor, "home") eq 0 ){
-											sPick = stGame.sAwayTeam;
-											sScore = stGame.nAwayScore & "-" & stGame.nHomeScore;
-										} else {
-											sPick = stGame.sHomeTeam;
-											sScore = stGame.nHomeScore & "-" & stGame.nAwayScore;
+								<cfscript>
+									stGame = rc.stWeekGames[rc.arWeekPicks[itm].getNGameID()];
+									sClass = "default";
+									if( compareNoCase(stGame.sSpreadFavor, "home") eq 0 ){
+										sPick = stGame.sAwayTeam;
+										sScore = stGame.nAwayScore & "-" & stGame.nHomeScore;
+										// is the game winning
+										if( stGame.nAwayScore gt stGame.nHomeScore ){
+											sClass = "info";
+										} else if ( !len(stGame.sGameStatus) ) {
+											sClass = "warning";
 										}
-									</cfscript>
+										if( stGame.nAwayScore gt stGame.nHomeScore and stGame.bGameIsFinal ){
+											sClass = "success";
+										} else if ( stGame.nAwayScore lte stGame.nHomeScore and stGame.bGameIsFinal ){
+											sClass = "danger";
+										}
+									} else {
+										sPick = stGame.sHomeTeam;
+										sScore = stGame.nHomeScore & "-" & stGame.nAwayScore;
+										// is the game winning
+										if( stGame.nHomeScore gt stGame.nAwayScore ){
+											sClass = "info";
+										} else if ( !len(stGame.sGameStatus) ) {
+											sClass = "warning";
+										}
+
+										if( stGame.nHomeScore gt stGame.nAwayScore and stGame.bGameIsFinal ){
+											sClass = "success";
+										} else if ( stGame.nHomeScore lte stGame.nAwayScore and stGame.bGameIsFinal ){
+											sClass = "danger";
+										}
+									}
+								</cfscript>
+								<tr class="alert-#sClass#">
 									<td>#getBeanFactory().getBean("userGateway").get(rc.arWeekPicks[itm].getNUserID()).getFullName()#</td>
 									<td>#sPick#</td>
 									<td>#stGame.nSpread#</td>
