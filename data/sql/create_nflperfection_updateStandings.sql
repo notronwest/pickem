@@ -78,7 +78,7 @@ SELECT nStandingID, rank_calculated
     SELECT    nStandingID, @curRank := @curRank + 1 AS rank_calculated
     FROM      standing s, (SELECT @curRank := 0) st
     WHERE nWeekID = nInWeekID
-    ORDER BY  nPoints DESC
+    ORDER BY  nWins DESC
   ) rt
 ORDER BY rank_calculated
          ) AS r

@@ -177,11 +177,18 @@ Returns:
 Arguments:
 	Numeric nWeekID
 	Numeric nUserID
+	Boolean bIncludeAutoPicks
 History:
 	2012-09-12 - RLW - Created
+	2016-10-28 - RLW - Updated to include an optional boolean to include/exclude autopicks
 */
-public Array function getUserWeek( Required Numeric nWeekID, Required Numeric nUserID ){
-	var arPicks = ormExecuteQuery( "from pick where nWeekID = :nWeekID and nUserID = :nUserID", { nWeekID = arguments.nWeekID, nUserID = arguments.nUserID } );
+public Array function getUserWeek( Required Numeric nWeekID, Required Numeric nUserID, Boolean bIncludeAutoPicks = true ){
+	var arPicks = [];
+	if( arguments.bIncludeAutoPicks ){
+		arPicks = ormExecuteQuery( "from pick where nWeekID = :nWeekID and nUserID = :nUserID", { nWeekID = arguments.nWeekID, nUserID = arguments.nUserID } );
+	} else {
+		arPicks = ormExecuteQuery( "from pick where nWeekID = :nWeekID and nUserID = :nUserID and bAuto is null", { nWeekID = arguments.nWeekID, nUserID = arguments.nUserID } );
+	}
 	return arPicks;
 }
 
