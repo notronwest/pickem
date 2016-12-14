@@ -132,13 +132,13 @@ docReady(function(){
 				bDoSave = false;
 			}
 			// if there isn't a tiebreak defined or if there is one missing
-			if( $(this).find(".tiebreak").val() == "" ){
+			/*if( $(this).find(".tiebreak").val() == "" ){
 				alert("Please set a tiebreak for this game");
 				$(this).find(".tiebreak").focus();
 				bDoSave = false;
 			} else {
 				arTiebreaks.push($(this).find(".tiebreak").val());
-			}
+			}*/
 			// store the game dates/times
 			dtGame = $(this).find(".game-date").val().trim() + " " + fixTime($(this).find(".game-time").val().trim());
 			dtLock = $(this).find(".lock-date").val().trim() + " " + fixTime($(this).find(".lock-time").val().trim());
@@ -189,10 +189,10 @@ docReady(function(){
 			arGames.push(stGame);
 		});
 		// check and make sure that all of the appropriate tiebreaks were used
-		if( bDoSave && arTiebreaks.reduce(function(a,b){return a*b;}) != fact(arTiebreaks.length) ){
+		/*if( bDoSave && arTiebreaks.reduce(function(a,b){return a*b;}) != fact(arTiebreaks.length) ){
 			alert("It looks like you may have tiebreakers wrong. More than likely you have used the same tiebreak number twice. Please double check");
 			bDoSave = false;
-		}
+		}*/
 		if( bDoSave ){
 			// send the call to save this week
 			$.post("/index.cfm?action=game.saveWeek",
