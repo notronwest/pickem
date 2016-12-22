@@ -110,6 +110,35 @@ public Query function runQuery( Required String sSQL ){
 Author: 	
 	Ron West
 Name:
+	$runHQLQuery
+Summary:
+	Runs the specified HQL query
+Returns:
+	Query arResults
+Arguments:
+	String sSQL
+History:
+	2016-12-22 - RLW - Created
+*/
+public array function runHQLQuery( Required String sSQL ){
+	var oQueryService = new query();
+	var oQueryResults = "";
+	var arResults = [];
+	try{
+		oQueryService.setDBType("hql");
+		oQueryService.setName("qryResult");
+		oQueryResults = oQueryService.execute(sql=arguments.sSQL);
+		arResults = oQueryResults.getResult();
+	} catch (any e){
+		registerError("Error running HQL query: #arguments.sSQL#", e);
+	}
+	return arResults;
+}
+
+/*
+Author: 	
+	Ron West
+Name:
 	$runStoredProc
 Summary:
 	Runs a stored procedure

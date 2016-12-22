@@ -51,13 +51,17 @@
 						<td>#rc.stSeasonWins[local.nUserID]#</td>
 						<!--- // <td></td> --->
 						<td>#local.sPlace#</td>
-						<cfif arrayLen(local.arWeeks) lte arrayLen(rc.arWeeks)>
-							<cfloop from="1" to="#(arrayLen(rc.arWeeks) - arrayLen(local.arWeeks))#" index="local.z"><td>0</td></cfloop>
-						</cfif>
 						<!--- // loop through the week wins for this user --->
-						<cfloop from="#arrayLen(local.arWeeks)#" to="1" step="-1" index="local.y">
+						<cfloop from="#arrayLen(rc.arWeeks)#" to="1" step="-1" index="local.y">
 							<cfscript>
-								local.nWeekID = local.arWeeks[local.y];
+								if( !structKeyExists(local.stUserWeekData, rc.arWeeks[local.y].getNWeekNumber()) ){
+									stUserWeekData[rc.arWeeks[local.y].getNWeekNumber()] = {
+										"nPlace" = 0,
+										"Wins" = 0
+									};
+									//arrayAppend(local.arWeeks, 0);
+								}
+								local.nWeekID = rc.arWeeks[local.y].getNWeekNumber();
 							</cfscript>
 
 							<td data-order="#local.stUserWeekData[local.nWeekID].nPlace#">#local.stUserWeekData[local.nWeekID].wins#
