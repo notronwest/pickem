@@ -163,7 +163,7 @@ public Array function autoPick( Required String sPickType, Required Numeric nWee
 	var nPick = 0;
 	var itm = 1;
 	// make sure they haven't made picks yet (or had auto picks)
-	if( !userHasPicks(arguments.nWeekID, arguments.nUserID, false) ){
+	//if( !userHasPicks(arguments.nWeekID, arguments.nUserID, false) ){
 		for(itm; itm lte arrayLen(arWeek); itm++){
 			nPick = 0;
 			switch (arguments.sPickType){
@@ -205,13 +205,13 @@ public Array function autoPick( Required String sPickType, Required Numeric nWee
 					oPick = variables.pickGateway.update(oPick, { nGameID = arWeek[itm].nGameID, nTeamID = nPick, nWeekID = arguments.nWeekID, nUserID = arguments.nUserID, bAuto = 1 } );
 					// append the pick
 					arrayAppend(arPicks, oPick);
-				} else {
+				} /*else {
 					// the user has already made picks so clear out
 					break;
-				}
+				}*/
 			}
 		}
-	}
+	//}
 	return arPicks;
 }
 
