@@ -32,7 +32,9 @@ public void function before(rc){
 	rc.arGames = variables.gameService.adminWeek(rc.nWeekID, rc.nCurrentSeasonID);
 	rc.dtPicksDue = rc.oWeek.getDPicksDue() & " " & rc.oWeek.getTPicksDue();
 	rc.bIsLocked = false;
-	if( compare(rc.dtPicksDue, dateFormat(now(), 'yyyy-mm-dd') & " " & timeFormat(now(), 'hh:mm')) lte 0){
+	
+	// see if the picks are locked for this week
+	if( compare(variables.dbService.dbDateTimeFormat(rc.dtPicksDue), variables.dbService.dbDateTimeFormat() ) lte 0){
 		rc.bIsLocked = true;
 	}
 
