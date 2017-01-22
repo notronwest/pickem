@@ -182,7 +182,7 @@ public void function getRecords(rc){
 
 public void function makeAutoPicks(rc){
 	// if the week is locked and we haven't done the autopicks yet
-	if( rc.bIsLocked and !isNull(rc.oWeek.getNWeekID()) and isNull(rc.oWeek.getBAutoPicksMade()) ){
+	if( rc.bIsLocked and !isNull(rc.oWeek.getNWeekID()) and (isNull(rc.oWeek.getBAutoPicksMade()) or !rc.oWeek.getBAutoPicksMade()) ){
 		variables.weekService.makeAutoPicks(rc.nWeekID, rc.nCurrentSeasonID);
 		// update the week status
 		rc.oWeek = variables.weekGateway.update(rc.oWeek, { "bAutoPicksMade" = 1 });
