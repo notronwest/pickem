@@ -188,7 +188,7 @@ public void function makeAutoPicks(rc){
 		rc.oWeek = variables.weekGateway.update(rc.oWeek, { "bAutoPicksMade" = 1 });
 	}
 	rc.bIsDialog = false;
-	rc.sMessage = "Auto picks made - [#rc.oWeek.getBAutoPicksMade()#]";
+	rc.sMessage = "Auto picks made - [#rc.oWeek.getBAutoPicksMade()#] - #rc.oWeek.getNWeekID()# - #rc.bIsLocked#";
 	variables.framework.setView("main.message");
 }
 
