@@ -7,7 +7,7 @@ property name="teamService";
 property name="weekService";
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$clearGamesByWeek
@@ -32,7 +32,7 @@ public Void function clearGamesByWeek( Required Numeric nWeekID ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$clearGameByGameID
@@ -54,10 +54,10 @@ public Void function clearGameByGameID( Required Numeric nGameID ){
 	} catch (any e){
 		registerError("Error clearing out games for a week", e);
 	}
-}		
+}
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$adminWeek
@@ -97,7 +97,7 @@ public Array function adminWeek( Required Numeric nWeekID, Boolean bSortByTiebre
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$buildGameStruct
@@ -148,7 +148,7 @@ public Struct function buildGameStruct( Required model.beans.game oGame, Boolean
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$buildOrderedArray
@@ -175,13 +175,13 @@ public Array function buildOrderedArray( Numeric nWeekID = 0 ){
 		} else {
 			arrayAppend(arGames, { "nTeamID" = arGamesSorted[itm].nAwayTeamID, "nGameID" = arGamesSorted[itm].nGameID });
 			arrayAppend(arGames, { "nTeamID" = arGamesSorted[itm].nHomeTeamID, "nGameID" = arGamesSorted[itm].nGameID });
-		}	
+		}
 	}
 	return arGames;
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getGameStructByWeek
@@ -207,7 +207,7 @@ public Struct function getGameStructForWeek( Required Numeric nWeekID ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getGameScores
@@ -256,7 +256,7 @@ public Array function getGameScores( Required Array arGames){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$callScoreAPI
@@ -293,7 +293,7 @@ public Struct function callScoreAPI(Required Array arHomeTeamName, Required Arra
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getGameStats
@@ -317,7 +317,7 @@ public Struct function getGameStats( Required model.beans.game oGame ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$reassignTeam
@@ -354,7 +354,7 @@ public Boolean function reassignTeam( Required Numeric nOldTeamID, Required Nume
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$buildTeamRankings
@@ -380,14 +380,14 @@ public Struct function buildTeamRankings(){
 		arTeam = variables.teamGateway.getByExactName(arStandingsFromSource[itm]);
 		// if this has a team then see if this team is in a game this week
 		if( arrayLen(arTeam) gt 0 and arTeam[1].getNType() eq 1 ){
-			stRankings[itm] = arTeam[1].getNTeamID(); 
+			stRankings[itm] = arTeam[1].getNTeamID();
 		}
 	}
 	return stRankings;
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$updateGamesWithRankings
@@ -429,7 +429,7 @@ public Boolean function updateGamesWithRankings( Required Numeric nWeekID, Requi
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$updateGamesWithRecords
@@ -469,7 +469,7 @@ public Boolean function updateGamesWithRecords( Required Numeric nWeekID, Requir
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getAvailableGames
@@ -509,6 +509,8 @@ public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean b
 				// add games (fixing up dates)
 				for(x=1; x lte arrayLen(stResponse.stResults.arGameData); x++ ){
 					if( structKeyExists(stResponse.stResults.arGameData[x], "sGameDateTime") ){
+						// sometimes gametime has crappy names
+						sGameDateTime = listLast(sGameDateTime, "-");
 						sGameDateTime = dateFormat(stResponse.stResults.arGameData[x].sGameDateTime, 'yyyy-mm-dd') & " " & timeFormat(stResponse.stResults.arGameData[x].sGameDateTime, 'HH:mm');
 					} else {
 						sGameDateTime = "";
@@ -524,7 +526,7 @@ public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean b
 					}
 					arrayAppend(arGameData, stResponse.stResults.arGameData[x]);
 				}
-				
+
 			} else {
 				// API called failed
 			}
@@ -536,7 +538,7 @@ public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean b
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$hasGameStarted

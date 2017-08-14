@@ -1,7 +1,7 @@
 component extends="framework" {
-	
-	include "config/applicationSettings.cfm";
+
 	include "config/environmentalSettings.cfm";
+	include "config/applicationSettings.cfm";
 	include "config/leagueSettings.cfm";
 	include "config/ormSettings.cfm";
 	include "config/fw1Settings.cfm";
@@ -12,7 +12,7 @@ component extends="framework" {
 	public void function setupApplication(){
 		// build the bean factory
 		setBeanFactory( new ioc("/model") );
-		
+
 		application.dataDirectory = expandPath("/data/");
 		application.sSerializeView = "manager:main.serialize";
 		// unsecured actions
@@ -28,7 +28,7 @@ component extends="framework" {
 		application.stWeeklyTeamResults = {};
 	}
 
-	/** 
+	/**
 	* establishes the main request procedures
 	*/
 	public void function setupRequest(rc){
@@ -80,7 +80,7 @@ component extends="framework" {
 		} else {
 			// TODO The league is busted
 		}
-		
+
 		rc.bIsDialog = false;
 		rc.bIsMobile = getBeanFactory().getBean("commonService").isMobileView();
 		rc.bIsAdminAction = false;
@@ -99,7 +99,7 @@ component extends="framework" {
 	* allows for manipulation of view
 	*/
 	public void function setupView(){
-	
+
 	}
 
 	/**
@@ -110,7 +110,7 @@ component extends="framework" {
 		session.bIsAdmin = 1;
 	}
 
-	/** 
+	/**
 	* handles errors
 	*/
 	public void function onError(exception, event){

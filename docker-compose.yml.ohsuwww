@@ -1,0 +1,43 @@
+
+version: "2"
+
+services:
+
+  db:
+    image: mysql:5.6
+    command: mysqld --character-set-server=utf8 --collation-server=utf8_unicode_ci
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: inqsports
+      MYSQL_USER: inqsports
+      MYSQL_PASSWORD: 1nquisib33
+    ports:
+      - "127.0.0.1:42306:3306"
+    volumes:
+      - db:/var/lib/mysql
+      - .data/db:/var/lib/mysql
+
+  web:
+    build:
+      context: ./docker/lucee
+      dockerfile: Dockerfile
+    depends_on:
+      - db
+    links:
+      - db
+    ports:
+      - "127.0.0.1:42080:80"
+    volumes:
+      - ./:/var/www/
+      - ~/.ssh:/var/www/.ssh
+      - ~/.gitconfig:/var/www/.gitconfig
+
+  nginx52:
+    build:
+        context: ./docker/nginx
+        dockerfile: Dockerfile
+        #environment:
+         # - "VIRTUAL_HOST=nginx52.*"
+
+volumes:
+  db: {}

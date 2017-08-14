@@ -1,6 +1,7 @@
 # don't include log files
 *.log
-*.DS_Store
+.gitconfig
+.DS_Store
 views/main/scratch.cfm
 node_modules
-
+data/db

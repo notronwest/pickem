@@ -1,4 +1,6 @@
 <cfscript>
+	// datasource default
+	request.datasources = {};
 	// global request variables
 	request.stJenkinsAPIKeys = {
 		"sBackupWeekly" = "rRAMrXXWrEPkA2d3NXVwX"
@@ -10,6 +12,14 @@
 
 		// development
 		case "pickem.local":
+		case "pickem.local:8052":
+			// dynamically define datasources here
+			request.datasources["inqsports"]		= {
+						class: 'org.gjt.mm.mysql.Driver',
+						connectionString: 'jdbc:mysql://db:3306/inqsports?useUnicode=true&useLegacyDatetimeCode=true&allowMultiQueries=true&useSSL=false',
+						username = "inqsports",
+						password = "1nquisib33"
+					};
 			request.sLogURL = "/data/logs/";
 			request.bReloadOnEveryRequest = true;
 			request.sAdminEmail = "ron@inquisibee.com";
@@ -89,7 +99,7 @@
 			request.sDBUsername = "notronwest";
 			request.sDBPassword = "1nquisib33";
 			break;
-		
+
 		case "nflperfection.inquisibee.com":
 			request.sLogURL = "/data/logs/";
 			request.bReloadOnEveryRequest = false;
@@ -123,6 +133,6 @@
 			request.sDBPassword = "1nquisib33";
 			request.sLeagueKey = "NFLUnderdog";
 			break;
-			
+
 	}
 </cfscript>

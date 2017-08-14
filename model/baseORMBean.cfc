@@ -1,5 +1,5 @@
 component extends="model.base" accessors="true" {
-	
+
 public any function save() {
 
 	// if this is a newer bean with the string value
@@ -16,11 +16,23 @@ public any function save() {
 	return this;
 }
 
+public boolean function isNew(){
+	var bIsNew = true;
+	var sID = javacast("null","");
+	try {
+		sID = invoke( this, 'get#getEntityPK()#');
+	} catch (any e) {
+		// error
+		writeDump(e);
+	}
+	return isNull(sID);
+}
+
 public any function getEntityPK(){
 	var sEntityPK = 'N' & getEntityName() & 'ID';
 	// default to getN...ID()
 	if( !structKeyExists(this, 'get' & sEntityPK) ){
-		sEntityPK = 'S' & getEntityName() & 'ID';	
+		sEntityPK = 'S' & getEntityName() & 'ID';
 	}
 	return sEntityPK;
 }

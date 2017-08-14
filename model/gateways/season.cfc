@@ -2,7 +2,7 @@ component accessors="true" extends="model.baseORMGateway" {
 
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getSeason
@@ -21,7 +21,7 @@ public Array function getSeason( Required String nSeasonID ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getAllSeasons
@@ -40,7 +40,7 @@ public Array function getAll(){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getCurrentSeason
@@ -58,4 +58,23 @@ public model.beans.season function getCurrentSeason( Required string sLeagueID )
 	return (arrayLen(arSeasons) ? arSeasons[1] : get());
 }
 
+
+/*
+Author:
+	Ron West
+Name:
+	$getSeasonByYear
+Summary:
+	Gets a season by year
+Returns:
+	model.beans.season oSeason
+Arguments:
+	Void
+History:
+	2017-08-13 - RLW - Created
+*/
+public model.beans.season function getLastYearsSeason( string sYear = dateFormat(dateAdd("yyyy", -1, now()), 'yyyy') ){
+	var arSeasons = ormExecuteQuery("from season where year(dtStart) = :sYear", { sYear = arguments.sYear} );
+	return (arrayLen(arSeasons) ? arSeasons[1] : get());
+}
 }
