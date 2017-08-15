@@ -73,8 +73,8 @@ Arguments:
 History:
 	2017-08-13 - RLW - Created
 */
-public model.beans.season function getLastYearsSeason( string sYear = dateFormat(dateAdd("yyyy", -1, now()), 'yyyy') ){
-	var arSeasons = ormExecuteQuery("from season where year(dtStart) = :sYear", { sYear = arguments.sYear} );
+public model.beans.season function getLastYearsSeason(Required string sLeagueID,  string sYear = dateFormat(dateAdd("yyyy", -1, now()), 'yyyy') ){
+	var arSeasons = ormExecuteQuery("from season where sLeagueID = :sLeagueID and year(dtStart) = :sYear", { sLeagueID = arguments.sLeagueID, sYear = arguments.sYear} );
 	return (arrayLen(arSeasons) ? arSeasons[1] : get());
 }
 }

@@ -15,11 +15,11 @@
 		case "pickem.local:8052":
 			// dynamically define datasources here
 			request.datasources["inqsports"]		= {
-						class: 'org.gjt.mm.mysql.Driver',
-						connectionString: 'jdbc:mysql://db:3306/inqsports?useUnicode=true&useLegacyDatetimeCode=true&allowMultiQueries=true&useSSL=false',
-						username = "inqsports",
-						password = "1nquisib33"
-					};
+				class: 'org.gjt.mm.mysql.Driver',
+				connectionString: 'jdbc:mysql://db:3306/inqsports?useUnicode=true&useLegacyDatetimeCode=true&allowMultiQueries=true&useSSL=false',
+				username = "inqsports",
+				password = "1nquisib33"
+			};
 			request.sLogURL = "/data/logs/";
 			request.bReloadOnEveryRequest = true;
 			request.sAdminEmail = "ron@inquisibee.com";
@@ -35,6 +35,14 @@
 			break;
 		// development
 		case "nflunderdog.local":
+		case "nflunderdog.local:8052":
+			// dynamically define datasources here
+			request.datasources["inqsports"]		= {
+				class: 'org.gjt.mm.mysql.Driver',
+				connectionString: 'jdbc:mysql://db:3306/inqsports?useUnicode=true&useLegacyDatetimeCode=true&allowMultiQueries=true&useSSL=false',
+				username = "inqsports",
+				password = "1nquisib33"
+			};
 			request.sLogURL = "/data/logs/";
 			request.bReloadOnEveryRequest = true;
 			request.sAdminEmail = "ron@inquisibee.com";

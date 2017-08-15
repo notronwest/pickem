@@ -12,7 +12,8 @@ services:
       ports:
         - "127.0.0.1:42306:3306"
       volumes:
-        - db:/var/lib/mysql
+        #- db:/var/lib/mysql
+        - ./data/db:/var/lib/mysql
 
     lucee52:
       build: ./docker/lucee
@@ -37,5 +38,5 @@ services:
       #volumes:
         # - /workbench/lucee-dockerfiles/lucee-nginx/5.2/lucee-server.xml:/opt/lucee/server/lucee-server/context/lucee-server.xml
         # - /workbench/lucee-dockerfiles/lucee-nginx/5.2/lucee-web.xml:/opt/lucee/web/lucee-web.xml.cfm
-volumes:
-  db: {}
+#volumes:
+ # db: {}

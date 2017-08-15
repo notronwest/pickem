@@ -2,7 +2,7 @@
     seasonGateway = getBeanFactory().getBean("seasonGateway");
 	userSeasonGateway = getBeanFactory().getBean("userSeasonGateway");
     // get last years season
-    lastYear = seasonGateway.getLastYearsSeason();
+    lastYear = seasonGateway.getLastYearsSeason(rc.sCurrentLeagueID);
 	// get all of the users from the previous season
     if( !lastYear.isNew() ){
     	arUsers = userSeasonGateway.getUsersForSeason(lastYear.getNSeasonID());
