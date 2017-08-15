@@ -4,7 +4,7 @@ property name="pickService";
 property name="standingService";
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$get
@@ -34,7 +34,7 @@ public model.beans.user function get( Numeric nUserID=0 ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$update
@@ -70,7 +70,7 @@ public model.beans.user function update( Required model.beans.user oUser, Requir
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$saveUsername
@@ -98,7 +98,7 @@ public model.beans.user function saveUsername( Required Numeric nUserID, Require
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$savePassword
@@ -126,7 +126,7 @@ public model.beans.user function savePassword( Required Numeric nUserID, Require
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$save
@@ -150,7 +150,7 @@ public model.beans.user function save( Required model.beans.user oUser){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$delete
@@ -181,7 +181,7 @@ public Boolean function delete( Required model.beans.user oUser){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getAll
@@ -201,7 +201,7 @@ public Array function getAll( String lstActive = "0,1"){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getAll
@@ -219,7 +219,7 @@ public Array function getBySeason( Required numeric nSeasonID, String lstActive 
 	var qryUsers = variables.dbService.runQuery("
 		SELECT us.nUserID
 		FROM userSeason us
-		LEFT JOIN user u
+		JOIN user u
 		ON us.nUserID = u.nUserID
 		WHERE us.nSeasonID = #arguments.nSeasonID#
 		AND us.bActive in (#arguments.lstActive#)
@@ -234,7 +234,7 @@ public Array function getBySeason( Required numeric nSeasonID, String lstActive 
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getAllSortByFirst
@@ -259,7 +259,7 @@ public Array function getAllSortByFirst( Boolean bIncludeInactive = true ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getByUsernamePassword
@@ -281,7 +281,7 @@ public Array function getByUsernamePassword( Required String sUsername, Required
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getByEmail

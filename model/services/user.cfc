@@ -7,12 +7,12 @@ property name="subscriptionGateway";
 /**
  * Generates a password the length you specify.
  * v2 by James Moberg.
- * 
+ *
  * @param numberOfCharacters      Lengh for the generated password. Defaults to 8. (Optional)
  * @param characterFilter      Characters filtered from result. Defaults to O,o,0,i,l,1,I,5,S (Optional)
- * @return Returns a string. 
- * @author Tony Blackmon (fluid@sc.rr.com) 
- * @version 2, February 8, 2010 
+ * @return Returns a string.
+ * @author Tony Blackmon (fluid@sc.rr.com)
+ * @version 2, February 8, 2010
  */
 public String function generatePassword() {
 	var placeCharacter = "";
@@ -85,7 +85,7 @@ public void function updateLastLogin( Required Numeric nUserID ){
 
 public Array function getAllWithSubscriptions( Required Numeric nSeasonID ){
 	// get all of the users
-	var arSeasonUsers = variables.userGateway.getBySeason(arguments.nSeasonID);
+	var arSeasonUsers = variables.userGateway.getBySeason(arguments.nSeasonID, 1);
 	var arUsers = [];
 	var itm = 1;
 	var arSubscription = [];
@@ -102,7 +102,7 @@ public Array function getAllWithSubscriptions( Required Numeric nSeasonID ){
 			arUsers[itm].nSubscriptionID = 0;
 			arUsers[itm].nSubscriptionAmount = 0;
 		}
-		
+
 	}
 	return arUsers;
 }
@@ -133,7 +133,7 @@ public model.beans.user function handleSave( Required model.beans.user oUser, Re
 	try {
 		// if this is data from an admin save more data
 		if( arguments.bIsAdmin and structKeyExists(arguments.stFormData, "sEmail") ){
-			
+
 			stUserData.sEmail = arguments.stFormData.sEmail;
 			stUserData.sUserName = arguments.stFormData.sEmail;
 			// if this is a new user generate a new password
