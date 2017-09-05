@@ -43,6 +43,37 @@
 			<p>
 			Feel free to invite anyone you want to the league. Just have them register their name and email at pickem.inquisibee.com and PayPal Evan McKechnie at evanmckechnie@gmail.com.
 			</p>
+		<cfelseif compareNoCase("NFLUnderdog", request.sLeagueKey) eq 0>
+			<p>Here we go again, Pick a Dog league starts next week! The rules are simple:</p>
+
+			<p>1.) Each week pick one underdog that you think will WIN the game outright(not cover the spread, the have to BEAT the other team outright) a tie is a loss.</p>
+
+			<p>2.) Lines will be put up on the site by Wednesday evening, they're taken from VegasInsider.</p>
+
+			<p>3.) You can pick from Sunday and monday games only for now.  When we get late into the season and there are multiple saturday games/Thanksgiving Day we'll adjust like last year. Picks are DUE by Saturday evening.</p>
+
+			<p>4.) If you correctly pick an underdog that wins, you get the points they were underdogs by.  For example, NE is -13 against Cincy, Cincy beats NE 23 - 20. You would get the 13 points.</p>
+
+			<p>5.) Most points at end of regular season wins. We will pay 3 places again.</p>
+
+			<p>6.) If you forget or just don't put your pick in you will automatically get the Monday night underdog.  If there are two Monday Night games you will get underdog in last game.</p>
+
+			<p>7.) Please, please pay me ASAP so I don't have to send Jimmy out to collect!</p>
+
+			<p>Paypal or venmo to pdxadlab@gmail.com</p>
+
+			<p>cash in person</p>
+
+			<p>Mail to</p>
+
+			<p>Mike "The Commish" Maloney
+			<br/>949 NW Overton St, #906
+			<br/>Portland, OR 97209
+			</p>
+			
+			<p>Cheers -</p>
+
+			<p>Commish</p>
 		</cfif>
 	</div>
 </div>
