@@ -48,7 +48,7 @@
 			request.sAdminEmail = "ron@inquisibee.com";
 			request.bIsDevelopment = true;
 			request.bIsStaging = false;
-			request.sSiteURL = 'http://pickem.local/';
+			request.sSiteURL = 'http://nfldog.local/';
 			request.dsn = "inqsports";
 			request.sLocalIP = "127.0.0.1";
 			request.sAPIKey="AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U";
@@ -56,6 +56,30 @@
 			request.sDBUsername = "notronwest";
 			request.sDBPassword = "atp3ace!";
 			request.sLeagueKey = "NFLUnderdog";
+			break;
+		// development
+		case "nfldog.local":
+		case "nfldog.local:8052":
+			// dynamically define datasources here
+			request.datasources["inqsports"]		= {
+				class: 'org.gjt.mm.mysql.Driver',
+				connectionString: 'jdbc:mysql://db:3306/inqsports?useUnicode=true&useLegacyDatetimeCode=true&allowMultiQueries=true&useSSL=false',
+				username = "inqsports",
+				password = "1nquisib33"
+			};
+			request.sLogURL = "/data/logs/";
+			request.bReloadOnEveryRequest = true;
+			request.sAdminEmail = "ron@inquisibee.com";
+			request.bIsDevelopment = true;
+			request.bIsStaging = false;
+			request.sSiteURL = 'http://nfldog.local/';
+			request.dsn = "inqsports";
+			request.sLocalIP = "127.0.0.1";
+			request.sAPIKey="AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U";
+			request.sDBBackupDirectory = "#expandPath('/data/weeklydbbackup/')#";
+			request.sDBUsername = "notronwest";
+			request.sDBPassword = "atp3ace!";
+			request.sLeagueKey = "NFLDog";
 			break;
 		// development
 		case "nflperfection.local":
@@ -140,6 +164,22 @@
 			request.sDBUsername = "notronwest";
 			request.sDBPassword = "1nquisib33";
 			request.sLeagueKey = "NFLUnderdog";
+			break;
+		
+		case "nflunderdog.inquisibee.com":
+			request.sLogURL = "/data/logs/";
+			request.bReloadOnEveryRequest = false;
+			request.sAdminEmail = "nfldog@inquisibee.com";
+			request.bIsDevelopment = false;
+			request.bIsStaging = false;
+			request.sSiteURL = 'http://nfldog.inquisibee.com/';
+			request.dsn = "inqsports";
+			request.sLocalIP = "54.68.81.199";
+			request.sAPIKey="AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U";
+			request.sDBBackupDirectory = "#expandPath('/data/weeklydbbackup/')#";
+			request.sDBUsername = "notronwest";
+			request.sDBPassword = "1nquisib33";
+			request.sLeagueKey = "NFLDog";
 			break;
 
 	}
