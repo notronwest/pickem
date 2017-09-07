@@ -24,14 +24,13 @@ class GameData
 		$crawler = new Crawler((string)$result);
 
 		$arGames = array();
-		global $arGameData,$gameDate;
 
 		// loop through all of the games for this week
 		$nodeValues = $crawler->filter(".dateGroup")->each(function (Crawler $gamesOnDate, $i) {
 			// for each loop we will have a new date
 			$gameDate = $gamesOnDate->filter(".date")->text();
 			// now loop through each game on this date
-			$gamesOnDate->filter(".event-holder")->each(function( Crawler $game, $i){
+			$gamesOnDate->filter(".event-holder")->each(function( Crawler $game, $i, $gameDate){
 					// reset the game data
 					$arGameData = array();
 					// set the date

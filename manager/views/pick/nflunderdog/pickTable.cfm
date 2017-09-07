@@ -116,10 +116,10 @@
 				</button>
 			</td>
 			<td class="change">
-				<!--- // hide charts for now 
+				<!--- // hide charts for now
 				<span class="fa fa-bar-chart-o fa-lg stats-info icons"></span>
 				--->
-				<button disabled="disabled" class="btn btn-xs">
+				<button disabled="disabled" class="btn btn-xs#((stUnderdog.bIsHome) ? '' : ' home')#">
 					#stFavorite.sMascot# #((len(stFavorite.sRecord) gt 0 ) ? "(" & stFavorite.sRecord & ")" : "")#
 					<span class="badge">
 						#(stFavorite.nID eq nFavoredTeam) ? '-' : '+'# #stGame.nSpread#
