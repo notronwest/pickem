@@ -43,7 +43,7 @@
 								<tr>
 									<th><h4>#rc.oViewUser.getSFirstName()#'s Picks</h4>
 										<h5>Wins:<button class="alert-success btn btn-small" disabled="disabled"><strong>#listLen(rc.stViewUserWeek.lstWins)#</strong></button><cfif rc.stViewUserWeek.bAutoPick eq 1><button class="alert-info auto-picks btn btn-small" disabled="disabled"><em>Auto Picked</em></button></cfif></h5>
-									</th> 
+									</th>
 									<th><h4>Your Picks</h4>
 										<h5>Wins:<button class="alert-success btn btn-small" disabled="disabled"><strong>#listLen(rc.stUserWeek.lstWins)#</strong></button><cfif rc.stUserWeek.bAutoPick eq 1><button class="alert-info auto-picks btn btn-small" disabled="disabled"><em>Auto Picked</em></button></cfif></h5>
 									</th>
@@ -51,7 +51,7 @@
 							</thead>
 							<tbody>
 								<tr>
-									<td>											
+									<td>
 										<table class="table">
 											<cfscript>
 												local.arWeekGames = rc.arWeekGames;
@@ -60,7 +60,7 @@
 												local.bShowGameStatus = false;
 												// hide details
 												local.bShowDetails = false;
-												include "/manager/views/pick/#rc.oCurrentLeague.getSKey()#/pickTable.cfm";
+												include "/manager/views/pick/#rc.stLeagueSettings.UIKey#/pickTable.cfm";
 											</cfscript>
 										</table>
 									</td>
@@ -73,7 +73,7 @@
 												local.bShowGameStatus = true;
 												// hide details
 												local.bShowDetails = false;
-												include "/manager/views/pick/#rc.oCurrentLeague.getSKey()#/pickTable.cfm";
+												include "/manager/views/pick/#rc.stLeagueSettings.UIKey#/pickTable.cfm";
 											</cfscript>
 										</table>
 									</td>

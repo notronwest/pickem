@@ -13,7 +13,7 @@ public void function before(rc){
 	if( structKeyExists(session, "bManualOverridePicks") and session.bManualOverridePicks ){
 		rc.bManualOverridePicks = true;
 	}
-	
+
 
 }
 
@@ -29,7 +29,7 @@ public void function checkAuthorization(rc){
 	} else if ( structKeyExists(rc.stUser, "bSetProfile")
 		and rc.stUser.bSetProfile eq 1
 		and compareNoCase(variables.framework.getFullyQualifiedAction(), "manager:user.changePassword") neq 0
-		and compareNoCase(variables.framework.getFullyQualifiedAction(), "manager:user.addEdit") neq 0 and comparenoCase(variables.framework.getFullyQualifiedAction(), "manager:user.save") neq 0 ) { 
+		and compareNoCase(variables.framework.getFullyQualifiedAction(), "manager:user.addEdit") neq 0 and comparenoCase(variables.framework.getFullyQualifiedAction(), "manager:user.save") neq 0 ) {
 		// redirect them to edit their profile
 		variables.framework.redirect(action="manager:user.addEdit", queryString="sMessage=You must enter a valid name for your account");
 	}
@@ -41,11 +41,11 @@ public void function checkAuthorization(rc){
 		rc.sActionAfterLogin = request.action;
 		// if they have logged in before we know they are valid so send direct
 		if( rc.bHasLoggedIn ){
-			variables.framework.redirect("security:main.login");	
+			variables.framework.redirect("security:main.login");
 		} else { // could be a new user
 			variables.framework.redirect(action="security:main.login", queryString="bIsNewUser=true");
 		}
-		
+
 	}
 	// set the current user
 	rc.nCurrentUser = rc.stUser.nUserID;
@@ -68,7 +68,7 @@ public void function authenticate(rc){
 		// if they have passed in a username and password
 		if( structKeyExists(rc, "sUsername")
 			and len(rc.sUsername) gt 0
-			and structKeyExists(rc, "sPassword") 
+			and structKeyExists(rc, "sPassword")
 			and len(rc.sPassword) > 0 ){
 			// authenticate the user
 			arUser = variables.userGateway.getByUsernamePassword(rc.sUsername, rc.sPassword);
@@ -154,7 +154,7 @@ public void function forgotPassword(rc){
 
 Use the above password in combination with your e-mail address to get back into the action.
 
-#request.stLeagueSettings[rc.oCurrentLeague.getSKey()].sProductionURL#";
+#rc.stLeagueSettings.sProductionURL#";
 
 			variables.commonService.sendEmail(rc.sEmail, "#rc.oCurrentLeague.getSName()# password reset", sMessage);
 			// set new login message

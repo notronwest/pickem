@@ -1,8 +1,8 @@
 component accessors="true" extends="model.base" {
 property name="seasonGateway";
-property name="leagueGateway";	
+property name="leagueGateway";
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$get
@@ -29,7 +29,7 @@ public model.beans.standing function get( Numeric nStandingID=0 ){
 
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$update
@@ -65,7 +65,7 @@ public model.beans.standing function update( Required model.beans.standing oStan
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$save
@@ -85,7 +85,7 @@ public model.beans.standing function save( Required model.beans.standing oStandi
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$savePlace
@@ -107,7 +107,7 @@ public model.beans.standing function savePlace( Required Numeric nStandingID, Re
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$delete
@@ -134,7 +134,7 @@ public Boolean function delete( Required model.beans.standing oStanding){
 
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getSeason
@@ -153,7 +153,7 @@ public Array function getSeason( Required String nSeasonID ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getUserWeek
@@ -173,7 +173,7 @@ public Array function getUserWeek( Required Numeric nUserID, Required Numeric nW
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$deleteUserWeek
@@ -196,7 +196,7 @@ public Void function deleteUserWeek( Required Numeric nUserID, Required Numeric 
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$deleteByWeek
@@ -218,7 +218,7 @@ public Void function deleteByWeek( Required Numeric nWeekID ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getWeek
@@ -237,7 +237,7 @@ public Array function getWeek( Required Numeric nWeekID ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getByUser
@@ -256,7 +256,7 @@ public Array function getByUser( Required Numeric nUserID ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$updateStandings
@@ -277,7 +277,7 @@ public void function updateStandings( Required Numeric nWeekID, Required String 
 			// get the league for this season
 			oLeague = variables.leagueGateway.get(oSeason.getSLeagueID());
 			// call this leagues standings code
-			variables.dbService.runStoredProc("#oLeague.getSKey()#_updateStandings", [arguments.nWeekID, arguments.nSeasonID]);
+			variables.dbService.runStoredProc("#rc.stLeagueSettings.UIKey#_updateStandings", [arguments.nWeekID, arguments.nSeasonID]);
 		} catch ( any e ){
 			registerError("Error trying to update standings for #arguments.nSeasonID#", e);
 		}

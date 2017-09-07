@@ -63,6 +63,11 @@ component extends="framework" {
 			rc.sCurrentLeagueID = rc.oCurrentLeague.getSLeagueID();
 			rc.oCurrentSeason = getBeanFactory().getBean("seasonService").getCurrentSeason(rc.sCurrentLeagueID);
 			rc.nCurrentSeasonID = rc.oCurrentSeason.getNSeasonID();
+			if( structKeyExists( request.stLeagueSettings, request.sLeagueKey) ){
+				rc.stLeagueSettings = request.stLeagueSettings[request.sLeagueKey];
+			} else {
+				rc.stLeagueSettings = request.stLeagueSettings["pickem"];
+			}
 			// setup quick variables for leagues
 			switch(request.sLeagueKey){
 				case "pickem":
@@ -76,7 +81,7 @@ component extends="framework" {
 				break;
 			}
 			// reset the site url
-			request.sProductionURL = request.stLeagueSettings[request.sLeagueKey].sProductionURL;
+			request.sProductionURL = rc.stLeagueSettings.sProductionURL;
 		} else {
 			// TODO The league is busted
 		}

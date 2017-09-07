@@ -1,6 +1,6 @@
 <cfoutput><form id="addEditUser" action="#buildURL('manager:user.save')#" method="post">
 <div class="panel panel-default">
-	<div class="panel-heading"><cfif rc.oUser.getNUserID() eq 0>Add<cfelse>Edit</cfif> User (#rc.oUser.getSEmail()#)</div> 
+	<div class="panel-heading"><cfif rc.oUser.getNUserID() eq 0>Add<cfelse>Edit</cfif> User (#rc.oUser.getSEmail()#)</div>
 	<div class="panel-body">
 		<div>
 			<cfif len(rc.sMessage) gt 0>
@@ -40,7 +40,7 @@
 				<div class="form-group">
 					<a href="#buildURL('user.changePassword')#">Change password</a>
 				</div>
-				<cfif request.stLeagueSettings[rc.oCurrentLeague.getSKey()].bHasUserPreferences>
+				<cfif rc.stLeagueSettings.bHasUserPreferences>
 					<div class="form-group">
 						<a href="#buildURL('setting.set')#">Change preferences</a>
 					</div>

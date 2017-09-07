@@ -115,7 +115,7 @@ Use the above password in combination with your e-mail address to get started wi
 
 Good Luck!
 
-#request.stLeagueSettings[arguments.oCurrentLeague.getSKey()].sProductionURL#";
+#rc.stLeagueSettings.sProductionURL#";
 
 	variables.commonService.sendEmail(sEmail, "Welcome to #arguments.oCurrentLeague.getSName()#!", sMessage);
 }

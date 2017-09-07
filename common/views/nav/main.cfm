@@ -19,7 +19,7 @@
               <li<cfif compareNoCase(listFirst(request.action, "."), "user") eq 0 and not rc.bIsAdminAction> class="active"</cfif>>
                 <a href="#buildURL('manager:user.addEdit')#"><span class="fa fa-user fa-fw"></span>Account</a>
               </li>
-              <cfif request.stLeagueSettings[rc.oCurrentLeague.getSKey()].bShowPayouts>
+              <cfif rc.stLeagueSettings.bShowPayouts>
                 <li<cfif compareNoCase(listFirst(request.action, "."), "seasonPayout") eq 0> class="active"</cfif>>
                   <a href="#buildURL('manager:seasonPayout.details')#"><span class="fa fa-dollar fa-fw"></span>Payouts</a>
                 </li>

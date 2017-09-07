@@ -32,7 +32,7 @@ public void function before(rc){
 	rc.arGames = variables.gameService.adminWeek(rc.nWeekID, rc.nCurrentSeasonID);
 	rc.dtPicksDue = rc.oWeek.getDPicksDue() & " " & rc.oWeek.getTPicksDue();
 	rc.bIsLocked = false;
-	
+
 	// see if the picks are locked for this week
 	if( compare(variables.dbService.dbDateTimeFormat(rc.dtPicksDue), variables.dbService.dbDateTimeFormat() ) lte 0){
 		rc.bIsLocked = true;
@@ -49,7 +49,7 @@ public Void function getGames(rc){
 	var arGames = variables.gameService.adminWeek(rc.nWeekID);
 	// if we are in the current week and we have no games yet then get the source
 	if( arrayLen(arGames) eq 0 ){
-	 	arGames = variables.gameService.getAvailableGames(request.stLeagueSettings[rc.oCurrentLeague.getSKey()].bHasNCAAGames, request.stLeagueSettings[rc.oCurrentLeague.getSKey()].bHasNFLGames);	
+	 	arGames = variables.gameService.getAvailableGames(rc.stLeagueSettings.bHasNCAAGames, rc.stLeagueSettings.bHasNFLGames);	
 	} else {
 		bGamesAreSelected = true;
 	}
@@ -65,7 +65,7 @@ public void function addEdit(rc){
 	rc.bIsDialog = false;
 	// setup some default data
 	if( rc.oWeek.getNWeekID() eq 0 ){
-		// get the weeks 
+		// get the weeks
 		arWeeks = weekGateway.getSeason(rc.nCurrentSeasonID);
 		// set to the last week
 		if( arrayLen(arWeeks) ){
@@ -139,7 +139,7 @@ public void function setWeekGames(rc){
 		rc.arPicks = [];
 		// check to see if there are any games loaded already
 		rc.arGames = variables.gameService.adminWeek(rc.nWeekID);
-		
+
 		if( arrayLen(rc.arGames) lt 1 ){
 			// reset the view to allow them to set the games
 			rc.sInnerView = variables.framework.view("week/setGames");
