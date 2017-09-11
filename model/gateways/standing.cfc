@@ -277,7 +277,7 @@ public void function updateStandings( Required Numeric nWeekID, Required String 
 			// get the league for this season
 			oLeague = variables.leagueGateway.get(oSeason.getSLeagueID());
 			// call this leagues standings code
-			variables.dbService.runStoredProc("#rc.stLeagueSettings.UIKey#_updateStandings", [arguments.nWeekID, arguments.nSeasonID]);
+			variables.dbService.runStoredProc("#oLeague.getSKey()#_updateStandings", [arguments.nWeekID, arguments.nSeasonID]);
 		} catch ( any e ){
 			registerError("Error trying to update standings for #arguments.nSeasonID#", e);
 		}
