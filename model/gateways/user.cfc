@@ -223,6 +223,7 @@ public Array function getBySeason( Required numeric nSeasonID, String lstActive 
 		ON us.nUserID = u.nUserID
 		WHERE us.nSeasonID = #arguments.nSeasonID#
 		AND us.bActive in (#arguments.lstActive#)
+		AND u.bActive in (#arguments.lstActive#)
 		ORDER BY u.sLastName, u.sFirstName
 	");
 	var itm = 1;
