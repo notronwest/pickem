@@ -487,8 +487,8 @@ public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean b
 	var stGameResults = {};
 	//var sNCAAScheduleURL = "http://www.donbest.com/ncaaf/odds/";
 	//var sNFLScheduleURL = "http://www.donbest.com/nfl/odds/";
-	var sNCAAScheduleURL = "http://www.vegasinsider.com/college-football/scoreboard/";
-	var sNFLScheduleURL = "http://www.vegasinsider.com/nfl/scoreboard/";
+	var sNCAAScheduleURL = "college-football";
+	var sNFLScheduleURL = "nfl-football";
 	var arGameScheduleURL = [];
 	if( arguments.bGetNCAAGames ){
 		arrayAppend(arGameScheduleURL, sNCAAScheduleURL);
@@ -500,31 +500,31 @@ public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean b
 	var x = 1;
 	for( itm; itm lte arrayLen(arGameScheduleURL); itm++ ){
 		// get game raw data
-		stGameResults = variables.commonService.getURL("http://localhost:3000/get-games?sScheduleURL=" & arGameScheduleURL[itm], 25);
+		stGameResults = variables.commonService.getURL("http://php/get-games/" & arGameScheduleURL[itm]);
 		// if we have a valid response
 		if( find("200", stGameResults.statusCode) gt 0 and isJSON(stGameResults.fileContent.toString()) ){
 			stResponse = deserializeJSON(stGameResults.fileContent.toString());
 			// make sure the API call was successful
-			if( find(200, stResponse.stResults.sStatus) ){
+			if( structKeyExists(stResponse, "arGameData") ){
 				// add games (fixing up dates)
-				for(x=1; x lte arrayLen(stResponse.stResults.arGameData); x++ ){
-					if( structKeyExists(stResponse.stResults.arGameData[x], "sGameDateTime") ){
+				for(x=1; x lte arrayLen(stResponse.arGameData); x++ ){
+					if( structKeyExists(stResponse.arGameData[x], "sGameDateTime") ){
 						// sometimes gametime has crappy names
-						sGameDateTime = listLast(sGameDateTime, "-");
-						sGameDateTime = dateFormat(stResponse.stResults.arGameData[x].sGameDateTime, 'yyyy-mm-dd') & " " & timeFormat(stResponse.stResults.arGameData[x].sGameDateTime, 'HH:mm');
+						//sGameDateTime = listLast(stResponse.arGameData[x].sGameDateTime, "-");
+						sGameDateTime = dateFormat(stResponse.arGameData[x].sGameDateTime, 'yyyy-mm-dd') & " " & timeFormat(stResponse.arGameData[x].sGameDateTime, 'HH:mm');
 					} else {
 						sGameDateTime = "";
 					}
 					// requires lock date
-					stResponse.stResults.arGameData[x]["dtLock"] = sGameDateTime;
-					stResponse.stResults.arGameData[x].sGameDateTime = sGameDateTime;
+					stResponse.arGameData[x]["dtLock"] = sGameDateTime;
+					stResponse.arGameData[x].sGameDateTime = sGameDateTime;
 					// add in team league
 					if( findNoCase("/college", arGameScheduleURL[itm]) ){
-						stResponse.stResults.arGameData[x]["nType"] = 1;
+						stResponse.arGameData[x]["nType"] = 1;
 					} else {
-						stResponse.stResults.arGameData[x]["nType"] = 2;
+						stResponse.arGameData[x]["nType"] = 2;
 					}
-					arrayAppend(arGameData, stResponse.stResults.arGameData[x]);
+					arrayAppend(arGameData, stResponse.arGameData[x]);
 				}
 
 			} else {

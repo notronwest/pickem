@@ -8,6 +8,11 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class GameData
 {
+	public $arGames = array();
+
+	public $gameDate;
+
+	public $arGameData;
 
 	public function getGames($league = 'nfl-football'){
 
@@ -23,24 +28,26 @@ class GameData
 		// pass the HTML to the crawler
 		$crawler = new Crawler((string)$result);
 
-		$arGames = array();
-
 		// loop through all of the games for this week
 		$nodeValues = $crawler->filter(".dateGroup")->each(function (Crawler $gamesOnDate, $i) {
 			// for each loop we will have a new date
-			$gameDate = $gamesOnDate->filter(".date")->text();
+			$this->gameDate = $gamesOnDate->filter(".date")->text();
 			// now loop through each game on this date
-			$gamesOnDate->filter(".event-holder")->each(function( Crawler $game, $i, $gameDate){
+			$gamesOnDate->filter(".event-holder")->each(function( Crawler $game, $i){
 					// reset the game data
-					$arGameData = array();
+					$this->arGameData = array();
 					// set the date
-					$arGameData['sGameDate'] = $gameDate;
+					$this->arGameData['sGameDate'] = $this->gameDate;
 					// game time
-					$arGameData['sGameTime'] = $game->filter(".eventLine-time > div")->text();
+					$this->arGameData['sGameTime'] = $this->fixTime($game->filter(".eventLine-time > div")->text());
+					// game date and time
+					$this->arGameData['sGameDateTime'] = date_format(
+						date_create($this->arGameData["sGameDate"] . ' ' . $this->arGameData["sGameTime"]),
+						'Y-m-d H:i:s');
 					// first instance of .team-name is away team
-					$arGameData['sAwayTeam'] = $game->filter(".team-name")->eq(0)->text();
+					$this->arGameData['sAwayTeam'] = $game->filter(".team-name")->eq(0)->text();
 					// second instance of .team-name is home team
-					$arGameData['sHomeTeam'] = $game->filter(".team-name")->eq(1)->text();
+					$this->arGameData['sHomeTeam'] = $game->filter(".team-name")->eq(1)->text();
 					// get the current bovado full line for away team (will contain more than we need )
 					$fullLine = $game->filter("[rel='999996'] > div > b")->text();
 					// if the first character is 43 then line favors home team
@@ -62,10 +69,23 @@ class GameData
 					if( ord(substr($fullLine, $i + 1, 1)) === 189 ){
 						$sLine = $sLine . ".5";
 					}
-					$arGameData['sSpread'] = (float)$sLine;
+					$this->arGameData['nSpread'] = (float)$sLine;
+					// add this game to the game array
+					array_push($this->arGames, $this->arGameData);
 			});
-			array_push($arGames, $arGameData);
 		});
-		return $arGames;
+		return $this->arGames;
+	}
+	public function fixTime( $sTime ){
+		// strip off the am/pm
+		$sDayTime = substr($sTime, -1);
+		$sTime = substr_replace($sTime, "", -1);
+		// fix up the time of day
+		if( $sDayTime == "p" ){
+			$sDayTime = "pm";
+		} else {
+			$sDayTime = "am";
+		}
+		return $sTime . " " . $sDayTime;
 	}
 }

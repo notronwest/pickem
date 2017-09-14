@@ -18,10 +18,10 @@ class GameScoresController extends Controller
 	}
 
 	/**
-	* @Route("/get-scores")
+	* @Route("/get-games/{league}")
 	*/
-	public function scores()
+	public function games($league)
 	{
-		return $this->json(array('lucky-number' => $this->gameDataService->getGames()));
+		return $this->json(array('arGameData' => $this->gameDataService->getGames($league)));
 	}
 }

@@ -7,6 +7,7 @@
 	};
 	request.sJenkinsAuthToken = "bafc2176c03237ccc32b8c85c6e64016";
 	request.sLeagueKey = "pickem";
+	request.sPHPURL = "http://pickem.inquisibee.com/php/";
 	// specific variables
 	switch (cgi.http_host){
 
@@ -165,7 +166,7 @@
 			request.sDBPassword = "1nquisib33";
 			request.sLeagueKey = "NFLUnderdog";
 			break;
-		
+
 		case "nflunderdog.inquisibee.com":
 			request.sLogURL = "/data/logs/";
 			request.bReloadOnEveryRequest = false;
