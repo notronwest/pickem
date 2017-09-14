@@ -59,6 +59,7 @@
 			request.sDBPassword = "atp3ace!";
 			request.sLeagueKey = "NFLUnderdog";
 			request.sSiteURL = 'http://pickem.local/';
+			request.sPHPURL = "http://php/";
 			break;
 		// development
 		case "nfldog.local":

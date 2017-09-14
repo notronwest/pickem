@@ -52,9 +52,9 @@ class GameData
 					$fullLine = $game->filter("[rel='999996'] > div > b")->text();
 					// if the first character is 43 then line favors home team
 					if( ord(substr($fullLine, 0, 1)) === 43 ){
-						$arGameData['sSpreadFavor'] = "home";
+						$this->arGameData['sSpreadFavor'] = "home";
 					} else {
-						$arGameData['sSpreadFavor'] = "away";
+						$this->arGameData['sSpreadFavor'] = "away";
 					}
 					// start collecting the actual spread
 					$sLine = "";
