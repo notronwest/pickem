@@ -45,9 +45,9 @@ class GameData
 						date_create($this->arGameData["sGameDate"] . ' ' . $this->arGameData["sGameTime"]),
 						'Y-m-d H:i:s');
 					// first instance of .team-name is away team
-					$this->arGameData['sAwayTeam'] = $game->filter(".team-name")->eq(0)->text();
+					$this->arGameData['sAwayTeam'] = $this->removeNationalRanking($game->filter(".team-name")->eq(0)->text());
 					// second instance of .team-name is home team
-					$this->arGameData['sHomeTeam'] = $game->filter(".team-name")->eq(1)->text();
+					$this->arGameData['sHomeTeam'] = $this->removeNationalRanking($game->filter(".team-name")->eq(1)->text());
 					// get the current bovado full line for away team (will contain more than we need )
 					$fullLine = $game->filter("[rel='999996'] > div > b")->text();
 					// if the first character is 43 then line favors home team
@@ -87,5 +87,14 @@ class GameData
 			$sDayTime = "am";
 		}
 		return $sTime . " " . $sDayTime;
+	}
+
+	public function removeNationalRanking( $sTeam ){
+		if( strpos($sTeam, ")") > 0 ){
+			// locate the ending ) and return the end content
+			return trim(substr($sTeam, strpos($sTeam, ")") + 3));
+		} else {
+			return $sTeam;
+		}
 	}
 }
