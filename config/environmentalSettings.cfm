@@ -7,7 +7,7 @@
 	};
 	request.sJenkinsAuthToken = "bafc2176c03237ccc32b8c85c6e64016";
 	request.sLeagueKey = "pickem";
-	request.sPHPURL = "http://pickem.inquisibee.com/";
+	request.sPHPURL = "http://pickemphp.inquisibee.com/";
 	// specific variables
 	switch (cgi.http_host){
 
