@@ -33,6 +33,7 @@
 			request.sDBBackupDirectory = "#expandPath('/data/weeklydbbackup/')#";
 			request.sDBUsername = "notronwest";
 			request.sDBPassword = "atp3ace!";
+			request.sPHPURL = "http://php/";
 			break;
 		// development
 		case "nflunderdog.local":
@@ -57,6 +58,7 @@
 			request.sDBUsername = "notronwest";
 			request.sDBPassword = "atp3ace!";
 			request.sLeagueKey = "NFLUnderdog";
+			request.sSiteURL = 'http://pickem.local/';
 			break;
 		// development
 		case "nfldog.local":
@@ -81,6 +83,7 @@
 			request.sDBUsername = "notronwest";
 			request.sDBPassword = "atp3ace!";
 			request.sLeagueKey = "NFLDog";
+			request.sSiteURL = 'http://pickem.local/';
 			break;
 		// development
 		case "nflperfection.local":
@@ -97,6 +100,7 @@
 			request.sDBUsername = "notronwest";
 			request.sDBPassword = "atp3ace!";
 			request.sLeagueKey = "NFLPerfection";
+			request.sSiteURL = 'http://pickem.local/';
 			break;
 		// development
 		case "dev.pickem.inquisibee.com":
@@ -167,7 +171,7 @@
 			request.sLeagueKey = "NFLUnderdog";
 			break;
 
-		case "nflunderdog.inquisibee.com":
+		case "nfldog.inquisibee.com":
 			request.sLogURL = "/data/logs/";
 			request.bReloadOnEveryRequest = false;
 			request.sAdminEmail = "nfldog@inquisibee.com";

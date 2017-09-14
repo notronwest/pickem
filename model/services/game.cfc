@@ -500,7 +500,7 @@ public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean b
 	var x = 1;
 	for( itm; itm lte arrayLen(arGameScheduleURL); itm++ ){
 		// get game raw data
-		stGameResults = variables.commonService.getURL("http://php/get-games/" & arGameScheduleURL[itm]);
+		stGameResults = variables.commonService.getURL("#request.sPHPURL#get-games/" & arGameScheduleURL[itm]);
 		// if we have a valid response
 		if( find("200", stGameResults.statusCode) gt 0 and isJSON(stGameResults.fileContent.toString()) ){
 			stResponse = deserializeJSON(stGameResults.fileContent.toString());
