@@ -75,6 +75,7 @@ public void function after(rc){
 
 public void function set(rc){
 	param name="rc.bSaved" default="false";
+	rc.bShowPageLevelAds = true;
 
 	// if there are no games then lock the week
 	if( arrayLen(rc.arWeekGames) eq 0 ){
