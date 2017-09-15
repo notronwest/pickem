@@ -162,7 +162,7 @@
         </cfif><script src="/assets/js/global.min.js"></script>#body#</div>
         <footer>
           <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          Pickem - Mobile -->
+         <!-- Pickem - Mobile -->
           <cfif rc.bIsMobile>
             <ins class="adsbygoogle"
                  style="display:inline-block;width:320px;height:50px"
