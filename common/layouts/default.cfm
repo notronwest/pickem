@@ -161,7 +161,7 @@
           </div>
         </cfif><script src="/assets/js/global.min.js"></script>#body#</div>
         <footer>
-          <!--- // <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
           Pickem - Mobile -->
           <cfif rc.bIsMobile>
             <ins class="adsbygoogle"
@@ -177,7 +177,7 @@
           </cfif>
           <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
-          </script> --->
+          </script>
         </footer>
 		</div>
 	</div>
