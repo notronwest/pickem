@@ -8,11 +8,7 @@ use Symfony\Component\DomCrawler\Crawler;
 
 class GameData
 {
-	public $arGames = array();
-
-	public $gameDate;
-
-	public $arGameData;
+	public $arGames = array(),$gameDate,$gameQuarter = 'NA',$arGameData;
 
 	public function getGames($league = 'nfl-football'){
 
@@ -76,6 +72,70 @@ class GameData
 		});
 		return $this->arGames;
 	}
+
+	public function getScores( $sAwayTeam ){
+		// create http client instance
+		$client = new Client();
+
+		// create a request
+		$response = $client->get('https://search.yahoo.com/search?p=' . $sAwayTeam . '+result&fr=yfp-t&fp=1&toggle=1&cop=mss&ei=UTF-8');
+
+		// this is the response body from the requested page (usually html)
+		$result = $response->getBody();
+
+		// pass the HTML to the crawler
+		$crawler = new Crawler((string)$result);
+		// find the current game
+		$game = $crawler->filter('.current.score-card');
+		// get the away team
+		$this->arGameData['sAwayTeam'] = $game->filter('.team-name > a')->eq(0)->text();
+		// get the home team
+		$this->arGameData['sHomeTeam'] = $game->filter('.team-name > a')->eq(1)->text();
+		// find the current score for away
+		$this->arGameData['nAwayScore'] = $game->filter('.t0')->filter("td")->last()->text();
+		$this->arGameData['nHomeScore'] = $game->filter('.t1')->filter("td")->last()->text();
+
+		// get the current game status
+		$game->filter('.t0')->siblings()->eq(0)->filter('td')->each( function(Crawler $td, $i){
+				if($td->filter('.timeleft.period')->count() > 0){
+					switch($i){
+						case 1:
+							$this->gameQuarter = "1st";
+							break;
+						case 3:
+							$this->gameQuarter = "2nd";
+							break;
+						case 5:
+							$this->gameQuarter = "3rd";
+							break;
+						case 7:
+							$this->gameQuarter = "4th";
+							break;
+						case 9:
+							$this->gameQuarter = "OT";
+							break;
+						default:
+							$this->gameQuarter = "Final";
+							break;
+					}
+				}
+		});
+		// see if the game is final
+		if( $game->filter('.total')->count() > 0 ){
+			$bGameIsFinal = 1;
+			$gameStatus = 'Final';
+		} else {
+			$bGameIsFinal = 0;
+			$gameStatus = $game->filter('.timeleft.period')->text();
+		}
+		$this->arGameData['stGameStatus'] = [
+			'nGameQuarter' => $this->gameQuarter,
+			'sGameTime' => $gameStatus,
+			'bGameIsFinal' => $bGameIsFinal,
+		];
+		return $this->arGameData;
+	}
+
 	public function fixTime( $sTime ){
 		// strip off the am/pm
 		$sDayTime = substr($sTime, -1);
@@ -97,4 +157,5 @@ class GameData
 			return $sTeam;
 		}
 	}
+
 }

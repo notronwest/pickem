@@ -3,7 +3,7 @@ component accessors="true" extends="model.services.baseService" {
 property name="teamGateway";
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$saveTeam
@@ -21,30 +21,40 @@ History:
 */
 public model.beans.team function saveTeam( Required String sName, String sURL="", String lstType = "1,2" ){
 	var stTeam = { "sName" = arguments.sName };
+	var bTeamMatch = 0;
+	var bTeamMatchTries = 0;
+	var arTeam = [];
 	// see if this team exists
 	if( !listLen(arguments.lstType) ){
 		arguments.lstType = "1,2";
 	}
-	var arTeam = variables.teamGateway.getByExactNameAndType(arguments.sName, true, arguments.lstType);
-	if( !arrayLen(arTeam) ){
-		// try and get by the mascot
-		arTeam = variables.teamGateway.getByNameAndMascot(arguments.sName);
-	}
-	if( not arrayLen(arTeam) ){
-		oTeam = teamGateway.get();
-		if( len(arguments.sURL) ){
-			structInsert(stTeam, "sURL", arguments.sURL);
+	while( !bTeamMatch ){
+		bTeamMatchTries++;
+		switch(bTeamMatchTries){
+			case 1:
+				arTeam = variables.teamGateway.getByExactNameAndType(arguments.sName, true, arguments.lstType);
+				break;
+			case 2:
+				// do a "like" search
+				arTeam = variables.teamGateway.getByName(arguments.sName, true, arguments.lstType);
+				break;
+			case 3:
+				// search by name and mascot
+				arTeam = variables.teamGateway.getByNameAndMascot(arguments.sName);
+				break;
+			default:
+				arTeam = [teamGateway.update(teamGateway.get(), stTeam)];
+				break;
 		}
-		// update the team object
-		oTeam = teamGateway.update(oTeam, stTeam );
-	} else { // return the team
-		oTeam = arTeam[1];
+		if( arrayLen(arTeam) ){
+			bTeamMatch = 1;
+		}
 	}
-	return oTeam;
+	return arTeam[1];
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$findTeam
@@ -68,7 +78,7 @@ public Array function findTeam( Required String sName ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getTeamNameArray
@@ -100,7 +110,7 @@ public Array function getTeamNameArray( Required model.beans.team oTeam ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getCurrentRecord
@@ -134,7 +144,7 @@ public String function getCurrentRecord( Required String sTeamName ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getResults

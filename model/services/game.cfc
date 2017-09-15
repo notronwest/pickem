@@ -231,10 +231,9 @@ public Array function getGameScores( Required Array arGames){
 		for( itm; itm lte arrayLen(arGames); itm++ ){
 			// if this game doesn't have a winner yet and the game date is today or greater
 			if( variables.dbService.dbDateFormat(arGames[itm].sGameDateTime) lte variables.dbService.dbDayBegin() and (!isNumeric(arguments.arGames[itm].bGameIsFinal) or arguments.arGames[itm].bGameIsFinal eq 0) ){
-				// get the home team name
-				oHomeTeam = variables.teamGateway.get(arGames[itm].nHomeTeamID);
+				// get away team name
 				oAwayTeam = variables.teamGateway.get(arGames[itm].nAwayTeamID);
-				stGameData = callScoreAPI(variables.teamService.getTeamNameArray(oHomeTeam), variables.teamService.getTeamNameArray(oAwayTeam), arGames[itm].sGameDateTime);
+				stGameData = callScoreAPI(oAwayTeam.getSName() & " " & oAwayTeam.getSMascot());
 				// if we have game status then update the array for this game
 				if( structKeyExists(stGameData, "stGameStatus") and len(stGameData.nHomeScore) and len(stGameData.nAwayScore) ){
 					// update the scores
@@ -272,17 +271,17 @@ Arguments:
 History:
 	2015-09-09 - RLW - Created
 */
-public Struct function callScoreAPI(Required Array arHomeTeamName, Required Array arAwayTeamName, Required String dtGame){
+public Struct function callScoreAPI(Required String sAwayTeamName){
 	var stResponse = {};
 	var stGameData = {};
-	var stSearchResults = variables.commonService.getURL("http://localhost:3000/get-scores", 5, { "lstHomeTeam" = arrayToList(arguments.arHomeTeamName, "|"), "lstAwayTeam" = arrayToList(arguments.arAwayTeamName, "|"), "dtGame" = dateFormat(arguments.dtGame, "yyyymmdd")});
+	var stSearchResults = variables.commonService.getURL(request.sPHPURL & "/get-score/" & arguments.sAwayTeamName);
 	// if we have a valid response
 	if( find("200", stSearchResults.statusCode) gt 0 and isJSON(stSearchResults.fileContent.toString()) ){
 		stResponse = deserializeJSON(stSearchResults.fileContent.toString());
 		// make sure the API call was successful
-		if( find(200, stResponse.stResults.sStatus) ){
+		if( structKeyExists(stResponse, "arGameData") ){
 			// get the game data
-			stGameData = stResponse.stResults.stGameData;
+			stGameData = stResponse.arGameData;
 		} else {
 			// API called failed
 		}
@@ -485,8 +484,6 @@ History:
 public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean bGetNFLGames = true ){
 	var arGameData = [];
 	var stGameResults = {};
-	//var sNCAAScheduleURL = "http://www.donbest.com/ncaaf/odds/";
-	//var sNFLScheduleURL = "http://www.donbest.com/nfl/odds/";
 	var sNCAAScheduleURL = "college-football";
 	var sNFLScheduleURL = "nfl-football";
 	var arGameScheduleURL = [];

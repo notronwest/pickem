@@ -1,7 +1,7 @@
 
 <cfscript>
-	o = getBeanFactory().getBean("gameService");
-	writeDump(o.getAvailableGames());
+	o = getBeanFactory().getBean("teamGateway");
+	writeDump(o.getByName("Boise State"));
 	return;
 
 	o = getBeanFactory().getBean("leagueGateway").get({ "sKey" = "NFLDog"});

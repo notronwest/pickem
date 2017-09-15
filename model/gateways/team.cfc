@@ -1,7 +1,7 @@
 component accessors="true" extends="model.base" {
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$get
@@ -27,7 +27,7 @@ public model.beans.team function get( Numeric nTeamID=0 ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$update
@@ -63,7 +63,7 @@ public model.beans.team function update( Required model.beans.team oTeam, Requir
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$save
@@ -83,7 +83,7 @@ public model.beans.team function save( Required model.beans.team oTeam){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$delete
@@ -103,7 +103,7 @@ public void function delete( Required model.beans.team oTeam){
 
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getByName
@@ -117,18 +117,18 @@ Arguments:
 History:
 	2012-09-12 - RLW - Created
 */
-public Array function getByName( Required String sName, Boolean bSearchAlternatives=true ){
+public Array function getByName( Required String sName, Boolean bSearchAlternatives=true, String lstType = "1,2" ){
 	var arTeam = [];
 	if( arguments.bSearchAlternatives ){
-		arTeam = ormExecuteQuery( "from team where sName like :sName or sName2 like :sName or sName3 like :sName", { sName = "#arguments.sName#%" } );
+		arTeam = ormExecuteQuery( "from team where sName like :sName or sName2 like :sName or sName3 like :sName and nType in (:lstType)", { sName = "#arguments.sName#%", lstType = listToArray(arguments.lstType) } );
 	} else {
-		arTeam = ormExecuteQuery( "from team where sName like :sName", { sName = "%#arguments.sName#%" } );
+		arTeam = ormExecuteQuery( "from team where sName like :sName and nType in (:lstType)", { sName = "%#arguments.sName#%", lstType = listToArray(arguments.lstType) } );
 	}
 	return arTeam;
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getAll
@@ -147,7 +147,7 @@ public Array function getAll(){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getByExactName
@@ -172,7 +172,7 @@ public Array function getByExactName( Required String sName, Boolean bSearchAlte
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getByExactNameAndType
@@ -198,7 +198,7 @@ public Array function getByExactNameAndType( Required String sName, Boolean bSea
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getByNameAndMascot

@@ -24,4 +24,12 @@ class GameScoresController extends Controller
 	{
 		return $this->json(array('arGameData' => $this->gameDataService->getGames($league)));
 	}
+
+	/**
+	* @Route("/get-score/{awayTeam}")
+	*/
+	public function score($awayTeam)
+	{
+		return $this->json(array('arGameData' => $this->gameDataService->getScores($awayTeam)));
+	}
 }
