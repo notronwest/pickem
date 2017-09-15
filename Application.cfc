@@ -36,6 +36,7 @@ component extends="framework" {
 			setupApplication();
 		}
 		param name="rc.bHasLoggedIn" default="false";
+		param name="rc.bShowPageLevelAds" default="false";
 		// this code could maybe go somewhere else (maybe a userSettings.cfm in config??)
 		if( structKeyExists(cookie, "bHasLoggedIn") and cookie.bHasLoggedIn ){
 			rc.bHasLoggedIn = true;
