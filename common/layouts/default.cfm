@@ -195,8 +195,8 @@
     ga('create', 'UA-42929896-1', 'inquisibee.com');
     ga('send', 'pageview');
 
-  </script> --->
-</cfif>
+  </script>
+</cfif> --->
 <div id="modal">
     <div id="admin" class="panel panel-default">
       <div class="panel-heading text-right">
