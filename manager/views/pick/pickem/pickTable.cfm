@@ -145,7 +145,4 @@
 			</tr>
 		</cfif>
 	</cfloop>
-	<style>
-		.in-pick-ad { height: 50px; }
-	</style>
 </cfoutput>
