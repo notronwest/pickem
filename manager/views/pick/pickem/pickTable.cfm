@@ -128,5 +128,24 @@
 				</td>
 			</cfif>
 		</tr>
+		<cfif local.itm eq 10>
+			<tr>
+				<td colspan="6" class="in-pick-ad">
+					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+					<ins class="adsbygoogle"
+					     style="display:block"
+					     data-ad-format="fluid"
+					     data-ad-layout-key="-ej+6g-17-bz+qf"
+					     data-ad-client="ca-pub-1027916687663589"
+					     data-ad-slot="2382193092"></ins>
+					<script>
+    					 (adsbygoogle = window.adsbygoogle || []).push({});
+					</script>
+				</td>
+			</tr>
+		</cfif>
 	</cfloop>
+	<style>
+		.in-pick-ad { height: 50px; }
+	</style>
 </cfoutput>
