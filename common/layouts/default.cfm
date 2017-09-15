@@ -161,8 +161,8 @@
           </div>
         </cfif><script src="/assets/js/global.min.js"></script>#body#</div>
         <footer>
-          <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-          <!-- Pickem - Mobile -->
+          <!--- // <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+          Pickem - Mobile -->
           <cfif rc.bIsMobile>
             <ins class="adsbygoogle"
                  style="display:inline-block;width:320px;height:50px"
@@ -177,14 +177,14 @@
           </cfif>
           <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
-          </script>
+          </script> --->
         </footer>
 		</div>
 	</div>
 </cfoutput>
 
 <script src="/assets/js/main.min.js"></script>
-<!--- // only do this if we are in production
+<!--- // only do this if we are in production --->
 <cfif not request.bIsDevelopment>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -196,7 +196,7 @@
     ga('send', 'pageview');
 
   </script>
-</cfif> --->
+</cfif>
 <div id="modal">
     <div id="admin" class="panel panel-default">
       <div class="panel-heading text-right">
