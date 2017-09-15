@@ -127,6 +127,7 @@
     nTotalPurse = <cfoutput>#((!isNull(rc.oCurrentSeason.getNTotalPurse())) ? rc.oCurrentSeason.getNTotalPurse() : 0)#</cfoutput>;
   </script>
   <cfif rc.bShowPageLevelAds>
+    <cfoutput>
       <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
       <script>
         (adsbygoogle = window.adsbygoogle || []).push({
@@ -134,6 +135,7 @@
           enable_page_level_ads: true
         });
       </script>
+   </cfoutput>
   </cfif>
 </head>
 <body>
