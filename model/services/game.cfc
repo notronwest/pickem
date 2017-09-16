@@ -274,7 +274,7 @@ History:
 public Struct function callScoreAPI(Required String sAwayTeamName){
 	var stResponse = {};
 	var stGameData = {};
-	var stSearchResults = variables.commonService.getURL(request.sPHPURL & "/get-score/" & arguments.sAwayTeamName);
+	var stSearchResults = variables.commonService.getURL(request.sPHPURL & "/get-score/" & arguments.sAwayTeamName, 10);
 	// if we have a valid response
 	if( find("200", stSearchResults.statusCode) gt 0 and isJSON(stSearchResults.fileContent.toString()) ){
 		stResponse = deserializeJSON(stSearchResults.fileContent.toString());
