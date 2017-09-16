@@ -230,7 +230,7 @@ public Array function getGameScores( Required Array arGames){
 	try{
 		for( itm; itm lte arrayLen(arGames); itm++ ){
 			// if this game doesn't have a winner yet and the game date is today or greater
-			if( variables.dbService.dbDateFormat(arGames[itm].sGameDateTime) lte variables.dbService.dbDayBegin() and (!isNumeric(arguments.arGames[itm].bGameIsFinal) or arguments.arGames[itm].bGameIsFinal eq 0) ){
+			if( !isNumeric(arguments.arGames[itm].bGameIsFinal) or arguments.arGames[itm].bGameIsFinal eq 0 ){
 				// get away team name
 				oAwayTeam = variables.teamGateway.get(arGames[itm].nAwayTeamID);
 				stGameData = callScoreAPI(oAwayTeam.getSName() & " " & oAwayTeam.getSMascot());
