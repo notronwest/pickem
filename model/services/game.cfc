@@ -507,8 +507,6 @@ public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean b
 				// add games (fixing up dates)
 				for(x=1; x lte arrayLen(stResponse.arGameData); x++ ){
 					if( structKeyExists(stResponse.arGameData[x], "sGameDateTime") ){
-						// sometimes gametime has crappy names
-						//sGameDateTime = listLast(stResponse.arGameData[x].sGameDateTime, "-");
 						sGameDateTime = dateFormat(stResponse.arGameData[x].sGameDateTime, 'yyyy-mm-dd') & " " & timeFormat(stResponse.arGameData[x].sGameDateTime, 'HH:mm');
 					} else {
 						sGameDateTime = "";
@@ -517,7 +515,7 @@ public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean b
 					stResponse.arGameData[x]["dtLock"] = sGameDateTime;
 					stResponse.arGameData[x].sGameDateTime = sGameDateTime;
 					// add in team league
-					if( findNoCase("/college", arGameScheduleURL[itm]) ){
+					if( findNoCase("college", arGameScheduleURL[itm]) ){
 						stResponse.arGameData[x]["nType"] = 1;
 					} else {
 						stResponse.arGameData[x]["nType"] = 2;
