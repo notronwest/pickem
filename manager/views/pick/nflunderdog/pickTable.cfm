@@ -137,6 +137,22 @@
 					</cfif>
 				</td>
 			</cfif>
+			<cfif itm eq round(arrayLen(local.arWeekGames)/2)>
+				<tr>
+					<td colspan="6" class="in-pick-ad">
+						<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+						<ins class="adsbygoogle"
+						     style="display:block"
+						     data-ad-format="fluid"
+						     data-ad-layout-key="-ej+6g-17-bz+qf"
+						     data-ad-client="ca-pub-1027916687663589"
+						     data-ad-slot="2382193092"></ins>
+						<script>
+	    					 (adsbygoogle = window.adsbygoogle || []).push({});
+						</script>
+					</td>
+				</tr>
+			</cfif>
 		</tr>
 	</cfloop>
 </cfoutput>
