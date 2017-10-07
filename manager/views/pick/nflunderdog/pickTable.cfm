@@ -103,6 +103,7 @@
 
 		<!--- // build controls for picks --->
 		<tr class="hidden game" data-id="#rc.arWeekGames[local.itm].nGameId#" data-nWeekID="#rc.nWeekID#">
+			<td colspan="2"></td>
 			<!--- // <cfif local.bShowDetails>
 				<td>
 					<cfif bPickIsLocked>&nbsp;<span class="fa fa-lock"></span></cfif>
