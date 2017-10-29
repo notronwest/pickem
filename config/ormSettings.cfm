@@ -4,11 +4,11 @@
 	this.ormsettings = {
 		datasource = this.dsn,
 		dbcreate = "update",
-		dialect = 'MySQL',	
+		dialect = 'MySQL',
 		logSQL = (request.bIsDevelopment) ? true : false,
 		skipCFCWithError = false,
 		useDBForMapping = true,
-		showSQL = "true"
-		//cfcLocation = arOrm
+		showSQL = "true",
+		cfcLocation = ["model/beans"]
 	};
 </cfscript>
