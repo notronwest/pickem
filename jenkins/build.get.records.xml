@@ -8,8 +8,8 @@
   <target name="dist">
 
     <!-- // make call to get weekly results for teams -->
-    <get src="http://pickem.inquisibee.com?action=week.getRecords&amp;sAPIKey=AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U" dest="team-records.htm"/>
-    
+    <get src="https://pickem.inquisibee.com?action=week.getRecords&amp;sAPIKey=AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U" dest="team-records.htm"/>
+
   </target>
 
 </project>

@@ -8,12 +8,12 @@
   <target name="dist">
 
     <!-- // make call to get the scores -->
-    <get src="http://pickem.inquisibee.com?action=game.getGameScores&amp;bProcess=true&amp;sAPIKey=AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U" dest="scores-results.htm"/>
+    <get src="https://pickem.inquisibee.com?action=game.getGameScores&amp;bProcess=true&amp;sAPIKey=AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U" dest="scores-results.htm"/>
 
-    <get src="http://nflunderdog.inquisibee.com?action=game.getGameScores&amp;bProcess=true&amp;sAPIKey=AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U" dest="scores-results.htm"/>
+    <get src="https://nflunderdog.inquisibee.com?action=game.getGameScores&amp;bProcess=true&amp;sAPIKey=AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U" dest="scores-results.htm"/>
 
-    <get src="http://nflperfection.inquisibee.com?action=game.getGameScores&amp;bProcess=true&amp;sAPIKey=AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U" dest="scores-results.htm"/>
-    
+    <get src="https://nflperfection.inquisibee.com?action=game.getGameScores&amp;bProcess=true&amp;sAPIKey=AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U" dest="scores-results.htm"/>
+
   </target>
 
 </project>

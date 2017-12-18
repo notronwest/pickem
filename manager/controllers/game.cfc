@@ -12,16 +12,16 @@ public void function before (rc){
 	param name="rc.nWeekID" default="0";
 	rc.oWeek = variables.weekGateway.get(rc.nWeekID);
 	// get the list of weeks created for this year
-	rc.arWeeks = variables.weekGateway.getSeason(rc.nCurrentSeasonID);
+	rc.arSeasonWeeks = variables.weekGateway.getSeason(rc.nCurrentSeasonID);
+	// get array of weeks that could be active
+	rc.arActiveWeeks = variables.weekGateway.getByDate(nSeasonID=rc.nCurrentSeasonID);
 	// if we have a zero week get the current week
-	if( rc.oWeek.getNWeekID() eq 0 ){
-		arWeek = variables.weekGateway.getByDate(nSeasonID=rc.nCurrentSeasonID);
-		if( arrayLen(arWeek) gt 0 ){
-			rc.oWeek = arWeek[1];
+	if( rc.oWeek.getNWeekID() eq 0 and arrayLen(rc.arActiveWeeks) gt 0 ){
+			// default it to the first week
+			rc.oWeek = rc.arActiveWeeks[1];
 			// reset weekID so other functions can use it
 			rc.nWeekID = rc.oWeek.getNWeekID();
 		}
-	}
 	// set picks due date
 	rc.dtPicksDue = rc.oWeek.getDPicksDue() & " " & rc.oWeek.getTPicksDue();
 	// see if there are any games
@@ -146,7 +146,7 @@ public void function saveScores(rc){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getGameScores
@@ -161,20 +161,29 @@ History:
 */
 public void function getGameScores(rc){
 	param name="rc.bProcess" default="false";
-	try{
+	rc.arGameScores = [];
+	var arGames = [];
+	var itm = 1;
+	//try{
 		// send week games to service to get games scores
 		if( rc.bProcess ){
-			rc.arGameScores = variables.gameService.getGameScores(rc.arWeekGames);
+			// loop through all of the possible active weeks
+			for( itm; itm lte arrayLen(rc.arActiveWeeks); itm++ ){
+				// get this weeks games
+				arGames = variables.gameService.adminWeek(rc.arActiveWeeks[itm].getNWeekID());
+				// get the scores for these games
+				arrayAppend(rc.arGameScores, variables.gameService.getGameScores(arGames));
+			}
+			// update the standings
+			variables.standingGateway.updateStandings(rc.arActiveWeeks[itm].getNWeekID(), rc.nCurrentSeasonID);
 		}
-		// update the standings
-		variables.standingGateway.updateStandings(rc.nWeekID, rc.nCurrentSeasonID);
-	} catch (any e){
-		registerError("Error trying to get the game scores", e);
-	}
+	//} catch (any e){
+	//	registerError("Error trying to get the game scores", e);
+	//}
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$isDateValid

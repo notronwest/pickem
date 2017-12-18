@@ -3,7 +3,7 @@ component accessors="true" extends="model.base" {
 property name="gameService";
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$get
@@ -29,7 +29,7 @@ public model.beans.game function get( Numeric nGameID=0 ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$update
@@ -68,7 +68,7 @@ public model.beans.game function update( Required model.beans.game oGame, Requir
 	return request.oBean;
 }
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$save
@@ -92,7 +92,7 @@ public model.beans.game function save( Required model.beans.game oGame){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$saveWinner
@@ -117,7 +117,7 @@ public void function saveWinner( Required Numeric nGameID, Required Numeric nWin
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$delete
@@ -139,7 +139,7 @@ public void function delete( Required model.beans.game oGame ){
 	}
 }
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$deleteByWeek
@@ -166,7 +166,7 @@ public void function deleteByWeek( Required Numeric nWeekID ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$deleteByGame
@@ -189,7 +189,7 @@ public void function deleteByGame( Required Numeric nGameID ){
 	}
 }
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getByWeek
@@ -213,7 +213,7 @@ public array function getByWeek( Required Numeric nWeekID ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getByWeekSort
@@ -238,7 +238,7 @@ public array function getByWeekSort( Required Numeric nWeekID, String sSort = "n
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$saveScores
@@ -277,7 +277,7 @@ public Boolean function saveScores( Required Array arGames ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getByGameID
@@ -305,7 +305,7 @@ public model.beans.game function getByGameID( Required Numeric nGameID ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$updateWinners
@@ -324,7 +324,7 @@ set g1.nWinner = calculateWinner(g2.nHomeTeamID,g2.nHomeScore,g2.nAwayTeamID,g2.
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getTeamGames
@@ -343,7 +343,7 @@ public Array function getTeamGames( Required Numeric nTeamID ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getTeamGamesByWeek
@@ -361,4 +361,12 @@ public Array function getTeamGamesByWeek( Required Numeric nTeamID, Required Num
 	var arGames = ormExecuteQuery("from game where (nHomeTeamID = :nTeamID or nAwayTeamID = :nTeamID) and nWeekID = :nWeekID", { nTeamID = arguments.nTeamID, nWeekID = arguments.nWeekID } );
 	return arGames;
 }
+
+public array function getGamesNotFinishedThisWeek( String dtGame = now() ){
+	var dtGameFormatted = dateFormat(arguments.dtGame, 'yyyy-mm-dd') & " " & '23:59:59';
+	var dtGameThisWeek = dateFormat(dateAdd('w', -1, arguments.dtGame), 'yyyy-mm-dd') & " " & '00:00:01';
+	var arGames = ormExecuteQuery("from game where sGameDateTime <= :dtGame and sGameDateTime >= :dtGameThisWeek and bGameIsFinal <> 1", { dtGame = dtGameFormatted , dtGameThisWeek = dtGameThisWeek } );
+	return arGames;
+}
+
 }
