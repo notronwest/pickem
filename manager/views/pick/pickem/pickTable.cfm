@@ -68,6 +68,10 @@
 			if( isDate(stGame.dtLock) and stGame.dtLock < rc.dNow ){
 				bPickIsLocked = true;
 			}
+			// if we are allowing manual overrides - allow pick
+			if( rc.bIsAdmin and rc.bManualOverridePicks ){
+				bPickIsLocked = false;
+			}
 		</cfscript>
 		<tr class="game#((bPickIsLocked) ? ' locked' : '')#" data-id="#rc.arWeekGames[local.itm].nGameId#" data-nWeekID="#rc.nWeekID#">
 			<cfif local.bShowDetails>
