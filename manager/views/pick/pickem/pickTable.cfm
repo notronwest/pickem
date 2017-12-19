@@ -69,7 +69,7 @@
 				bPickIsLocked = true;
 			}
 			// if we are allowing manual overrides - allow pick
-			if( rc.bIsAdmin and rc.bManualOverridePicks ){
+			if( rc.stUser.bIsAdmin and rc.bManualOverridePicks ){
 				bPickIsLocked = false;
 			}
 		</cfscript>
