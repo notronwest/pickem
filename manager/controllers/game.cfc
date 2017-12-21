@@ -173,9 +173,10 @@ public void function getGameScores(rc){
 				arGames = variables.gameService.adminWeek(rc.arActiveWeeks[itm].getNWeekID());
 				// get the scores for these games
 				arrayAppend(rc.arGameScores, variables.gameService.getGameScores(arGames));
+				
+				// update the standings
+				variables.standingGateway.updateStandings(rc.arActiveWeeks[itm].getNWeekID(), rc.nCurrentSeasonID);
 			}
-			// update the standings
-			variables.standingGateway.updateStandings(rc.arActiveWeeks[itm].getNWeekID(), rc.nCurrentSeasonID);
 		}
 	//} catch (any e){
 	//	registerError("Error trying to get the game scores", e);
