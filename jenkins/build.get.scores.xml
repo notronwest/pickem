@@ -12,7 +12,7 @@
 
     <get src="https://nflunderdog.inquisibee.com?action=game.getGameScores&amp;bProcess=true&amp;sAPIKey=AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U" dest="scores-results.htm"/>
 
-    <get src="https://nflperfection.inquisibee.com?action=game.getGameScores&amp;bProcess=true&amp;sAPIKey=AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U" dest="scores-results.htm"/>
+    <!-- // <get src="https://nflperfection.inquisibee.com?action=game.getGameScores&amp;bProcess=true&amp;sAPIKey=AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U" dest="scores-results.htm"/> -->
 
   </target>
 
