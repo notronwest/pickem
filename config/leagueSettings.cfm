@@ -7,7 +7,8 @@
 			"sProductionURL" = "http://pickem.inquisibee.com",
 			"bHasUserPreferences" = true,
 			"bShowPayouts" = true,
-			"UIKey" = "pickem"
+			"UIKey" = "pickem",
+			"bCanAutoPick" = true
 		},
 		"NFLPerfection" = {
 			"bHasNCAAGames" = false,
@@ -16,7 +17,8 @@
 			"sProductionURL" = "http://nflperfection.inquisibee.com",
 			"bHasUserPreferences" = true,
 			"bShowPayouts" = false,
-			"UIKey" = "nflperfection"
+			"UIKey" = "nflperfection",
+			"bCanAutoPick" = false
 		},
 		"NFLUnderdog" = {
 			"bHasNCAAGames" = false,
@@ -25,7 +27,8 @@
 			"sProductionURL" = "http://nflunderdog.inquisibee.com",
 			"bHasUserPreferences" = true,
 			"bShowPayouts" = false,
-			"UIKey" = "nflunderdog"
+			"UIKey" = "nflunderdog",
+			"bCanAutoPick" = false
 		},
 		"NFLDog" = {
 			"bHasNCAAGames" = false,
@@ -34,7 +37,8 @@
 			"sProductionURL" = "http://nfldog.inquisibee.com",
 			"bHasUserPreferences" = true,
 			"bShowPayouts" = false,
-			"UIKey" = "nflunderdog"
+			"UIKey" = "nflunderdog",
+			"bCanAutoPick" = false
 		}
 	};
 </cfscript>

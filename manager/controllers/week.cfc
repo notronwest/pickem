@@ -49,7 +49,7 @@ public Void function getGames(rc){
 	var arGames = variables.gameService.adminWeek(rc.nWeekID);
 	// if we are in the current week and we have no games yet then get the source
 	if( arrayLen(arGames) eq 0 ){
-	 	arGames = variables.gameService.getAvailableGames(rc.stLeagueSettings.bHasNCAAGames, rc.stLeagueSettings.bHasNFLGames);	
+	 	arGames = variables.gameService.getAvailableGames(rc.stLeagueSettings.bHasNCAAGames, rc.stLeagueSettings.bHasNFLGames);
 	} else {
 		bGamesAreSelected = true;
 	}
@@ -183,14 +183,18 @@ public void function getRecords(rc){
 }
 
 public void function makeAutoPicks(rc){
-	// if the week is locked and we haven't done the autopicks yet
-	if( rc.bIsLocked and !isNull(rc.oWeek.getNWeekID()) and (isNull(rc.oWeek.getBAutoPicksMade()) or !rc.oWeek.getBAutoPicksMade()) ){
-		variables.weekService.makeAutoPicks(rc.nWeekID, rc.nCurrentSeasonID);
-		// update the week status
-		rc.oWeek = variables.weekGateway.update(rc.oWeek, { "bAutoPicksMade" = 1 });
+	if( rc.stLeagueSettings.bCanAutoPick ){
+		// if the week is locked and we haven't done the autopicks yet
+		if( rc.bIsLocked and !isNull(rc.oWeek.getNWeekID()) and (isNull(rc.oWeek.getBAutoPicksMade()) or !rc.oWeek.getBAutoPicksMade()) ){
+			variables.weekService.makeAutoPicks(rc.nWeekID, rc.nCurrentSeasonID);
+			// update the week status
+			rc.oWeek = variables.weekGateway.update(rc.oWeek, { "bAutoPicksMade" = 1 });
+		}
+		rc.sMessage = "Auto picks made - [#rc.oWeek.getBAutoPicksMade()#] - #rc.oWeek.getNWeekID()# - #rc.bIsLocked#";
+	} else {
+		rc.sMessage = "No auto picks can happen"
 	}
 	rc.bIsDialog = false;
-	rc.sMessage = "Auto picks made - [#rc.oWeek.getBAutoPicksMade()#] - #rc.oWeek.getNWeekID()# - #rc.bIsLocked#";
 	variables.framework.setView("main.message");
 }
 
