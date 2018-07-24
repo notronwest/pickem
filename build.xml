@@ -3,7 +3,7 @@
     Copys files to deployment directory based on parameters
   </description>
   <!-- set global properties for this build -->
-  <property environment="env"/> 
+  <property environment="env"/>
   <!-- <property file="build-${env.DEPLOYTO}.properties" /> -->
   <property file="build-${DeployTo}.properties" />
 
@@ -28,7 +28,7 @@
               <exclude name="package.json"/>
           </fileset>
       </copy>
-      <!-- // make sure the directory has the correct permissions after copying 
+      <!-- // make sure the directory has the correct permissions after copying
       <chgrp group="www">
         <fileset dir="${deploy.dir}">
           <include name="*"/>

@@ -5,3 +5,4 @@
 views/main/scratch.cfm
 node_modules
 data/db
+/docker/nginx/nginx_signing.key

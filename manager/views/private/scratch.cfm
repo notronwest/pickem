@@ -1,7 +1,17 @@
-
 <cfscript>
-	o = getBeanFactory().getBean("teamGateway");
-	writeDump(o.getByName("Boise State"));
+	o = getBeanFactory().getBean("weekService");
+	writeDump(o.makeAutoPicks(181, 9));
+	return;
+
+
+	o = getBeanFactory().getBean("gameService");
+	arWeek  = o.adminWeek(179)
+	writeDump(o.getGameScores(arWeek));
+	return;
+
+
+	o = getBeanFactory().getBean("gameService");
+	writeDump(o.callScoreAPI("Oklahoma State"));
 	return;
 
 	o = getBeanFactory().getBean("leagueGateway").get({ "sKey" = "NFLDog"});
