@@ -556,4 +556,13 @@ public boolean function hasGameStarted( Required numeric nGameID, Required Strin
 	return bGameHasStarted;
 }
 
+public array function buildGameArrayStruct( Required array arGames ){
+	var arGamesFormatted = [];
+	var itm = 1;
+	for( itm; itm lte arrayLen(arguments.arGames); itm++ ){
+		arrayAppend(arGamesFormatted, buildGameStruct(arguments.arGames[itm]));
+	}
+	return arGamesFormatted;
+}
+
 }

@@ -4,9 +4,9 @@
 		<form class="form-inline" role="form">
 			<div class="form-group">
 				<select id="sWeekURL" class="input-sm" size="1">
-					<cfloop from="1" to="#arrayLen(rc.arWeeks)#" index="local.itm">
-						<option value="#buildURL('game.scoring')#&nWeekID=#rc.arWeeks[local.itm].getNWeekID()#"<cfif rc.oWeek.getNWeekID() eq rc.arWeeks[local.itm].getNWeekID()> selected="selected"</cfif>>
-							#rc.arWeeks[local.itm].getSName()# (#dateFormat(rc.arWeeks[local.itm].getDStartDate(), "mm/dd")# - #dateFormat(rc.arWeeks[local.itm].getDEndDate(), "mm/dd")#)
+					<cfloop from="1" to="#arrayLen(rc.arSeasonWeeks)#" index="local.itm">
+						<option value="#buildURL('game.scoring')#&nWeekID=#rc.arSeasonWeeks[local.itm].getNWeekID()#"<cfif rc.oWeek.getNWeekID() eq rc.arSeasonWeeks[local.itm].getNWeekID()> selected="selected"</cfif>>
+							#rc.arSeasonWeeks[local.itm].getSName()# (#dateFormat(rc.arSeasonWeeks[local.itm].getDStartDate(), "mm/dd")# - #dateFormat(rc.arSeasonWeeks[local.itm].getDEndDate(), "mm/dd")#)
 						</option>
 					</cfloop>
 				</select>
