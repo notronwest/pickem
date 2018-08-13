@@ -80,7 +80,7 @@ public void function authenticate(rc){
 				// build the session
 				setupSession(arUser);
 				rc.sMessage = "Login successful";
-				variables.userService.updateLastLogin(session.nUserID);
+				variables.userService.updateLastLogin(arUser[1].getNUserID());
 				bLoggedIn = true;
 
 				// set cookie so the user doesn't receive the "sign up" message
@@ -98,7 +98,7 @@ public void function authenticate(rc){
 				});
 				if( oUserSeason.isNew() ){
 					variables.userSeasonGateway.update(variables.userSeasonGateway.get(), {
-						nUserID = session.nUserID,
+						nUserID = arUser[1].getNUserID(),
 						nSeasonID = rc.nCurrentSeasonID,
 						bActive = 1
 					});
