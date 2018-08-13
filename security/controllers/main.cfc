@@ -93,9 +93,10 @@ public void function authenticate(rc){
 				// check to see if this user has a valid entry into this season (if not add it)
 				oUserSeason = variables.userSeasonGateway.get({
 					nUserID = session.nUserID,
-					nSeasonID = rc.nCurrentSeasonID
+					nSeasonID = rc.nCurrentSeasonID,
+					bActive = 1
 				});
-				if( isNull(oUserSeason.getSUserSeasonID()) ){
+				if( oUserSeason.isNew() ){
 					variables.userSeasonGateway.update(variables.userSeasonGateway.get(), {
 						nUserID = session.nUserID,
 						nSeasonID = rc.nCurrentSeasonID,
@@ -149,6 +150,15 @@ public void function forgotPassword(rc){
 		if( arrayLen(arUser) ){
 			// save the user with new password and force to change
 			variables.userGateway.update(arUser[1], { sPassword = sPassword, bChangePassword = 1 } );
+			// make sure they are in this current season
+			if( variables.userSeasonGateway.get({ nUserID=arUsers[1].getNUserID(), nSeasonID = rc.nCurrentSeasonID}).isNew() ){
+				// add record
+    			variables.userSeasonGateway.update(userSeasonGateway.get(), {
+    				nSeasonID = rc.nCurrentSeasonID,
+    				nUserID = arUsers[1].getNUserID(),
+    				bActive = 1
+    			});
+			}
 			// send them an e-mail
 			sMessage = "You have asked to have your password reset. We have created the following temporary password for you: #sPassword#
 

@@ -30,6 +30,7 @@
 									<span class="fa fa-edit edit-season icons fa-fw fa-lg" title="Edit season"></span>
 									<span class="fa fa-dollar payout-season icons fa-fw fa-lg" title="Payouts for this season"></span>
 									<span class="fa fa-trash-o delete-season icons fa-fw fa-lg" title="Delete season"></span>
+									<span class="fa fa-gear add-users icons fa-fw fa-lg" title="Add users to season"></span>
 									<input type="hidden" class="nSeasonID" value="#rc.arSeasons[local.itm].getNSeasonID()#"/></td>
 							</tr>
 						</cfloop>
