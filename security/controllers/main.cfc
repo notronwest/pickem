@@ -92,7 +92,7 @@ public void function authenticate(rc){
 				}
 				// check to see if this user has a valid entry into this season (if not add it)
 				oUserSeason = variables.userSeasonGateway.get({
-					nUserID = session.nUserID,
+					nUserID = arUser[1].getNUserID(),
 					nSeasonID = rc.nCurrentSeasonID,
 					bActive = 1
 				});
