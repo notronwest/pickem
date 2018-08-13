@@ -151,11 +151,11 @@ public void function forgotPassword(rc){
 			// save the user with new password and force to change
 			variables.userGateway.update(arUser[1], { sPassword = sPassword, bChangePassword = 1 } );
 			// make sure they are in this current season
-			if( variables.userSeasonGateway.get({ nUserID=arUsers[1].getNUserID(), nSeasonID = rc.nCurrentSeasonID}).isNew() ){
+			if( variables.userSeasonGateway.get({ nUserID=arUser[1].getNUserID(), nSeasonID = rc.nCurrentSeasonID}).isNew() ){
 				// add record
     			variables.userSeasonGateway.update(userSeasonGateway.get(), {
     				nSeasonID = rc.nCurrentSeasonID,
-    				nUserID = arUsers[1].getNUserID(),
+    				nUserID = arUser[1].getNUserID(),
     				bActive = 1
     			});
 			}
