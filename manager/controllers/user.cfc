@@ -71,7 +71,7 @@ public void function save(rc){
 		rc.sType = "create";
 		variables.framework.setView("user.error");
 	}
-	
+
 }
 
 public void function delete(rc){
@@ -184,6 +184,27 @@ public void function changePassword(rc){
 		session.bChangePassword = 0;
 	} else if( rc.bProcess and compareNoCase(rc.sCurrentPassword, rc.oUser.getSPassword()) neq 0 ) {
 		rc.sMessage = "Sorry please confirm your original password and try again";
+	}
+}
+
+public void function reactivate(rc){
+	if( !rc.stUser.bIsAdmin ){
+			variables.fw.redirect(action="/");
+	}
+}
+
+public void function saveReactivate(rc){
+	if( !rc.stUser.bIsAdmin ){
+			variables.fw.redirect(action="/");
+	}
+	param name="rc.sEmail" default="";
+	var arUser = variables.userGateway.getByEmail(rc.sEmail);
+	if( arrayLen(arUser) ){
+		variables.userGateway.update(arUser[1], { 'bActive' = 1 } );
+	} else {
+		rc.sMessage = 'Error, that user was not found in the system';
+		variables.framework.setView('user.reactivate');
+		return;
 	}
 }
 

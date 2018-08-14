@@ -1,7 +1,7 @@
 <cfoutput>
 	<div id="admin" class="panel panel-default">
 		<div class="panel-heading text-right">
-			
+
 		</div>
 		<div class="panel-body">
 			<div class="list-group">
@@ -28,6 +28,8 @@
 						<p>Manage the seasons.</p></a>
 					<a class="list-group-item" href="#buildURL('payout.listing')#"><h4>Available Payouts</h4>
 						<p>Manage the list of available payouts for the season.</p></a>
+					<a class="list-group-item" href="#buildURL('user.reactivate')#"><h4>Reactivate User</h4>
+						<p>Reactivate a user who was previously using the site but skipped a year.</p></a>
             	</cfif>
 		</div>
 	</div>
