@@ -107,7 +107,7 @@ public Array function getAllWithSubscriptions( Required Numeric nSeasonID ){
 	return arUsers;
 }
 
-public void function sendNewUserEmail( Required String sEmail, Required String sPassword, Required model.beans.league oCurrentLeague){
+public void function sendNewUserEmail( Required String sEmail, Required String sPassword, Required model.beans.league oCurrentLeague, Required sSiteURL){
 	// send out e-mail
 	var sMessage = "Welcome to #arguments.oCurrentLeague.getSName()#. We have created the following temporary password for you: #arguments.sPassword#
 
@@ -115,7 +115,7 @@ Use the above password in combination with your e-mail address to get started wi
 
 Good Luck!
 
-#rc.stLeagueSettings.sProductionURL#";
+#arguments.sSiteURL#";
 
 	variables.commonService.sendEmail(sEmail, "Welcome to #arguments.oCurrentLeague.getSName()#!", sMessage);
 }
