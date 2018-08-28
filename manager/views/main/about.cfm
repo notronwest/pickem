@@ -5,7 +5,7 @@
 	<div class="panel-body">
 		<cfif compareNoCase("pickem", request.sLeagueKey) eq 0>
 			<p>
-			Football Pick'em is a combined NCAA and NFL league where you make picks based on the spreads of those games. Those spreads will be determined early in the week and will not change once they are set. We will do our best to balance college and NFL and will heavily favor those games that are being televised. There will be approximately 19 weeks to our league and the vast majority of the season will feature 10 NCAA and 10 NFL games per week whenever possible.  
+			Football Pick'em is a combined NCAA and NFL league where you make picks based on the spreads of those games. Those spreads will be determined early in the week and will not change once they are set. We will do our best to balance college and NFL and will heavily favor those games that are being televised. There will be approximately 19 weeks to our league and the vast majority of the season will feature 10 NCAA and 10 NFL games per week whenever possible.
 			</p>
 
 			<p>
@@ -13,15 +13,25 @@
 			</p>
 
 			<p>
-			The fee will be $55 with $5 of that fee going toward the expenses associated with the site (in addition to the person running the site getting a free entry). That means over 90% of the money gets paid back out in various prizes.  
-			</p>
-
-			<p>
 			You will be able to make all picks and see the complete standings on the site with the hope of real-time scoring updates on the site, too, so you can see where you stand on any given week. You can spend as little or as much time as you want each week researching your picks or just have your picks auto-selected for you if you’d like.
 			</p>
 
 			<p>
-			Feel free to invite anyone you want to the league. Just have them register their name and email at pickem.inquisibee.com and PayPal Evan McKechnie at evanmckechnie@gmail.com.
+				The fee for the league will be $55 with over 90% of that fee going back into the prize pool, while less than 10% going to the hosting and maintenance of the site. Payment of the $55 can be sent to me the following ways:
+			</p>
+			<p>
+				Old School Check: Evan McKechnie, 6114 SW 50th Ave, Portland OR 97221
+				<br>
+				PayPal: evanmckechnie@gmail.com
+				<br>
+				Venmo: @Evan-McKechnie
+				<br>
+				Cash App: $EvanMcKechnie
+				<br>
+			</p>
+
+			<p>
+			Feel free to invite anyone you want to the league. Just have them register at https://pickem.inquisibee.com. If you have any questions, please send Evan an email at <a href="mailto:evanmckechnie@gmail.com">evanmckechnie@gmail.com</a>
 			</p>
 		<cfelseif compareNoCase("NFLPerfection", request.sLeagueKey) eq 0>
 			<p>
@@ -33,7 +43,7 @@
 			</p>
 
 			<p>
-			The fee will be $55 with $5 of that fee going toward the expenses associated with the site (in addition to the person running the site getting a free entry). That means over 90% of the money gets paid back out in various prizes.  
+			The fee will be $55 with $5 of that fee going toward the expenses associated with the site (in addition to the person running the site getting a free entry). That means over 90% of the money gets paid back out in various prizes.
 			</p>
 
 			<p>
@@ -70,7 +80,7 @@
 			<br/>949 NW Overton St, #906
 			<br/>Portland, OR 97209
 			</p>
-			
+
 			<p>Cheers -</p>
 
 			<p>Commish</p>
