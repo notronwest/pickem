@@ -40,7 +40,7 @@ public model.beans.team function saveTeam( Required String sName, String sURL=""
 				break;
 			case 3:
 				// search by name and mascot
-				arTeam = variables.teamGateway.getByNameAndMascot(arguments.sName);
+				arTeam = variables.teamGateway.getByNameAndMascot(arguments.sName, arguments.lstType);
 				break;
 			default:
 				arTeam = [teamGateway.update(teamGateway.get(), stTeam)];

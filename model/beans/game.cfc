@@ -18,6 +18,7 @@ component entityname="game" persistent="true" table="game" output="false" extend
 	property name="dtLock" fieldtype="column" ormtype="String" length="19";
 	property name="nWinner" fieldtype="column" ormtype="int" length="1";
 	property name="nOrder" fieldtype="column" ormtype="int" length="1";
+	property name="sAPIID" fieldtype="column" ormtype="string" length="50";
 	property name="bGameIsFinal" fieldtype="column" ormtype="int" length="1" dbDefault="0";
 	property name="sGameStatus" fieldtype="column" ormtype="String" length="100";
 	/**

@@ -145,6 +145,7 @@ Path placeholders:
 		timeserver: [example: swisstime.ethz.ch] default:local time
 			dns of a ntp time server
 	-->
+	<regional timezone="America/New_York"/>
 
 	<!--
 		enable and disable debugging

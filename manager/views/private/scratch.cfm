@@ -1,4 +1,14 @@
 <cfscript>
+	dump(getTimeZoneInfo());
+	abort;
+	o = getBeanFactory().getBean('commonService');
+	results = o.getURL(sURL = request.sPHPURL & '/results/nfl');
+
+	writeDump(DeserializeJSON(trim(results.fileContent)));
+
+	return;
+
+
 	o = getBeanFactory().getBean("weekService");
 	writeDump(o.makeAutoPicks(181, 9));
 	return;

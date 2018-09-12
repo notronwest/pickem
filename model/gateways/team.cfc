@@ -211,12 +211,29 @@ Arguments:
 History:
 	2015-10-10 - RLW - Created
 */
-public Array function getByNameAndMascot( Required String sName ){
-	var qryTeam = variables.dbService.runQuery("select * from team
-where concat(sName, ' ', sMascot) = '#arguments.sName#'
-or concat(sName2, ' ', sMascot) = '#arguments.sName#'
-or concat(sName3, ' ', sMascot) = '#arguments.sName#'
-or concat(sName4, ' ', sMascot) = '#arguments.sName#'");
+public Array function getByNameAndMascot( Required String sName, String lstType = "" ){
+
+	var qryTeam = queryNew("");
+
+	if( len(arguments.lstType) ) {
+		qryTeam = variables.dbService.runQuery("
+			select * from team
+			where (
+				concat(sName, ' ', sMascot) = '#arguments.sName#' or
+				concat(sName2, ' ', sMascot) = '#arguments.sName#' or
+				concat(sName3, ' ', sMascot) = '#arguments.sName#' or
+				concat(sName4, ' ', sMascot) = '#arguments.sName#'
+			) AND nType in (#arguments.lstType#)"
+		);
+	} else {
+		qryTeam = variables.dbService.runQuery("
+			select * from team
+			where concat(sName, ' ', sMascot) = '#arguments.sName#'
+			or concat(sName2, ' ', sMascot) = '#arguments.sName#'
+			or concat(sName3, ' ', sMascot) = '#arguments.sName#'
+			or concat(sName4, ' ', sMascot) = '#arguments.sName#'"
+		);
+	}
 	var arTeam = [];
 	if( qryTeam.recordCount gt 0 ){
 		arTeam = [get(qryTeam.nTeamID)];

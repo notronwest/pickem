@@ -45,7 +45,7 @@
 				</div>
 				<form id="weekGames" method="post" action="#buildURL('game.saveWeek')#">
 					<input type="hidden" name="arGames" id="arGames" value=""/>
-					<input type="hidden" name="nWeekID" id="nWeekID" value="#rc.nWeekID#"/> 
+					<input type="hidden" name="nWeekID" id="nWeekID" value="#rc.nWeekID#"/>
 				</form>
 				<div class="table-responsive">
 					<table class="table" id="activeGames">
@@ -86,7 +86,7 @@
 					</table>
 				</div>
 			</div>
-		
+
 			<script>
 				// load the games
 				docReady(function(){
@@ -106,7 +106,7 @@
 			<li>Click the week in the left column.  You should get a list of all of the games for NCAA and NFL</li>
 			<li>Click the plus sign next to the games in the "Available Games" list to move them into the "Active Games" list</li>
 			<li>Adjust the Spread and set the Tiebreak games and then click "Save Games"</li>
-			<li>Once you set the games you won't see the list of "Available Games" again.  If you missed a game just chose "Add Game" and you will be able to set the game manually</li>
+			<li>Once you set the games you won''t see the list of "Available Games" again.  If you missed a game just chose "Add Game" and you will be able to set the game manually</li>
 			<li>Games can be ordered however you want (just drag and drop the games in the list of "Active Games" and then click "Save Games"</li>
 		</ol>
 	</div>
@@ -123,6 +123,7 @@
 		<td><input type="number" name="spread" class="form-control input-sm spread control-sm"/></td>
 		<td><input type="number" name="tiebreak" class="form-control input-sm tiebreak control-sm"/></td>
 		<td><span title="Delete Game" class="fa fa-trash-o delete icons fa-fw fa-lg"></span> <span title="Swap HOME/Away Teams" class="fa fa-home swap-home icons fa-lg"></span> <span title="Swap Spread" class="fa fa-exchange swap-spread icons fa-lg"></span>
-		<input type="hidden" name="nType" class="nType"></td>
+		<input type="hidden" name="nType" class="nType">
+		<input type="hidden" name="sAPIID" class="sAPIID"></td>
 	<tr>
 </table>

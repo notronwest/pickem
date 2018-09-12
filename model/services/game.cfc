@@ -485,8 +485,8 @@ History:
 public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean bGetNFLGames = true ){
 	var arGameData = [];
 	var stGameResults = {};
-	var sNCAAScheduleURL = "college-football";
-	var sNFLScheduleURL = "nfl-football";
+	var sNCAAScheduleURL = "ncaaf";
+	var sNFLScheduleURL = "nfl";
 	var arGameScheduleURL = [];
 	if( arguments.bGetNCAAGames ){
 		arrayAppend(arGameScheduleURL, sNCAAScheduleURL);
@@ -498,12 +498,61 @@ public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean b
 	var x = 1;
 	for( itm; itm lte arrayLen(arGameScheduleURL); itm++ ){
 		// get game raw data
-		stGameResults = variables.commonService.getURL("#request.sPHPURL#get-games/" & arGameScheduleURL[itm]);
+		var stGameResults = variables.commonService.getURL("#request.sPHPURL#odds/" & arGameScheduleURL[itm]);
+
 		// if we have a valid response
-		if( find("200", stGameResults.statusCode) gt 0 and isJSON(stGameResults.fileContent.toString()) ){
-			stResponse = deserializeJSON(stGameResults.fileContent.toString());
+		if( find("200", stGameResults.statusCode) gt 0 and isJSON(stGameResults.fileContent) ){
+			var arResponse = deserializeJSON(stGameResults.fileContent);
+
+			/* build the game data
+			*	sHomeTeam
+			*	sAwayTeam
+			*	sSpreadFavor
+			*	nSpread
+			*	sGameDateTime
+			*
+			*/
+			for(var game in arResponse){
+				// determine the point spread
+				if( structKeyExists(game, 'odds') ){
+					for( var odd in game.odds ){
+						if( !structKeyExists(odd, 'oddType') or odd.oddType != 'Game'){
+							continue;
+						}
+
+						if( odd.pointSpreadAway eq 0){
+							nSpread = '-0.5';
+							sSpreadFavor = 'home';
+							break;
+						}
+
+						if( odd.pointSpreadAway < 0 ){
+							nSpread = abs((find('.5', odd.pointSpreadHome) ) ? odd.pointSpreadHome : (odd.pointSpreadHome + 0.5)); // add a half point for the home team
+							sSpreadFavor = 'away';
+						} else {
+							nSpread = abs((find('.5', odd.pointSpreadHome)) ? odd.pointSpreadHome : (odd.pointSpreadHome - 0.5)); // add a half point for the home team
+							sSpreadFavor = 'home';
+						}
+					}
+				}
+				// convert date time into EST (comes in as UTC)
+				var sGameDateTime = dateTimeFormat(dateAdd('h', -getTimeZoneInfo().utcHourOffset, game.matchTime), 'yyyy-mm-dd hh:nn:ss');
+				// add in these games to the mix
+				arrayAppend(arGameData, {
+					'sHomeTeam' 		= game.homeTeam,
+					'sAwayTeam'			= game.awayTeam,
+					'sSpreadFavor'		= sSpreadFavor,
+					'nSpread'			= nSpread,
+					'sGameDateTime'		= sGameDateTime,
+					'sGameDate'			= listFirst(sGameDateTime, " "),
+					'dtLock'			= sGameDateTime,
+					'sAPIID'			= game.ID,
+					'nType'				= itm,
+				});
+			}
+
 			// make sure the API call was successful
-			if( structKeyExists(stResponse, "arGameData") ){
+			/*if( structKeyExists(stResponse, "arGameData") ){
 				// add games (fixing up dates)
 				for(x=1; x lte arrayLen(stResponse.arGameData); x++ ){
 					if( structKeyExists(stResponse.arGameData[x], "sGameDateTime") ){
@@ -523,9 +572,10 @@ public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean b
 					arrayAppend(arGameData, stResponse.arGameData[x]);
 				}
 
+
 			} else {
 				// API called failed
-			}
+			}*/
 		} else {
 			// need logging
 		}

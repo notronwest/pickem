@@ -71,11 +71,11 @@ docReady(function(){
 		if( confirm("Are you sure you would like to remove the game between " + $(this).closest("tr").find(".favorite").val() + " and " + $(this).closest("tr").find(".underdog").val() + "?") ){
 			// if there are available games, move this back
 			if( $("#source").is(":visible") ){
-				$(this).closest("tr").appendTo("#availableGames").find(".move").removeClass("move").removeClass("glyphicon-sort").addClass("add").addClass("glyphicon-open");;	
+				$(this).closest("tr").appendTo("#availableGames").find(".move").removeClass("move").removeClass("glyphicon-sort").addClass("add").addClass("glyphicon-open");;
 			} else {
 				$(this).closest("tr").remove();
 			}
-			
+
 		}
 		makeActive();
 	});
@@ -184,7 +184,8 @@ docReady(function(){
 				"sGameDateTime": ( dtGame.length > 0 ) ? dtGame : "",
 				"dtLock": ( dtLock.length > 0 ) ? dtLock : "",
 				"nTiebreak": $(this).find(".tiebreak").val(),
-				"nType": $(this).find(".nType").val()
+				"nType": $(this).find(".nType").val(),
+				"sAPIID": $(this).find(".sAPIID").val(),
 			};
 			arGames.push(stGame);
 		});
@@ -210,49 +211,6 @@ docReady(function(){
 		}
 	});
 });
-
-// parses and builds all of the games
-function parseTeams(){
-	$("#results").children(".bd").children("h4").each(function(){
-		// append the contents of the date
-		dGameDate = new Date($(this).text());
-		// find all of the games
-		$(this).next(".pointspread").children("tbody").children("tr").each(function(){
-			stGame = {};
-			// get the teams
-			$(this).children(".teams").children(".team").each(function(index){
-				// get the home team
-				if(index == 1){
-					 stGame.sHomeTeam = $(this).children("a").text();
-					 stGame.sHomeTeamURL = $(this).children("a").prop("href");
-				} else {
-					stGame.sAwayTeam = $(this).children("a").text();
-					stGame.sAwayTeamURL = $(this).children("a").prop("href");
-				}
-			});
-			sGameDate = dGameDate.getFullYear() + '-' + convertMonthDay(dGameDate.getMonth() + 1) + '-' + convertMonthDay(dGameDate.getDate());
-			arGameTimeFull = $(this).children(".teams").children("div").text().trim().split(" ");
-			arGameTimeHoursMinutes = arGameTimeFull[0].split(":");
-			stGame.sGameDateTime = sGameDate.toString() + " " + ((arGameTimeFull[1].toLowerCase() == "pm" && parseInt(arGameTimeHoursMinutes[0]) < 12) ? (parseInt(arGameTimeHoursMinutes[0]) + 12).toString() + ":" + arGameTimeHoursMinutes[1] : arGameTimeHoursMinutes[0].toString() + ":" + arGameTimeHoursMinutes[1]).toString();
-			// get the spread from the second td
-			sSpreadNode = $(this).children("td:nth-child(2)").children("div:nth-child(1)").children("span");
-			if( $(sSpreadNode).hasClass("bottom-line") ){
-				stGame.sSpreadFavor = "home";
-			} else {
-				stGame.sSpreadFavor = "away";
-			}
-			// add spread
-			nSpread = $(sSpreadNode).text().replace("-", "");
-			stGame.nSpread = (parseFloat(nSpread).toString() == nSpread.toString()) ? parseFloat(nSpread) : parseFloat(nSpread) + 0.5 ;
-			stGame.sSpreadOriginal = stGame.nSpread;
-			stGame.bShow = true;
-			stGame.nTiebreak = "";
-			stGame.dtLock = stGame.sGameDateTime;
-			stGame.nType = (stGame.nType) ? stGameType : "";
-			arGames.push(stGame);
-		});
-	});
-}
 // construct the HTML from the array of games
 function buildForm(arGames, oNode){
 	var sGameNode = "";
@@ -315,6 +273,7 @@ function addGame(stGame, oNode, bIsNew){
 		$(oDupe).find(".spread-favor").val(stGame.sSpreadFavor);
 		$(oDupe).find(".tiebreak").val(stGame.nTiebreak);
 		$(oDupe).find(".nType").val((stGame.nType) ? stGame.nType : "");
+		$(oDupe).find(".sAPIID").val(stGame.sAPIID);
 	}
 }
 // retrieve available games for this week
@@ -324,7 +283,7 @@ function getGames(){
 		{
 			nWeekID: $("#setWeek").data("id")
 		}, function(stGames){
-			if (typeof stGames == "object") { // this is an edit -- load the games
+			if (typeof stGames == "object") {
 				// if there are games load them into active
 				if( stGames.bGamesAreSelected ){
 					buildForm(stGames.arGames, "#activeGames");

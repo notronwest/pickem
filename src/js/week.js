@@ -47,6 +47,7 @@ $(function(){
 			"sSpreadFavor": "",
 			"nTiebreak": "",
 			"sGameDateTime": "",
+			"sAPIID": "",
 			"bIsNew": true
 		};
 		makeActive();
@@ -71,11 +72,11 @@ $(function(){
 		if( confirm("Are you sure you would like to remove the game between " + $(this).closest("tr").find(".favorite").val() + " and " + $(this).closest("tr").find(".underdog").val() + "?") ){
 			// if there are available games, move this back
 			if( $("#source").is(":visible") ){
-				$(this).closest("tr").appendTo("#availableGames").find(".move").removeClass("move").removeClass("glyphicon-sort").addClass("add").addClass("glyphicon-open");;	
+				$(this).closest("tr").appendTo("#availableGames").find(".move").removeClass("move").removeClass("glyphicon-sort").addClass("add").addClass("glyphicon-open");;
 			} else {
 				$(this).closest("tr").remove();
 			}
-			
+
 		}
 		makeActive();
 	});
@@ -182,6 +183,7 @@ $(function(){
 				"sSpreadFavor": $(this).find(".spread-favor").val(),
 				"sGameDateTime": ( dtGame.length > 0 ) ? dtGame : "",
 				"dtLock": ( dtLock.length > 0 ) ? dtLock : "",
+				"sAPIID": $(this).find(".sAPIID").val(),
 				"nTiebreak": $(this).find(".tiebreak").val()
 			};
 			arGames.push(stGame);
@@ -307,6 +309,7 @@ function addGame(stGame, oNode, bIsNew){
 		$(oDupe).find(".spread").val(stGame.nSpread);
 		$(oDupe).find(".spread-favor").val(stGame.sSpreadFavor);
 		$(oDupe).find(".tiebreak").val(stGame.nTiebreak);
+		$(oDupe).find(".sAPIID").val(stGame.sAPIID);
 	}
 }
 // retrieve available games for this week

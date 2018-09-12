@@ -11,27 +11,27 @@ public boolean function isMobileView(){
 public void function sendEmail( Required String sTo, Required String sSubject, Required String sMessage, String sFrom = request.sAdminEmail){
 	// Create an instance of the mail object
 	  var mail=new mail();
-	 
+
 	  // Set it's properties
 	  mail.setSubject( arguments.sSubject );
 	  mail.setTo( arguments.sTo );
 	  mail.setFrom( arguments.sFrom );
 	  //mail.setCC( "cc@example.com" );
 	  //mail.setBCC( "bcc@example.com" );
-	 
+
 	  // Add an attachment
 	  //mail.addParam( file="C:\foo.txt" );
-	 
+
 	  // Add email body content in text and HTML formats
 	  mail.addPart( type="text", charset="utf-8", wraptext="72", body=arguments.sMessage );
 	  //mail.addPart( type="html", charset="utf-8", body="<p>This is a test message.</p>" );
-	 
+
 	  // Send the email
 	  mail.send();
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$dateTimeFormat
@@ -55,7 +55,7 @@ public String function dateTimeFormat( String dtToFormat = now() ){
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$getURL
@@ -70,7 +70,7 @@ Arguments:
 History:
 	2014-09-12 - RLW - Created
 */
-public Struct function getURL( Required String sURL, Numeric nTimeout=5, Struct stParams={}, String sUsername = "api", String sPassword = "api" ){
+public Struct function getURL( Required String sURL, Numeric nTimeout=5, Struct stParams={}, String sUsername = "api", String sPassword = "api", Struct stHeaders={} ){
 	var sResults = "";
 	var stResult = { "statusCode" = 404, "fileContent" = "" };
 	var httpService = new http();
@@ -81,7 +81,7 @@ public Struct function getURL( Required String sURL, Numeric nTimeout=5, Struct 
 			if( compareNoCase(left(arguments.sURL, 1), "/") eq 0 ){
 				arguments.sURL = request.sSiteURL & right(arguments.sURL, len(arguments.sURL - 1));
 			}
-			
+
 		}
 		httpService.setUrl(arguments.sURL);
 	    httpService.setTimeOut(arguments.nTimeout);
@@ -92,13 +92,19 @@ public Struct function getURL( Required String sURL, Numeric nTimeout=5, Struct 
 	    if( len(arguments.sPassword) ){
 	    	httpService.setAttributes(password = arguments.sPassword);
 		}
-	    
+
 	   	/* add additional params */
 	   	for(sKey in arguments.stParams){
 	   		httpService.addParam(type="url", name=sKey, value=arguments.stParams[sKey]);
 	   	}
+
+		/* add additional headers */
+		for(var sHeader in arguments.stHeaders ){
+			httpService.addParam(type="header", name=sHeader, value=arguments.stHeaders[sHeader]);
+		}
 	   	// add user agent
 	   	httpService.addParam(type="header", name="user-agent", value="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/38.0.2125.44 Safari/537.36");
+
 	    /* make the http call to the URL using send() */
 	    stResult = httpService.send().getPrefix();
 	} catch ( any e ){
@@ -109,7 +115,7 @@ public Struct function getURL( Required String sURL, Numeric nTimeout=5, Struct 
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$parseToFindString
@@ -140,7 +146,7 @@ public String function parseToFindString( Required String sContent, Required Str
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$isValidDateTime
@@ -156,13 +162,13 @@ History:
 public String function isValidDateTime( Required String dtToValidate ){
 	var dtValid = "";
 	if( isDate(arguments.dtToValidate) ){
-		dtValid = dateFormat(arguments.dtToValidate, "yyyy-mm-dd") & " " & timeFormat(arguments.dtToValidate, "HH:mm:ss"); 
+		dtValid = dateFormat(arguments.dtToValidate, "yyyy-mm-dd") & " " & timeFormat(arguments.dtToValidate, "HH:mm:ss");
 	}
 	return dtValid;
 }
 
 /*
-Author: 	
+Author:
 	Ron West
 Name:
 	$generatePassword
@@ -218,7 +224,7 @@ public String function generatePassword(){
 */
 public Array function arrayOfStructsSort(aOfS,key){
         //by default we'll use an ascending sort
-        var sortOrder = "asc";        
+        var sortOrder = "asc";
         //by default, we'll use a textnocase sort
         var sortType = "textnocase";
         //by default, use ascii character 30 as the delim
