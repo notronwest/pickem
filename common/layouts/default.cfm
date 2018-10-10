@@ -12,6 +12,8 @@
   <meta name="author" content="">
   <meta name="keywords" content="Football">
 
+  <link rel="shortcut icon" href="/assets/images/favicon.ico" />
+
   <!-- Fav and touch icons -->
   <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/assets/ico/apple-touch-icon-144-precomposed.png">
   <link rel="apple-touch-icon-precomposed" sizes="114x114" href="/assets/ico/apple-touch-icon-114-precomposed.png">
