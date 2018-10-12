@@ -1,0 +1,23 @@
+version: "2"
+
+services:
+    db:
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: inqsports
+        MYSQL_USER: inqsports
+        MYSQL_PASSWORD: 1nquisib33
+      ports:
+        - "127.0.0.1:42306:3306"
+
+    php:
+      ports:
+          - "127.0.0.1:8080:80"
+
+    lucee52:
+      ports:
+       - "8052:8888"
+
+    nginx52:
+      environment:
+        - "VIRTUAL_HOST=nginx52.*"

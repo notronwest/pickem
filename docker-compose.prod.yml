@@ -1,0 +1,33 @@
+
+version: "2"
+
+services:
+    db:
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: inqsports
+        MYSQL_USER: inqsports
+        MYSQL_PASSWORD: 1nquisib33
+      ports:
+        - "206.189.178.82:42306:3306"
+      volumes:
+        - db-volume:/var/lib/mysql
+    php:
+      ports:
+          - "206.189.178.82:8080:80"
+
+    lucee52:
+      ports:
+       - "206.189.178.82:80:8888"
+      environment:
+        PRODUCTION: 'true'
+
+    nginx52:
+      ports:
+       - "206.189.178.82:443:443"
+
+      environment:
+        - "VIRTUAL_HOST=nginx52.*"
+
+volumes:
+  db-volume:
