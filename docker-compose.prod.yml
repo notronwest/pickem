@@ -10,8 +10,7 @@ services:
         MYSQL_PASSWORD: 1nquisib33
       ports:
         - "206.189.178.82:42306:3306"
-      volumes:
-        - db-volume:/var/lib/mysql
+
     php:
       ports:
           - "206.189.178.82:8080:80"
@@ -29,5 +28,7 @@ services:
       environment:
         - "VIRTUAL_HOST=nginx52.*"
 
-volumes:
-  db-volume:
+    jenkins:
+        ports:
+            - "127.0.0.1:8888:8080"
+            - "127.0.0.1:5000:5000"
