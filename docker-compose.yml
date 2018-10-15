@@ -5,40 +5,14 @@ services:
       build: ./docker/db
       command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
       volumes:
-        - db-volume:/var/lib/mysql
-
-    php:
-      build: ./docker/php
-      depends_on:
-          - lucee52
-      links:
-          - lucee52
-      working_dir: /var/www
-      volumes:
-          - ./:/var/www
-
-    lucee52:
-      build: ./docker/lucee
-      depends_on:
-        - db
-      links:
-        - db
-      volumes:
-        - ./:/var/www/
-        - ~/.ssh:/var/www/.ssh
-
-    nginx52:
-      build: ./docker/nginx
-
+        - db:/var/lib/mysql
 
     jenkins:
-      image: jenkins/jenkins:lts
-      #environment:
-        #JENKINS_OPTS="--prefix=/jenkins"
-      volumes:
-          - jenkins-workspace:/var/lib/jenkins/workspace
+      build: ./docker/jenkins
+      environment:
+        GITHUB_USERNAME: inquisibee
+        GITHUB_CONFIG_REPOSITORY: https://github.com/inquisibee/jenkins-pickem.git
 
 
 volumes:
-  db-volume:
-  jenkins-workspace:
+  db:

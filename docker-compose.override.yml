@@ -11,14 +11,32 @@ services:
         - "127.0.0.1:42306:3306"
 
     php:
+      build: ./docker/php
+      depends_on:
+          - lucee52
+      links:
+          - lucee52
+      working_dir: /var/www
+      volumes:
+          - ./:/var/www
       ports:
           - "127.0.0.1:8080:80"
 
+
     lucee52:
+      build: ./docker/lucee
+      depends_on:
+        - db
+      links:
+        - db
+      volumes:
+        - ./:/var/www/
+        - ~/.ssh:/var/www/.ssh
       ports:
        - "8052:8888"
 
     nginx52:
+      build: ./docker/nginx
       environment:
         - "VIRTUAL_HOST=nginx52.*"
 
@@ -26,3 +44,5 @@ services:
         ports:
             - "127.0.0.1:8888:8080"
             - "127.0.0.1:5000:5000"
+        volumes:
+            - jenkins-workspace:/var/lib/jenkins/workspace
