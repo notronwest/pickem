@@ -22,6 +22,11 @@
 					<h6>This week is locked and no changes to your picks can be made at this time.</h6>
 				</div>
 			</cfif>
+			<cfif !rc.bCorrectNumberOfPicks>
+				<div class="alert alert-danger">
+					<h6>Something went wrong with your picks. Please try and make your picks again. If this error persists please contact us.</h6>
+				</div>
+			</cfif>
 			<h4>Wins:<button class="alert-success btn btn-small" disabled="disabled"><strong>#listLen(rc.stUserWeek.lstWins)#</strong></button><cfif rc.bUserAutoPicked><button class="alert-info auto-picks btn btn-small" disabled="disabled"><em>Auto Picked: #rc.stUser.stSettings.autopick#</em></button></cfif></h4>
 
 			<!--- // <h4><div class="text-left">
@@ -32,7 +37,7 @@
 			<cfif !rc.bIsLocked><p>
 				Picks can be made up until #getBeanFactory().getBean("commonService").dateTimeFormat(rc.dtPicksDue)#
 			</p></cfif>
-			
+
 			<div class="text-right">
 				<a href="javascript:;" class="help">Help</a>
 				<div class="help hide">

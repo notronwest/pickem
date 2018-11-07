@@ -536,7 +536,7 @@ public array function getAvailableGames( Boolean bGetNCAAGames = true, Boolean b
 					}
 				}
 				// convert date time into EST (comes in as UTC)
-				var sGameDateTime = dateTimeFormat(dateAdd('h', -getTimeZoneInfo().utcHourOffset, game.matchTime), 'yyyy-mm-dd hh:nn:ss');
+				var sGameDateTime = dateTimeFormat(dateAdd('h', -getTimeZoneInfo().utcHourOffset, game.matchTime), 'yyyy-mm-dd HH:nn:ss');
 				// add in these games to the mix
 				arrayAppend(arGameData, {
 					'sHomeTeam' 		= game.homeTeam,
