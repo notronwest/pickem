@@ -15,6 +15,7 @@ public void function before(rc){
 	rc.bUserHasPicks = false;
 	rc.bUserAutoPicked = false;
 	rc.bIsLocked = false;
+	rc.bCorrectNumberOfPicks = true;
 	// default the week
 	param name="rc.nWeekID" default="0";
 	param name="rc.stWeeklyTeamResults" default="#{}#";
@@ -54,6 +55,10 @@ public void function before(rc){
 		// check to see if this user has picks already
 		if( listLen(structKeyList(rc.stUserWeek.stPicks)) ){
 			rc.bUserHasPicks = true;
+			// check to see if this user has ALL of their picks
+			if( listLen(structKeyList(rc.stUserWeek.stPicks)) != arrayLen(rc.arWeekGames) ){
+				rc.bCorrectNumberOfPicks = false;
+			}
 		}
 		// check to see if the user had auto picks
 		if( rc.stUserWeek.bAutoPick ){

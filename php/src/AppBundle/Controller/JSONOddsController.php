@@ -15,7 +15,7 @@ class JSONOddsController extends Controller
     public function oddsAction(Request $request, String $sport, String $debug)
     {
 
-      $appKey = "bef1a897-b119-11e8-9bbb-0a704e36c1ea";
+      $appKey = "99d937ac-82bb-47b3-96bd-2036aab7fb30";
       $ch = curl_init();
       curl_setopt($ch, CURLOPT_URL, "https://jsonodds.com/api/odds/" . $sport);
       curl_setopt($ch, CURLOPT_HTTPGET, 1);
