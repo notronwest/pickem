@@ -6,3 +6,7 @@ views/main/scratch.cfm
 node_modules
 data/db
 /docker/nginx/nginx_signing.key
+/initialAdminPassword
+build.sh
+startup.sh
+/db_backup_job.tgz

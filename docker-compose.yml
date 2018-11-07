@@ -2,53 +2,18 @@ version: "2"
 
 services:
     db:
-      image: mysql:5.6
+      build: ./docker/db
       command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-      environment:
-        MYSQL_ROOT_PASSWORD: root
-        MYSQL_DATABASE: inqsports
-        MYSQL_USER: inqsports
-        MYSQL_PASSWORD: 1nquisib33
-      ports:
-        - "127.0.0.1:42306:3306"
       volumes:
-        #- db:/var/lib/mysql
-        - ./data/db:/var/lib/mysql
+        - db:/var/lib/mysql
+      networks:
+        - pickem-net
 
-    php:
-      build: ./docker/php
-      ports:
-          - "127.0.0.1:8080:80"
-      depends_on:
-          - lucee52
-      links:
-          - lucee52
-      working_dir: /var/www
-      volumes:
-          - ./:/var/www
 
-    lucee52:
-      build: ./docker/lucee
-      ports:
-       - "8052:8888"
-      depends_on:
-        - db
-      links:
-        - db
-      volumes:
-        - ./:/var/www/
-        - ~/.ssh:/var/www/.ssh
-        - ~/.gitconfig:/var/www/.gitconfig
-      #volumes:
-        # - /workbench/lucee-dockerfiles/5.2/lucee-server.xml:/opt/lucee/server/lucee-server/context/lucee-server.xml
-        # - /workbench/lucee-dockerfiles/5.2/lucee-web.xml:/opt/lucee/web/lucee-web.xml.cfm
+volumes:
+  db:
 
-    nginx52:
-      build: ./docker/nginx
-      environment:
-        - "VIRTUAL_HOST=nginx52.*"
-      #volumes:
-        # - /workbench/lucee-dockerfiles/lucee-nginx/5.2/lucee-server.xml:/opt/lucee/server/lucee-server/context/lucee-server.xml
-        # - /workbench/lucee-dockerfiles/lucee-nginx/5.2/lucee-web.xml:/opt/lucee/web/lucee-web.xml.cfm
-#volumes:
- # db: {}
+
+networks:
+    pickem-net:
+        driver: bridge
