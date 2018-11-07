@@ -4,8 +4,8 @@ exit_code=0;
 
 mkdir -p keys;
 
-cp ../../../jenkins/keys/jenkins.* ./keys &&\
-    docker build --no-cache -t jenkins-master .;
+cp /data/web/inquisibee/projects/jenkins/keys/jenkins.* ./keys &&\
+    docker build --no-cache -t jenkins .;
 if [[ "${?}" != 0 ]]; then
     exit_code=1;
 fi;

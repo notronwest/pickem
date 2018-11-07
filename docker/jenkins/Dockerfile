@@ -1,4 +1,4 @@
-FROM jenkins:2.32.1
+FROM jenkins/jenkins:lts
 MAINTAINER Ron West <ron@inquisibee.com>
 
 # root user for Jenkins, need to get access to /var/run/docker.sock (fix this in the future!)
@@ -7,11 +7,15 @@ USER root
 # Environment
 ENV HOME /root
 ENV JENKINS_HOME /root/jenkins
-ENV JENKINS_VERSION 2.32.1
+#ENV JENKINS_VERSION 2.32.1
 
 # GitHub repository to store _Jenkins_ configuration
-ENV GITHUB_USERNAME antonfisher
-ENV GITHUB_CONFIG_REPOSITORY my-jenkins-config
+ENV GITHUB_USERNAME inquisibee
+ENV GITHUB_CONFIG_REPOSITORY jenkins-pickem
+
+# Add mysql client
+RUN apt-get update &&\
+	apt-get install -y mysql-client
 
 # Make _Jenkins_ home directory
 RUN mkdir -p $JENKINS_HOME
@@ -68,4 +72,4 @@ VOLUME $JENKINS_HOME/workspace
 
 # Run init.sh script after container start
 COPY src/init.sh /usr/local/bin/init.sh
-ENTRYPOINT ["/bin/tini", "--", "/usr/local/bin/init.sh"]
+ENTRYPOINT ["/sbin/tini", "--", "/usr/local/bin/init.sh"]

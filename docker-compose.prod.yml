@@ -27,8 +27,3 @@ services:
 
     #  environment:
     #    - "VIRTUAL_HOST=nginx52.*"
-
-    jenkins:
-        ports:
-            - "206.189.178.82:8888:8080"
-            - "206.189.178.82:5000:5000"

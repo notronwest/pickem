@@ -20,7 +20,7 @@ services:
       volumes:
           - ./:/var/www
       ports:
-          - "127.0.0.1:8080:80"
+          - "127.0.0.1:8088:80"
 
 
     lucee52:
@@ -39,10 +39,3 @@ services:
       build: ./docker/nginx
       environment:
         - "VIRTUAL_HOST=nginx52.*"
-
-    jenkins:
-        ports:
-            - "127.0.0.1:8888:8080"
-            - "127.0.0.1:5000:5000"
-        volumes:
-            - jenkins-workspace:/var/lib/jenkins/workspace
