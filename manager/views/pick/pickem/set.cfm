@@ -19,7 +19,7 @@
 			<!--- // if the week is locked and the user has no picks then don't show anything --->
 			<cfif rc.bIsLocked and !rc.bUserHasPicks and !rc.bUserAutoPicked>
 				<div class="alert alert-danger">
-					Sorry, you did not make picks this week. When the week is over you will be awarded the lowest amount of correct pics,
+					Sorry, you did not make picks this week. When the week is over you will be awarded the lowest amount of correct picks.
 				</div>
 			<cfelse>
 				<!--- // if the week is locked --->
