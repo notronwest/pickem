@@ -12,7 +12,7 @@ services:
     volumes:
       - ./:/var/www/
       - ~/.ssh:/var/www/.ssh
-      - ./jenkins/workspace:/var/jenkins_home/workspace
+      - ../jenkins_home/:/var/jenkins_home/
 
   web:
     build: ./docker/web
