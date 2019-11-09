@@ -22,6 +22,7 @@
               <exclude name="build.xml" />
               <exclude name="build-production.properties" />
               <exclude name="build-development.properties" />
+              <exclude name="build-new.properties" />
               <exclude name="src"/>
               <exclude name="src/*"/>
               <exclude name="gulpfile.js"/>
