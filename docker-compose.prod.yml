@@ -1,35 +1,14 @@
 
-version: "2"
+version: "3"
 
 services:
-    db:
-      environment:
-        MYSQL_ROOT_PASSWORD: root
-        MYSQL_DATABASE: inqsports
-        MYSQL_USER: inqsports
-        MYSQL_PASSWORD: 1nquisib33
-      ports:
-        - "206.189.178.82:42306:3306"
-
-
     jenkins:
+      build: ./docker/jenkins
       ports:
-        - "206.189.178.82:8080:8080"
-        - "206.189.178.82:50000:50000"
+        - "8080:8080"
+        - "50000:50000"
 
-    #php:
-    #  ports:
-    #      - "206.189.178.82:8080:80"
-
-    #lucee52:
-    #  ports:
-    #   - "206.189.178.82:80:8888"
-    #  environment:
-    #    PRODUCTION: 'true'
-
-    #nginx52:
-    #  ports:
-    #   - "206.189.178.82:443:443"
-
-    #  environment:
-    #    - "VIRTUAL_HOST=nginx52.*"
+    web:
+      build: ./docker/web
+      ports:
+          - "80:80"

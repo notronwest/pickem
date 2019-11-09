@@ -1,23 +1,38 @@
-version: "2"
+version: "3"
 
 services:
-    db:
-      build: ./docker/db
-      command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
-      volumes:
-        - db:/var/lib/mysql
-      networks:
-        - pickem-net
 
-    jenkins:
-      build: ./docker/jenkins
-      networks:
-        - pickem-net
+  jenkins:
+    build: ./docker/jenkins
+    networks:
+      - pickem-net
+    ports:
+      - "8080:8080"
+      - "50000:50000"
+    volumes:
+      - ./:/var/www/
+      - ~/.ssh:/var/www/.ssh
+      - ./jenkins/workspace:/var/jenkins_home/workspace
 
+  web:
+    build: ./docker/web
+    networks:
+      - pickem-net
+    working_dir: /var/www
+    volumes:
+        - ./:/var/www
+    ports:
+          - "127.0.0.1:8088:80"
 
-volumes:
-  db:
-
+  lucee52:
+    build: ./docker/lucee
+    depends_on:
+      - web
+    networks:
+      - pickem-net
+    volumes:
+      - ./:/var/www/
+      - ~/.ssh:/var/www/.ssh
 
 networks:
     pickem-net:

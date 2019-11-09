@@ -8,19 +8,18 @@
 	request.sJenkinsAuthToken = "bafc2176c03237ccc32b8c85c6e64016";
 	request.sLeagueKey = "pickem";
 	request.sPHPURL = "http://pickemphp.inquisibee.com/";
+
+	request.sDBUsername = 'inqsports';
+	request.sDBPassword = '1nquisib33';
+
 	// specific variables
 	switch (cgi.http_host){
 
 		// development
 		case "pickem.local":
-		case "pickem.local:8052":
-			// dynamically define datasources here
-			request.datasources["inqsports"]		= {
-				class: 'org.gjt.mm.mysql.Driver',
-				connectionString: 'jdbc:mysql://db:3306/inqsports?useUnicode=true&useLegacyDatetimeCode=true&allowMultiQueries=true&useSSL=false',
-				username = "inqsports",
-				password = "1nquisib33"
-			};
+		case "pickem.local:8088":
+			request.sDBHost = "db";
+			request.sDBPort = "3306";
 			request.sLogURL = "/data/logs/";
 			request.bReloadOnEveryRequest = true;
 			request.sAdminEmail = "ron@inquisibee.com";
@@ -37,7 +36,7 @@
 			break;
 		// development
 		case "nflunderdog.local":
-		case "nflunderdog.local:8052":
+		case "nflunderdog.local:8088":
 			// dynamically define datasources here
 			request.datasources["inqsports"]		= {
 				class: 'org.gjt.mm.mysql.Driver',
@@ -63,7 +62,7 @@
 			break;
 		// development
 		case "nfldog.local":
-		case "nfldog.local:8052":
+		case "nfldog.local:8088":
 			// dynamically define datasources here
 			request.datasources["inqsports"]		= {
 				class: 'org.gjt.mm.mysql.Driver',
@@ -123,6 +122,7 @@
 		case "pickem.inquisibee.com":
 		case "pickem.inquisibee.com:80":
 		case "www.pickem.inquisibee.com":
+		case "web.pickem.inquisibee.com":
 			request.sLogURL = "/data/logs/";
 			request.bReloadOnEveryRequest = false;
 			//request.sAdminEmail = "footballpicksaaa@gmail.com";
@@ -134,8 +134,11 @@
 			request.sLocalIP = "54.68.81.199";
 			request.sAPIKey="AP9aCMwPrkAfsbWsDtVtHEUTqBnsGkZTKAJU6ZAG,U";
 			request.sDBBackupDirectory = "#expandPath('/data/weeklydbbackup/')#";
-			request.sDBUsername = "notronwest";
-			request.sDBPassword = "1nquisib33";
+			request.sDBHost = "db-inquisibee-com-do-user-323100-0.db.ondigitalocean.com";
+			request.sDBPort = "25060";
+
+			request.sDBUsername = "inqsports";
+			request.sDBPassword = "jskzkca9tl6h488s";
 			break;
 
 		case "nflperfection.inquisibee.com":
@@ -189,4 +192,12 @@
 			break;
 
 	}
+
+	// dynamically define datasources here
+	request.datasources["inqsports"]		= {
+		class: 'com.mysql.jdbc.Driver',
+		connectionString: 'jdbc:mysql://#request.sDBHost#:#request.sDBPort#/inqsports?useUnicode=true&useLegacyDatetimeCode=true&allowMultiQueries=true&useSSL=true&allowPublicKeyRetrieval=true',
+		username = "#request.sDBUsername#",
+		password = "#request.sDBPassword#"
+	};
 </cfscript>

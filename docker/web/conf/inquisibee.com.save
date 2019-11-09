@@ -1,0 +1,298 @@
+<VirtualHost *:80>
+   ServerName www.inquisibee.com
+   ServerAlias inquisibee.com
+   Redirect permanent / https://www.inquisibee.com/
+</VirtualHost>
+
+
+<VirtualHost *:443>
+	ServerAdmin webadmin@inquisibee.com
+	ServerName www.inquisibee.com
+	ServerAlias inquisibee.com
+	DirectoryIndex index.php index.htm index.html
+	DocumentRoot /store/apache/htdocs/inquisibee.com
+	
+	SSLEngine on
+	SSLCertificateFile /store/apache/ssl/inquisibee.com.crt
+	SSLCertificateKeyFile /store/apache/ssl/inquisibee.key
+	SSLCertificateChainFile /store/apache/ssl/intermediate.crt
+
+	<IfModule mod_ssl.c>
+           ErrorLog /var/log/apache2/ssl_engine.log
+           LogLevel debug
+        </IfModule>
+
+	<Directory />
+		Options FollowSymLinks
+		AllowOverride None		
+	</Directory>
+
+	<Directory /store/apache/htdocs/inquisibee.com>
+		RewriteEngine On
+                RewriteBase /web/
+                RewriteRule ^index\.php$ – [L]
+                RewriteCond %{REQUEST_FILENAME} !-f
+                RewriteCond %{REQUEST_FILENAME} !-d
+                RewriteRule . /web/index.php [L]
+		Options Indexes FollowSymLinks MultiViews
+		AllowOverride None
+		Order allow,deny
+		allow from all
+	</Directory>
+	
+	#Allow JIRA over normal port 80
+	<Proxy *>
+		Order deny,allow
+		Allow from all
+	</Proxy>
+
+	#ProxyRequests	Off
+	#ProxyPreserveHost On
+	#ProxyPass /jira http://localhost:8080/jira
+	#ProxyPassReverse /jira http://localhost:8080/jira	
+
+	ScriptAlias /cgi-bin/ /usr/lib/cgi-bin/
+	<Directory "/usr/lib/cgi-bin">
+		AllowOverride None
+		Options +ExecCGI -MultiViews +SymLinksIfOwnerMatch
+		Order allow,deny
+		Allow from all
+	</Directory>
+
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+
+	# Possible values include: debug, info, notice, warn, error, crit,
+	# alert, emerg.
+	LogLevel warn
+
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+    Alias /doc/ "/usr/share/doc/"
+    <Directory "/usr/share/doc/">
+        Options Indexes MultiViews FollowSymLinks
+        AllowOverride None
+        Order deny,allow
+        Deny from all
+        Allow from 127.0.0.0/255.0.0.0 ::1/128
+    </Directory>
+
+	Alias /phpmyadmin /usr/share/phpmyadmin
+	<Directory /usr/share/phpmyadmin>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+</VirtualHost>
+
+<VirtualHost *:80>
+        ServerAdmin webadmin@inquisibee.com
+        ServerName pickem.inquisibee.com
+        ServerAlias www.pickem.inquisibee.com
+	DirectoryIndex index.cfm index.htm index.php index.html
+        DocumentRoot /store/apache/htdocs/pickem
+
+        SSLEngine on
+        SSLCertificateFile /store/apache/ssl/inquisibee.com.crt
+        SSLCertificateKeyFile /store/apache/ssl/inquisibee.key
+        SSLCertificateChainFile /store/apache/ssl/intermediate.crt
+
+        <IfModule mod_ssl.c>
+           ErrorLog /var/log/apache2/ssl_engine.log
+           LogLevel debug
+        </IfModule>
+
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+
+        <Directory /store/apache/htdocs/pickem>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+
+	<Directory /store/apache/htdocs/pickem/assets/fonts/>
+		Header set Cache-Control "max-age=2629746, public, must-revalidate"
+	</Directory>
+
+	<Directory /store/apache/htdocs/pickem/assets/css/>
+#                Header set Cache-Control "max-age=2629746, public, must-revalidate"
+                Header set Cache-Control "max-age=2629746, public"
+        </Directory>
+
+</VirtualHost>
+
+
+<VirtualHost *:80>
+        ServerAdmin webadmin@inquisibee.com
+        ServerName nflperfection.inquisibee.com
+        DirectoryIndex index.cfm index.htm index.php index.html
+        DocumentRoot /store/apache/htdocs/pickem
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+
+        <Directory /store/apache/htdocs/pickem>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+
+        <Directory /store/apache/htdocs/pickem/assets/fonts/>
+                Header set Cache-Control "max-age=2629746, public, must-revalidate"
+        </Directory>
+
+        <Directory /store/apache/htdocs/pickem/assets/css/>
+#                Header set Cache-Control "max-age=2629746, public, must-revalidate"
+                Header set Cache-Control "max-age=2629746, public"
+	</Directory>
+
+</VirtualHost>
+
+<VirtualHost *:80>
+        ServerAdmin webadmin@inquisibee.com
+        ServerName nflunderdog.inquisibee.com
+        DirectoryIndex index.cfm index.htm index.php index.html
+        DocumentRoot /store/apache/htdocs/pickem
+        
+        SSLEngine on
+        SSLCertificateFile /store/apache/ssl/inquisibee.com.crt
+        SSLCertificateKeyFile /store/apache/ssl/inquisibee.key
+        SSLCertificateChainFile /store/apache/ssl/intermediate.crt
+
+        <IfModule mod_ssl.c>
+           ErrorLog /var/log/apache2/ssl_engine.log
+           LogLevel debug
+        </IfModule>
+
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+
+        <Directory /store/apache/htdocs/pickem>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+
+        <Directory /store/apache/htdocs/pickem/assets/fonts/>
+                Header set Cache-Control "max-age=2629746, public, must-revalidate"
+        </Directory>
+	
+	<Directory /store/apache/htdocs/pickem/assets/css/>
+#                Header set Cache-Control "max-age=2629746, public, must-revalidate"
+                Header set Cache-Control "max-age=2629746, public"
+        </Directory>
+
+</VirtualHost>
+
+
+#nfldog
+<VirtualHost *:80>
+        ServerAdmin webadmin@inquisibee.com
+        ServerName nfldog.inquisibee.com
+        DirectoryIndex index.cfm index.htm index.php index.html
+        DocumentRoot /store/apache/htdocs/pickem
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+
+        <Directory /store/apache/htdocs/pickem>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+
+        <Directory /store/apache/htdocs/pickem/assets/fonts/>
+                Header set Cache-Control "max-age=2629746, public, must-revalidate"
+        </Directory>
+
+        <Directory /store/apache/htdocs/pickem/assets/css/>
+#                Header set Cache-Control "max-age=2629746, public, must-revalidate"
+                Header set Cache-Control "max-age=2629746, public"
+        </Directory>
+</VirtualHost>
+
+<VirtualHost *:80>
+	ServerName pickemphp.inquisibee.com
+	ServerAdmin webadmin@inquisibee.com
+	DocumentRoot /store/apache/htdocs/pickem/php/web
+
+	<Directory /store/apache/htdocs/pickem/php/web>
+		Options Indexes FollowSymLinks
+		AllowOverride None
+		Order allow,deny
+                allow from all
+		Require all granted
+		<IfModule mod_rewrite.c>
+                  Options -MultiViews
+                  RewriteEngine On
+                  RewriteCond %{REQUEST_FILENAME} !-f
+                  RewriteRule ^(.*)$ app_dev.php [QSA,L]
+                </IfModule>
+	</Directory>
+
+	<Directory /store/apache/htdocs/pickem/php/web/bundles>
+         <IfModule mod_rewrite.c>
+            RewriteEngine Off
+         </IfModule>
+        </Directory>
+
+	ErrorLog ${APACHE_LOG_DIR}/error.log
+	CustomLog ${APACHE_LOG_DIR}/access.log combined
+
+</VirtualHost>
+
+#dev pickem
+<VirtualHost *:80>
+        ServerAdmin webadmin@inquisibee.com
+        ServerName dev.pickem.inquisibee.com
+        DirectoryIndex index.cfm index.htm index.php index.html
+        DocumentRoot /store/apache/htdocs/dev.pickem
+        <Directory />
+                Options FollowSymLinks
+                AllowOverride None
+        </Directory>
+
+        <Directory /store/apache/htdocs/dev.pickem>
+                Options Indexes FollowSymLinks MultiViews
+                AllowOverride None
+                Order allow,deny
+                allow from all
+        </Directory>
+
+        <Directory /store/apache/htdocs/dev.pickem/assets/fonts/>
+                Header set Cache-Control "max-age=2629746, public, must-revalidate"
+        </Directory>
+
+        <Directory /store/apache/htdocs/dev.pickem/assets/css/>
+#                Header set Cache-Control "max-age=2629746, public, must-revalidate"
+                Header set Cache-Control "max-age=2629746, public"
+        </Directory>
+
+</VirtualHost>
+
+#jenkins
+<VirtualHost *:80>
+        ServerAdmin webadmin@inquisibee.com
+        ServerName jenkins.inquisibee.com
+	ServerAlias ci
+	ProxyRequests Off
+	<Proxy *>
+		Order deny,allow
+		Allow from all
+	</Proxy>
+	ProxyPreserveHost on
+	ProxyPass / http://localhost:8080/
+</VirtualHost>
+
+

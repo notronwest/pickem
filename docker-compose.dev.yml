@@ -1,0 +1,21 @@
+version: "3"
+
+services:
+
+  db:
+      build: ./docker/db
+      command: mysqld --character-set-server=utf8mb4 --collation-server=utf8mb4_unicode_ci
+      volumes:
+        - "db:/var/lib/mysql"
+      networks:
+        - pickem-net
+      environment:
+        MYSQL_ROOT_PASSWORD: root
+        MYSQL_DATABASE: inqsports
+        MYSQL_USER: inqsports
+        MYSQL_PASSWORD: 1nquisib33
+      ports:
+        - "127.0.0.1:42306:3306"
+
+volumes:
+  db:
