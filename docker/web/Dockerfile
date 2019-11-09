@@ -1,5 +1,8 @@
 FROM php:7.0-apache
 
+
+# Delete default config
+RUN rm /etc/apache2/sites-available/000-default.conf
 # Move in the apache config file
 COPY *.conf /etc/apache2/sites-enabled/
 
