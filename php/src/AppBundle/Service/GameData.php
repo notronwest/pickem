@@ -78,7 +78,7 @@ class GameData
 		$client = new Client();
 
 		// create a request
-		$response = $client->get('https://search.yahoo.com/search?p=' . $sAwayTeam . '+result&fr=yfp-t&fp=1&toggle=1&cop=mss&ei=UTF-8');
+		$response = $client->get('https://search.yahoo.com/search?p=' . $sAwayTeam . '+football+result&fr=yfp-t&fp=1&toggle=1&cop=mss&ei=UTF-8');
 
 		// this is the response body from the requested page (usually html)
 		$result = $response->getBody();

@@ -46,11 +46,11 @@ AND bGameIsFinal = 1;
 UPDATE pick set nWin = fn_isPickWin(nGameID, nTeamID)
 WHERE nWeekID = nInWeekID;
 
--- Update all of the auto pick users
+-- Make sure everyone has picks set that should
 UPDATE standing
 SET bHasPicks = 1
 WHERE nWeekID = nInWeekID
-AND nUserID in ( SELECT DISTINCT nUserID FROM pick where nWeekID = nInWeekID and bAuto = 1 );
+AND nUserID in ( SELECT DISTINCT nUserID FROM pick where nWeekID = nInWeekID );
 
 -- Insert all of the wins per user
 INSERT INTO standing  (nUserID, nWeekID, nSeasonID, nWins, nLosses, bHasPicks)
@@ -60,7 +60,7 @@ WHERE nWeekID = nInWeekID
 AND nUserID not in (select nUserID from standing where nWeekID = nInWeekID)
 AND nUserID in (select nUserID from userSeason where nSeasonID = nInSeason)
 GROUP BY nUserID;
-    
+
 -- Update the records that already exist for this week
 UPDATE standing
 SET nWins = (SELECT SUM(nWin) FROM pick WHERE nWeekID = nInWeekID AND pick.nUserID = standing.nUserID),
@@ -97,15 +97,15 @@ AND nSeasonID = nInSeason;
 -- Update the standings place for this week
 UPDATE standing
          JOIN (
---          SELECT nStandingID, rank_calculated 
---          from ( 
+--          SELECT nStandingID, rank_calculated
+--          from (
 --            SELECT nStandingID, nWins, nHighestTiebreak, @winrank := @winrank + 1 AS rank_calculated
 --            from standing, (SELECT @winrank := 0) r
 --            where nWeekID = nInWeekID
 --            ORDER BY nWins DESC, if( nHighestTiebreak=0, nTiebreak2, nHighestTiebreak), nTiebreak2, nTiebreak3, nTiebreak4, nTiebreak5, nTiebreak6, nTiebreak7, nTiebreak8, nTiebreak9, nTiebreak10 ) rt
 --          ORDER BY rank_calculated
 
-SELECT nStandingID, rank_calculated 
+SELECT nStandingID, rank_calculated
   from (
     SELECT    nStandingID, @curRank := @curRank + 1 AS rank_calculated
     FROM      standing s, (SELECT @curRank := 0) st
