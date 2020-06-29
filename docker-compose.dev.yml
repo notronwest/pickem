@@ -16,6 +16,14 @@ services:
         MYSQL_PASSWORD: 1nquisib33
       ports:
         - "127.0.0.1:42306:3306"
+      cap_add:
+        - SYS_NICE  # CAP_SYS_NICE
+      security_opt:
+        - seccomp:unconfined
 
 volumes:
   db:
+
+networks:
+  pickem-net:
+      driver: bridge

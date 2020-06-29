@@ -7,7 +7,7 @@ services:
     networks:
       - pickem-net
     ports:
-      - "8080:8080"
+      - "8090:8080"
       - "50000:50000"
     volumes:
       - ./:/var/www/
@@ -22,7 +22,7 @@ services:
     volumes:
         - ./:/var/www
     ports:
-          - "127.0.0.1:8088:80"
+          - "127.0.0.1:8888:80"
 
   lucee52:
     build: ./docker/lucee
