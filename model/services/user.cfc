@@ -162,10 +162,10 @@ public model.beans.user function handleSave( Required model.beans.user oUser, Re
 			arguments.oUser = userGateway.savePassword(arguments.oUser.getNUserID(), arguments.stFormData.sPassword);
 		}
 		// make sure that they are valid for the current season
-		if( (variables.userSeasonGateway.get({ nUserID=arguments.oUser.getNUserID(), nSeasonID=rc.nCurrentSeasonID}).isNew()) ){
+		if( (variables.userSeasonGateway.get({ nUserID=arguments.oUser.getNUserID(), nSeasonID=arguments.stFormData.nCurrentSeasonID}).isNew()) ){
 			// add record
 			variables.userSeasonGateway.update(variables.userSeasonGateway.get(), {
-				nSeasonID = rc.nCurrentSeasonID,
+				nSeasonID = arguments.stFormData.nCurrentSeasonID,
 				nUserID = arguments.oUser.getNUserID(),
 				bActive = 1
 			});
