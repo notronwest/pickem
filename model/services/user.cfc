@@ -3,6 +3,7 @@ component accessors="true" extends="model.services.baseService" {
 property name="userGateway";
 property name="userService";
 property name="subscriptionGateway";
+property name="userSeasonGateway";
 
 /**
  * Generates a password the length you specify.
@@ -159,6 +160,15 @@ public model.beans.user function handleSave( Required model.beans.user oUser, Re
 			arguments.oUser = userGateway.saveUsername(arguments.oUser.getNUserID(), arguments.stFormData.sUsername);
 			// save password
 			arguments.oUser = userGateway.savePassword(arguments.oUser.getNUserID(), arguments.stFormData.sPassword);
+		}
+		// make sure that they are valid for the current season
+		if( (variables.userSeasonGateway.get({ nUserID=arguments.oUser.getNUserID(), nSeasonID=rc.nCurrentSeasonID}).isNew()) ){
+			// add record
+			variables.userSeasonGateway.update(variables.userSeasonGateway.get(), {
+				nSeasonID = rc.nCurrentSeasonID,
+				nUserID = arguments.oUser.getNUserID(),
+				bActive = 1
+			});
 		}
 	} catch ( any e ){
 		registerError("Error handling actual user save", e);
