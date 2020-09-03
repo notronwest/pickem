@@ -88,10 +88,10 @@ public Void function saveWeek(rc){
 						rc.arGames[itm].nOrder = itm;
 						// make sure the dates are formatted correctly
 						if( !isNull(rc.arGames[itm].sGameDateTime) && isDate(rc.arGames[itm].sGameDateTime) ) {
-							rc.arGames[itm].sGameDateTime = dateTimeFormat(rc.arGames[itm].sGameDateTime, 'yyyy-mm-dd HH:mm');
+							rc.arGames[itm].sGameDateTime = dateTimeFormat(rc.arGames[itm].sGameDateTime, 'yyyy-mm-dd H:mm');
 						}
 						if( !isNull(rc.arGames[itm].dtLock) && isDate(rc.arGames[itm].dtLock) ) {
-							rc.arGames[itm].dtLock = dateFormat(rc.arGames[itm].dtLock, 'yyyy-mm-dd HH:mm');
+							rc.arGames[itm].dtLock = dateTimeFormat(rc.arGames[itm].dtLock, 'yyyy-mm-dd H:mm');
 						}
 						// save the game
 						arrayAppend(rc.arSavedGames, variables.gameGateway.update(oGame, rc.arGames[itm]));
