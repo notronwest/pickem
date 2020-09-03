@@ -66,6 +66,13 @@ public Void function saveWeek(rc){
 		for( itm; itm lte arrayLen(rc.arGames); itm++ ){
 			// get the game object (will return a new object if the gameID doesn't exist)
 			oGame = variables.gameGateway.getByGameID((isNumeric(rc.arGames[itm].nGameID)) ? rc.arGames[itm].nGameID : 0);
+			// make sure the dates are formatted correctly
+			if( !isNull(oGame.getsGameDateTime()) && isDate(oGame.getsGameDateTime()) ) {
+				oGame.setSGameDateTime(dateTimeFormat(oGame.getsGameDateTime(), 'yyyy-mm-dd HH:mm'));
+			}
+			if( !isNull(oGame.getdtLock()) && isDate(oGame.getdtLock()) ) {
+				oGame.setDTLock(dateTimeFormat(oGame.getdtLock(), 'yyyy-mm-dd HH:mm'));
+			}
 			// if this game exists then remove it from the list of games to delete
 			if( listFind(lstGamesToDelete, rc.arGames[itm].nGameID) gt 0 ){
 				lstGamesToDelete = listDeleteAt(lstGamesToDelete, listFind(lstGamesToDelete, rc.arGames[itm].nGameID));
