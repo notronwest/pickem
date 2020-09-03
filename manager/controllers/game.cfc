@@ -73,6 +73,7 @@ public Void function saveWeek(rc){
 			if( !isNull(oGame.getdtLock()) && isDate(oGame.getdtLock()) ) {
 				oGame.setDTLock(dateTimeFormat(oGame.getdtLock(), 'yyyy-mm-dd HH:mm'));
 			}
+			oGame.save();
 			// if this game exists then remove it from the list of games to delete
 			if( listFind(lstGamesToDelete, rc.arGames[itm].nGameID) gt 0 ){
 				lstGamesToDelete = listDeleteAt(lstGamesToDelete, listFind(lstGamesToDelete, rc.arGames[itm].nGameID));
