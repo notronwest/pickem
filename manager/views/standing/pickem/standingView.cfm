@@ -48,7 +48,7 @@
 					<tr<cfif rc.nCurrentUser eq local.nUserID> class="highlight-user"</cfif>>
 						<td><a href="#buildURL('pick.compare')#&nViewUserID=#local.nUserID#"> #rc.stUsers[local.nUserID].getSFirstName()# #rc.stUsers[local.nUserID].getSLastName()#</a></td>
 						<!--- // <td></td> --->
-						<td>#rc.stSeasonWins[local.nUserID]#</td>
+						<td>#(!isNull(rc.stSeasonWins[local.nUserID])) ? rc.stSeasonWins[local.nUserID] : 0#</td>
 						<!--- // <td></td> --->
 						<td>#local.sPlace#</td>
 						<!--- // loop through the week wins for this user --->
