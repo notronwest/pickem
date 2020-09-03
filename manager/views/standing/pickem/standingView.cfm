@@ -34,7 +34,7 @@
 						// store current userID
 						local.nUserID = rc.arStandings[local.itm];
 						// determine what place the current user is in
-						if( rc.stSeasonWins[local.nUserID] neq local.sCurrentWins ){
+						if( !isNull(rc.stSeasonWins[local.nUserID]) and rc.stSeasonWins[local.nUserID] neq local.sCurrentWins ){
 							local.sPlace = local.itm;
 						}
 						local.stUserWeekData = rc.stWeekData[local.nUserID];
@@ -64,7 +64,7 @@
 								local.nWeekID = rc.arWeeks[local.y].getNWeekNumber();
 							</cfscript>
 
-							<td data-order="#local.stUserWeekData[local.nWeekID].nPlace#">#local.stUserWeekData[local.nWeekID].wins#
+							<td data-order="#local.stUserWeekData[local.nWeekID].nPlace#">#(structKeyExists(local.stUserWeekData[local.nWeekID], 'wins')) ? local.stUserWeekData[local.nWeekID].wins : 0#
 
 							<span class="badge"><cfif local.stUserWeekData[local.nWeekID].nPlace eq 1>1<cfelseif local.stUserWeekData[local.nWeekID].nPlace eq 2>2</cfif></span>
 
@@ -73,7 +73,7 @@
 							<cfif structKeyExists(rc.stWeekAutoPick, local.nWeekID) and isArray(rc.stWeekAutoPick[local.nWeekID]) and arrayFind(rc.stWeekAutoPick[local.nWeekID], local.nUserID)>(a)</cfif>
 						</td>
 						</cfloop>
-						<cfset local.sCurrentWins = rc.stSeasonWins[local.nUserID]>
+						<cfset local.sCurrentWins = (!isNull(rc.stSeasonWins[local.nUserID])) ? rc.stSeasonWins[local.nUserID] : 0>
 					</tr>
 				</cfloop>
 			</tbody>
