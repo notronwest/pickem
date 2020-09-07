@@ -187,7 +187,7 @@
 
 <script src="/assets/js/main.min.js"></script>
 <!--- // only do this if we are in production --->
-<cfif not request.bIsDevelopment>
+<!--- // <cfif not request.bIsDevelopment>
   <script>
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -198,7 +198,8 @@
     ga('send', 'pageview');
 
   </script>
-</cfif>
+</cfif> --->
+
 <div id="modal">
     <div id="admin" class="panel panel-default">
       <div class="panel-heading text-right">

@@ -132,7 +132,7 @@
 				</td>
 			</cfif>
 		</tr>
-		<cfif local.itm eq 10>
+		<!--- // <cfif local.itm eq 10>
 			<tr>
 				<td colspan="6" class="in-pick-ad">
 					<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -147,6 +147,6 @@
 					</script>
 				</td>
 			</tr>
-		</cfif>
+		</cfif> --->
 	</cfloop>
 </cfoutput>
