@@ -20,7 +20,7 @@
 				The fee for the league will be $55 with over 90% of that fee going back into the prize pool, while less than 10% going to the hosting and maintenance of the site. Payment of the $55 can be sent to me the following ways:
 			</p>
 			<p>
-				Old School Check: Evan McKechnie, 6114 SW 50th Ave, Portland OR 97221
+				Old School Check: Evan McKechnie, 18049 Skyland Cir, Lake Oswego, OR 97034
 				<br>
 				PayPal: evanmckechnie@gmail.com
 				<br>
@@ -43,7 +43,7 @@
 			</p>
 
 			<p>
-			The fee will be $55 with $5 of that fee going toward the expenses associated with the site (in addition to the person running the site getting a free entry). That means over 90% of the money gets paid back out in various prizes.
+			The fee will be $30 with a portion of that fee going toward the expenses associated with the site (in addition to the person running the site getting a free entry). That means over 95% of the money gets paid back out in various prizes.
 			</p>
 
 			<p>
