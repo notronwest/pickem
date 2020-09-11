@@ -73,12 +73,12 @@
 			if( rc.stUser.bIsAdmin and rc.bManualOverridePicks ){
 				bPickIsLocked = false;
 			}
-			local.showGame = false;
+			local.bShowGame = false;
 			if( !local.bIsCompare || (local.bIsCompare and bPickIsLocked) ) {
 				local.bShowGame = true;
 			}
 		</cfscript>
-		<cfif local.showGame>
+		<cfif local.bShowGame>
 			<tr class="game#((bPickIsLocked) ? ' locked' : '')#" data-id="#rc.arWeekGames[local.itm].nGameId#" data-nWeekID="#rc.nWeekID#">
 				<cfif local.bShowDetails>
 					<td>
