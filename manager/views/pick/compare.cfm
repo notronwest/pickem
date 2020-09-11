@@ -33,61 +33,56 @@
 					</div>
 				</form>
 			</div>
-  			<!--- // if its locked then show the picks --->
-  			<cfif rc.bIsLocked>
-				<!--- // loop through the games and determine which ones this user won --->
-				<div class="row">
-					<div class="table-responsive">
-						<table class="table">
-							<thead>
-								<tr>
-									<th><h4>#rc.oViewUser.getSFirstName()#'s Picks</h4>
-										<h5>Wins:<button class="alert-success btn btn-small" disabled="disabled"><strong>#listLen(rc.stViewUserWeek.lstWins)#</strong></button><cfif rc.stViewUserWeek.bAutoPick eq 1><button class="alert-info auto-picks btn btn-small" disabled="disabled"><em>Auto Picked</em></button></cfif></h5>
-									</th>
-									<th><h4>Your Picks</h4>
-										<h5>Wins:<button class="alert-success btn btn-small" disabled="disabled"><strong>#listLen(rc.stUserWeek.lstWins)#</strong></button><cfif rc.stUserWeek.bAutoPick eq 1><button class="alert-info auto-picks btn btn-small" disabled="disabled"><em>Auto Picked</em></button></cfif></h5>
-									</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										<table class="table">
-											<cfscript>
-												local.arWeekGames = rc.arWeekGames;
-												local.stPicks = rc.stViewUserWeek.stPicks;
-												// hide game status
-												local.bShowGameStatus = false;
-												// hide details
-												local.bShowDetails = false;
-												include "/manager/views/pick/#rc.stLeagueSettings.UIKey#/pickTable.cfm";
-											</cfscript>
-										</table>
-									</td>
-									<td>
-										<table class="table">
-											<cfscript>
-												local.arWeekGames = rc.arWeekGames;
-												local.stPicks = rc.stUserWeek.stPicks;
-												// show game status
-												local.bShowGameStatus = true;
-												// hide details
-												local.bShowDetails = false;
-												include "/manager/views/pick/#rc.stLeagueSettings.UIKey#/pickTable.cfm";
-											</cfscript>
-										</table>
-									</td>
-								</tr>
-							</tbody>
-						</table>
-					</div>
+			<!--- // loop through the games and determine which ones this user won --->
+			<div class="row">
+				<div class="table-responsive">
+					<table class="table">
+						<thead>
+							<tr>
+								<th><h4>#rc.oViewUser.getSFirstName()#'s Picks</h4>
+									<h5>Wins:<button class="alert-success btn btn-small" disabled="disabled"><strong>#listLen(rc.stViewUserWeek.lstWins)#</strong></button><cfif rc.stViewUserWeek.bAutoPick eq 1><button class="alert-info auto-picks btn btn-small" disabled="disabled"><em>Auto Picked</em></button></cfif></h5>
+								</th>
+								<th><h4>Your Picks</h4>
+									<h5>Wins:<button class="alert-success btn btn-small" disabled="disabled"><strong>#listLen(rc.stUserWeek.lstWins)#</strong></button><cfif rc.stUserWeek.bAutoPick eq 1><button class="alert-info auto-picks btn btn-small" disabled="disabled"><em>Auto Picked</em></button></cfif></h5>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<table class="table">
+										<cfscript>
+											local.arWeekGames = rc.arWeekGames;
+											local.stPicks = rc.stViewUserWeek.stPicks;
+											// hide game status
+											local.bShowGameStatus = false;
+											// hide details
+											local.bShowDetails = false;
+											// denote that we are comparing
+											local.bIsCompare = true;
+											include "/manager/views/pick/#rc.stLeagueSettings.UIKey#/pickTable.cfm";
+										</cfscript>
+									</table>
+								</td>
+								<td>
+									<table class="table">
+										<cfscript>
+											local.arWeekGames = rc.arWeekGames;
+											local.stPicks = rc.stUserWeek.stPicks;
+											// show game status
+											local.bShowGameStatus = true;
+											// hide details
+											local.bShowDetails = false;
+											local.bIsCompare = true;
+											include "/manager/views/pick/#rc.stLeagueSettings.UIKey#/pickTable.cfm";
+										</cfscript>
+									</table>
+								</td>
+							</tr>
+						</tbody>
+					</table>
 				</div>
-			<cfelse>
-				<p>&nbsp;</p>
-				<div class="alert alert-warning" role="alert">
-					<p>Sorry, you cannot compare untill the week picks are locked at #getBeanFactory().getBean("commonService").dateTimeFormat(rc.dtPicksDue)#.</p>
-				</div>
-			</cfif>
+			</div>
 		</div>
 	</div>
 </cfoutput>
