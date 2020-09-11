@@ -1,7 +1,7 @@
 <cfparam name="local.bShowGameStatus" default="true">
 <cfparam name="local.sCurrentGame" default="NCAA">
 <cfparam name="local.bShowDetails" default="true">
-<cfparam name="local.bIsCompare" default="true">
+<cfparam name="local.bIsCompare" default="false">
 <cfoutput>
 	<cfloop from="1" to="#arrayLen(local.arWeekGames)#" index="local.itm">
 		<!--- // determine who gets pick class --->
