@@ -9,23 +9,23 @@
 				<cfloop from="1" to="#arrayLen(rc.arWeekGames)#" index="local.itm">
 					<cfscript>
 						// build more user friendly versions of teams
-						switch(listLen(rc.arWeekGames[local.itm].sHomeTeam, " ")){
-							case 2:
-								local.sHomeTeam = listFirst(rc.arWeekGames[local.itm].sHomeTeam, " ");
+						switch(listLen(rc.arWeekGames[local.itm].sHomeTeam, " ") >= 2){
+							case true:
+								local.sHomeTeam = listFirst(rc.arWeekGames[local.itm].sHomeTeam, " ") & " " & listGetAt(rc.arWeekGames[local.itm].sHomeTeam, 2, " ");
 								break;
 							default:
-								local.sHomeTeam = listFirst(rc.arWeekGames[local.itm].sHomeTeam, " ") & " " & listGetAt(rc.arWeekGames[local.itm].sHomeTeam, 2, " ");
+								local.sHomeTeam = rc.arWeekGames[local.itm].sHomeTeam;
 						}
 						// build more user friendly versions of teams
-						switch(listLen(rc.arWeekGames[local.itm].sAwayTeam, " ")){
-							case 2:
-								local.sAwayTeam = listFirst(rc.arWeekGames[local.itm].sAwayTeam, " ");
+						switch(listLen(rc.arWeekGames[local.itm].sAwayTeam, " ") >= 2){
+							case true:
+								local.sAwayTeam = listFirst(rc.arWeekGames[local.itm].sAwayTeam, " ") & " " & listGetAt(rc.arWeekGames[local.itm].sAwayTeam, 2, " ");
 								break;
 							default:
-								local.sAwayTeam = listFirst(rc.arWeekGames[local.itm].sAwayTeam, " ") & " " & listGetAt(rc.arWeekGames[local.itm].sAwayTeam, 2, " ");
+								local.sAwayTeam = rc.arWeekGames[local.itm].sAwayTeam;
 						}
 					</cfscript>
-					<th>#local.sHomeTeam# vs. #sAwayTeam#</th>
+					<th>#local.sHomeTeam# vs. #local.sAwayTeam#</th>
 				</cfloop>
 			</thead>
 			<tbody>
