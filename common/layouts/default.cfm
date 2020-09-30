@@ -6,7 +6,6 @@
 <html>
 <head>
 	<title></title>
-  <meta name="google-site-verification" content="63amUBorjOqgr1ak6LIQtZT6qaqPec7cCm844FIKuog" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
   <meta name="description" content="">
   <meta name="author" content="">
@@ -128,17 +127,6 @@
     // put total purse available as jquery
     nTotalPurse = <cfoutput>#((!isNull(rc.oCurrentSeason.getNTotalPurse())) ? rc.oCurrentSeason.getNTotalPurse() : 0)#</cfoutput>;
   </script>
-  <cfif rc.bShowPageLevelAds>
-    <cfoutput>
-      <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-      <script>
-        (adsbygoogle = window.adsbygoogle || []).push({
-          google_ad_client: "ca-pub-1027916687663589",
-          enable_page_level_ads: true
-        });
-      </script>
-   </cfoutput>
-  </cfif>
 </head>
 <body>
 <cfoutput>
