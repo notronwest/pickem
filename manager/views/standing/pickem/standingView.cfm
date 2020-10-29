@@ -68,8 +68,8 @@
 
 							<span class="badge"><cfif local.stUserWeekData[local.nWeekID].nPlace eq 1>1<cfelseif local.stUserWeekData[local.nWeekID].nPlace eq 2>2</cfif></span>
 
-							<!--- // handle no picks or auto picks --->
-							<cfif structKeyExists(rc.stWeekNoPicks, local.nWeekID) and isArray(rc.stWeekNoPicks[local.nWeekID]) and arrayFind(rc.stWeekNoPicks[local.nWeekID], local.nUserID)><span class="fa fa-frown-o"></span></cfif>
+							<!--- // handle no picks or auto picks
+							<cfif structKeyExists(rc.stWeekNoPicks, local.nWeekID) and isArray(rc.stWeekNoPicks[local.nWeekID]) and arrayFind(rc.stWeekNoPicks[local.nWeekID], local.nUserID)><span class="fa fa-frown-o"></span></cfif>  --->
 							<cfif structKeyExists(rc.stWeekAutoPick, local.nWeekID) and isArray(rc.stWeekAutoPick[local.nWeekID]) and arrayFind(rc.stWeekAutoPick[local.nWeekID], local.nUserID)>(a)</cfif>
 						</td>
 						</cfloop>
