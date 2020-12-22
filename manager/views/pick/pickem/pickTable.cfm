@@ -104,6 +104,7 @@
 						<span class="badge">
 							#(stPick.nID eq nFavoredTeam) ? '-' : '+'# #stGame.nSpread#
 						</span>
+					<cfif !bPick><em><small>No pick</small></em></cfif>
 					</button>
 				</td>
 				<cfif rc.bCanSetPicks>
