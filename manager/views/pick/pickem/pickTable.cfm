@@ -91,7 +91,9 @@
 					<cfif rc.bIsLocked><span class="fa fa-info-circle fa-lg game-info icons"></span><cfelse><span class="fa fa-bar-chart-o fa-lg stats-info icons"></span></cfif>
 					<button type="button" disabled="disabled" class="btn btn-xs
 						#((stPick.bIsHome) ? 'home' : '')#
-						<cfif stGame.bGameIsFinal>
+						<cfif !bPick>
+							' btn-danger'
+						<cfelseif stGame.bGameIsFinal>
 							#((stPick.bIsWinning) ? ' btn-success' : ' btn-danger')#
 						<cfelseif len(stGame.sGameStatus) gt 0>
 							#((stPick.bIsWinning) ? ' btn-info' : ' btn-warning')#
