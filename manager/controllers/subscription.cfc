@@ -44,7 +44,10 @@ public void function save(rc){
 			// send out an email
 			var subscriptionPaidOption = variables.optionGateway.getByCodeKey('subscriptionPaid', rc.sCurrentLeagueID);
 			if ( arrayLen(subscriptionPaidOption) ) {
-				variables.notifyService.doNotification( subscriptionPaidOption[1], rc.oUser, rc.sCurrentLeagueID);
+				var subscriptionPaidNotify = variables.notifyGateway.getByOption(subscriptionPaidOption[1].getNOptionId())
+				if( arrayLen(subscriptionPaidNotify) ) {
+					variables.notifyService.doNotification( subscriptionPaidNotify[1], rc.oUser, rc.sCurrentLeagueID);
+				}
 			}
 			// redirect to the listing
 			variables.framework.redirect(action="user.listing", queryString="sMessage=Subscription saved for #rc.oUser.getSFirstName()# #rc.oUser.getSLastName()#");
