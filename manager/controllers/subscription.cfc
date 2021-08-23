@@ -6,6 +6,7 @@ property name="subscriptionGateway";
 property name="seasonService";
 property name="optionGateway";
 property name="notifyService";
+property name="notifyGateway";
 
 public void function before (rc){
 	// default the user to the current user
