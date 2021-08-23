@@ -9,12 +9,6 @@ services:
       networks:
         - pickem-net
 
-    jenkins:
-      build: ./docker/jenkins
-      networks:
-        - pickem-net
-
-
 volumes:
   db:
 

@@ -4,6 +4,8 @@ property name="userGateway";
 property name="userService";
 property name="subscriptionGateway";
 property name="seasonService";
+property name="optionGateway";
+property name="notifyService";
 
 public void function before (rc){
 	// default the user to the current user
@@ -39,6 +41,11 @@ public void function save(rc){
 			});
 			// recalculate this seasons purse
 			variables.seasonService.updatePurse(rc.nCurrentSeasonID);
+			// send out an email
+			var subscriptionPaidOption = variables.optionGateway.getByCodeKey('subscriptionPaid', rc.sCurrentLeagueID);
+			if ( arrayLen(subscriptionPaidOption) ) {
+				variables.notifyService.doNotification( subscriptionPaidOption[1], rc.oUser, rc.sCurrentLeagueID);
+			}
 			// redirect to the listing
 			variables.framework.redirect(action="user.listing", queryString="sMessage=Subscription saved for #rc.oUser.getSFirstName()# #rc.oUser.getSLastName()#");
 		}

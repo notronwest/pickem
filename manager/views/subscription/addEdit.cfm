@@ -24,6 +24,7 @@
 					<option value="cash"<cfif rc.oSubscription.getSPaymentType() eq "cash"> selected="selected"</cfif>>Cash</option>
 					<option value="check"<cfif rc.oSubscription.getSPaymentType() eq "check"> selected="selected"</cfif>>Check</option>
 					<option value="paypal"<cfif rc.oSubscription.getSPaymentType() eq "paypal"> selected="selected"</cfif>>Paypal</option>
+					<option value="venmo"<cfif rc.oSubscription.getSPaymentType() eq "venmo"> selected="selected"</cfif>>Venmo</option>
 					<option value="other"<cfif rc.oSubscription.getSPaymentType() eq "other"> selected="selected"</cfif>>Other</option>
 				</select>
 			</div>

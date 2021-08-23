@@ -41,8 +41,3 @@ services:
         - "VIRTUAL_HOST=nginx52.*"
       networks:
         - pickem-net
-
-    jenkins:
-        ports:
-          - "127.0.0.1:8080:8080"
-          - "127.0.0.1:50000:50000"

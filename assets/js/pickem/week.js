@@ -113,6 +113,13 @@ docReady(function(){
 		makeActive();
 		$(".container").off("click", ".move");
 	});
+	$('#showLock').on("click", function() {
+		if ( this.prop('checked') ) {
+			$('.lock-control').show()
+		} else {
+			$('.lock-control').hide()
+		}
+	})
 	// binding for saving games
 	$(".container").on("click", ".save-games:not(.disabled)", function(event){
 		event.stopPropagation();

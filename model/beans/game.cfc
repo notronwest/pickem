@@ -30,4 +30,19 @@ component entityname="game" persistent="true" table="game" output="false" extend
 		}
 		return variables.nGameID;
 	}
+
+	public void function saveSGameDateTime( required String sGameDateTime ) {
+		if ( !isDate(arguments.sGameDateTime) ) {
+			throw("Error formatting game date time");
+		}
+		variables.sGameDateTime = !isNull(arguments.sGameDateTime) ? getService('CommonService').dbDateTimeFormat(arguments.sGameDateTime) : nullValue()
+	}
+
+	public void function saveSDtLock( required String sDtLock ) {
+		if ( !isDate(arguments.sDtLock) ) {
+			throw("Error formatting game date time");
+		}
+		variables.sDtLock = !isNull(arguments.sDtLock) ? getService('CommonService').dbDateTimeFormat(arguments.sDtLock) : nullValue()
+	}
+
 }

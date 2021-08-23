@@ -40,7 +40,7 @@
 				<h3>Active Games</h3>
 				<div class="checkbox">
 					<label for="showLock">
-						<input type="checkbox" id="showLock"> Show Lock Date/Time
+						<input type="checkbox" id="showLockTimes"> Show Lock Date/Time
 					</label>
 				</div>
 				<form id="weekGames" method="post" action="#buildURL('game.saveWeek')#">
@@ -91,6 +91,7 @@
 				// load the games
 				docReady(function(){
 					getGames();
+					$("##showLockTimes").on("click",function(){$(this).is(":checked")?$(".lock-control").removeClass("hide"):$(".lock-control").addClass("hide")})
 				});
 			</script>
 		</cfif>
