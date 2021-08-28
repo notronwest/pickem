@@ -145,6 +145,15 @@
 			request.sDBBackupDirectory = "#expandPath('/data/weeklydbbackup/')#";
 			request.sDBUsername = "notronwest";
 			request.sDBPassword = "1nquisib33";
+			request.datasources["testing"] = {
+				class: 'org.gjt.mm.mysql.Driver'
+				, connectionString: 'jdbc:mysql://db-pickem-do-user-323100-0.b.db.ondigitalocean.com:25060/inqsports?useUnicode=true&characterEncoding=UTF-8&useLegacyDatetimeCode=true&useSSL=true&requireSSL=true&verifyServerCertificate=false'
+				, username: 'doadmin'
+				, password: "encrypted:e8e946b62285742e3434390c42c8be7e57e495ffa24713b7311eb08215b93fa650d7335dc2aeb05c1a209963ff1e7c7a"
+				
+				// optional settings
+				, connectionLimit:100 // default:-1
+			};
 			break;
 
 		case "nflperfection.inquisibee.com":
