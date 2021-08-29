@@ -145,9 +145,24 @@
 			request.sDBBackupDirectory = "#expandPath('/data/weeklydbbackup/')#";
 			request.sDBUsername = "notronwest";
 			request.sDBPassword = "1nquisib33";
+			request.datasources["test2"] = {
+				database: "defaultdb",
+				type: "mysql",
+				host: "private-db-pickem-do-user-323100-0.b.db.ondigitalocean.com",
+				port: 25060,
+				username: "doadmin",
+				password: "encrypted:e8e946b62285742e3434390c42c8be7e57e495ffa24713b7311eb08215b93fa650d7335dc2aeb05c1a209963ff1e7c7a",
+				custom: {
+					useSSL: true,
+					useUnicode: true,
+					characterEncoding: "UTF-8",
+					requireSSL: true,
+					validateCertificate: false
+				}
+			};
 			request.datasources["testing"] = {
 				class: 'org.gjt.mm.mysql.Driver'
-				, connectionString: 'jdbc:mysql://private-db-pickem-do-user-323100-0.b.db.ondigitalocean.com:25060/inqsports?useUnicode=true&characterEncoding=UTF-8&useLegacyDatetimeCode=true&useSSL=true&requireSSL=true&verifyServerCertificate=true'
+				, connectionString: 'jdbc:mysql://private-db-pickem-do-user-323100-0.b.db.ondigitalocean.com:25060/inqsports?useUnicode=true&characterEncoding=UTF-8'
 				, username: 'doadmin'
 				, password: "encrypted:e8e946b62285742e3434390c42c8be7e57e495ffa24713b7311eb08215b93fa650d7335dc2aeb05c1a209963ff1e7c7a"
 				
