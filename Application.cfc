@@ -19,6 +19,7 @@ component extends="framework" {
 		application.arUnsecuredActions = [
 			"security:main.forgotPassword",
 			"security:main.login",
+			"security:main.hidden",
 			"security:main.authenticate",
 			"manager:user.register",
 			"manager:user.changePassword",
