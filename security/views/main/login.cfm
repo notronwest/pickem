@@ -2,8 +2,6 @@
 <cfparam name="rc.sMessage" default="">
 <cfoutput>
 <section>
-Pickem is down for maintenance. Please check back later
-<cfexit>
 <!--- // show create account message if they haven't logged in --->
 <cfif !rc.bHasLoggedIn>
 <h3>Welcome</h3>
