@@ -234,7 +234,7 @@ public Array function getGameScores( Required Array arGames){
 				and !isNumeric(arguments.arGames[itm].bGameIsFinal) or arguments.arGames[itm].bGameIsFinal eq 0 ){
 				// get away team name
 				oAwayTeam = variables.teamGateway.get(arGames[itm].nAwayTeamID);
-				stGameData = callScoreAPI(oAwayTeam.getSName());
+				stGameData = callScoreAPI(oAwayTeam.getNType() == 2 ? oAwayTeam.getSName() & '+' & oAwayTeam.getSMascot() : oAwayTeam.getSName());
 				// if we have game status then update the array for this game
 				if( structKeyExists(stGameData, "stGameStatus") and len(stGameData.nHomeScore) and len(stGameData.nAwayScore) ){
 					// update the scores
