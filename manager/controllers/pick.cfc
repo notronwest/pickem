@@ -96,6 +96,7 @@ public void function save(rc){
 	var oPick = "";
 	var stPicks = {};
 	rc.sMessage = "Picks saved";
+	var oGame = '';
 	try{
 		if( !rc.bIsLocked or rc.bManualOverridePicks ){
 			// convert picks
@@ -109,6 +110,12 @@ if( compareNoCase(rc.stLeagueSettings.UIKey, "NFLUnderdog") eq 0
 }
 			// loop through the structure of picks and process them
 			for( nGameID in stPicks ){
+				// get the game details
+				oGame = variables.gameGateway.get(nGameId);
+				// only allow this pick to save if the game hasn't already started
+				if( oGame.getSGameDateTime() < dateTimeFormat(now(), 'yyyy-mm-dd HH:mm:ss') ) {
+				  continue;
+				}
 				// get a new pick object based on game and user
 				oPick = variables.pickGateway.getByUserAndGame(rc.nCurrentUser, nGameID);
 				// update the picks
