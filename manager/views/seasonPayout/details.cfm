@@ -24,6 +24,14 @@
 				<li class="list-group-item">#rc.stSeasonPayouts['finalWeek'][itm].sName#<span class="badge">#dollarFormat(rc.stSeasonPayouts['finalWeek'][itm].nAmount)#</span></li>
 			</cfloop>
 		</ul>
+		<h4>Operational Costs (e.g. hosting costs)</h4>
+		<ul class="list-group">
+			<cfloop from="1" to="#arrayLen(rc.stSeasonPayouts['season'])#" index="local.itm">
+				<cfif rc.stSeasonPayouts['season'][itm].sName == 'EXPENSES'>
+					<li class="list-group-item">#rc.stSeasonPayouts['season'][itm].sName#<span class="badge">#dollarFormat(rc.stSeasonPayouts['season'][itm].nAmount)#</span></li>
+				</cfif>
+			</cfloop>
+		</ul>
 	</div>
 </div>
 </cfoutput>
