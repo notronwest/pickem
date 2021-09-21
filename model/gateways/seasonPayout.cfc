@@ -117,7 +117,7 @@ History:
 	2015-08-23 - RLW - Created
 */
 public Array function getBySeason( Required Numeric nSeasonID){
-	var arSeasonPayouts = ormExecuteQuery("from seasonPayout where nSeasonID = :nSeasonID", { "nSeasonID" = arguments.nSeasonID });
+	var arSeasonPayouts = ormExecuteQuery("from seasonPayout where nSeasonID = :nSeasonID order by nPayout desc", { "nSeasonID" = arguments.nSeasonID });
 	return arSeasonPayouts;
 }
 
