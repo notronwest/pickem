@@ -12,7 +12,7 @@
 				<div class="form-group">
 					<label for="dStartDate">Week Number: </label>
 					<select class="form-control" name="nWeekNumber" size="1">
-						<cfloop from="1" to="19" index="local.itm">
+						<cfloop from="1" to="25" index="local.itm">
 							<option value="#local.itm#"<cfif rc.oWeek.getNWeekNumber() eq itm> selected="selected"</cfif>>#itm#</option>
 						</cfloop>
 					</select>
