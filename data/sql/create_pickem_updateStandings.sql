@@ -46,9 +46,15 @@ AND bGameIsFinal = 1;
 UPDATE pick set nWin = fn_isPickWin(nGameID, nTeamID)
 WHERE nWeekID = nInWeekID;
 
--- Update all of the auto pick users
+-- Update all of the has pick users
 UPDATE standing
 SET bHasPicks = 1
+WHERE nWeekID = nInWeekID
+AND nUserID in ( SELECT DISTINCT nUserID FROM pick where nWeekID = nInWeekID and nPick IS NOT NULL );
+
+-- Update all of the auto pick users
+UPDATE standing
+SET bAutoPick = 1
 WHERE nWeekID = nInWeekID
 AND nUserID in ( SELECT DISTINCT nUserID FROM pick where nWeekID = nInWeekID and bAuto = 1 );
 
