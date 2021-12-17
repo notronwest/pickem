@@ -2,39 +2,43 @@ DROP PROCEDURE IF EXISTS `pickem_updateStandings`;
 
 DELIMITER $$
 
-CREATE DEFINER=`inqsports`@`%` PROCEDURE `pickem_updateStandings`(nInWeekID int(4), nInSeason int(4))
+-- CREATE PROCEDURE `pickem_updateStandings`(IN nInWeekID int(4), IN nInSeason int(4), OUT errorCodeMessage TEXT)
+CREATE PROCEDURE `pickem_updateStandings`(IN nInWeekID int(4), IN nInSeason int(4))
     DETERMINISTIC
 doUpdate:BEGIN
+
+-- exit handler variables
+DECLARE errorCode CHAR(5) DEFAULT '00000';
+DECLARE errorMessage TEXT;
+DECLARE debugInfo TEXT;
+DECLARE errorNo VARCHAR(10); -- ' MYSQL ERRORNO: ', COALESCE(errorNo, ''), we can use this if needed below in the errorCodeMessage for debugging
 
 DECLARE dtPicksDue int;
 DECLARE nStandingRecordCount int;
 DECLARE nLeastWins int;
 DECLARE nFirstPlace int;
 
-DECLARE EXIT HANDLER FOR SQLEXCEPTION
- BEGIN
-  ROLLBACK;
-  SELECT 'SQLException invoked';
- END;
+-- exit handler for rollback if we hit an exception (roll it all back!!!!)
+DECLARE EXIT HANDLER FOR SQLWARNING, SQLEXCEPTION
+BEGIN
+GET STACKED DIAGNOSTICS CONDITION 1
+    errorCode = RETURNED_SQLSTATE, errorMessage = MESSAGE_TEXT, errorNo = MYSQL_ERRNO;
+        -- SET errorCodeMessage = CONCAT('CODE: ', COALESCE(errorCode, ''), ' MESSAGE: ', COALESCE(errorMessage, ''), ' LAST POINT: ', COALESCE(debugInfo, ''));
+    ROLLBACK;
+END;
 
 -- if we have a 0 week id exit
 IF nInWeekID = 0 THEN
     LEAVE doUpdate;
 END IF;
 
--- Get the difference between now and the time when picks are due
+-- If this
 SET dtPicksDue = (SELECT TIMESTAMPDIFF(
     SECOND,
     STR_TO_DATE(CONCAT(dPicksDue, ' ', tPicksDue, ':00'), '%Y-%m-%d %H:%i:%s'),
     NOW())
 FROM week
 WHERE nWeekID = nInWeekID);
-
--- determine if the picks are locked for this week
-IF dtPicksDue <= 0 THEN
-    -- exit the procedure if picks aren't locked
-    LEAVE doUpdate;
-END IF;
 
 -- Determine which team won the game
 UPDATE game
@@ -46,18 +50,6 @@ AND bGameIsFinal = 1;
 UPDATE pick set nWin = fn_isPickWin(nGameID, nTeamID)
 WHERE nWeekID = nInWeekID;
 
--- Update all of the has pick users
-UPDATE standing
-SET bHasPicks = 1
-WHERE nWeekID = nInWeekID
-AND nUserID in ( SELECT DISTINCT nUserID FROM pick where nWeekID = nInWeekID and nPick IS NOT NULL );
-
--- Update all of the auto pick users
-UPDATE standing
-SET bAutoPick = 1
-WHERE nWeekID = nInWeekID
-AND nUserID in ( SELECT DISTINCT nUserID FROM pick where nWeekID = nInWeekID and bAuto = 1 );
-
 -- Insert all of the wins per user
 INSERT INTO standing  (nUserID, nWeekID, nSeasonID, nWins, nLosses, bHasPicks)
 SELECT DISTINCT nUserID, nInWeekID, nInSeason, SUM(nWin), 20 - SUM(nWin), 1 as bHasPicks
@@ -66,7 +58,7 @@ WHERE nWeekID = nInWeekID
 AND nUserID not in (select nUserID from standing where nWeekID = nInWeekID)
 AND nUserID in (select nUserID from userSeason where nSeasonID = nInSeason)
 GROUP BY nUserID;
-    
+
 -- Update the records that already exist for this week
 UPDATE standing
 SET nWins = (SELECT SUM(nWin) FROM pick WHERE nWeekID = nInWeekID AND pick.nUserID = standing.nUserID),
@@ -80,6 +72,12 @@ SELECT nUserID, nInWeekID, nInSeason, 0 as nWins, 20 as nLosses, 0 as nHighestTi
 FROM user
 WHERE nUserID not in (select nUserID from standing where nWeekID = nInWeekID)
 AND nUserID in (select nUserID from userSeason where nSeasonID = nInSeason);
+
+-- Update all of the auto pick users
+UPDATE standing
+SET bAutoPick = 1
+WHERE nWeekID = nInWeekID
+AND nUserID in ( SELECT DISTINCT nUserID FROM pick where nWeekID = nInWeekID and bAuto = 1 );
 
 -- Update number of nTiebreaks
 UPDATE standing
@@ -103,15 +101,15 @@ AND nSeasonID = nInSeason;
 -- Update the standings place for this week
 UPDATE standing
          JOIN (
---          SELECT nStandingID, rank_calculated 
---          from ( 
+--          SELECT nStandingID, rank_calculated
+--          from (
 --            SELECT nStandingID, nWins, nHighestTiebreak, @winrank := @winrank + 1 AS rank_calculated
 --            from standing, (SELECT @winrank := 0) r
 --            where nWeekID = nInWeekID
 --            ORDER BY nWins DESC, if( nHighestTiebreak=0, nTiebreak2, nHighestTiebreak), nTiebreak2, nTiebreak3, nTiebreak4, nTiebreak5, nTiebreak6, nTiebreak7, nTiebreak8, nTiebreak9, nTiebreak10 ) rt
 --          ORDER BY rank_calculated
 
-SELECT nStandingID, rank_calculated 
+SELECT nStandingID, rank_calculated
   from (
     SELECT    nStandingID, @curRank := @curRank + 1 AS rank_calculated
     FROM      standing s, (SELECT @curRank := 0) st
